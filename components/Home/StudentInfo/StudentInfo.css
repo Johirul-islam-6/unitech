@@ -1,0 +1,15 @@
+.student-info-card {
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  transition: transform 0.7s cubic-bezier(0.42, 0, 0.58, 1);
+  cursor: pointer;
+}
+.student-info-image {
+  transition: transform 0.7s cubic-bezier(0.42, 0, 0.58, 1);
+}
+.student-info-card:hover .student-info-image {
+  transform: scale(1.2);
+}
+.student-info-card:hover .course-name {
+  color: #0a0a25;
+}

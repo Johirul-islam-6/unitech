@@ -1,0 +1,55 @@
+.career {
+  background-image: url("../../../app/Assets/career/Bg-image.jpg");
+  width: 100%;
+  height: auto;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 770px) {
+  .allCourses {
+    display: flex;
+    flex-wrap: wrap !important;
+    justify-content: center;
+  }
+  .career-text {
+    font-size: 2.2rem !important;
+  }
+  .career-paragrap {
+    font-size: 15px !important;
+  }
+}
+
+.view-course-button {
+  display: flex;
+  background-color: rgb(24, 24, 24);
+  color: #ffff;
+  /* border-radius: 5px; */
+}
+.view-icon {
+  margin-left: 5px !important;
+}
+.allCourses {
+  width: 90%;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.career-text-div {
+  display: flex;
+  margin-bottom: 15px;
+}
+.career-text {
+  background-color: #313f4c68;
+  font-size: 2.1rem;
+  padding: 20px 40px;
+  border-radius: 30px 30px 0 0;
+  font-weight: 600;
+  line-height: 47px;
+}
+.career-paragrap {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 34px;
+}

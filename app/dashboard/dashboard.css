@@ -1,0 +1,15 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.dashboard-left-container {
+  width: 25%;
+  background-color: #fff;
+  height: 100dvh;
+}
+.dashboard-body {
+  width: 100%;
+}
+.dashboard-max-w-screen-xl {
+  max-width: 1500px;
+}

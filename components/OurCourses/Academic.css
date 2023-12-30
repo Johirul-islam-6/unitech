@@ -1,0 +1,20 @@
+.academic-card {
+  border: 2px solid #0000001e;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.academic-card-border {
+  border-top: 3px solid rgba(34, 34, 35, 0.231);
+  width: 100%;
+}
+.AcademicSlidess .slick-prev,
+.AcademicSlidess .slick-next {
+  background-color: #00000045 !important;
+  width: 35px !important;
+  height: 45px !important;
+  z-index: 100;
+  display: none !important;
+  /* border-radius: 50%; */
+}

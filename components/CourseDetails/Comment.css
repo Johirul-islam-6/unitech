@@ -1,0 +1,16 @@
+.academic-card {
+  border: 2px solid #0000001e;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.academic-card-border {
+  border-top: 3px solid rgba(34, 34, 35, 0.231);
+  width: 100%;
+}
+.course-Comment .slick-prev,
+.course-Comment .slick-next {
+  display: none !important;
+  /* border-radius: 50%; */
+}

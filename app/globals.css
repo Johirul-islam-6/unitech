@@ -1,0 +1,34 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@1,300&family=Inter:wght@500&family=Playfair+Display:wght@500&family=Raleway:wght@100;300;600&family=Roboto:ital,wght@0,300;0,400;1,100&family=Space+Grotesk:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@1,300&family=Inter:wght@500&family=Lato:ital@0;1&family=Open+Sans:wght@600&family=Playfair+Display:wght@500&family=Raleway:wght@100;300;600&family=Roboto:ital,wght@0,300;0,400;0,500;1,100&family=Space+Grotesk:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@700&family=IBM+Plex+Sans:ital,wght@1,300&family=Inter:wght@500&family=Lato:ital@0;1&family=Open+Sans:wght@600&family=Playfair+Display:wght@500&family=Raleway:wght@100;300;600&family=Roboto:ital,wght@0,300;0,400;0,500;1,100&family=Space+Grotesk:wght@700&display=swap");
+
+.SILIGURI {
+  font-family: "Hind Siliguri", sans-serif;
+}
+.Navbar-font {
+  font-family: "Roboto", sans-serif;
+}
+
+.GT {
+  font-family: "GT Super Bold", serif;
+}
+.IBM {
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+/* ---------- project layOut max width -------->  */
+.max-w-screen-xl {
+  max-width: 1400px;
+}
+
+@media (max-width: 1023px) {
+  .max-w-screen-xl {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

@@ -1,0 +1,80 @@
+.course-Card {
+  background-color: #ffff;
+  padding: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  max-height: 220px;
+}
+.course-Card:hover {
+  box-shadow: rgba(0, 0, 0, 0.954) 0px 5px 15px;
+}
+
+@media (max-width: 770px) {
+  .course-Card {
+    background-color: #ffff;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .course-name {
+    font-size: 16px;
+  }
+}
+
+/* ---------- button --------- */
+.view-course-button2 {
+  --c: goldenrod;
+  background-color: rgba(2, 2, 11, 0.895);
+  color: var(--c);
+  font-size: 14px;
+  border-radius: 5px;
+  width: 12em;
+  height: 3em;
+  font-weight: bold;
+  font-family: sans-serif;
+  letter-spacing: 0.1em;
+  text-align: center;
+  line-height: 3em;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.5s;
+  margin: 1em;
+  color: #ffff !important;
+}
+
+.view-course-button2 span {
+  position: absolute;
+  width: 25%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--c);
+  transform: translateY(150%);
+  left: calc((var(--n) - 1) * 25%);
+  transition: 0.5s;
+  transition-delay: calc((var(--n) - 1) * 0.1s);
+  z-index: -1;
+}
+
+.view-course-button2:hover {
+  color: black !important;
+}
+
+.view-course-button2:hover span {
+  transform: translateY(0) scale(2);
+}
+
+.view-course-button2 span:nth-child(1) {
+  --n: 1;
+}
+
+.view-course-button2 span:nth-child(2) {
+  --n: 2;
+}
+
+.view-course-button2 span:nth-child(3) {
+  --n: 3;
+}
+
+.view-course-button2 span:nth-child(4) {
+  --n: 4;
+}

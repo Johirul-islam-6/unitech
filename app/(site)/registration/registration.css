@@ -1,0 +1,4 @@
+.form-check-input.is-valid:checked,
+.was-validated .form-check-input:valid:checked {
+  background-color: #198754;
+}

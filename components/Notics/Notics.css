@@ -1,0 +1,27 @@
+.notics-div {
+  height: 90vh;
+  width: 75%;
+  margin: 0 auto;
+  padding: 10px 0;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 0px 60px -12px inset,
+    rgba(0, 0, 0, 0.107) 0px 18px 36px -18px inset;
+  border-radius: 10px;
+}
+.text-yellow {
+  color: #d47d2b;
+}
+.text-blue-800s {
+  color: #3a4df7;
+}
+@media (max-width: 900px) {
+  .notics-div {
+    height: 70vh;
+    width: 100% !important;
+  }
+}
+.notics-div .slick-next {
+  display: none !important;
+}
+.notics-div .slick-prev {
+  display: none !important;
+}

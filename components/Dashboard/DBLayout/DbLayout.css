@@ -1,0 +1,17 @@
+.top-dashboard-main {
+  width: 100% !important;
+  background-color: #fff;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+.top-dashboard-container {
+  width: 100% !important;
+  background-color: #f0f1f3;
+  padding: 8px;
+  display: flex;
+  justify-content: start !important;
+}
+.search-bar-container {
+  width: 80% !important;
+}

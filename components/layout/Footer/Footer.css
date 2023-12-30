@@ -1,0 +1,27 @@
+.footer {
+  background: #fffbee;
+  /* background-image: url("../../../app/Assets/untility/footer.webp"); */
+  height: auto;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  color: #000;
+  margin-top: 60px;
+}
+.footer a {
+  color: #000000c1;
+  font-size: 16px;
+}
+.footer a:hover {
+  color: #c67108;
+  font-size: 16px;
+}
+.footer-logo-bg {
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #1c1c1c;
+}
+
+.rounded-blur {
+  filter: blur(140px) !important;
+}
