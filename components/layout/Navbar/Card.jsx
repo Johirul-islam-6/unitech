@@ -32,20 +32,12 @@ export default function Card({ setIsOpen }) {
             Our Courses
           </Link>
         </li>
-        <li className="link-text py-2 px-[3px] border-b-2 border-[#f6931e] border-opacity-0 hover:border-opacity-100 hover:text-[#f6931e] duration-300 cursor-pointer mx-[10px] ">
-          <Link
-            onClick={() => setIsOpen(false)}
-            className="navar-text uppercase Navbar-font"
-            href="/"
-          >
-            Block
-          </Link>
-        </li>
+
         <li className="link-text py-2 px-[3px] border-b-2 border-[#f6931e] border-opacity-0 hover:border-opacity-100 hover:text-[#f6931e] duration-300 cursor-pointer ms-3 me-5">
           <Link
             onClick={() => setIsOpen(false)}
             className="navar-text uppercase Navbar-font"
-            href="/"
+            href="/about"
           >
             About
           </Link>
@@ -55,7 +47,7 @@ export default function Card({ setIsOpen }) {
             onClick={() => setIsOpen(false)}
             Link
             className=" link-text text-center py-[6px] ARCHITECTURAL"
-            href="/"
+            href="/unitech-architctural"
           >
             <span className="flex items-center justify-center uppercase gap-1 ">
               UNITECH ARCHITECTURAL

@@ -91,7 +91,7 @@ export const Navbar = () => {
                   <Link
                     Link
                     className=" link-text text-center py-[6px] ARCHITECTURAL"
-                    href="/"
+                    href="/unitech-architctural"
                   >
                     <span className="flex items-center justify-center uppercase gap-1 ">
                       UNITECH ARCHITECTURAL
