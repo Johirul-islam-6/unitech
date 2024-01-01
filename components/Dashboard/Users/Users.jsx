@@ -11,42 +11,6 @@ export const Users = () => {
         {/* --- user navbar-- */}
         <div className=" flex gap-5 justify-between items-center">
           <div className="w-[85%] lg:w-[75%]  md:w-[60%]  justify-evenly gap-2 md:gap-10 flex items-center ">
-            <div className=" gap-1 items-center flex">
-              <h1 className="text-[18px] hidden md:flex font-[600] text-[#393A3A]">
-                Status
-              </h1>
-
-              <button class=" ps-2 flex items-center gap-2 ms-2 border-2 border-[#00000052] rounded-md py-[5px] px-[5px] text-[14px]">
-                Active
-                <svg
-                  className="uil"
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="12"
-                  width="10"
-                  viewBox="0 0 512 512"
-                >
-                  <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-                </svg>
-              </button>
-            </div>
-            <div className="flex gap-1 items-center ">
-              <h1 className="text-[18px] hidden md:flex font-[600] text-[#393A3A]">
-                Academic
-              </h1>
-
-              <button class=" ps-2 flex items-center gap-2 ms-2 border-2 border-[#00000052] rounded-md py-[5px] px-[5px] text-[14px]">
-                Academic
-                <svg
-                  className="uil"
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="12"
-                  width="10"
-                  viewBox="0 0 512 512"
-                >
-                  <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-                </svg>
-              </button>
-            </div>
             <div className="flex gap-1 items-center">
               <h1 className="text-[18px] hidden md:flex font-[600] text-[#393A3A]">
                 Course
