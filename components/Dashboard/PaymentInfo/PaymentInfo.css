@@ -163,11 +163,11 @@
 }
 .section-dropdown {
   position: absolute;
-  padding: 5px;
   background-color: #1c1c1c;
   top: 42px;
+  padding-right: 40px !important;
   left: 0;
-  width: 100%;
+  width: 150px !important;
   border-radius: 4px;
   display: block;
   box-shadow: 0 14px 35px 0 rgba(9, 9, 12, 0.4);
@@ -242,6 +242,7 @@
 .menu-dropdown a:hover {
   color: #102770;
   background-color: #ffeba7;
+  width: 140px !important;
 }
 .dark-light:checked ~ .sec-center .section-dropdown a:hover {
   color: #ffeba7;

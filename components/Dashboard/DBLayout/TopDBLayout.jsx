@@ -13,7 +13,7 @@ export const TopDBLayout = () => {
           <input
             type="search"
             name="serch"
-            placeholder="Search enything.."
+            placeholder="Search anything.."
             class="bg-[#f6f6f6] w-[100%] flex justify-start  h-10 px-8 text-[17px]  focus:outline-4 outline-[#d46a14] border-[1px]  mx-auto GT"
           />
           <button class="absolute top-[8px] mt-3 ms-2">
