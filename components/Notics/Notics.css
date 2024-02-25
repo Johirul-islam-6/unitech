@@ -1,11 +1,21 @@
 .notics-div {
-  height: 90vh;
-  width: 75%;
+  height: 80vh;
+  width: 60%;
   margin: 0 auto;
-  padding: 10px 0;
+  padding: 0px 0;
+}
+.border-shadow {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 0px 60px -12px inset,
     rgba(0, 0, 0, 0.107) 0px 18px 36px -18px inset;
   border-radius: 10px;
+}
+.bg-2024 {
+  background-color: #d47d2b;
+  padding: 3px 10px;
+}
+.bg-date {
+  background-color: #e2e2e2;
+  padding: 3px 10px;
 }
 .text-yellow {
   color: #d47d2b;
@@ -15,7 +25,7 @@
 }
 @media (max-width: 900px) {
   .notics-div {
-    height: 70vh;
+    height: 80vh;
     width: 100% !important;
   }
 }

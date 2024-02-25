@@ -16,6 +16,97 @@ const Registration = () => {
     setPassValue({ ...passValue, showPassword: !passValue.showPassword });
   };
 
+  const allAcademic = [
+    "Dhaka Polytechnic Institute",
+    "Comilla Polytechnic Institute",
+    "Mymensingh Polytechnic Institute",
+    "Kushtia Polytechnic Institute",
+    "Khulna Polytechnic Institute",
+    "Chittagong Polytechnic Institute",
+    "Dinajpur Polytechnic Institute",
+    "Pabna Polytechnic Institute",
+    "Faridpur Polytechnic Institute",
+    "Bogra Polytechnic Institute",
+    "Barisal Polytechnic Institute",
+    "Jessore Polytechnic Institute",
+    "Rangpur Polytechnic Institute",
+    "Rajshahi Polytechnic Institute",
+    "Sylhet Polytechnic Institute",
+    "Feni Polytechnic Institute",
+    "Patuakhali Polytechnic Institute",
+    "Tangail Polytechnic Institute",
+    "Mahila Polytechnic Institute, Dhaka",
+    "Institute of Glass and Ceramics, Dhaka",
+    "Graphics Arts Institute",
+    "Bangladesh Survey Institute, Comilla",
+    "Engineering and Survey Institute, Rajshahi",
+    "Bangladesh Institute of Marine Technology",
+    "Mahila Polytechnic Institute, Chittagong",
+    "Mahila Polytechnic Institute, Rajshahi",
+    "Mahila Polytechnic Institute, Khulna",
+    "Shariatpur Polytechnic Institute",
+    "Thakurgaon Polytechnic Institute",
+    "Naogaon Polytechnic Institute",
+    "Sherpur Polytechnic Institute, Sherpur",
+    "Brahmanbaria Polytechnic Institute",
+    "Coxbazar Polytechnic Institute",
+    "Satkhira Polytechnic Institute",
+    "Sirajganj Polytechnic Institute",
+    "Gopalganj Polytechnic Institute",
+    "Bhola Polytechnic Institute",
+    "Hobigonj Polytechnic Institute",
+    "Chandpur Polytechnic Institute",
+    "Kurigram Polytechnic Institute",
+    "Jhenaidah Polytechnic Institute",
+    "Lakshmipur Polytechnic Institute",
+    "Narsingdi Polytechnic Institute",
+    "Munshiganj Polytechnic Institute",
+    "Borguna Polytechnic Institute",
+    "Chapai Nawabganj Polytechnic Institute",
+    "Magura Polytechnic Institute",
+    "Kishoreganj Polytechnic Institute",
+    "Moulvibazar Polytechnic Institute",
+    "BS Polytechnic Institute Kaptai",
+    "Feni Computer Institute",
+    "Others...",
+  ];
+
+  const allDepartment = [
+    "Computer Technology",
+    "Electronics Technology",
+    "Civil Technology",
+    "Mechanical Technology",
+    "Power Technology",
+    "Tourism and Hospitality Management",
+    "Ceramic Technology",
+    "Glass Technology",
+    "Surveying Technology",
+    "Civil (Wood) Technology",
+    "Automobile Technology",
+    "Construction Technology",
+    "Food Technology",
+    "Mecatronics",
+    "Garment Design and Pattern Making",
+    "Graphic Design Technology",
+    "Printing Technology",
+    "Data Communication and Networking",
+    "Computer Science and Technology",
+    "Telecommunication Technology",
+    "Instrumentation and Process Technology",
+    "Mechatronics",
+    "Power Technology",
+    "Mining and Mine Survey Technology",
+    "Food Technology",
+    "Instrumentation and Process Technology",
+    "Garment Design and Pattern Making",
+    "Food Technology",
+    "Refrigeration and Air-Conditioning Technology",
+    "Refrigeration and Air Conditioning Technology",
+    "Architecture and Interior Design Technology",
+    "Electro-Medical Technology",
+    "Environmental Technology",
+    "Others..",
+  ];
   return (
     <>
       <div className="bg-[#F6F5F7] border-2">
@@ -36,7 +127,7 @@ const Registration = () => {
                   id="username"
                   type="text"
                   placeholder="Enter Your Full Name"
-                  class="input block border border-gray-300 focus:border-pitch-black placeholder:font-extrabold text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                  class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
                 />
               </div>
 
@@ -51,7 +142,63 @@ const Registration = () => {
                   id="roll"
                   placeholder="Enter Your Academic Roll"
                   type="number"
-                  class="input block border border-gray-300 placeholder:font-extrabold text-[16px] focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1"
+                  class="input block border border-gray-300 placeholder:font-normal text-[16px] focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1"
+                />
+              </div>
+
+              <div>
+                <label
+                  class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                  for="phone"
+                >
+                  Institue Name
+                </label>
+
+                <select class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1">
+                  <option className="bg-[#E8F0FE]">select</option>
+                  {allAcademic.map((item, index) => (
+                    <>
+                      <option key={index} className="">
+                        {index + 1} {item}
+                      </option>{" "}
+                    </>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label
+                  class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                  for="phone"
+                >
+                  Department Name
+                </label>
+
+                <select class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1">
+                  <option className="bg-[#E8F0FE]">select</option>
+                  {allDepartment.map((item, index) => (
+                    <>
+                      <option key={index} className="">
+                        {index + 1} {item}
+                      </option>{" "}
+                    </>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label
+                  class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                  for="emailAddress"
+                >
+                  Current Address
+                </label>
+                <input
+                  id="address"
+                  name="address"
+                  type="text"
+                  class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 placeholder:font-normal text-[16px]"
+                  placeholder="Ex : Saver, Dhaka"
                 />
               </div>
 
@@ -64,26 +211,13 @@ const Registration = () => {
                 </label>
                 <input
                   id="phone"
+                  name="phone"
                   placeholder="Enter Your Phone Number"
                   type="phone"
-                  class="input block border border-gray-300 placeholder:font-extrabold text-[16px] focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1"
+                  class="input block border border-gray-300 placeholder:font-normal text-[16px] focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1"
                 />
               </div>
 
-              <div>
-                <label
-                  class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
-                  for="emailAddress"
-                >
-                  Extra add
-                </label>
-                <input
-                  id="emailAddress"
-                  type="email"
-                  class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 placeholder:font-extrabold text-[16px]"
-                  placeholder="Extra fild"
-                />
-              </div>
               <div>
                 <label
                   class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
@@ -94,7 +228,8 @@ const Registration = () => {
                 <input
                   id="emailAddress"
                   type="email"
-                  class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 placeholder:font-extrabold text-[16px]"
+                  name="email"
+                  class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 placeholder:font-normal text-[16px]"
                   placeholder="Enter Your Email"
                 />
               </div>
@@ -105,7 +240,8 @@ const Registration = () => {
                 </label>
                 <div className="eye_div">
                   <input
-                    className="input block border  border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 placeholder:font-extrabold text-[16px]"
+                    name="password"
+                    className="input block border  border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 placeholder:font-normal text-[16px]"
                     type={passValue.showPassword ? "text" : "password"}
                     onChange={handlePasswordChange("password")}
                     value={passValue.password}
@@ -140,7 +276,7 @@ const Registration = () => {
               </div>
             </div>
 
-            <div className="flex justify-between md:px-5">
+            <div className="flex justify-between md:px-2">
               <div className="all-gender flex items-center gap-5 ps-5 py-3">
                 <div class="align-items-center d-flex form-check form-check-inline gap-2 items-center">
                   <input
@@ -197,9 +333,9 @@ const Registration = () => {
                   </label>
                 </div>
               </div>
-              <p className="pt-3 text-end text-[14px] hover:text-[#982121] cursor-pointer underline">
+              {/* <p className="pt-3 text-end text-[14px] hover:text-[#982121] cursor-pointer underline">
                 Forgot your password?
-              </p>
+              </p> */}
             </div>
 
             <div class="md:ps-5">

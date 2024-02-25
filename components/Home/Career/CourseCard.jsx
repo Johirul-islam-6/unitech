@@ -23,9 +23,9 @@ export const CourseCard = ({ allCourses }) => {
             <h1 className="course-name mt-2 text-[#101828] text-center text-[18px] font-[600] SILIGURI">
               {course?.name}
             </h1>
-            <Link href={`/DetailsCourse/${course?.id}`}>
+            <Link href={`/cetagorycourses/${course?.cetagory}`}>
               <button className="view-course-button2 SILIGURI">
-                Details Courses » <span></span>
+                View Courses » <span></span>
                 <span></span>
                 <span></span>
                 <span></span>

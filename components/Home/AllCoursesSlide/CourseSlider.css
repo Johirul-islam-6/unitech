@@ -3,7 +3,6 @@
 .diploma-engineer {
   background-color: #ffffff;
   height: auto;
-
   width: 100%;
 }
 
@@ -61,6 +60,9 @@
     display: flex;
     justify-content: center !important;
     margin: 0 auto !important;
+  }
+  .line-image {
+    display: none !important;
   }
 }
 .line-image {

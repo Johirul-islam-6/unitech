@@ -12,7 +12,7 @@ import { UnitechArchitectural } from "@/components/Home/UnitechArchitectural/Uni
 export default function Home() {
   return (
     <>
-      <div className="max-w-screen-xl mx-auto mt-5">
+      <div className="max-w-screen-xl mx-auto mt-2 md:mt-1">
         <Banner />
       </div>
       <div className="mt-5">

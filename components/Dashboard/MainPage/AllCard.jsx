@@ -127,7 +127,7 @@ export const AllCard = () => {
             </div>
             <div className="mt-3">
               <button className="flex w-[100%] rounded-lg px-2 py-[10px] text-[18px] text-center justify-center font-[800] text-[#161616dd] bg-[#F89521]">
-                Enroll Now
+                Details Course
               </button>
             </div>
           </div>

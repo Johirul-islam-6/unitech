@@ -13,6 +13,7 @@ export const Career = () => {
   const allCourses = [
     {
       id: "1",
+      cetagory: "web-development",
       name: "Web Design",
       icon: web,
       price: "",
@@ -21,6 +22,7 @@ export const Career = () => {
     },
     {
       id: "1",
+      cetagory: "web-development",
       name: "Web Development",
       icon: web,
       price: "",
@@ -29,6 +31,7 @@ export const Career = () => {
     },
     {
       id: "2",
+      cetagory: "graphic-desing",
       name: "Graphic Design",
       icon: graphic,
       price: "",
@@ -37,6 +40,7 @@ export const Career = () => {
     },
     {
       id: "3",
+      cetagory: "digital-marketing",
       name: "Digital Marketing",
       icon: marketing,
       price: "",
@@ -45,6 +49,7 @@ export const Career = () => {
     },
     {
       id: "4",
+      cetagory: "computer",
       name: "Basic Computer",
       icon: computer,
       price: "",
@@ -53,6 +58,7 @@ export const Career = () => {
     },
     {
       id: "5",
+      cetagory: "civil-design",
       name: "Autocad Basic & premium",
       icon: autocad,
       price: "",
@@ -61,6 +67,7 @@ export const Career = () => {
     },
     {
       id: "6",
+      cetagory: "civil-design",
       name: "Autocad 3d",
       icon: autocad3D,
       price: "",

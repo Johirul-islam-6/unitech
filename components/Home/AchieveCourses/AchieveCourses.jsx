@@ -9,6 +9,7 @@ import img5 from "@/app/Assets/AchieveCourses/5.png";
 import img6 from "@/app/Assets/AchieveCourses/6.png";
 import coding from "@/app/Assets/AchieveCourses/post-1.jpg";
 import skill from "@/app/Assets/AchieveCourses/post-2.jpg";
+import Link from "next/link";
 
 export const AchieveCourses = () => {
   const StudentInfo = [
@@ -103,18 +104,19 @@ export const AchieveCourses = () => {
         <div class=" border-2 card-box rounded-lg p-5">
           <div class="">
             <h1 class="text-center coding-title SILIGURI">
-              আপনার কোডিং নলেজ <br />
-              এক্সপ্লোর করুন
-              <br />
-              <span>CodeMama </span> -র সাথে
+              আপনার শুরুটা হোক <br className="hidden md:flex" />
+              গাইডলাইনের সঠিক <br className="hidden md:flex" />
+              মাধ্যমে!
             </h1>
             <p class="text-center sub-title SILIGURI pt-5 ">
-              কোড করুন C, C++, Javascript, PHP সহ মোট ৭ টি ল্যাঙ্গুয়েজে, প্রবলেম
-              সলভ করুন Codemama Play Ground - এ, আর জায়গা করে নিন লিডারবোর্ডে{" "}
+              আমাদের প্রতিষ্ঠানের একটাই লক্ষ্য শিক্ষার্থীদের হতে হবে দক্ষ, তাই
+              লক্ষ্য হোক দক্ষ হওয়া।
             </p>
 
             <div className="flex justify-center my-8">
-              <button className="coding-btn uppercase">CHECK CODEMAMA</button>
+              <Link href={"/ourCourses"}>
+                <button className="coding-btn uppercase">VIEW COURSE</button>
+              </Link>
             </div>
           </div>
           <Image
@@ -129,19 +131,19 @@ export const AchieveCourses = () => {
         <div class=" border-2 card-box rounded-lg p-5">
           <div class="">
             <h1 class="text-center   coding-title SILIGURI">
-              স্কিল টেস্ট করুন <br />
-              Skillable - এ
-              <br />
-              <span> পেয়ে যান ফ্রি সার্টিফিকেট</span>
+              প্রযুক্তির যুগে নিজেকে <br className="hidden md:flex" /> এগিয়ে
+              রাখতে স্কিল <br className="hidden md:flex" />
+              তৈরি করুন
             </h1>
             <p class="text-center sub-title SILIGURI pt-5 ">
-              টেস্ট দিন Development, Graphic & UI/UX এর মত ২০০+ এসেসমেন্ট থেকে
-              চলে যান ট্যালেন্ট পুলে আর পেয়ে যান ইন্ডাস্ট্রি এক্সপার্ট
-              সার্টিফিকেট
+              ইউনিক এক্সপার্ট টিম এর সাথে নিজে দক্ষ করে গড়ে তুলুন। একটাই লক্ষ্য
+              হতে হবে দক্ষ।
             </p>
 
             <div className="flex justify-center my-8">
-              <button className="coding-btn uppercase">Check Skillable</button>
+              <Link href={"/ourCourses"}>
+                <button className="coding-btn uppercase">VIEW COURSE</button>
+              </Link>
             </div>
           </div>
           <Image

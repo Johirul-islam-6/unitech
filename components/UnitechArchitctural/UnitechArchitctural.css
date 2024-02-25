@@ -1,0 +1,7 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.active-border-btn {
+  border-left: 5px solid #bc8101;
+}

@@ -9,7 +9,7 @@ export default class Notics extends Component {
     const settings = {
       autoplay: true,
       autoplaySpeed: 3000,
-      pauseOnHover: false,
+      pauseOnHover: true,
       dots: true,
       infinite: true,
       slidesToShow: 8,
@@ -25,7 +25,7 @@ export default class Notics extends Component {
       },
     };
     return (
-      <div className="notics-div overflow-y-auto">
+      <div className="notics-div overflow-y-auto   border-shadow">
         <Slider {...settings}>
           <NoticsCard />
           <NoticsCard />

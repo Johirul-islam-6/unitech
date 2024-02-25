@@ -15,7 +15,7 @@ export const PaymentInfoTable = () => {
               src={userimage}
               alt=""
             />
-            <h1>Rabeya Khan</h1>
+            <h1>Robayath Hasan</h1>
           </th>
           <td class="px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] font-[600]">
             Web development
