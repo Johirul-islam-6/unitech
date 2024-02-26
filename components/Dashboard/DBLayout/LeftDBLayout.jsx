@@ -27,7 +27,7 @@ export const LeftDBLayout = () => {
         </div>
         <div className="flex justify-start items-center  mt-[11px] ">
           <ul className="w-[100%] ">
-            <li className="link-text py-[8px] items-center px-2 border-b-2 border-t-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
+            <li className="link-text py-[12px] items-center px-2 border-b-2 border-t-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
               <Image
                 width={20}
                 height={15}
@@ -42,7 +42,7 @@ export const LeftDBLayout = () => {
                 Dashboard
               </Link>
             </li>
-            <li className="link-text py-[8px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
+            <li className="link-text py-[12px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
               <Image
                 width={20}
                 height={15}
@@ -57,7 +57,7 @@ export const LeftDBLayout = () => {
                 Banners
               </Link>
             </li>
-            <li className="link-text py-[8px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
+            <li className="link-text py-[12px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
               <Image
                 width={20}
                 height={15}
@@ -72,7 +72,7 @@ export const LeftDBLayout = () => {
                 Users Account
               </Link>
             </li>
-            <li className="link-text py-[8px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
+            <li className="link-text py-[12px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
               <Image
                 width={20}
                 height={15}
@@ -87,7 +87,7 @@ export const LeftDBLayout = () => {
                 Manage Account
               </Link>
             </li>
-            <li className="link-text py-[8px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
+            <li className="link-text py-[12px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
               <Image
                 width={20}
                 height={15}
@@ -102,7 +102,7 @@ export const LeftDBLayout = () => {
                 Payment Info
               </Link>
             </li>
-            <li className="link-text py-[8px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
+            <li className="link-text py-[12px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
               <Image
                 width={20}
                 height={15}
@@ -117,7 +117,7 @@ export const LeftDBLayout = () => {
                 Announcement
               </Link>
             </li>
-            <li className="link-text py-[8px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
+            <li className="link-text py-[12px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
               <Image
                 width={20}
                 height={15}
@@ -132,7 +132,7 @@ export const LeftDBLayout = () => {
                 Settings
               </Link>
             </li>
-            <li className="link-text py-[8px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
+            <li className="link-text py-[12px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
               <Image
                 width={20}
                 height={15}

@@ -153,7 +153,7 @@ const Registration = () => {
       joinginDate: formattedDate,
     };
 
-    setHidden(true);
+    // setHidden(true);
     try {
       const response = await axios.post(
         "http://localhost:8080/api/v1/users/create-user",
@@ -201,7 +201,10 @@ const Registration = () => {
       <div className="bg-[#F6F5F7] border-2">
         <section class="max-w-4xl px-5 pt-6 mx-auto rounded-md shadow-md bg-[#FFFFFF] mt-3">
           <div class="text-center pb-3">
-            <h2 class="text-4xl font-[500] text-[#2c293b]  GT">Registration</h2>
+            <h2 class=" text-[30px] md:text-4xl font-bold text-[#563A9F] GT ">
+              Registration
+            </h2>
+            <div className="w-[80px] h-[3px] bg-[#563A9F] mx-auto mt-2"></div>
           </div>
 
           <form onSubmit={HandleSubmite}>

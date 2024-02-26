@@ -13,3 +13,7 @@
 .dashboard-max-w-screen-xl {
   max-width: 1500px;
 }
+
+.Academic-Courses {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}

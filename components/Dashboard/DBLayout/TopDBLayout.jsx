@@ -27,16 +27,21 @@ export const TopDBLayout = () => {
           </button>
         </div>
         <div className="flex gap-2 items-center justify-evenly pe-2">
-          <Image
+          {/* <Image
             width={0}
             height={0}
             className="w-[25px] h-[25px]  md:me-4 cursor-pointer"
             src={notification}
             alt=""
-          />
-          <h1 className="text-end text-[#5f5f5f] text-[14px] md:text-[17px] font-bold whitespace-nowrap SILIGURI">
-            Richardo Mathew
-          </h1>
+          /> */}
+          <div className="block pe-1">
+            <h1 className="text-end text-[#5f5f5f] text-[14px] font-bold  SILIGURI">
+              Richardo Mathew
+            </h1>
+            <p className="text-[#d28e2e] text-[12px] font-bold text-end">
+              admin
+            </p>
+          </div>
           <Image
             width={0}
             height={0}

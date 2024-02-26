@@ -4,14 +4,12 @@ import "./Profile.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
-import { tree } from "next/dist/build/templates/app-page";
+import axios from "axios";
 const Profile = () => {
   const navigate = useRouter();
-  const [Loding, setLoding] = useState(false);
-  const [loding3, setLoding3] = useState(true);
+  const [Loading, setLoading] = useState(false);
 
   const accessToken = Cookies.get("accessToken");
-
   const [cookiesInfo, setCookiesInfo] = useState();
 
   const [refreshbook, setrefresh] = useState(false);
@@ -25,7 +23,7 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    setLoding(true);
+    setLoading(true);
     if (!accessToken) {
       return navigate.push("/login");
     }
@@ -34,30 +32,29 @@ const Profile = () => {
     setCookiesInfo(cookiesInfos);
 
     // ------- user admin checking-----
-    if (cookiesInfo?.email) {
-      async function fetchData2() {
-        try {
-          const result = await axios.get(
-            `http://localhost:8080/api/v1/users/?searchTerm=${cookiesInfo?.email}&page=1&limit=5&sort=createdAt&sortOrder=desc`
-          );
+    // if (cookiesInfo?.email) {
+    //   async function fetchData2() {
+    //     try {
+    //       const result = await axios.get(
+    //         `http://localhost:8080/api/v1/users/?searchTerm=${cookiesInfo?.email}&page=1&limit=5&sort=createdAt&sortOrder=desc`
+    //       );
 
-          setUserInformation(result?.data?.data);
-          setLoding3(false);
-        } catch (error) {
-          console.log(error);
-        }
-      }
-      fetchData2();
+    //       setUserInformation(result?.data?.data);
+
+    //       setLoading(false);
+    //     } catch (error) {
+    //       console.log(error);
+    //       setLoading(false);
+    //     }
+    //   }
+    //   fetchData2();
+    // }
+    if (!accessToken) {
+      setTimeout(() => {
+        setrefresh(false);
+      }, 5000);
     }
-
-    setTimeout(() => {
-      setrefresh(false);
-    }, 5000);
   }, [refreshbook, accessToken, cookiesInfo?.email, navigate]);
-
-  // if (!accessToken) {
-  //   return navigate("/login");
-  // }
 
   const logout = () => {
     Cookies.remove("CookieYouserData");
@@ -91,7 +88,7 @@ const Profile = () => {
     }
   }
 
-  if (!Loding) {
+  if (!Loading) {
     return (
       <>
         <div className="w-[100%] flex h-[100vh] justify-center items-center">
@@ -118,6 +115,8 @@ const Profile = () => {
   const formattedDate = `${padZero(today.getDate())}/${padZero(
     today.getMonth() + 1
   )}/${today.getFullYear()}`;
+
+  console.log(cookiesInfo?.ruler);
 
   return (
     <>
@@ -229,11 +228,25 @@ const Profile = () => {
                     {cookiesInfo?.address}
                   </div>
                   <div class="mb-2 mt-5 text-blueGray-600 gap-3 flex-wrap flex justify-center items-center">
-                    <Link href={`/dashboard`}>
-                      <button className="px-5 py-[8px] rounded-md  text-[14px] font-[500] hover:bg-[#272727] bg-[#000] text-white">
-                        Admin profile
-                      </button>
-                    </Link>
+                    {cookiesInfo?.ruler === "admin" && (
+                      <>
+                        <Link href={`/dashboard`}>
+                          <button className="px-5 py-[8px] rounded-md  text-[14px] font-[500] hover:bg-[#272727] bg-[#000] text-white">
+                            Admin profile
+                          </button>
+                        </Link>
+                      </>
+                    )}
+                    {cookiesInfo?.ruler === "superAdmin" && (
+                      <>
+                        <Link href={`/dashboard`}>
+                          <button className="px-5 py-[8px] rounded-md  text-[14px] font-[500] hover:bg-[#272727] bg-[#000] text-white">
+                            Admin profile
+                          </button>
+                        </Link>
+                      </>
+                    )}
+
                     <button className="px-5 py-[8px]  text-[14px] rounded-md  font-[500] hover:bg-[#272727] bg-[#000] text-white">
                       Edite profile
                     </button>
