@@ -2,8 +2,17 @@
 import React, { useState } from "react";
 import "./registration.css";
 import Link from "next/link";
+import "react-toastify/dist/ReactToastify.css";
+import "sweetalert2/src/sweetalert2.scss";
+import Swal from "sweetalert2";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 const Registration = () => {
+  const router = useRouter();
+  const [institutes, setSubject] = useState();
+  const [buttonHidden, setHidden] = useState(false);
   const [passValue, setPassValue] = useState({
     password: "",
     showPassword: false,
@@ -17,235 +26,413 @@ const Registration = () => {
   };
 
   const allAcademic = [
-    "Dhaka Polytechnic Institute",
-    "Comilla Polytechnic Institute",
-    "Mymensingh Polytechnic Institute",
-    "Kushtia Polytechnic Institute",
-    "Khulna Polytechnic Institute",
-    "Chittagong Polytechnic Institute",
-    "Dinajpur Polytechnic Institute",
-    "Pabna Polytechnic Institute",
-    "Faridpur Polytechnic Institute",
-    "Bogra Polytechnic Institute",
-    "Barisal Polytechnic Institute",
-    "Jessore Polytechnic Institute",
-    "Rangpur Polytechnic Institute",
-    "Rajshahi Polytechnic Institute",
-    "Sylhet Polytechnic Institute",
-    "Feni Polytechnic Institute",
-    "Patuakhali Polytechnic Institute",
-    "Tangail Polytechnic Institute",
-    "Mahila Polytechnic Institute, Dhaka",
-    "Institute of Glass and Ceramics, Dhaka",
-    "Graphics Arts Institute",
-    "Bangladesh Survey Institute, Comilla",
-    "Engineering and Survey Institute, Rajshahi",
-    "Bangladesh Institute of Marine Technology",
-    "Mahila Polytechnic Institute, Chittagong",
-    "Mahila Polytechnic Institute, Rajshahi",
-    "Mahila Polytechnic Institute, Khulna",
-    "Shariatpur Polytechnic Institute",
-    "Thakurgaon Polytechnic Institute",
-    "Naogaon Polytechnic Institute",
-    "Sherpur Polytechnic Institute, Sherpur",
-    "Brahmanbaria Polytechnic Institute",
-    "Coxbazar Polytechnic Institute",
-    "Satkhira Polytechnic Institute",
-    "Sirajganj Polytechnic Institute",
-    "Gopalganj Polytechnic Institute",
-    "Bhola Polytechnic Institute",
-    "Hobigonj Polytechnic Institute",
-    "Chandpur Polytechnic Institute",
-    "Kurigram Polytechnic Institute",
-    "Jhenaidah Polytechnic Institute",
-    "Lakshmipur Polytechnic Institute",
-    "Narsingdi Polytechnic Institute",
-    "Munshiganj Polytechnic Institute",
-    "Borguna Polytechnic Institute",
-    "Chapai Nawabganj Polytechnic Institute",
-    "Magura Polytechnic Institute",
-    "Kishoreganj Polytechnic Institute",
-    "Moulvibazar Polytechnic Institute",
-    "BS Polytechnic Institute Kaptai",
-    "Feni Computer Institute",
-    "Others...",
+    { name: "Dhaka Polytechnic Institute", valueI: "polytechnic" },
+    { name: "Mymensingh Polytechnic Institute", valueI: "polytechnic" },
+    { name: "Rumdo institute of modern technology", valueI: "polytechnic" },
+    { name: "Mymensingh Medical college", valueI: "medical" },
+    { name: "SSC In", valueI: "SSC" },
+    { name: "HSC In", valueI: "HSC" },
+    { name: "Honors", valueI: "Honors" },
+    { name: "Others...", valueI: "others" },
   ];
 
-  const allDepartment = [
-    "Computer Technology",
+  const polytechnic = [
+    "Computer Science and Technology",
     "Electronics Technology",
     "Civil Technology",
     "Mechanical Technology",
     "Power Technology",
-    "Tourism and Hospitality Management",
-    "Ceramic Technology",
-    "Glass Technology",
-    "Surveying Technology",
-    "Civil (Wood) Technology",
-    "Automobile Technology",
-    "Construction Technology",
-    "Food Technology",
-    "Mecatronics",
-    "Garment Design and Pattern Making",
-    "Graphic Design Technology",
-    "Printing Technology",
-    "Data Communication and Networking",
-    "Computer Science and Technology",
-    "Telecommunication Technology",
-    "Instrumentation and Process Technology",
-    "Mechatronics",
-    "Power Technology",
-    "Mining and Mine Survey Technology",
-    "Food Technology",
-    "Instrumentation and Process Technology",
-    "Garment Design and Pattern Making",
-    "Food Technology",
-    "Refrigeration and Air-Conditioning Technology",
-    "Refrigeration and Air Conditioning Technology",
-    "Architecture and Interior Design Technology",
     "Electro-Medical Technology",
-    "Environmental Technology",
+    "Electrical Technology",
+    "Food Technology",
+    "Automobile Technology",
+  ];
+  const Romdo = [
+    "Computer Science and Technology",
+    "Electronics Technology",
+    "Civil Technology",
+    "Mechanical Technology",
+    "Electrical Technology",
+    "Automobile Technology",
+    "Food Technology",
+    "Power Technology",
+    "Architecture and Interior Design Technology",
+    "Tourism and Hospitality Management",
+    "Electro-Medical Technology",
+    "Nursing",
+  ];
+  const genaralSSC = ["vocational", "Science", "Commerce", "Arts", "Others"];
+  const genaralHSC = ["Science", "Commerce", "Arts", "Others"];
+  const others = ["Others"];
+
+  const genaralHight = [
+    "Physics",
+    "Mathematics",
+    "Chemistry",
+    "Computer Science",
+    "Biology",
+    "Economics",
+    "Accounting",
+    "Management",
+    "English Literature",
+    "History",
+    "Political Science",
+    "Sociology",
     "Others..",
   ];
+  const doctor = [
+    "Anatomy",
+    "Physiology",
+    "Biochemistry",
+    "Pharmacology",
+    "Pathology",
+    "Microbiology",
+    "Community Medicine",
+    "Medicine",
+    "Surgery",
+    "Dermatology",
+    "Psychiatry",
+    "Radiology",
+    "Others..",
+  ];
+
+  // Date genarate---
+  const today = new Date();
+  const padZero = (num) => {
+    return num < 10 ? "0" + num : num;
+  };
+
+  // Format the date to DD/MM/YYYY
+  const formattedDate = `${padZero(today.getDate())}/${padZero(
+    today.getMonth() + 1
+  )}/${today.getFullYear()}`;
+
+  const [ss, sets] = useState();
+  // -------------------- Back end intregrate ------------------
+
+  const HandleSubmite = async (e) => {
+    e.preventDefault();
+    // Extract form data directly without FormData
+    const name = e.target.elements.name.value;
+    const studentRolls = e.target.elements.roll.value;
+    const institute = e.target.elements.institute_name.value;
+    const department = e.target.elements.department.value;
+    const address = e.target.elements.address.value;
+    const phone = e.target.elements.phone.value;
+    const email = e.target.elements.email.value;
+    const password = e.target.elements.password.value;
+    const gender = e.target.elements.gender.value;
+    const agree = e.target.elements.agree.value;
+    const ruler = "student";
+
+    if (institute === "select") {
+      return alert("please select institute name");
+    }
+    if (department === "select") {
+      return alert("please select department Cetagory");
+    }
+    if (agree === null) {
+      return (
+        sets("text-red-500 font-extrabold"),
+        alert("please Agree all privacy policy")
+      );
+    }
+
+    // Now you have all the values, and you can use them as needed
+    const userData = {
+      name,
+      studentRoll: "0000",
+      institute,
+      department,
+      address,
+      phone,
+      email,
+      password,
+      gender,
+      ruler,
+      joinginDate: formattedDate,
+    };
+
+    setHidden(true);
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/api/v1/users/create-user",
+        userData
+      );
+      const result = response.data;
+
+      const cookiesData = result?.data;
+
+      // if get the data then save
+      if (result?.success && cookiesData) {
+        const expirationTime = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000); // 30 days in milliseconds
+        Cookies.set("accessToken", JSON.stringify(cookiesData?.accessToken), {
+          expires: expirationTime,
+        });
+        Cookies.set("CookieYouserData", JSON.stringify(cookiesData));
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `${result?.message}`,
+          text: "Thank you",
+          showConfirmButton: false,
+          timer: 2500,
+        });
+        router.push("/profile");
+      }
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 700);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+
+      Swal.fire({
+        title: `${error?.response?.data?.errorMessages[0]?.message}`,
+        text: ` Field : ${error?.response?.data?.errorMessages[0]?.path}`,
+        icon: "error",
+      });
+      setHidden(false);
+    }
+  };
+
   return (
     <>
       <div className="bg-[#F6F5F7] border-2">
         <section class="max-w-4xl px-5 pt-6 mx-auto rounded-md shadow-md bg-[#FFFFFF] mt-3">
           <div class="text-center pb-3">
-            <h2 class="text-4xl font-bold text-[#2c293b]  GT">Registration</h2>
+            <h2 class="text-4xl font-[500] text-[#2c293b]  GT">Registration</h2>
           </div>
-          <form>
+
+          <form onSubmit={HandleSubmite}>
             <div class="grid grid-cols-1 gap-x-6 gap-y-4 mt-4 sm:grid-cols-2 md:px-5">
               <div>
                 <label
-                  class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                  class="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
                   for="username"
                 >
-                  Full Name
+                  Full name*
                 </label>
                 <input
                   id="username"
                   type="text"
-                  placeholder="Enter Your Full Name"
-                  class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                  name="name"
+                  placeholder="Johirul Islam"
+                  class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[15px] py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm"
+                  required
                 />
               </div>
 
               <div>
                 <label
-                  class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                  class="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
                   for="phone"
                 >
-                  Student Roll
+                  Student roll*
                 </label>
                 <input
+                  required
                   id="roll"
-                  placeholder="Enter Your Academic Roll"
+                  name="roll"
+                  placeholder="maximus 6 number"
                   type="number"
-                  class="input block border border-gray-300 placeholder:font-normal text-[16px] focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1"
+                  class="input block border border-gray-300 placeholder:font-normal text-[15px] focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm"
                 />
               </div>
 
               <div>
                 <label
-                  class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
-                  for="phone"
+                  class="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
+                  for="institute"
                 >
-                  Institue Name
+                  Institute name*
                 </label>
 
-                <select class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1">
-                  <option className="bg-[#E8F0FE]">select</option>
+                <select
+                  onChange={(e) => setSubject(e?.target?.value)}
+                  required
+                  name="institute_name"
+                  class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm"
+                >
+                  <option className="bg-[#E8F0FE]" value="select">
+                    select
+                  </option>
                   {allAcademic.map((item, index) => (
-                    <>
-                      <option key={index} className="">
-                        {index + 1} {item}
-                      </option>{" "}
-                    </>
+                    <option key={index} value={item?.name}>
+                      {item?.name}
+                    </option>
                   ))}
                 </select>
               </div>
 
               <div>
                 <label
-                  class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                  class="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
                   for="phone"
                 >
-                  Department Name
+                  Department name*
                 </label>
 
-                <select class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1">
+                <select
+                  name="department"
+                  class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm"
+                >
                   <option className="bg-[#E8F0FE]">select</option>
-                  {allDepartment.map((item, index) => (
+                  {institutes === "Dhaka Polytechnic Institute" && (
                     <>
-                      <option key={index} className="">
-                        {index + 1} {item}
-                      </option>{" "}
+                      {polytechnic?.map((item, index) => (
+                        <>
+                          <option key={index} className="">
+                            {item}
+                          </option>{" "}
+                        </>
+                      ))}
                     </>
-                  ))}
+                  )}
+                  {institutes === "Mymensingh Polytechnic Institute" && (
+                    <>
+                      {polytechnic?.map((item, index) => (
+                        <>
+                          <option key={index} className="">
+                            {item}
+                          </option>{" "}
+                        </>
+                      ))}
+                    </>
+                  )}
+                  {institutes === "Rumdo institute of modern technology" && (
+                    <>
+                      {Romdo?.map((item, index) => (
+                        <>
+                          <option key={index} className="">
+                            {item}
+                          </option>{" "}
+                        </>
+                      ))}
+                    </>
+                  )}
+                  {institutes === "SSC In" && (
+                    <>
+                      {genaralSSC?.map((item, index) => (
+                        <>
+                          <option key={index} className="">
+                            {item}
+                          </option>{" "}
+                        </>
+                      ))}
+                    </>
+                  )}
+                  {institutes === "HSC In" && (
+                    <>
+                      {genaralHSC?.map((item, index) => (
+                        <>
+                          <option key={index} className="">
+                            {item}
+                          </option>{" "}
+                        </>
+                      ))}
+                    </>
+                  )}
+                  {institutes === "Honors" && (
+                    <>
+                      {genaralHight?.map((item, index) => (
+                        <>
+                          <option key={index} className="">
+                            {item}
+                          </option>{" "}
+                        </>
+                      ))}
+                    </>
+                  )}
+                  {institutes === "Mymensingh Medical college" && (
+                    <>
+                      {doctor?.map((item, index) => (
+                        <>
+                          <option key={index} className="">
+                            {item}
+                          </option>{" "}
+                        </>
+                      ))}
+                    </>
+                  )}
+                  {institutes === "others" && (
+                    <>
+                      {others?.map((item, index) => (
+                        <>
+                          <option key={index} className="">
+                            {item}
+                          </option>{" "}
+                        </>
+                      ))}
+                    </>
+                  )}
                 </select>
               </div>
 
               <div>
                 <label
-                  class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                  class="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
                   for="emailAddress"
                 >
-                  Current Address
+                  Current address*
                 </label>
                 <input
+                  required
                   id="address"
                   name="address"
                   type="text"
-                  class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 placeholder:font-normal text-[16px]"
-                  placeholder="Ex : Saver, Dhaka"
+                  class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm placeholder:font-normal text-[15px]"
+                  placeholder="technical More, Mymensingh"
                 />
               </div>
 
               <div>
                 <label
-                  class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                  class="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
                   for="phone"
                 >
-                  Phone
+                  Phone number*
                 </label>
                 <input
+                  required
                   id="phone"
                   name="phone"
-                  placeholder="Enter Your Phone Number"
+                  placeholder="017822XXXXX"
                   type="phone"
-                  class="input block border border-gray-300 placeholder:font-normal text-[16px] focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1"
+                  class="input block border border-gray-300 placeholder:font-normal text-[15px] focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm"
                 />
               </div>
 
               <div>
                 <label
-                  class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                  class="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
                   for="emailAddress"
                 >
-                  Email Address
+                  Email address*
                 </label>
                 <input
+                  required
                   id="emailAddress"
                   type="email"
                   name="email"
-                  class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 placeholder:font-normal text-[16px]"
-                  placeholder="Enter Your Email"
+                  class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm placeholder:font-normal text-[15px]"
+                  placeholder="Enter Your valid Email"
                 />
               </div>
 
               <div className="password_2 block  relative">
-                <label class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN">
-                  Password
+                <label class="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN">
+                  Password*
                 </label>
                 <div className="eye_div">
                   <input
+                    required
                     name="password"
-                    className="input block border  border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 placeholder:font-normal text-[16px]"
+                    className="input block border  border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm placeholder:font-normal text-[15px]"
                     type={passValue.showPassword ? "text" : "password"}
                     onChange={handlePasswordChange("password")}
                     value={passValue.password}
-                    placeholder="Enter Your Password"
+                    placeholder="minimum 6 characters"
                   />
 
                   <div
@@ -280,6 +467,7 @@ const Registration = () => {
               <div className="all-gender flex items-center gap-5 ps-5 py-3">
                 <div class="align-items-center d-flex form-check form-check-inline gap-2 items-center">
                   <input
+                    required
                     type="radio"
                     name="gender"
                     id="male"
@@ -338,15 +526,20 @@ const Registration = () => {
               </p> */}
             </div>
 
-            <div class="md:ps-5">
-              <h2 class="mt-4 text-[16px]  text-[#000] flex items-center gap-2 ">
-                <input className="" type="checkbox" name="" id="" /> I agree all{" "}
-                <span className="text-[#267bbc]  underline">
+            <div class="md:ps-6">
+              <h2
+                class={`mt-4 text-[15px] text-[#000]  flex items-center gap-2 ${
+                  ss ? ss : ""
+                } `}
+              >
+                <input className="" type="checkbox" name="agree" id="" /> I
+                agree all{" "}
+                <span className="text-[#267bbc]  underline cursor-pointer">
                   privacy policy
                 </span>
                 /{/* <br /> */}
                 <Link href={"/login"}>
-                  <span className="text-[#481D65] cursor-pointer underline ps-2 font-[700]">
+                  <span className="text-[#481D65] cursor-pointer underline  font-[500]">
                     Login
                   </span>
                 </Link>
@@ -355,10 +548,26 @@ const Registration = () => {
             <div class="flex justify-center mt-1">
               <button
                 type="submit"
-                class="my-5 px-12 justify-center bg-[#F6931C] text-gray-100 py-3  rounded-md tracking-wide
-                 font-semibold  focus:outline-none focus:shadow-outline hover:bg-[#ffa12e] shadow-lg cursor-pointer transition ease-in duration-300"
+                class={`my-5 px-12 flex justify-center bg-[#F6931E] text-gray-100 py-3  rounded-md tracking-wide
+                 font-semibold  focus:outline-none focus:shadow-outline hover:bg-[#cb7a17] shadow-lg cursor-pointer transition ease-in duration-300 ${
+                   buttonHidden ? "disabled-button" : ""
+                 } `}
               >
-                Create
+                {buttonHidden && (
+                  <>
+                    <svg
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      class="mr-2 animate-spin"
+                      viewBox="0 0 1792 1792"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z"></path>
+                    </svg>
+                  </>
+                )}{" "}
+                Submit
               </button>
             </div>
           </form>

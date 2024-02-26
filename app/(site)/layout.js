@@ -4,6 +4,7 @@ import { Navbar } from "@/components/layout/Navbar/Navbar";
 import Footer from "@/components/layout/Footer/Footer";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "sweetalert2/src/sweetalert2.scss";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {

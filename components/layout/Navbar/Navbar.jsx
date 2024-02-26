@@ -13,8 +13,10 @@ import Image from "next/image";
 import logo from "@/app/Assets/Navbar/LOGO.png";
 import profile from "@/app/Assets/Navbar/profile.svg";
 import { FaLongArrowAltRight, FaRegUserCircle } from "react-icons/fa";
+import Cookies from "js-cookie";
 
 export const Navbar = () => {
+  const [Loding, setLoding] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const [isFixed, setIsFixed] = useState(false);
@@ -33,6 +35,19 @@ export const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const accessToken = Cookies.get("accessToken");
+  const [cookiesInfo, setCookiesInfo] = useState();
+
+  // useEffect(() => {
+  //   setLoding(true);
+  //   if (!accessToken) {
+  //     return navigate.push("/login");
+  //   }
+  //   const getCookiesData = Cookies.get("CookieYouserData");
+  //   const cookiesInfos = JSON.parse(getCookiesData);
+  //   setCookiesInfo(cookiesInfos);
+  // }, [accessToken]);
 
   return (
     <>
@@ -102,7 +117,7 @@ export const Navbar = () => {
                   <Link
                     Link
                     className="login-button link-text text-center py-[6px]"
-                    href="/registration"
+                    href="/login"
                   >
                     <span className="flex items-center justify-center uppercase gap-1">
                       Login{" "}
@@ -117,26 +132,30 @@ export const Navbar = () => {
                     </span>
                   </Link>
                 </li>
-                <li className="link-text wrapper  ">
-                  <Link
-                    Link
-                    className="login-button bg-white border-2 rounded-lg link-text text-center py-[6px]"
-                    href="/profile"
-                  >
-                    <span className="flex items-center justify-center uppercase gap-1">
-                      <div class="">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          height="20"
-                          width="20"
-                          viewBox="0 0 448 512"
-                        >
-                          <path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z" />
-                        </svg>
-                      </div>
-                    </span>
-                  </Link>
-                </li>
+                {accessToken && (
+                  <>
+                    <li className="link-text wrapper  ">
+                      <Link
+                        Link
+                        className="login-button bg-white border-2 rounded-lg link-text text-center py-[6px]"
+                        href="/profile"
+                      >
+                        <span className="flex items-center justify-center uppercase gap-1">
+                          <div class="">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              height="20"
+                              width="20"
+                              viewBox="0 0 448 512"
+                            >
+                              <path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z" />
+                            </svg>
+                          </div>
+                        </span>
+                      </Link>
+                    </li>
+                  </>
+                )}
               </ul>
 
               <div className="Menubar">
