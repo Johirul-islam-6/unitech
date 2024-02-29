@@ -156,7 +156,7 @@ const Registration = () => {
     // setHidden(true);
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/v1/users/create-user",
+        "https://unitech-server.vercel.app/api/v1/users/create-user",
         userData
       );
       const result = response.data;

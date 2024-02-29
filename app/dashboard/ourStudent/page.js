@@ -4,10 +4,10 @@ import userimage from "@/app/Assets/Dashboard/icon/Avatar.png";
 import Image from "next/image";
 import axios from "axios";
 import Link from "next/link";
-import "./Manage.css";
 
-export const ManageAccount = () => {
+const OurStudent = () => {
   const [allUser, setUser] = useState([]);
+  const [ourStudent, setourStudent] = useState([]);
   const [searchingValue, setSearchingValue] = useState("");
   const [Loading, setLoading] = useState(true);
   const [relader, setReload] = useState(false);
@@ -21,7 +21,7 @@ export const ManageAccount = () => {
     async function fetchData() {
       try {
         const result = await axios.get(
-          `http://localhost:8080/api/v1/users/?searchTerm=${searchingValue}&page=1&limit=20&sort=createdAt&sortOrder=desc`
+          `http://localhost:8080/api/v1/users/?searchTerm=${searchingValue}&page=1&limit=2000000&sort=createdAt&sortOrder=desc`
         );
 
         setUser(result?.data?.data);
@@ -34,14 +34,14 @@ export const ManageAccount = () => {
 
     fetchData();
 
-    // if (ResultBooks) {
-    //   const pendingBooks = ResultBooks.filter(
-    //     (item) => item?.status !== "success"
-    //   );
-    //   const result = pendingBooks;
-    //   setPendingBook(result);
-    // }
-  }, [searchingValue]);
+    if (allUser) {
+      const pendingBooks = allUser.filter(
+        (item) => item?.studentRoll !== "0000"
+      );
+      const result = pendingBooks;
+      setourStudent(result);
+    }
+  }, [searchingValue, allUser]);
 
   console.log(searchingValue, allUser);
   return (
@@ -52,79 +52,8 @@ export const ManageAccount = () => {
           <div className="w-[100%]   justify-between gap-2 md:gap-10 flex items-center md:px-3">
             <div className="flex gap-1 items-center">
               <h1 className="text-[18px] hidden md:flex font-[600] text-[#393A3A]">
-                Roll
+                Academic Student
               </h1>
-              {/* ----drop down--- */}
-              <input
-                class="dark-light"
-                type="checkbox"
-                id="dark-light"
-                name="dark-light"
-              />
-
-              <div class="menu-dropdown sec-center whitespace-nowrap  pe-10 ps-2">
-                <input
-                  class="dropdown "
-                  type="checkbox"
-                  id="dropdown"
-                  name="dropdown"
-                />
-                <label
-                  onClick={() => setSearchingValue(" ")}
-                  class="for-dropdown flex items-center"
-                  for="dropdown"
-                >
-                  All
-                  <svg
-                    className="uil"
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="12"
-                    width="10"
-                    viewBox="0 0 512 512"
-                  >
-                    <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-                  </svg>
-                </label>
-                {/* ----- dropdown box ---- */}
-                <div class="section-dropdown px-5">
-                  <a
-                    onClick={() => setSearchingValue("student")}
-                    className="overView-a"
-                    href="#"
-                  >
-                    student <i class="uil uil-arrow-right"></i>
-                  </a>
-                  <input
-                    class="dropdown-sub"
-                    type="checkbox"
-                    id="dropdown-sub"
-                    name="dropdown-sub"
-                  />
-
-                  <a
-                    onClick={() => setSearchingValue("superAdmin")}
-                    className="overView-a"
-                    href="#"
-                  >
-                    superAdmin <i class="uil uil-arrow-right"></i>
-                  </a>
-                  <a
-                    onClick={() => setSearchingValue("admin")}
-                    className="overView-a"
-                    href="#"
-                  >
-                    admin <i class="uil uil-arrow-right"></i>
-                  </a>
-
-                  <a
-                    onClick={() => setSearchingValue("block")}
-                    className="overView-a"
-                    href="#"
-                  >
-                    block <i class="uil uil-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
             </div>
 
             {/* ---- search bar --- */}
@@ -189,7 +118,7 @@ export const ManageAccount = () => {
 
                     {/* --------------- body---------- */}
                     <tbody>
-                      {allUser?.map((user, index) => (
+                      {ourStudent?.map((user, index) => (
                         <>
                           <tr className="border-b-2 hover:bg-[#e1b42f8a] mt-2  cursor-pointer">
                             <th class="flex gap-2 items-center px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] ">
@@ -238,3 +167,5 @@ export const ManageAccount = () => {
     </>
   );
 };
+
+export default OurStudent;

@@ -1,7 +1,6 @@
 "use client";
 import { TopDBLayout } from "@/components/Dashboard/DBLayout/TopDBLayout";
-import "../globals.css";
-import "./dashboard.css";
+import "./Dashboard.css";
 import { LeftDBLayout } from "@/components/Dashboard/DBLayout/LeftDBLayout";
 import { useEffect, useState } from "react";
 import Link from "next/link";

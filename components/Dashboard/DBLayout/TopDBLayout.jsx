@@ -4,12 +4,13 @@ import Image from "next/image";
 import notification from "@/app/Assets/Dashboard/icon/bell.png";
 import Avatar from "@/app/Assets/Dashboard/icon/Avatar.png";
 import searchIcon from "@/app/Assets/Dashboard/icon/Search.svg";
+import { FaAlignLeft, FaAlignRight } from "react-icons/fa";
 
 export const TopDBLayout = () => {
   return (
     <>
       <div className="top-dashboard-main border-b-2 border-t-2 ">
-        <div class="w-[60%] flex justify-start ">
+        <div class="w-[60%]  justify-start hidden md:flex">
           <input
             type="search"
             name="serch"
@@ -25,6 +26,9 @@ export const TopDBLayout = () => {
               alt=""
             />
           </button>
+        </div>
+        <div className="md:hidden flex justify-center items-center border-2 rounded-lg px-3">
+          <FaAlignLeft />
         </div>
         <div className="flex gap-2 items-center justify-evenly pe-2">
           {/* <Image

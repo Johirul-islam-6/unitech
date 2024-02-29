@@ -36,7 +36,7 @@ const Profile = () => {
     //   async function fetchData2() {
     //     try {
     //       const result = await axios.get(
-    //         `http://localhost:8080/api/v1/users/?searchTerm=${cookiesInfo?.email}&page=1&limit=5&sort=createdAt&sortOrder=desc`
+    //         `https://unitech-server.vercel.app/api/v1/users/?searchTerm=${cookiesInfo?.email}&page=1&limit=5&sort=createdAt&sortOrder=desc`
     //       );
 
     //       setUserInformation(result?.data?.data);

@@ -1,6 +1,6 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .dashboard-left-container {
   width: 25%;
@@ -16,4 +16,11 @@
 
 .Academic-Courses {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.view-button-user {
+  background-color: #111 !important;
+}
+.view-button-user:hover {
+  background-color: #111111a5 !important;
 }
