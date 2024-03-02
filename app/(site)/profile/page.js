@@ -27,28 +27,30 @@ const Profile = () => {
     if (!accessToken) {
       return navigate.push("/login");
     }
-    const getCookiesData = Cookies.get("CookieYouserData");
-    const cookiesInfos = JSON.parse(getCookiesData);
-    setCookiesInfo(cookiesInfos);
+    if (accessToken) {
+      const getCookiesData = Cookies.get("CookieYouserData");
+      const cookiesInfos = JSON.parse(getCookiesData);
+      setCookiesInfo(cookiesInfos);
+    }
 
     // ------- user admin checking-----
-    // if (cookiesInfo?.email) {
-    //   async function fetchData2() {
-    //     try {
-    //       const result = await axios.get(
-    //         `https://unitech-server.vercel.app/api/v1/users/?searchTerm=${cookiesInfo?.email}&page=1&limit=5&sort=createdAt&sortOrder=desc`
-    //       );
+    if (cookiesInfo?.email) {
+      async function fetchData2() {
+        try {
+          const result = await axios.get(
+            `https://unitech-server.vercel.app/api/v1/users/?searchTerm=${cookiesInfo?.email}&page=1&limit=5&sort=createdAt&sortOrder=desc`
+          );
 
-    //       setUserInformation(result?.data?.data);
+          setUserInformation(result?.data?.data);
 
-    //       setLoading(false);
-    //     } catch (error) {
-    //       console.log(error);
-    //       setLoading(false);
-    //     }
-    //   }
-    //   fetchData2();
-    // }
+          setLoading(false);
+        } catch (error) {
+          console.log(error);
+          setLoading(false);
+        }
+      }
+      fetchData2();
+    }
     if (!accessToken) {
       setTimeout(() => {
         setrefresh(false);

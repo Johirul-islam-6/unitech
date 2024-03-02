@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./registration.css";
 import Link from "next/link";
 import "react-toastify/dist/ReactToastify.css";
@@ -24,7 +24,7 @@ const Registration = () => {
   const handleClickShowPassword = () => {
     setPassValue({ ...passValue, showPassword: !passValue.showPassword });
   };
-
+  const departmental = ["কারিগরি", "জেনারেল", "মেডিকেল", "অন্যান্য"];
   const allAcademic = [
     { name: "Dhaka Polytechnic Institute", valueI: "polytechnic" },
     { name: "Mymensingh Polytechnic Institute", valueI: "polytechnic" },
@@ -95,6 +95,22 @@ const Registration = () => {
     "Radiology",
     "Others..",
   ];
+
+  // ======== get location =====
+
+  const [add, setAdd] = useState("");
+  // `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((pos) => {
+      const { latitude, longitude } = pos.coords;
+      console.log(latitude, longitude);
+      const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => setAdd(data.address));
+    });
+  }, []);
 
   // Date genarate---
   const today = new Date();
@@ -196,6 +212,7 @@ const Registration = () => {
     }
   };
 
+  console.log(add, "sfsfh");
   return (
     <>
       <div className="bg-[#F6F5F7] border-2">
@@ -206,6 +223,9 @@ const Registration = () => {
             </h2>
             <div className="w-[80px] h-[3px] bg-[#563A9F] mx-auto mt-2"></div>
           </div>
+          <p>road : {add.road}</p>
+          <p>city : {add.city}</p>
+          <p>country :{add.country}</p>
 
           <form onSubmit={HandleSubmite}>
             <div class="grid grid-cols-1 gap-x-6 gap-y-4 mt-4 sm:grid-cols-2 md:px-5">
@@ -380,7 +400,8 @@ const Registration = () => {
                   Current address*
                 </label>
                 <input
-                  required
+                  defaultValue={add?.county + ", " + add?.city}
+                  disabled
                   id="address"
                   name="address"
                   type="text"
