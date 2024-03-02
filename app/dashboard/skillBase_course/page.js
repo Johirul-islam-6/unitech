@@ -20,108 +20,16 @@ const SkillBaseCourse = ({
   const [buttonHidden, setHidden] = useState(false);
 
   const publication = ["হক প্রকাশনী", "এস আর প্রকাশনী", "অন্যান্য"];
-  const departmental = ["কারিগরি", "জেনারেল", "মেডিকেল", "অন্যান্য"];
-  const semester = [
-    "1st Semester",
-    "2nd Semester",
-    "3rd Semester",
-    "4th Semester",
-    "5th Semester",
-    "6th Semester",
-    "7th Semester",
-    "8th Semester",
-    "Others",
-  ];
-  const technical = [
-    {
-      naem: "কম্পিউটার সাইন্স এন্ড টেকনোলজি",
-      shorcut: "CST",
-    },
-    {
-      naem: "সিভিল টেকনোলজি",
-      shorcut: "CT",
-    },
-    {
-      naem: "ইলেকট্রিক্যাল টেকনোলজি",
-      shorcut: "ET",
-    },
-    {
-      naem: "মেকানিক্যাল টেকনোলজি",
-      shorcut: "MT",
-    },
-    {
-      naem: "ইলেকট্রনিক্স টেকনোলজি",
-      shorcut: "ETT",
-    },
-    {
-      naem: "ইলেকট্রোমেডিক্যাল টেকনোলজি",
-      shorcut: "EMT",
-    },
-    {
-      naem: "পাওয়ার টেকনোলজি",
-      shorcut: "PT",
-    },
-    ,
-  ];
-  const genaral = [
-    {
-      naem: " সাইন্স",
-      shorcut: "science",
-    },
-    {
-      naem: "কমার্স",
-      shorcut: "commerce",
-    },
-    {
-      naem: "আর্টস",
-      shorcut: "arts",
-    },
-    {
-      naem: "অন্যান্য",
-      shorcut: "other",
-    },
-
-    ,
-  ];
-  const Medical = [
-    {
-      naem: "Psychology",
-      shorcut: "psychology",
-    },
-    {
-      naem: "Sociology",
-      shorcut: "sociology",
-    },
-    {
-      naem: "Microbiology",
-      shorcut: "microbiology",
-    },
-    {
-      naem: "Epidemiology",
-      shorcut: "epidemiology",
-    },
-    {
-      naem: "Pharmacology",
-      shorcut: "pharmacology",
-    },
-    {
-      naem: "Genetics",
-      shorcut: "genetics",
-    },
-    {
-      naem: "Human anatomy",
-      shorcut: "human-anatomy",
-    },
-    {
-      naem: "Psychophysiology",
-      shorcut: "psychophysiology",
-    },
-    {
-      naem: "Others",
-      shorcut: "other",
-    },
-
-    ,
+  const departmental = [
+    "Web Design",
+    "Web Development",
+    "Graphic Design",
+    "Digital Marketing",
+    "Basic Computer",
+    "Autocad Basic & premium",
+    "Autocad 3d",
+    "UX/UI Design",
+    "Ai",
   ];
 
   // Date genarate---
@@ -266,7 +174,7 @@ const SkillBaseCourse = ({
                 id="username"
                 name="courseName"
                 type="text"
-                placeholder="প্রথম সেমিস্টার"
+                placeholder="Web Design"
                 class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -276,10 +184,194 @@ const SkillBaseCourse = ({
                 class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
+                কোর্সের এর কোড
+              </label>
+              <input
+                required
+                id="username"
+                name="course-code"
+                type="text"
+                placeholder="WD-1-2024"
+                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            {/* ------ field number 02 ------- */}
+            <div>
+              <label
+                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                for="username"
+              >
+                কোর্সের ফ্রী
+              </label>
+              <input
+                required
+                id="username"
+                name="crouse-free"
+                type="text"
+                placeholder="৫০০০ টাকা"
+                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            {/* ------ field number 04 ------- */}
+            <div className="md:mt-2">
+              <label
+                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                for="phone"
+              >
+                ক্যাটাগরি
+              </label>
+
+              <select
+                name="department"
+                onChange={(e) => setCetagory(e.target.value)}
+                className="input block border border-gray-300 focus:border-pitch-black py-2 px-3 w-full focus:outline-none mt-1"
+              >
+                <option value="selectss" className="bg-[#E8F0FE]">
+                  select
+                </option>
+                {departmental?.map((item, index) => (
+                  <option
+                    className="bg-[#e9e9e9de] text-black "
+                    key={index}
+                    value={item}
+                  >
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </div>
+            {/* ------ field number 03 ------- */}
+            <div>
+              <label
+                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                for="username"
+              >
+                কোর্সের enroll শুরূ তারিখ
+              </label>
+              <input
+                required
+                defaultValue={formattedDate}
+                id="username"
+                type="text"
+                name="enroll-Start"
+                placeholder="24/02/2024"
+                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            {/* ------ field number 04 ------- */}
+            <div>
+              <label
+                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                for="username"
+              >
+                কোর্সের enroll শেষ তারিখ
+              </label>
+              <input
+                required
+                defaultValue={formattedDate}
+                id="username"
+                type="text"
+                name="enroll-end"
+                placeholder="24/02/2024"
+                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            {/* ------ field number 02 ------- */}
+            <div>
+              <label
+                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                for="username"
+              >
+                কোর্সের এর Duration
+              </label>
+              <input
+                required
+                id="username"
+                name="course-duration"
+                type="text"
+                placeholder="6 month"
+                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            {/* ------ field number 02 ------- */}
+            <div>
+              <label
+                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                for="username"
+              >
+                সর্বমোট ক্লাস
+              </label>
+              <input
+                required
+                id="username"
+                name="total-class"
+                type="text"
+                placeholder="52"
+                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            {/* ------ field number 02 ------- */}
+            <div>
+              <label
+                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                for="username"
+              >
+                সর্বমোট Assignment
+              </label>
+              <input
+                required
+                id="username"
+                name="total-assignment"
+                type="text"
+                placeholder="10+"
+                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            {/* ------ field number 02 ------- */}
+            <div>
+              <label
+                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                for="username"
+              >
+                সর্বমোট Projects
+              </label>
+              <input
+                required
+                id="username"
+                name="total-Projects"
+                type="text"
+                placeholder="30+"
+                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+          </div>
+          {/* ---- Courses Details ----- */}
+          <div class="grid grid-cols-1 gap-x-6 gap-y-4  sm:grid-cols-2 md:px-5 mt-10">
+            <div className="mt-2">
+              <label
+                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN text-center flex justify-center"
+                for="username"
+              >
+                কোর্সের বিবরণ সমূহ
+              </label>
+              <textarea
+                required
+                name="discription"
+                id="username"
+                type="text"
+                placeholder="কমপক্ষে ৪০ শব্দের হতে হবে,  যেটা দ্বারা ছাত্র-ছাত্রী বই এর ভালো দিকগুলো জানতে জানতে পারে । "
+                class="input h-[140px] block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            <div className="flex flex-col justify-center items-center">
+              <label
+                class="text-[#000b] md:text-[14px] text-[14px] text-center ps-[2px] font-bold  md:ps-1 md:pb-2 IN"
+                for="username"
+              >
                 কোর্সের এর ছবি
               </label>
 
-              <div class="relative px-2 mt-1">
+              {/* <div class="relative px-2 mt-1">
                 <label
                   title="Click to upload"
                   for="bookImage"
@@ -320,180 +412,49 @@ const SkillBaseCourse = ({
                   accept=".jpeg, .png, jpg"
                   class="bg-[#F3F4F6] mb-1 "
                 />
+              </div> */}
+              <div
+                class="w-[400px] mx-auto relative border-2 border-gray-300 border-dashed rounded-lg p-6"
+                id="dropzone"
+              >
+                <input
+                  type="file"
+                  class="absolute inset-0 w-full h-full opacity-0 z-50"
+                />
+                <div class="text-center">
+                  <img
+                    class="mx-auto h-12 w-12"
+                    src="https://www.svgrepo.com/show/357902/image-upload.svg"
+                    alt=""
+                  />
+
+                  <h3 class="mt-2 text-sm font-medium text-gray-900">
+                    <label for="file-upload" class="relative cursor-pointer">
+                      <span>Drag and drop</span>
+                      <span class="text-indigo-600"> or browse</span>
+                      <span>to upload</span>
+                      <input
+                        onChange={(e) => handelFileImageUpload(e)}
+                        hidden=""
+                        type="file"
+                        name="bookImage"
+                        id="bookImage"
+                        accept=".jpeg, .png, jpg"
+                        class="sr-only"
+                      />
+                    </label>
+                  </h3>
+                  <p class="mt-1 text-xs text-gray-500">
+                    PNG, JPG, GIF up to 10MB
+                  </p>
+                </div>
+
+                <img src="" class="mt-4 mx-auto max-h-40 hidden" id="preview" />
               </div>
 
               {/* ///// */}
             </div>
-            {/* ------ field number 03 ------- */}
-            <div>
-              <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
-                for="username"
-              >
-                তারিখ
-              </label>
-              <input
-                required
-                defaultValue={formattedDate}
-                id="username"
-                type="text"
-                name="subjectCode"
-                placeholder="৬৬৬৬"
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
-              />
-            </div>
-            {/* ------ field number 04 ------- */}
-            <div>
-              <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
-                for="phone"
-              >
-                ডিপার্টমেন্ট
-              </label>
-
-              <select
-                name="department"
-                onChange={(e) => setCetagory(e.target.value)}
-                className="input block border border-gray-300 focus:border-pitch-black py-2 px-3 w-full focus:outline-none mt-1"
-              >
-                <option value="selectss" className="bg-[#E8F0FE]">
-                  select
-                </option>
-                {departmental?.map((item, index) => (
-                  <option
-                    className="bg-[#e9e9e9de] text-black "
-                    key={index}
-                    value={item}
-                  >
-                    {item}
-                  </option>
-                ))}
-              </select>
-            </div>
-            {/* ------ field number 06 ------- */}
-            <div>
-              <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
-                for="phone"
-              >
-                মেজর বিষয়
-              </label>
-
-              <select
-                name="mejor-subject"
-                class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1"
-              >
-                <option className="bg-[#E8F0FE]">select</option>
-                {cetagorybook === "কারিগরি" && (
-                  <>
-                    {technical?.map((item, index) => (
-                      <>
-                        <option key={index} className="">
-                          {item?.naem}
-                        </option>
-                      </>
-                    ))}
-                  </>
-                )}
-                {cetagorybook === "জেনারেল" && (
-                  <>
-                    {genaral?.map((item, index) => (
-                      <>
-                        <option key={index} className="">
-                          {item?.naem}
-                        </option>{" "}
-                      </>
-                    ))}
-                  </>
-                )}
-                {cetagorybook === "মেডিকেল" && (
-                  <>
-                    {Medical?.map((item, index) => (
-                      <>
-                        <option key={index} className="">
-                          {item?.naem}
-                        </option>{" "}
-                      </>
-                    ))}
-                  </>
-                )}
-              </select>
-            </div>
-
-            {/* ------ field number 05 ------- */}
-            <div>
-              <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
-                for="phone"
-              >
-                পাবলিকেশন
-              </label>
-
-              <select
-                name="publication"
-                class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1"
-              >
-                <option className="bg-[#E8F0FE]">select</option>
-                {publication?.map((item, index) => (
-                  <>
-                    <option key={index} className="">
-                      {item}
-                    </option>{" "}
-                  </>
-                ))}
-              </select>
-            </div>
-
-            {/* ------ field number 05 ------- */}
-            <div>
-              <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
-                for="phone"
-              >
-                সেমিষ্টার বই
-              </label>
-
-              <select
-                required
-                name="semester"
-                onChange={(e) => setCetagory2(e.target.value)}
-                className="input block border border-gray-300 focus:border-pitch-black py-2 px-3 w-full focus:outline-none mt-1"
-              >
-                <option value="selectss" className="bg-[#E8F0FE]">
-                  select
-                </option>
-                {semester?.map((item, index) => (
-                  <option
-                    className="bg-[#e9e9e9de] text-black "
-                    key={index}
-                    value={item}
-                  >
-                    {item}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* ------ field number 10 ------- */}
-            <div>
-              <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
-                for="username"
-              >
-                কোর্সের মূল্য
-              </label>
-              <input
-                required
-                id="username"
-                name="sell-price"
-                type="text"
-                placeholder="Enter Your Full Name"
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
-              />
-            </div>
-            {/* ------ field number 11 ------- */}
           </div>
-
           <p className="text-center my-7 text-[#000] font-[600] uppercase py-2 bg-[#00000037]">
             All Class Module Content
           </p>
@@ -660,24 +621,6 @@ const SkillBaseCourse = ({
                 class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
-          </div>
-
-          {/* ---- Book Details ----- */}
-          <div className="md:px-5 mt-8">
-            <label
-              class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN text-center flex justify-center"
-              for="username"
-            >
-              কোর্সের বিবরণ সমূহ
-            </label>
-            <textarea
-              required
-              name="discription"
-              id="username"
-              type="text"
-              placeholder="কমপক্ষে ৪০ শব্দের হতে হবে,  যেটা দ্বারা ছাত্র-ছাত্রী বই এর ভালো দিকগুলো জানতে জানতে পারে । "
-              class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
-            />
           </div>
 
           <div class="flex justify-center mt-1">

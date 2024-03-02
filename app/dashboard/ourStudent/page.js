@@ -136,7 +136,7 @@ const OurStudent = () => {
                               {user?.email}
                             </td>
                             <td class="px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] font-[600]">
-                              {user?.ruler}
+                              {user?.studentRoll}
                             </td>
                             <td class="px-6 text-center align-middle  text-[14px] whitespace-nowrap py-[2px]  text-[#000000] font-[600]">
                               {user?.gender}

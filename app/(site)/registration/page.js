@@ -97,9 +97,16 @@ const Registration = () => {
   ];
 
   // ======== get location =====
-
+  const [locationLoading, setLocation] = useState(true);
   const [add, setAdd] = useState("");
   // `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
+  const IpaddressTown = add?.county;
+  const IpaddressCity = add?.city;
+  const Ipaddress =
+    (IpaddressTown ? IpaddressTown + ", " : "") +
+    (IpaddressCity ? IpaddressCity : "");
+
+  console.log(Ipaddress); // This will print the joined text
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((pos) => {
@@ -108,7 +115,8 @@ const Registration = () => {
       const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
       fetch(url)
         .then((res) => res.json())
-        .then((data) => setAdd(data.address));
+        .then((data) => setAdd(data?.address));
+      setLocation(false);
     });
   }, []);
 
@@ -223,9 +231,6 @@ const Registration = () => {
             </h2>
             <div className="w-[80px] h-[3px] bg-[#563A9F] mx-auto mt-2"></div>
           </div>
-          <p>road : {add.road}</p>
-          <p>city : {add.city}</p>
-          <p>country :{add.country}</p>
 
           <form onSubmit={HandleSubmite}>
             <div class="grid grid-cols-1 gap-x-6 gap-y-4 mt-4 sm:grid-cols-2 md:px-5">
@@ -400,7 +405,7 @@ const Registration = () => {
                   Current address*
                 </label>
                 <input
-                  defaultValue={add?.county + ", " + add?.city}
+                  defaultValue={Ipaddress}
                   disabled
                   id="address"
                   name="address"
