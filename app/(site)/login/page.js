@@ -82,6 +82,41 @@ const Login = () => {
     }
   };
 
+  // ---- forgot password----
+  const [userEmail, setEmailFieldValu] = useState("");
+  const [inputError, setinputError] = useState(false);
+  const forgotPasswordButton = async () => {
+    if (!userEmail) {
+      return setinputError(true);
+    }
+
+    const email = userEmail;
+
+    try {
+      const response = await axios.post(
+        "https://unitech-server.vercel.app/api/v1/users/forgotPass",
+        { email }
+      );
+      const result = response.data.message;
+      console.log(result, "res=>");
+      if (response?.data?.success) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `${result}`,
+          text: "Thank you",
+          showConfirmButton: true,
+        });
+      }
+    } catch (error) {
+      Swal.fire({
+        title: `${"User doesn't Match !"}`,
+        text: ` Email : ${userEmail}`,
+        icon: "error",
+      });
+    }
+  };
+
   return (
     <>
       <div className="bg-[#F6F5F7] border-2 pb-10">
@@ -111,11 +146,14 @@ const Login = () => {
                   Email Address*
                 </label>
                 <input
+                  onChange={(e) => setEmailFieldValu(e?.target?.value)}
                   id="emailAddress"
                   name="email"
                   type="email"
                   placeholder="Enter Your valid Email"
-                  class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN  placeholder:font-normal text-[16px] rounded-sm"
+                  class={`input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN  placeholder:font-normal text-[16px] rounded-sm ${
+                    inputError ? "border-red-400 border-2" : ""
+                  }`}
                 />
               </div>
 
@@ -173,7 +211,10 @@ const Login = () => {
                     Remember Me
                   </label>
                 </div>
-                <p className="pt-3 text-end text-[14px] hover:text-[#982121] cursor-pointer underline">
+                <p
+                  onClick={forgotPasswordButton}
+                  className="pt-3 text-end text-[14px] hover:text-[#982121] cursor-pointer underline"
+                >
                   Forgot your password?
                 </p>
               </div>

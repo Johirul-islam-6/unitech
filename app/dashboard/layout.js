@@ -5,7 +5,8 @@ import { LeftDBLayout } from "@/components/Dashboard/DBLayout/LeftDBLayout";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Cookies from "js-cookie";
-
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 export default function RootLayout({ children }) {
   const [Loading, setLoading] = useState(true);
   const accessToken = Cookies.get("accessToken");
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`dashboard-max-w-screen-xl mx-auto`}>
+        <ToastContainer />
         {Loading && (
           <>
             <div className="absolute w-[100%] bg-white h-[140vh] z-[1000]">

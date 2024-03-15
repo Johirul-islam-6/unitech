@@ -179,6 +179,7 @@ const Registration = () => {
 
     // setHidden(true);
     try {
+      setHidden(true);
       const response = await axios.post(
         "https://unitech-server.vercel.app/api/v1/users/create-user",
         userData
@@ -202,6 +203,7 @@ const Registration = () => {
           showConfirmButton: false,
           timer: 2500,
         });
+        setHidden(false);
         router.push("/profile");
       }
 

@@ -8,6 +8,7 @@ import "./Singel_user.css";
 import Image from "next/image";
 import Link from "next/link";
 import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const SingelUsers = () => {
   const { id } = useParams();
@@ -27,7 +28,7 @@ const SingelUsers = () => {
     async function fetchData() {
       try {
         const result = await axios.get(
-          `http://localhost:8080/api/v1/users/${id}`
+          `https://unitech-server.vercel.app/api/v1/users/${id}`
         );
 
         setSingelUser(result?.data?.data);
@@ -44,7 +45,7 @@ const SingelUsers = () => {
     async function fetchData2() {
       try {
         const result = await axios.get(
-          `http://localhost:8080/api/v1/books/?searchTerm=${singelUser?.email}&page=1&limit=5&sort=createdAt&sortOrder=desc`
+          `https://unitech-server.vercel.app/api/v1/books/?searchTerm=${singelUser?.email}&page=1&limit=5&sort=createdAt&sortOrder=desc`
         );
 
         setCreatedbookUser(result?.data?.data);
@@ -61,7 +62,7 @@ const SingelUsers = () => {
   async function deleteBook(bookId, name) {
     try {
       const response = await axios.delete(
-        `http://localhost:8080/api/v1/books/${bookId}`
+        `https://unitech-server.vercel.app/api/v1/books/${bookId}`
       );
 
       if (response?.data?.success) {
@@ -85,7 +86,7 @@ const SingelUsers = () => {
     };
     try {
       const response = await axios.patch(
-        `https://resell-book-store-server.vercel.app/api/v1/users/${id}`,
+        `https://unitech-server.vercel.app/api/v1/users/${id}`,
         rulerUpdateData
       );
 
@@ -102,6 +103,26 @@ const SingelUsers = () => {
       // Optionally, handle the error in a meaningful way
     }
   }
+
+  // ============ roll update =============
+  const [rollField, setrollfield] = useState();
+  const rollUpdate = () => {
+    if (!rollField) {
+      toast.warn("student roll doesn't set up!", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
+
+    // -------------there student roll post database ---------
+  };
 
   return (
     <div className="overflow-auto h-[100vh]">
@@ -128,11 +149,7 @@ const SingelUsers = () => {
               <span className="font-bold pe-2">Inistitute : </span>{" "}
               {singelUser?.institute}
             </p>
-            <p class="pt-4 text-base  flex items-center justify-start lg:justify-start md:text-center text-center">
-              <FaRegDotCircle className="me-2 text-[#F69823]" />
-              <span className="font-bold pe-2">Student Roll : </span>{" "}
-              {singelUser?.studentRoll}
-            </p>
+
             <p class="pt-4 text-base  flex items-center justify-start lg:justify-start md:text-center text-center">
               <FaRegDotCircle className="me-2 text-[#F69823]" />
               <span className="font-bold pe-2">Address : </span>{" "}
@@ -152,6 +169,29 @@ const SingelUsers = () => {
               <FaRegDotCircle className="me-2 text-[#F69823]" />
               <span className="font-bold pe-2">Gender : </span>{" "}
               {singelUser?.gender}
+            </p>
+            <p class="pt-4 text-base  flex items-center justify-start lg:justify-start md:text-center text-center">
+              <FaRegDotCircle className="me-2 text-[#F69823]" />
+              <span className="font-bold pe-2">join Date : </span>{" "}
+              {singelUser?.joinginDate}
+            </p>
+            <p class="pt-4 text-base  flex items-center justify-start lg:justify-start md:text-center text-center">
+              <FaRegDotCircle className="me-2 text-[#F69823]" />
+              <span className="font-bold pe-2">Student Roll : </span>{" "}
+              <span className="relative">
+                <input
+                  onChange={(e) => setrollfield(e?.target?.value)}
+                  defaultValue={singelUser?.studentRoll}
+                  className="ps-1 border-[2px] "
+                  type="text"
+                />
+                <button
+                  onClick={rollUpdate}
+                  className="absolute right-[0px] border-[2px] bg-purple-600 px-[3px] text-white text-[12px]"
+                >
+                  submit
+                </button>
+              </span>
             </p>
 
             <div class="pt-12 pb-8 flex flex-wrap justify-center md:justify-start gap-2">

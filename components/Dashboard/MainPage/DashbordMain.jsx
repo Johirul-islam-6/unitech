@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./MainPage.css";
 import { AllCard } from "./AllCard";
 import Link from "next/link";
@@ -9,6 +9,30 @@ export const DashbordMain = () => {
   const createdCourses = () => {
     setOpenCourse(!openCourseLink);
   };
+
+  const [searchingValue, setSearchingValue] = useState("");
+  const [Loading, setLoading] = useState(true);
+  const [SkillCourses, setSkillCourses] = useState();
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const result = await axios.get(
+          `http://localhost:8080/api/v1/courses/?searchTerm=${searchingValue}&page=1&limit=10&sort=createdAt&sortOrder=desc`
+        );
+
+        setSkillCourses(result?.data?.data);
+
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetchData();
+  }, [searchingValue]);
+
+  console.log(SkillCourses, "all skill");
 
   return (
     <>

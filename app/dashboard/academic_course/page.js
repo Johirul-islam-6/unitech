@@ -197,7 +197,7 @@ const AcademicCourses = ({
     }
     try {
       const response = await axios.post(
-        "https://resell-book-store-server.vercel.app/api/v1/books/create-book",
+        "https://unitech-server.vercel.app/api/v1/books/create-book",
         bookData,
         {
           maxContentLength: 1000000000,

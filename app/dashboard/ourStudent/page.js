@@ -21,7 +21,7 @@ const OurStudent = () => {
     async function fetchData() {
       try {
         const result = await axios.get(
-          `http://localhost:8080/api/v1/users/?searchTerm=${searchingValue}&page=1&limit=2000000&sort=createdAt&sortOrder=desc`
+          `https://unitech-server.vercel.app/api/v1/users/?searchTerm=${searchingValue}&page=1&limit=2000000&sort=createdAt&sortOrder=desc`
         );
 
         setUser(result?.data?.data);
@@ -43,7 +43,6 @@ const OurStudent = () => {
     }
   }, [searchingValue, allUser]);
 
-  console.log(searchingValue, allUser);
   return (
     <>
       <div className="  p-2">
@@ -93,6 +92,15 @@ const OurStudent = () => {
 
         {/* ---- user Card --- */}
         <div className="mt-5">
+          {Loading && (
+            <div class="h-screen w-[100%] bg-white flex justify-center mt-40">
+              <img
+                class="h-16 w-16"
+                src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif"
+                alt=""
+              />
+            </div>
+          )}
           <section class="py-1 flex md:flex-row flex-col justify-center md:justify-between gap-2">
             <div class="w-full  mb-12 xl:mb-0 ">
               <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded pb-3">
