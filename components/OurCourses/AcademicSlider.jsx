@@ -240,7 +240,7 @@ export default class AcademicSlider extends Component {
                         </div>
                       </div>
                       <div className="mt-3">
-                        <Link href={`/DetailsCourse/1`}>
+                        <Link href={`/diplomaCourse/1`}>
                           <button className="flex w-[100%] rounded-lg px-2 py-[10px] text-[14px] md:text-[18px] text-center justify-center font-[800] text-[#161616dd] bg-[#F89521]">
                             Details Course
                           </button>

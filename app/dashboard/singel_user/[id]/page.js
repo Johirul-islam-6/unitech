@@ -5,8 +5,6 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaRegDotCircle } from "react-icons/fa";
 import "./Singel_user.css";
-import Image from "next/image";
-import Link from "next/link";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 
@@ -21,8 +19,8 @@ const SingelUsers = () => {
 
   useEffect(() => {
     const getCookiesData = Cookies.get("CookieYouserData");
-    const cookiesInfo = JSON.parse(getCookiesData);
-    setInfo(cookiesInfo);
+    const singelUser = JSON.parse(getCookiesData);
+    setInfo(singelUser);
 
     //  ------------------ searching field -----------
     async function fetchData() {
@@ -106,9 +104,19 @@ const SingelUsers = () => {
 
   // ============ roll update =============
   const [rollField, setrollfield] = useState();
-  const rollUpdate = () => {
-    if (!rollField) {
-      toast.warn("student roll doesn't set up!", {
+
+  const rollUpdate = async () => {
+    const data = {
+      studentRoll: rollField,
+    };
+
+    try {
+      const response = await axios.patch(
+        `http://localhost:8080/api/v1/users/roll/${singelUser?._id}`,
+        data
+      );
+      console.log("roll==>", response.data?.message);
+      toast.success(`${response.data?.message}`, {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -118,124 +126,274 @@ const SingelUsers = () => {
         progress: undefined,
         theme: "dark",
       });
-      return;
+    } catch (error) {
+      console.error("Error updating user roll:");
+      toast.warn(`${error?.response?.data?.message}`, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     }
 
-    // -------------there student roll post database ---------
+    console.log(rollField);
   };
 
   return (
     <div className="overflow-auto h-[100vh]">
-      <div className="grid md:grid-cols-1 gap-3 justify-center items-center md:w-[60%] mx-auto ">
-        {/* user-info */}
-        <div className="singel-user  mt-2 md:ms-5">
-          <h1 class="text-3xl font-bold  lg:pt-0 md:text-center text-center pt-3">
-            {" "}
-            {singelUser?.name}{" "}
-          </h1>
-          <span className="text-white text-[12px] font-bold md:text-center flex justify-center text-center">
-            <p className=" bg-green-800 px-2 mt-2">{singelUser?.ruler}</p>
-          </span>
-          <div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25"></div>
-          <div className="md:ps-8">
-            <p class="pt-4 text-base  flex items-center justify-start lg:justify-start md:text-center text-center">
-              <FaRegDotCircle className="me-2 text-[#F69823]" />
-              <span className="font-bold pe-2">Department : </span>{" "}
-              {singelUser?.department}
-            </p>
-
-            <p class="pt-4 text-base  flex items-center justify-start lg:justify-start md:text-center text-center">
-              <FaRegDotCircle className="me-2 text-[#F69823]" />
-              <span className="font-bold pe-2">Inistitute : </span>{" "}
-              {singelUser?.institute}
-            </p>
-
-            <p class="pt-4 text-base  flex items-center justify-start lg:justify-start md:text-center text-center">
-              <FaRegDotCircle className="me-2 text-[#F69823]" />
-              <span className="font-bold pe-2">Address : </span>{" "}
-              {singelUser?.address}
-            </p>
-            <p class="pt-4 text-base  flex items-center justify-start lg:justify-start md:text-center text-center">
-              <FaRegDotCircle className="me-2 text-[#F69823]" />
-              <span className="font-bold pe-2">Phone : </span>{" "}
-              {singelUser?.phone}
-            </p>
-            <p class="pt-4 text-base  flex items-center justify-start lg:justify-start md:text-center text-center">
-              <FaRegDotCircle className="me-2 text-[#F69823]" />
-              <span className="font-bold pe-2">Email : </span>{" "}
-              {singelUser?.email}
-            </p>
-            <p class="pt-4 text-base  flex items-center justify-start lg:justify-start md:text-center text-center">
-              <FaRegDotCircle className="me-2 text-[#F69823]" />
-              <span className="font-bold pe-2">Gender : </span>{" "}
-              {singelUser?.gender}
-            </p>
-            <p class="pt-4 text-base  flex items-center justify-start lg:justify-start md:text-center text-center">
-              <FaRegDotCircle className="me-2 text-[#F69823]" />
-              <span className="font-bold pe-2">join Date : </span>{" "}
-              {singelUser?.joinginDate}
-            </p>
-            <p class="pt-4 text-base  flex items-center justify-start lg:justify-start md:text-center text-center">
-              <FaRegDotCircle className="me-2 text-[#F69823]" />
-              <span className="font-bold pe-2">Student Roll : </span>{" "}
-              <span className="relative">
-                <input
-                  onChange={(e) => setrollfield(e?.target?.value)}
-                  defaultValue={singelUser?.studentRoll}
-                  className="ps-1 border-[2px] "
-                  type="text"
-                />
-                <button
-                  onClick={rollUpdate}
-                  className="absolute right-[0px] border-[2px] bg-purple-600 px-[3px] text-white text-[12px]"
-                >
-                  submit
-                </button>
+      <div className="flex flex-col justify-center items-center mt-5">
+        <h3 className="text-[25px] font-[600] text-[#000]">
+          {Loading ? (
+            <>
+              <div class="flex gap-2 pb-2">
+                <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+              </div>
+            </>
+          ) : (
+            <>{singelUser?.name}</>
+          )}{" "}
+        </h3>
+        <span className="text-white text-[12px] font-bold md:text-center flex justify-center text-center">
+          <p className=" bg-green-800 px-2 mt-2">
+            {Loading ? (
+              <>
+                <div class="flex gap-2 pb-2">
+                  <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                  <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                  <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                </div>
+              </>
+            ) : (
+              <>{singelUser?.ruler}</>
+            )}{" "}
+          </p>
+        </span>
+        <div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25"></div>
+        <div class="grid md:grid-cols-3 justify-center text-sm md:w-[80%] mx-auto mt-5">
+          <div class="grid grid-cols-1">
+            <div class="px-4 py-2 font-bold text-[#000]">
+              Name :{" "}
+              <span className="font-[400]">
+                {Loading ? (
+                  <>
+                    <div class="flex gap-2 pb-2">
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                    </div>
+                  </>
+                ) : (
+                  <>{singelUser?.name}</>
+                )}{" "}
               </span>
-            </p>
+            </div>
+            <div class="px-4 py-2 text-[#000] font-bold text-[16px] ">
+              Roll :{" "}
+              <span className="font-[400]">
+                {Loading ? (
+                  <>
+                    <div class="flex gap-2 pb-2">
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                    </div>
+                  </>
+                ) : (
+                  <>{singelUser?.studentRoll}</>
+                )}{" "}
+              </span>{" "}
+            </div>
+          </div>
 
-            <div class="pt-12 pb-8 flex flex-wrap justify-center md:justify-start gap-2">
-              <button
-                onClick={() => RulerUpdate(singelUser?._id, "block")}
-                class="bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded-full"
-              >
-                Block
-              </button>
-              {userInfo?.ruler === "superAdmin" && (
-                <>
-                  <button
-                    onClick={() => RulerUpdate(singelUser?._id, "admin")}
-                    class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full"
-                  >
-                    Create Admin
-                  </button>
-                </>
-              )}
-              {userInfo?.ruler === "superAdmin" && (
-                <>
-                  <button
-                    onClick={() => RulerUpdate(singelUser?._id, "student")}
-                    class="bg-amber-700 hover:bg-amber-800 text-white font-bold py-2 px-4 rounded-full"
-                  >
-                    Student
-                  </button>
-                </>
-              )}
-              {userInfo?.ruler === "superAdmin" && (
-                <>
-                  <button
-                    onClick={() => RulerUpdate(singelUser?._id, "superAdmin")}
-                    class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full"
-                  >
-                    Super Admin
-                  </button>
-                </>
-              )}
+          <div class="grid grid-cols-1">
+            <div class="px-4 py-2 text-[#000] font-bold text-[16px] ">
+              Gender :{" "}
+              <span className="font-[400]">
+                {Loading ? (
+                  <>
+                    <div class="flex gap-2 pb-2">
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                    </div>
+                  </>
+                ) : (
+                  <>{singelUser?.gender}</>
+                )}{" "}
+              </span>{" "}
+            </div>
+            <div class="px-4 py-2 text-[#000] font-bold text-[16px] ">
+              Join Date:{" "}
+              <span className="font-[400]">
+                {Loading ? (
+                  <>
+                    <div class="flex gap-2 pb-2">
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                    </div>
+                  </>
+                ) : (
+                  <>{singelUser?.joinginDate}</>
+                )}{" "}
+              </span>{" "}
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1">
+            <div class="px-4 py-2 text-[#000] font-bold text-[16px] ">
+              institute :{" "}
+              <span className="font-[400]">
+                {Loading ? (
+                  <>
+                    <div class="flex gap-2 pb-2">
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                    </div>
+                  </>
+                ) : (
+                  <>{singelUser?.institute}</>
+                )}{" "}
+              </span>{" "}
+            </div>
+            <div class="px-4 py-2 text-[#000] font-bold text-[16px] ">
+              Department :{" "}
+              <span className="font-[400]">
+                {Loading ? (
+                  <>
+                    <div class="flex gap-2 pb-2">
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                    </div>
+                  </>
+                ) : (
+                  <>{singelUser?.department}</>
+                )}{" "}
+              </span>{" "}
+            </div>
+          </div>
+          <div class="grid grid-cols-1">
+            <div class="px-4 py-2 text-[#000] font-bold text-[16px] ">
+              Address:{" "}
+              <span className="font-[400]">
+                {Loading ? (
+                  <>
+                    <div class="flex gap-2 pb-2">
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                    </div>
+                  </>
+                ) : (
+                  <>{singelUser?.address}</>
+                )}{" "}
+              </span>{" "}
+            </div>
+          </div>
+          <div class="grid grid-cols-1">
+            <div class="px-4 py-2 text-[#000] font-bold text-[16px] ">
+              Email:{" "}
+              <span className="font-[400]">
+                {Loading ? (
+                  <>
+                    <div class="flex gap-2 pb-2">
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                    </div>
+                  </>
+                ) : (
+                  <>{singelUser?.email}</>
+                )}{" "}
+              </span>{" "}
+            </div>
+          </div>
+          <div class="grid grid-cols-1">
+            <div class="px-4 py-2 text-[#000] font-bold text-[16px] ">
+              Phone:{" "}
+              <span className="font-[400]">
+                {Loading ? (
+                  <>
+                    <div class="flex gap-2 pb-2">
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                    </div>
+                  </>
+                ) : (
+                  <>{singelUser?.phone}</>
+                )}{" "}
+              </span>{" "}
             </div>
           </div>
         </div>
+        <div className="flex justify-center items-center">
+          <p class="pt-4 text-base  flex items-center justify-start lg:justify-start md:text-center text-center">
+            <FaRegDotCircle className="me-2 text-[#F69823]" />
+            <span className="font-bold pe-2"> Roll : </span>{" "}
+            <span className="relative">
+              <input
+                onChange={(e) => setrollfield(e?.target?.value)}
+                defaultValue={singelUser?.studentRoll}
+                className="ps-1 border-[2px] "
+                type="text"
+              />
+              <button
+                onClick={rollUpdate}
+                className="absolute right-[0px] border-[2px] bg-purple-600 px-[3px] text-white text-[12px]"
+              >
+                submit
+              </button>
+            </span>
+          </p>
+        </div>
+        <div class="pt-12 pb-8 flex flex-wrap justify-center md:justify-start gap-2 ">
+          <button
+            onClick={() => RulerUpdate(singelUser?._id, "block")}
+            class="bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded-full"
+          >
+            Block
+          </button>
+          {userInfo?.ruler === "superAdmin" && (
+            <>
+              <button
+                onClick={() => RulerUpdate(singelUser?._id, "admin")}
+                class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full"
+              >
+                Create Admin
+              </button>
+            </>
+          )}
+          {userInfo?.ruler === "superAdmin" && (
+            <>
+              <button
+                onClick={() => RulerUpdate(singelUser?._id, "student")}
+                class="bg-amber-700 hover:bg-amber-800 text-white font-bold py-2 px-4 rounded-full"
+              >
+                Student
+              </button>
+            </>
+          )}
+          {userInfo?.ruler === "superAdmin" && (
+            <>
+              <button
+                onClick={() => RulerUpdate(singelUser?._id, "superAdmin")}
+                class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full"
+              >
+                Super Admin
+              </button>
+            </>
+          )}
+        </div>
       </div>
-
       <div className="mt-20">
         <div className="   py-8 mt-10 singel-user md:ms-5">
           {Loading2 && (

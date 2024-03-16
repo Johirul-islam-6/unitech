@@ -44,9 +44,9 @@ const SkillBaseCourse = () => {
 
     const formData = new FormData(e.target);
     const courseName = formData.get("courseName");
-    // const courseImage = formData.get("courseImage");
+    const courseImage = "image not send";
     const coursePrice = formData.get("course-price");
-    const courseImage = postImage;
+    // const courseImage = postImage;
     const courseCode = formData.get("course-code");
     const categoryCourse = formData.get("cetagory");
     const enrollStartDate = formData.get("enroll-Start");
@@ -183,8 +183,6 @@ const SkillBaseCourse = () => {
       );
       const result = response.data;
 
-      console.log(result, "laste");
-
       // if get the data then save
       if (result?.success) {
         Swal.fire({
@@ -209,7 +207,7 @@ const SkillBaseCourse = () => {
       setHidden(false);
     }
 
-    setHidden(false);
+    // setHidden(false);
   };
 
   const [uploadeImages, setuploade] = useState();

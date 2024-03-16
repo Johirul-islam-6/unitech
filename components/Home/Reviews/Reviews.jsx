@@ -12,7 +12,7 @@ export const Reviews = () => {
           {/* <h1 className="text-center achieveParagraph SILIGURI">
             দেখে নিন কি বলছেন ইউনিটেক এক্সপার্টরা
           </h1> */}
-          <div className=" mt-8">
+          <div className=" mt-12">
             <ReviewsSlider />
           </div>
         </div>

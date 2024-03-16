@@ -97,13 +97,13 @@ export default class ReviewsSlider extends Component {
         <Slider {...settings}>
           {reviewData?.map((student) => (
             <>
-              <div key={student?.id} class="card">
+              <div key={student?.id} class="mx-5">
                 <div className="reviewCard border-2 flex flex-col justify-center items-center p-5 ">
                   <span>
                     <FaQuoteRight className="text-[30px] text-[#00000080]" />
                   </span>
                   <h2 class="text-[16px] text-start SILIGURI mt-3">
-                    {student?.message?.slice(0, 150)}...
+                    {student?.message?.slice(0, 140)}...
                   </h2>
 
                   <div className="flex flex-col  justify-center  mt-2">

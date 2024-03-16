@@ -1,15 +1,40 @@
 "use client";
 import CommentCourse from "@/components/CourseDetails/CommentCourse";
 import { CourseDetails } from "@/components/CourseDetails/CourseDetails";
+import axios from "axios";
 import { useParams } from "next/navigation";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const DetailsCourse = () => {
   const { id } = useParams();
+
+  const [singleUser, setSingelUser] = useState();
+  const [Loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const result = await axios.get(
+          `http://localhost:8080/api/v1/courses/${id}`
+        );
+
+        setSingelUser(result?.data?.data);
+
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetchData();
+  }, [id]);
+
+  console.log("singel", singleUser);
+
   return (
     <div className="mt-5 max-w-screen-xl mx-auto">
       {/* Details Course Id Numeber {id} */}
-      <CourseDetails />
+      <CourseDetails singleUser={singleUser} />
       <div className="">
         <div className="flex flex-col justify-center md:grid grid-cols-2 gap-5 mt-5">
           <div>

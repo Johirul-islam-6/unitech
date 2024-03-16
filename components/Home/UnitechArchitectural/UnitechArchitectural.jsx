@@ -1,6 +1,7 @@
 import React from "react";
 import architectural from "@/app/Assets/untility/architectural.jpg";
 import Image from "next/image";
+import Link from "next/link";
 export const UnitechArchitectural = () => {
   return (
     <>
@@ -28,9 +29,11 @@ export const UnitechArchitectural = () => {
               </span>
             </p>
             <div className="flex justify-center md:justify-start my-5 SILIGURI">
-              <button className="py-4 px-12 bg-[#FFCD33] text-black rounded-md font-bold text-[16px]">
-                বিস্তারিত দেখি
-              </button>
+              <Link href={`/unitech-architctural`}>
+                <button className="py-4 px-12 bg-[#FFCD33] text-black rounded-md font-bold text-[16px]">
+                  বিস্তারিত দেখি
+                </button>
+              </Link>
             </div>
           </div>
           <div className="flex justify-end">

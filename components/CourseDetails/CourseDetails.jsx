@@ -1,14 +1,14 @@
 import React from "react";
 import "./CourseDetails.css";
-export const CourseDetails = () => {
+export const CourseDetails = ({ singleUser }) => {
   return (
     <>
       <div className="d">
-        <div className="flex flex-col-reverse md:grid grid-cols-2 gap-5 md:gap-x-10 justify-center  md:h-[60vh] ">
+        <div className="flex flex-col-reverse md:grid grid-cols-2 gap-5 md:gap-x-20 justify-center  md:h-[60vh] ">
           <div className="container-text">
             <div className="banner-informaton">
-              <h1 className="text-[35px] font-bold md:text-start text-center SILIGURI">
-                Modern Web Design
+              <h1 className="text-[20px] md:text-[30px] font-bold md:text-start text-center SILIGURI">
+                {singleUser?.courseName}
               </h1>
               <div className="flex gap-5 flex-wrap md:justify-start justify-center mt-5">
                 <div className="border-2 px-5 py-3 rounded-lg">
@@ -17,7 +17,7 @@ export const CourseDetails = () => {
                   </p>
                   <h1 className="text-[18px] text-center font-bold text-slate-800">
                     {" "}
-                    6 Month
+                    {singleUser?.courseDuration} Months
                   </h1>
                 </div>
                 <div className="border-2 px-5 py-3 rounded-lg">
@@ -26,7 +26,7 @@ export const CourseDetails = () => {
                   </p>
                   <h1 className="text-[18px] text-center font-bold text-slate-800">
                     {" "}
-                    52
+                    {singleUser?.totalClass}
                   </h1>
                 </div>
                 <div className="border-2 px-5 py-3 rounded-lg">
@@ -35,7 +35,7 @@ export const CourseDetails = () => {
                   </p>
                   <h1 className="text-[18px] text-center font-bold text-slate-800">
                     {" "}
-                    6+
+                    {singleUser?.totalAssignment}
                   </h1>
                 </div>
                 <div className="border-2 px-5 py-3 rounded-lg">
@@ -44,17 +44,12 @@ export const CourseDetails = () => {
                   </p>
                   <h1 className="text-[18px] text-center font-bold text-slate-800">
                     {" "}
-                    20+
+                    {singleUser?.totalProject}
                   </h1>
                 </div>
               </div>
               <p className="py-5  text-justify text-[18px] font-[400] SILIGURI">
-                Web Design bring stunning visuals to life using movements . A
-                report by MIT shows, human brain takes a brief moment, only 13
-                milliseconds to process visual content. As a result, many
-                companies are using motion graphics to engage the audience with
-                ideas. If you have the basic knowledge on making intro or
-                broadcasting videos, this course is for you.
+                {singleUser?.courseDescription}
               </p>
               <div className="flex md:justify-start gap-5 justify-center mt-2">
                 <button className="SILIGURI px-6 py-4 bg-amber-600 hover:bg-amber-500 text-white text-[16px] font-[600] rounded-md">
@@ -108,431 +103,51 @@ export const CourseDetails = () => {
           <div class="flex md:justify-start justify-center items-center  ">
             {/* <!-- Component Start --> */}
             <div class="flex flex-col w-full">
-              <button class="group border-t border-r border-l border-slate-300 focus:outline-none">
-                <div class="flex items-center justify-between h-14 px-3 font-semibold hover:bg-gray-200">
-                  <span class="truncate">
-                    Module-1 Modern Web Design Introduction.
-                  </span>
-                  <svg
-                    class="h-4 w-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-                <div class="max-h-0 overflow-hidden duration-300 group-focus:max-h-40">
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-01 ] Basic web design
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-02 ] Tools Code Editor Setup (vsCode).
-                  </a>
-                </div>
-              </button>
-              <button class="group border-t border-r border-l  border-slate-300 focus:outline-none">
-                <div class="flex items-center justify-between h-14 px-3 font-semibold hover:bg-gray-200">
-                  <span class="truncate">
-                    {" "}
-                    Module-2 Let s Start Html5 Coding.
-                  </span>
-                  <svg
-                    class="h-4 w-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-                <div class="max-h-0 overflow-hidden duration-300 group-focus:max-h-40">
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-03 ] Basic Html Stucture.
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-04 ] Advance Html5
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-05 ] Practis day
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-06 ] Assignment-1
-                  </a>
-                </div>
-              </button>
-              <button class="group border border-slate-300 focus:outline-none">
-                <div class="flex items-center justify-between h-14 px-3 font-semibold hover:bg-gray-200">
-                  <span class="truncate"> Module-3 Modern Style CSS3</span>
-                  <svg
-                    class="h-4 w-4 flex-shrink-0"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-                <div class="max-h-0 overflow-hidden duration-300 group-focus:max-h-40">
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-07 ] Basic Modern CSS3.
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-08 ] Advance Modern CSS3
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-09 ] Practic Day
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-10 ] Assigment-2
-                  </a>
-                </div>
-              </button>
-              <button class="group border border-slate-300 focus:outline-none">
-                <div class="flex items-center justify-between h-14 px-3 font-semibold hover:bg-gray-200">
-                  <span class="truncate">
-                    {" "}
-                    Module-4 Responsive Web Design any device
-                  </span>
-                  <svg
-                    class="h-4 w-4 flex-shrink-0"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-                <div class="max-h-0 overflow-hidden duration-300 group-focus:max-h-40">
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-11 ] Basic Responsive Design
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-12 ] Advance Responsive Web page.
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-13 ] Practic Day
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-14 ] Assignment-4
-                  </a>
-                </div>
-              </button>
-              <button class="group border border-slate-300 focus:outline-none">
-                <div class="flex items-center justify-between h-14 px-3 font-semibold hover:bg-gray-200">
-                  <span class="truncate">
-                    {" "}
-                    Module-5 Css framework [Bootstrap]
-                  </span>
-                  <svg
-                    class="h-4 w-4 flex-shrink-0"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-                <div class="max-h-0 overflow-hidden duration-300 group-focus:max-h-40">
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-15 ] Introduction Bootstrap-5
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-16 ] Basic Bootstrap-5
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-17 ] Advance Bootstrap-5
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-17 ] Practic Day
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-18 ] Assignment-5
-                  </a>
-                </div>
-              </button>
-              <button class="group border border-slate-300 focus:outline-none">
-                <div class="flex items-center justify-between h-14 px-3 font-semibold hover:bg-gray-200">
-                  <span class="truncate">
-                    {" "}
-                    Module-6 Bootstrap, Html, Css Project
-                  </span>
-                  <svg
-                    class="h-4 w-4 flex-shrink-0"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-                <div class="max-h-0 overflow-hidden duration-300 group-focus:max-h-40">
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-21 ] Html, Css, Bootstrap landing page design-1.
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-22 ] Html, Css, Bootstrap landing page design-2.
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-23 ] Html, Css, Bootstrap landing page design-3.
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-24 ] Html, Css, Bootstrap 5 page full project.
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-25 ] Assignment-6.
-                  </a>
-                </div>
-              </button>
-              <button class="group border border-slate-300 focus:outline-none">
-                <div class="flex items-center justify-between h-14 px-3 font-semibold hover:bg-gray-200">
-                  <span class="truncate">
-                    {" "}
-                    Module-7 Css framework [TailWindCSS]
-                  </span>
-                  <svg
-                    class="h-4 w-4 flex-shrink-0"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-                <div class="max-h-0 overflow-hidden duration-300 group-focus:max-h-40">
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-19 ] Introduction TailWindCSS
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-20 ] Basic TailWindCSS
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-21 ] Advance TailWindCSS
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-22 ] Practic Day
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-23 ] Assignment-7
-                  </a>
-                </div>
-              </button>
-              <button class="group border border-slate-300 focus:outline-none">
-                <div class="flex items-center justify-between h-14 px-3 font-semibold hover:bg-gray-200">
-                  <span class="truncate">
-                    {" "}
-                    Module-8 Tailwind, Html, Css Project
-                  </span>
-                  <svg
-                    class="h-4 w-4 flex-shrink-0"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-                <div class="max-h-0 overflow-hidden duration-300 group-focus:max-h-40">
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-24 ] Html, Css, Tailwind Css landing page design-1.
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-25 ] Html, Css, Tailwind Css landing page design-2.
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-26 ] Html, Css, Tailwind Css landing page design-3.
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-27 ] Html, Css, Tailwind Css 5 page full project.
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-28 ] Assignment-8.
-                  </a>
-                </div>
-              </button>
-              <button class="group border border-slate-300 focus:outline-none">
-                <div class="flex items-center justify-between h-14 px-3 font-semibold hover:bg-gray-200">
-                  <span class="truncate"> Module-9 Advance JavaScript.</span>
-                  <svg
-                    class="h-4 w-4 flex-shrink-0"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-                <div class="max-h-0 overflow-hidden duration-300 group-focus:max-h-40">
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-29 ] Introduction JavaScript
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-30 ] Basic JavaScript
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-31 ] Advance JavaScript
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-32 ] Practic Day
-                  </a>
-                  <a
-                    class="flex items-center h-8 px-4 text-sm hover:bg-gray-200"
-                    href="#"
-                  >
-                    [ Class-33 ] Assignment-7
-                  </a>
-                </div>
-              </button>
+              {singleUser?.allClass?.map((moduleObj, index) => (
+                <button
+                  key={index}
+                  className="group border-t border-r border-l border-slate-300 focus:outline-none"
+                >
+                  <div className="flex items-center justify-between h-14 px-3 font-semibold hover:bg-gray-200">
+                    <p className="truncate">
+                      <span className="text-[#000] font-[800]">
+                        Module {index + 1} :{" "}
+                      </span>{" "}
+                      <span>{moduleObj[`module${index + 1}`]}</span>
+                    </p>
+                    <svg
+                      className="h-4 w-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                  <div className="max-h-0 overflow-hidden duration-300 group-focus:max-h-40">
+                    {/* Render class details for each module */}
+                    {Object.keys(moduleObj).map((key) => {
+                      if (key.startsWith("moduleP")) {
+                        const classKey = key.replace("moduleP", "");
+                        return (
+                          <a
+                            key={key}
+                            className="flex items-center h-8 px-4 text-[16px] pt-1 pb-3 hover:bg-gray-200"
+                            href="#"
+                          >
+                            {moduleObj[key]}
+                          </a>
+                        );
+                      }
+                      return null;
+                    })}
+                  </div>
+                </button>
+              ))}
             </div>
             {/* <!-- Component End  --> */}
           </div>
