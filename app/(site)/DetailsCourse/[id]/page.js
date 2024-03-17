@@ -29,8 +29,6 @@ const DetailsCourse = () => {
     fetchData();
   }, [id]);
 
-  console.log("singel", singleUser);
-
   return (
     <div className="mt-5 max-w-screen-xl mx-auto">
       {/* Details Course Id Numeber {id} */}

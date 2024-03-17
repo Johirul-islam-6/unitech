@@ -5,7 +5,7 @@ import { Banner } from "@/components/Home/Banner/Banner";
 import { Career } from "@/components/Home/Career/Career";
 import { CourseSlider } from "@/components/Home/AllCoursesSlide/CourseSlider";
 import { StudentInfo } from "@/components/Home/StudentInfo/StudentInfo";
-
+import "./globals.css";
 import { Reviews } from "@/components/Home/Reviews/Reviews";
 import { UnitechArchitectural } from "@/components/Home/UnitechArchitectural/UnitechArchitectural";
 
