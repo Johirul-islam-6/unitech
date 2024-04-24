@@ -1,7 +1,7 @@
 "use client";
 import "./Banner.css";
-import image1 from "@/app/Assets/image/dow.jpg";
-import image2 from "@/app/Assets/image/img2.jpg";
+import image1 from "@/app/Assets/image/banner.webp";
+import image2 from "@/app/Assets/image/dow.jpg";
 import image3 from "@/app/Assets/image/img3.jpg";
 import image4 from "@/app/Assets/image/img4.jpg";
 import Image from "next/image";
