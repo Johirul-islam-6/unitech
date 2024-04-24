@@ -1,6 +1,6 @@
 "use client";
 import "./Banner.css";
-import image1 from "@/app/Assets/image/img1.jpg";
+import image1 from "@/app/Assets/image/dow.jpg";
 import image2 from "@/app/Assets/image/img2.jpg";
 import image3 from "@/app/Assets/image/img3.jpg";
 import image4 from "@/app/Assets/image/img4.jpg";
@@ -83,7 +83,13 @@ export const Banner = () => {
       <div class="slider">
         <div class="list">
           <div class="item">
-            <Image width={1200} height={800} src={image1} alt="" />
+            <Image
+              className="slide_image"
+              width={1200}
+              height={800}
+              src={image1}
+              alt=""
+            />
 
             <div class="slide_content">
               <div class="title">একটাই লক্ষ্য </div>
