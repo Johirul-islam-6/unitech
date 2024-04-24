@@ -1,0 +1,51 @@
+.banner {
+  background: linear-gradient(to right, #e3361320, #54b8ed51);
+  border-radius: 25px;
+}
+
+@media (max-width: 750px) {
+  .banner {
+    border-radius: 2px !important;
+  }
+}
+.apply-button {
+  width: 200px;
+  border-radius: 5px;
+  display: block;
+  text-decoration: none;
+  letter-spacing: 2px;
+  position: relative;
+  transition: all 0.35s;
+  background: #f0bd16;
+  font-weight: 600;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.9);
+}
+.apply-button:hover {
+  color: #fff !important;
+}
+
+.apply-button span {
+  position: relative;
+  z-index: 2;
+}
+
+.apply-button:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  border-radius: 5px;
+  background: #f6931e;
+  transition: all 0.35s;
+}
+
+.apply-button:hover {
+  color: #000000;
+}
+
+.apply-button:hover:after {
+  width: 100%;
+}

@@ -112,7 +112,7 @@ const SingelUsers = () => {
 
     try {
       const response = await axios.patch(
-        `http://localhost:8080/api/v1/users/roll/${singelUser?._id}`,
+        `https://unitech-server.vercel.app/api/v1/users/roll/${singelUser?._id}`,
         data
       );
       console.log("roll==>", response.data?.message);

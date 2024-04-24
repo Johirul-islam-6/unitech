@@ -6,7 +6,8 @@ import Link from "next/link";
 import axios from "axios";
 import Image from "next/image";
 import course1 from "@/app/Assets/All Courses Image/course1.jpg";
-import { FaUser } from "react-icons/fa";
+import { FaRegTrashAlt, FaUser } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 export const DashbordMain = () => {
   const [openCourseLink, setOpenCourse] = useState(false);
@@ -20,16 +21,17 @@ export const DashbordMain = () => {
   const [AcademicCourse, setAcademicCourse] = useState();
   const [SkillCourses, setSkillCourses] = useState();
 
+  const [reloades, setReload] = useState(false);
+
   useEffect(() => {
     // ------- academic courses--------
     async function fetchData() {
       try {
         const result = await axios.get(
-          `http://localhost:8080/api/v1/Academic-courses/?searchTerm=&page=1&limit=2&sort=createdAt&sortOrder=desc`
+          `https://unitech-server.vercel.app/api/v1/Academic-courses/?searchTerm=&page=1&limit=8&sort=createdAt&sortOrder=desc`
         );
 
         setAcademicCourse(result?.data?.data);
-
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -42,7 +44,7 @@ export const DashbordMain = () => {
     async function fetchData2() {
       try {
         const result = await axios.get(
-          `http://localhost:8080/api/v1/courses/?searchTerm=&page=1&limit=2&sort=createdAt&sortOrder=desc`
+          `https://unitech-server.vercel.app/api/v1/courses/?searchTerm=&page=1&limit=2&sort=createdAt&sortOrder=desc`
         );
 
         setSkillCourses(result?.data?.data);
@@ -54,9 +56,46 @@ export const DashbordMain = () => {
     }
 
     fetchData2();
-  }, [searchingValue]);
+  }, [reloades]);
 
-  console.log(SkillCourses, "all skill");
+  // ----------- delete courses book -------------
+
+  async function DeleteDeplomaCourses(id, name) {
+    try {
+      const response = await axios.delete(
+        `https://unitech-server.vercel.app/api/v1/Academic-courses/${id}`
+      );
+
+      if (response?.data?.success) {
+        Swal.fire({
+          title: ` item : ${name}`,
+          text: `Delete Complited`,
+          icon: "success",
+        });
+        setReload(true);
+      }
+    } catch (error) {
+      console.error("Error deleting book:", error);
+    }
+  }
+  async function DeleteSkillCourses(id, name) {
+    try {
+      const response = await axios.delete(
+        `https://unitech-server.vercel.app/api/v1/courses/${id}`
+      );
+
+      if (response?.data?.success) {
+        Swal.fire({
+          title: ` item : ${name}`,
+          text: `Delete Complited`,
+          icon: "success",
+        });
+        setReload(true);
+      }
+    } catch (error) {
+      console.error("Error deleting book:", error);
+    }
+  }
 
   return (
     <>
@@ -312,6 +351,8 @@ export const DashbordMain = () => {
               )}
             </div>
           </div>
+
+          {/* --------------------- diploma academic ------------ */}
           <div className="diploma_Academic mt-10">
             <h1 className="text-center text-[18px] font-[600] md:text-[28px] uppercase ">
               Diploma Academic Courses
@@ -326,11 +367,31 @@ export const DashbordMain = () => {
                     className="course-Card border-4 overflow-hidden bg-[#fff] rounded-md "
                   >
                     <div className="image relative">
-                      <div className="bg-[#0008] w-[100%] h-[100%] absolute rounded-t-md"></div>
+                      <div className="bg-[#0008] w-[100%] h-[100%] absolute rounded-t-md">
+                        <div className="flex justify-between w-[100%] items-center mt-[5px] px-[5px]">
+                          <p className="bg-[#fff] text-black rounded-full w-[16px] text-center text-[12px] font-[600]">
+                            {index + 1}
+                          </p>
+                          <div
+                            onClick={() =>
+                              DeleteDeplomaCourses(
+                                single?._id,
+                                single?.courseName
+                              )
+                            }
+                            class="group flex relative"
+                          >
+                            <span class=" px-2 py-1">
+                              <FaRegTrashAlt className="text-white hover:text-red-700 cursor-pointer" />
+                            </span>
+                            <span class="group-hover:opacity-100 transition-opacity bg-red-800 px-1 pb-[2px] text-sm text-gray-100 rounded-md absolute left-[-1px] -translate-x-1/2 translate-y-full opacity-0 m-4 mx-auto">
+                              delete
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                       <Image
-                        width={324}
-                        height={450}
-                        className="rounded-t-md d-image"
+                        className="rounded-t-md w-[100%] "
                         src={course1}
                         alt=""
                       />
@@ -372,11 +433,11 @@ export const DashbordMain = () => {
                           4 Months
                         </button>
                       </div>
-                      <div className="">
+                      <div className=" pt-3">
                         <div className="flex justify-between py-3 ">
                           <h1 className="font-[600] text-[22px]">
                             Tk.{" "}
-                            <span className="font-[800] text-[18px] md:text-[22px] lg:text-[22px] ps-1">
+                            <span className="font-[600] text-[18px] md:text-[22px] text-[#000000d8] ps-1">
                               {single?.coursePrice}
                             </span>
                           </h1>
@@ -416,9 +477,27 @@ export const DashbordMain = () => {
                   >
                     <div className="image relative">
                       <div className="bg-[#0008] w-[100%] h-[100%] absolute rounded-t-md">
-                        <p className="bg-[#fff] text-black rounded-full m-1 absolute px-2">
-                          {index + 1}
-                        </p>
+                        <div className="flex justify-between w-[100%] items-center mt-[5px] px-[5px]">
+                          <p className="bg-[#fff] text-black rounded-full w-[16px] text-center text-[12px] font-[600]">
+                            {index + 1}
+                          </p>
+                          <div
+                            onClick={() =>
+                              DeleteSkillCourses(
+                                single?._id,
+                                single?.courseName
+                              )
+                            }
+                            class="group flex relative"
+                          >
+                            <span class=" px-2 py-1">
+                              <FaRegTrashAlt className="text-white hover:text-red-700 cursor-pointer" />
+                            </span>
+                            <span class="group-hover:opacity-100 transition-opacity bg-red-800 px-1 pb-[2px] text-sm text-gray-100 rounded-md absolute left-[-1px] -translate-x-1/2 translate-y-full opacity-0 m-4 mx-auto">
+                              delete
+                            </span>
+                          </div>
+                        </div>
                       </div>
                       <Image
                         className="rounded-t-md d-image w-[100%]"

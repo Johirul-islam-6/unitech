@@ -53,7 +53,7 @@ export const CourseDetails = ({ singleUser }) => {
               </p>
               <div className="flex md:justify-start gap-5 justify-center mt-2">
                 <button className="SILIGURI px-6 py-4 bg-amber-600 hover:bg-amber-500 text-white text-[16px] font-[600] rounded-md">
-                  Admition Now
+                  Enroll Now
                 </button>
                 <button className="SILIGURI px-6 py-4 bg-[#080D2A] hover:bg-[#151b3f] text-white text-[16px] font-[600] rounded-md">
                   Join Free Class

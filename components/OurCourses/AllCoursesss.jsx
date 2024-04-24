@@ -1,5 +1,6 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import course1 from "@/app/Assets/All Courses Image/course1.jpg";
 import "./CourseCard.css";
 import Link from "next/link";
@@ -127,8 +128,8 @@ export const AllCoursesss = () => {
               </div>
             </div>
             <div className="mt-3">
-              <Link href={`/DetailsCourse/1`}>
-                <button className="flex w-[100%] rounded-lg px-2 py-[10px] text-[14px] md:text-[18px] text-center justify-center font-[600] text-[#161616dd] bg-[#F89521]">
+              <Link href={`/DetailsCourse/2`}>
+                <button className="flex w-[100%] rounded-lg px-2 py-[10px] text-[14px] md:text-[17px] text-center justify-center font-[600] text-[#161616dd] bg-[#F89521]">
                   Details Course
                 </button>
               </Link>

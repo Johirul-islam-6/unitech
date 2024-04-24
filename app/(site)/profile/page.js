@@ -60,9 +60,14 @@ const Profile = () => {
   }, [refreshbook, accessToken, cookiesInfo?.email, navigate]);
 
   const logout = () => {
+    setrefresh(true);
     Cookies.remove("CookieYouserData");
     Cookies.remove("accessToken");
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+      navigate.push("/");
+      setrefresh(false);
+    }, 1000);
   };
 
   const closeModal = (e) => {
@@ -118,8 +123,6 @@ const Profile = () => {
   const formattedDate = `${padZero(today.getDate())}/${padZero(
     today.getMonth() + 1
   )}/${today.getFullYear()}`;
-
-  console.log(cookiesInfo?.ruler);
 
   return (
     <>
@@ -280,10 +283,19 @@ const Profile = () => {
                         </Link>
                       </>
                     )}
+                    {cookiesInfo?.ruler === "student" && (
+                      <>
+                        <Link href={`/dashboard`}>
+                          <button className="px-5 py-[10px] rounded-md  text-[14px] font-[500] hover:bg-[#272727] bg-[#000] text-white">
+                            Student profile
+                          </button>
+                        </Link>
+                      </>
+                    )}
 
                     <button
                       onClick={logout}
-                      className="px-5 py-[8px]  text-[14px] rounded-md  font-[500] hover:bg-[#da2020] bg-[#ae1919] text-white"
+                      className="px-5 py-[8px]  text-[14px] rounded-md font-[500] hover:bg-[#da2020] bg-[#ae1919] text-white logout"
                     >
                       logout
                     </button>
@@ -309,7 +321,7 @@ const Profile = () => {
             <div class="md:px-4 md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 space-y-4 md:space-y-0">
               <div class="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
                 <h3 class="mb-3 text-xl font-bold text-indigo-600">
-                  Beginner Friendly
+                  Diploma Engineer
                 </h3>
                 <div class="relative">
                   <img
@@ -318,11 +330,11 @@ const Profile = () => {
                     alt="Colors"
                   />
                   <p class="absolute top-0 bg-yellow-300 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
-                    FREE
+                    6th months
                   </p>
                 </div>
                 <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">
-                  Javascript Bootcamp for Absolute Beginners
+                  5th Semester Academic Courses.
                 </h1>
                 <div class="my-4">
                   <div class="flex space-x-1 items-center">
@@ -383,13 +395,13 @@ const Profile = () => {
                     <p>Vanilla JS</p>
                   </div>
                   <button class="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">
-                    Buy Lesson
+                    See Lesson
                   </button>
                 </div>
               </div>
               <div class="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
                 <h3 class="mb-3 text-xl font-bold text-indigo-600">
-                  Intermediate
+                  Web Development
                 </h3>
                 <div class="relative">
                   <img
@@ -398,14 +410,14 @@ const Profile = () => {
                     alt="Colors"
                   />
                   <p class="absolute top-0 bg-yellow-300 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
-                    $12
+                    4th Months
                   </p>
-                  <p class="absolute top-0 right-0 bg-yellow-300 text-gray-800 font-semibold py-1 px-3 rounded-tr-lg rounded-bl-lg">
+                  {/* <p class="absolute top-0 right-0 bg-yellow-300 text-gray-800 font-semibold py-1 px-3 rounded-tr-lg rounded-bl-lg">
                     %20 Discount
-                  </p>
+                  </p> */}
                 </div>
                 <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">
-                  Write a Gatsby plugin using Typescript
+                  Front-End Web Designer
                 </h1>
                 <div class="my-4">
                   <div class="flex space-x-1 items-center">
@@ -466,13 +478,13 @@ const Profile = () => {
                     <p>TypeScript</p>
                   </div>
                   <button class="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">
-                    Start Watching Now
+                    See Lesson
                   </button>
                 </div>
               </div>
               <div class="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
                 <h3 class="mb-3 text-xl font-bold text-indigo-600">
-                  Beginner Friendly
+                  Graphic Designer
                 </h3>
                 <div class="relative">
                   <img
@@ -481,11 +493,11 @@ const Profile = () => {
                     alt="Colors"
                   />
                   <p class="absolute top-0 bg-yellow-300 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
-                    $50
+                    6th Months
                   </p>
                 </div>
                 <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">
-                  Advanced React Native for Sustainability
+                  Professional Graphic Designer
                 </h1>
                 <div class="my-4">
                   <div class="flex space-x-1 items-center">
@@ -546,7 +558,7 @@ const Profile = () => {
                     <p>Vanilla JS</p>
                   </div>
                   <button class="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">
-                    Buy Lesson
+                    See Lesson
                   </button>
                 </div>
               </div>

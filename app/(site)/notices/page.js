@@ -1,6 +1,14 @@
 import Notics from "@/components/Notics/Notics";
+import Head from "next/head";
 import React from "react";
-import "../../globals.css";
+
+export const metadata = {
+  title: "Unitech Notic Board",
+  description: "this is unitech Banaladesh Student Notic Board.",
+  openGraph: {
+    images: [],
+  },
+};
 
 const notices = () => {
   return (

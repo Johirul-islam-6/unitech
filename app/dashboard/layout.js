@@ -7,12 +7,17 @@ import Link from "next/link";
 import Cookies from "js-cookie";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import { useRouter } from "next/navigation";
 export default function RootLayout({ children }) {
+  const route = useRouter();
   const [Loading, setLoading] = useState(true);
   const accessToken = Cookies.get("accessToken");
   const [userInfo, setUserInfo] = useState("");
 
   useEffect(() => {
+    if (!accessToken) {
+      route.push("/login");
+    }
     if (accessToken) {
       const getCookiesData = Cookies.get("CookieYouserData");
       const cookiesInfo = JSON.parse(getCookiesData);
@@ -20,6 +25,8 @@ export default function RootLayout({ children }) {
     }
     setLoading(false);
   }, [accessToken]);
+
+  console.log("dahs==>", userInfo);
 
   return (
     <html lang="en">

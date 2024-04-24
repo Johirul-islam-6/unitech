@@ -175,7 +175,7 @@ const SkillBaseCourse = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/v1/courses/create",
+        "https://unitech-server.vercel.app/api/v1/courses/create",
         courseInfoData,
         {
           maxContentLength: 10000000000,

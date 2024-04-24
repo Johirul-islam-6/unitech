@@ -406,7 +406,7 @@ const Registration = () => {
                 >
                   Current address*
                 </label>
-                <input
+                {/* <input
                   defaultValue={Ipaddress}
                   disabled
                   id="address"
@@ -414,7 +414,26 @@ const Registration = () => {
                   type="text"
                   class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm placeholder:font-normal text-[15px]"
                   placeholder="technical More, Mymensingh"
-                />
+                /> */}
+                {add === "" ? (
+                  <input
+                    id="address"
+                    name="address"
+                    type="text"
+                    class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm placeholder:font-normal text-[15px]"
+                    placeholder="technical More, Mymensingh"
+                  />
+                ) : (
+                  <input
+                    defaultValue={Ipaddress}
+                    disabled
+                    id="address"
+                    name="address"
+                    type="text"
+                    class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm placeholder:font-normal text-[15px]"
+                    placeholder="technical More, Mymensingh"
+                  />
+                )}
               </div>
 
               <div>

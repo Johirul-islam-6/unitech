@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import "./Image.css";
-import "@/app/globals.css";
 import course1 from "@/app/Assets/স্পেশাল Courses/course1.jpg";
 import Image from "next/image";
 import Link from "next/link";

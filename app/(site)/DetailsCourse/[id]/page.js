@@ -15,7 +15,7 @@ const DetailsCourse = () => {
     async function fetchData() {
       try {
         const result = await axios.get(
-          `http://localhost:8080/api/v1/courses/${id}`
+          `https://unitech-server.vercel.app/api/v1/courses/${id}`
         );
 
         setSingelUser(result?.data?.data);
