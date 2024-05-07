@@ -101,14 +101,14 @@ export const AchieveCourses = () => {
 
       <div className="grid justify-center grid-cols-1 md:grid-cols-2  gap-8  mt-20">
         {/* ----------coding card-------- */}
-        <div class=" border-2 card-box rounded-lg p-5">
-          <div class="">
-            <h1 class="text-center coding-title SILIGURI">
+        <div className=" border-2 card-box rounded-lg p-5">
+          <div className="">
+            <h1 className="text-center coding-title SILIGURI">
               আপনার শুরুটা হোক <br className="hidden md:flex" />
               গাইডলাইনের সঠিক <br className="hidden md:flex" />
               মাধ্যমে!
             </h1>
-            <p class="text-center sub-title SILIGURI pt-5 ">
+            <p className="text-center sub-title SILIGURI pt-5 ">
               আমাদের প্রতিষ্ঠানের একটাই লক্ষ্য শিক্ষার্থীদের হতে হবে দক্ষ, তাই
               লক্ষ্য হোক দক্ষ হওয়া।
             </p>
@@ -120,7 +120,7 @@ export const AchieveCourses = () => {
             </div>
           </div>
           <Image
-            className="object-cover border-2 rounded-lg p-2 coding-image"
+            className="object-fill border-2 rounded-lg p-2 coding-image"
             width={1200}
             height={400}
             src={coding}
@@ -128,14 +128,14 @@ export const AchieveCourses = () => {
           />
         </div>
         {/* ----------Skill card-------- */}
-        <div class=" border-2 card-box rounded-lg p-5">
-          <div class="">
-            <h1 class="text-center   coding-title SILIGURI">
+        <div className=" border-2 card-box rounded-lg p-5">
+          <div className="">
+            <h1 className="text-center   coding-title SILIGURI">
               প্রযুক্তির যুগে নিজেকে <br className="hidden md:flex" /> এগিয়ে
               রাখতে স্কিল <br className="hidden md:flex" />
               তৈরি করুন
             </h1>
-            <p class="text-center sub-title SILIGURI pt-5 ">
+            <p className="text-center sub-title SILIGURI pt-5 ">
               ইউনিক এক্সপার্ট টিম এর সাথে নিজে দক্ষ করে গড়ে তুলুন। একটাই লক্ষ্য
               হতে হবে দক্ষ।
             </p>
@@ -147,7 +147,7 @@ export const AchieveCourses = () => {
             </div>
           </div>
           <Image
-            className="object-cover border-2 rounded-lg p-2 coding-image"
+            className="object-fill border-2 rounded-lg p-2 coding-image"
             width={1200}
             height={400}
             src={skill}

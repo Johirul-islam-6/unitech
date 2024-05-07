@@ -130,7 +130,7 @@ export const Navbar = () => {
                       href="/profile"
                     >
                       <span className="flex items-center justify-center uppercase gap-1">
-                        <div class="">
+                        <div className="">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             height="20"

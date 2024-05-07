@@ -1,157 +1,401 @@
-import React from "react";
+"use client";
+import Image from "next/image";
 import "./CourseDetails.css";
-export const CourseDetails = ({ singleUser }) => {
+import teacherProfile from "@/app/Assets/skill_courses_details/teacher.png";
+import { Video } from "./Video";
+import Link from "next/link";
+
+import icon1 from "@/app/Assets/skill_courses_details/courseIcon/1.png";
+import icon2 from "@/app/Assets/skill_courses_details/courseIcon/2.png";
+import icon3 from "@/app/Assets/skill_courses_details/courseIcon/3.png";
+import icon4 from "@/app/Assets/skill_courses_details/courseIcon/4.png";
+import icon5 from "@/app/Assets/skill_courses_details/courseIcon/5.png";
+import icon6 from "@/app/Assets/skill_courses_details/courseIcon/6.png";
+import icon7 from "@/app/Assets/skill_courses_details/courseIcon/7.png";
+
+export const CourseDetails = ({ singleCourses }) => {
+  const courseInformation = [
+    {
+      module: "১",
+      moduleNumber: "ক্লাস",
+      moduleTitle: "Setup Function",
+    },
+    {
+      module: "২",
+      moduleNumber: "ক্লাস",
+      moduleTitle: "Structural draft",
+    },
+    {
+      module: "৩",
+      moduleNumber: "ক্লাস",
+      moduleTitle: "Footing And Column Section ",
+    },
+    {
+      module: "৪",
+      moduleNumber: "ক্লাস",
+      moduleTitle: "Basic Drawing & Editing Commands (Draw Toolbar)",
+    },
+    {
+      module: "৫",
+      moduleNumber: "ক্লাস",
+      moduleTitle: "Footing & Column Schedule",
+    },
+    {
+      module: "৬",
+      moduleNumber: "ক্লাস",
+      moduleTitle: " Basic Drawing & Editing Commands (Draw Toolbar)",
+    },
+    {
+      module: " ৭",
+      moduleNumber: "ক্লাস",
+      moduleTitle: "Beam Section Details",
+    },
+    {
+      module: "৮",
+      moduleNumber: "ক্লাস",
+      moduleTitle: "Basic Drawing & Editing Commands (Dimension Toolbar) ",
+    },
+    {
+      module: "৯",
+      moduleNumber: "ক্লাস",
+      moduleTitle: "Stair Reinforcement Details",
+    },
+    {
+      module: "১০",
+      moduleNumber: "ক্লাস",
+      moduleTitle: "Basic Drawing & Editing Commands (Modify toolbar)",
+    },
+    {
+      module: "১১",
+      moduleNumber: "ক্লাস",
+      moduleTitle: "Slab Reinforcement details",
+    },
+    {
+      module: "১২",
+      moduleNumber: "ক্লাস",
+      moduleTitle: "Basic Drawing & Editing Commands",
+    },
+    {
+      module: "১৩",
+      moduleNumber: "ক্লাস",
+      moduleTitle: "Septic Tank Design",
+    },
+    {
+      module: " ১৪",
+      moduleNumber: "ক্লাস",
+      moduleTitle: "Rajuk/ Powrosova Rules (Theory)",
+    },
+    {
+      module: "১৫",
+      moduleNumber: "ক্লাস",
+      moduleTitle: "Electrical",
+    },
+    {
+      module: "১৬",
+      moduleNumber: "ক্লাস",
+      moduleTitle: " Floor plan",
+    },
+    {
+      module: "১৭",
+      moduleNumber: "ক্লাস",
+      moduleTitle: "Dhaka Project",
+    },
+    {
+      module: "১৮",
+      moduleNumber: "ক্লাস",
+      moduleTitle: "Elevation",
+    },
+    {
+      module: "১৯",
+      moduleNumber: "ক্লাস",
+      moduleTitle: "Dhaka Project",
+    },
+    {
+      module: "২০",
+      moduleNumber: "ক্লাস",
+      moduleTitle: " Cross Section",
+    },
+    {
+      module: "২১",
+      moduleNumber: "ক্লাস",
+      moduleTitle: " Cross Section",
+    },
+    {
+      module: "২২",
+      moduleNumber: "ক্লাস",
+      moduleTitle: " Cross Section",
+    },
+    {
+      module: "২৩",
+      moduleNumber: "ক্লাস",
+      moduleTitle: " Structural Part",
+    },
+    {
+      module: "২৪",
+      moduleNumber: "ক্লাস",
+      moduleTitle: " Layout & Scal",
+    },
+  ];
+
   return (
     <>
       <div className="d">
-        <div className="flex flex-col-reverse md:grid grid-cols-2 gap-5 md:gap-x-20 justify-center  md:h-[60vh] ">
-          <div className="container-text">
-            <div className="banner-informaton">
-              <h1 className="text-[20px] md:text-[30px] font-bold md:text-start text-center SILIGURI">
-                {singleUser?.courseName}
+        <div className="mt-1 pt-4 bg-[#FAF9FD] max-w-screen-xl mx-auto flex flex-col-reverse md:grid grid-cols-2 gap-5 md:gap-x-2 justify-between  ">
+          {/* -------------Col-1 course Details-------- */}
+          <div className="container-text ">
+            <div className="banner-informaton p-5 ">
+              <h1 className="text-[20px] md:text-[30px] font-bold md:text-start text-center SILIGURI text-[#FE941E]">
+                {singleCourses?.CName}
               </h1>
               <div className="flex gap-5 flex-wrap md:justify-start justify-center mt-5">
                 <div className="border-2 px-5 py-3 rounded-lg">
                   <p className="text-[14px] text-center text-slate-500">
-                    Duration
+                    কোর্সের মেয়াদ
                   </p>
-                  <h1 className="text-[18px] text-center font-bold text-slate-800">
+                  <h1 className="text-[14px] text-center font-bold text-slate-800">
                     {" "}
-                    {singleUser?.courseDuration} Months
+                    {singleCourses?.CDuration}
                   </h1>
                 </div>
                 <div className="border-2 px-5 py-3 rounded-lg">
                   <p className="text-[14px] text-center text-slate-500">
-                    Total Class
+                    মোট ক্লাস
                   </p>
-                  <h1 className="text-[18px] text-center font-bold text-slate-800">
+                  <h1 className="text-[14px] text-center font-bold text-slate-800">
                     {" "}
-                    {singleUser?.totalClass}
+                    {singleCourses?.CTotalClass}
                   </h1>
                 </div>
                 <div className="border-2 px-5 py-3 rounded-lg">
                   <p className="text-[14px] text-center text-slate-500">
-                    Assignment
+                    অ্যাসাইনমেন্ট
                   </p>
-                  <h1 className="text-[18px] text-center font-bold text-slate-800">
+                  <h1 className="text-[14px] text-center font-bold text-slate-800">
                     {" "}
-                    {singleUser?.totalAssignment}
+                    {singleCourses?.CTotalAssignment?.slice(0, 5)}
                   </h1>
                 </div>
                 <div className="border-2 px-5 py-3 rounded-lg">
                   <p className="text-[14px] text-center text-slate-500">
-                    Projects
+                    প্রজেক্ট
                   </p>
-                  <h1 className="text-[18px] text-center font-bold text-slate-800">
+                  <h1 className="text-[14px] text-center font-bold text-slate-800">
                     {" "}
-                    {singleUser?.totalProject}
+                    {singleCourses?.CProfessionalProject?.slice(0, 4)}
                   </h1>
                 </div>
               </div>
-              <p className="py-5  text-justify text-[18px] font-[400] SILIGURI">
-                {singleUser?.courseDescription}
+              <p className="py-5 text-justify text-[17px] font-[400] SILIGURI">
+                {singleCourses?.CDescription}
               </p>
-              <div className="flex md:justify-start gap-5 justify-center mt-2">
-                <button className="SILIGURI px-6 py-4 bg-amber-600 hover:bg-amber-500 text-white text-[16px] font-[600] rounded-md">
-                  Enroll Now
+              <div className="flex md:justify-start gap-5 justify-center ">
+                <button className="SILIGURI px-6 py-4 bg-amber-600 hover:bg-amber-500 text-white text-[12px] md:text-[14px] font-[600] rounded-md">
+                  এনরোল করুন
                 </button>
-                <button className="SILIGURI px-6 py-4 bg-[#080D2A] hover:bg-[#151b3f] text-white text-[16px] font-[600] rounded-md">
-                  Join Free Class
+                <button className="SILIGURI px-6 py-4 bg-[#080D2A] hover:bg-[#151b3f] text-white text-[12px] md:text-[14px] font-[600] rounded-md">
+                  ফ্রি ক্লাস জয়েন করুন
                 </button>
               </div>
             </div>
-          </div>
-          <div className="container-video mx-auto flex justify-center w-[100%] md:h-[60dvh]">
-            <iframe
-              width="625"
-              className="rounded-[20px] md:flex hidden"
-              height="412"
-              src="https://www.youtube.com/embed/C72WkcUZvco?si=dTpdbvUlT_1ZKe2l"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
-            <iframe
-              width="425"
-              className="rounded-[20px] md:hidden"
-              height="300"
-              src="https://www.youtube.com/embed/C72WkcUZvco?si=dTpdbvUlT_1ZKe2l"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
-          </div>
-        </div>
-        {/* ---------------- sedule courses ---------------- */}
-        <div className="Course-Curriculum mt-20">
-          <h1 className="text-[30px] font-bold py-5 flex gap-1 items-center">
-            {" "}
-            <span className="">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="30"
-                width="30"
-                viewBox="0 0 448 512"
-              >
-                <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
-              </svg>
-            </span>{" "}
-            Course Curriculum
-          </h1>
-          <div class="flex md:justify-start justify-center items-center  ">
-            {/* <!-- Component Start --> */}
-            <div class="flex flex-col w-full">
-              {singleUser?.allClass?.map((moduleObj, index) => (
-                <button
-                  key={index}
-                  className="group border-t border-r border-l border-slate-300 focus:outline-none"
-                >
-                  <div className="flex items-center justify-between h-14 px-3 font-semibold hover:bg-gray-200">
-                    <p className="truncate">
-                      <span className="text-[#000] font-[800]">
-                        Module {index + 1} :{" "}
-                      </span>{" "}
-                      <span>{moduleObj[`module${index + 1}`]}</span>
+            {/* ----------- teacher list ------- */}
+            <div className="course-teacher p-5">
+              <h1 className="text-[30px] font-[600] text-[#1F1F1F] pt-5">
+                কোর্স ইন্সট্রাক্টর
+              </h1>
+
+              <div className="teacher-container flex flex-col gap-y-2 mt-5">
+                <div className="teacher-box md:w-[450px] flex p-3 md:p-4 items-center gap-5 bg-[#fff] rounded-lg border-2">
+                  <Image width={50} height={50} src={teacherProfile} alt="" />
+                  <div className="teacher-content">
+                    <p className="text-[16px] font-bold text-[#000000e0]">
+                      {singleCourses?.CTeacher1Name}
                     </p>
-                    <svg
-                      className="h-4 w-4"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                    <p className="text-[12px] font-bold text-[#e37a02]">
+                      {singleCourses?.CTeacher1Post}
+                    </p>
+                    <p className="text-[14px] font-bold text-[#00000084]">
+                      {singleCourses?.CTeacher1Title}
+                    </p>
                   </div>
-                  <div className="max-h-0 overflow-hidden duration-300 group-focus:max-h-40">
-                    {/* Render class details for each module */}
-                    {Object.keys(moduleObj).map((key) => {
-                      if (key.startsWith("moduleP")) {
-                        const classKey = key.replace("moduleP", "");
-                        return (
-                          <a
-                            key={key}
-                            className="flex items-center h-8 px-4 text-[16px] pt-1 pb-3 hover:bg-gray-200"
-                            href="#"
-                          >
-                            {moduleObj[key]}
-                          </a>
-                        );
-                      }
-                      return null;
-                    })}
+                </div>
+                {/* ----teacher-2 */}
+                <div className="teacher-box md:w-[450px] flex p-3 md:p-4 items-center gap-5 bg-[#fff] rounded-lg border-2">
+                  <Image width={50} height={50} src={teacherProfile} alt="" />
+                  <div className="teacher-content">
+                    <p className="text-[16px] font-bold text-[#000000e0]">
+                      {singleCourses?.CTeacher2Name}
+                    </p>
+                    <p className="text-[12px] font-bold text-[#e37a02]">
+                      {singleCourses?.CTeacher2Post}
+                    </p>
+                    <p className="text-[14px] font-bold text-[#00000084]">
+                      {singleCourses?.CTeacher2Title}
+                    </p>
                   </div>
-                </button>
-              ))}
+                </div>
+              </div>
             </div>
-            {/* <!-- Component End  --> */}
+
+            {/* -----------  কোর্স ওভারভিউ ------- */}
+            <div className="course-teacher p-5">
+              <h1 className="text-[30px] font-[600] text-[#1F1F1F] ">
+                কোর্স ওভারভিউ
+              </h1>
+              <p className="py-3 text-justify text-[16px] font-[400] SILIGURI">
+                {singleCourses?.COverview}
+              </p>
+            </div>
+          </div>
+
+          {/* -------------- Col-2 Video container  ---------- */}
+          <div className="video-card   ">
+            <div className="md:w-[500px] mx-auto p-4 border-2">
+              <Video singleCourses={singleCourses} />
+              <h1 className="text-[26px] font-[900] text-[#1F1F1F] text-center md:text-start">
+                ৳{singleCourses?.CPrice}
+              </h1>
+              <h1 className="pt-1 text-[18px] font-[600] text-[#1f1f1fb0] text-center md:text-start">
+                {singleCourses?.CName}
+              </h1>
+              <Link href={""}>
+                <button className="flex rounded-[5px] justify-center text-[16px] mt-5 font-bold items-center text-white bg-[#FE941E] w-[100%] h-[55px]">
+                  কোর্সটি কিনুন
+                </button>
+              </Link>
+              <div className="mt-5 ms-2">
+                <h1 className="text-[22px] font-[900] text-[#353535] text-start">
+                  এই কোর্সে যা থাকছে
+                </h1>
+                <div className="flex gap-2 items-center mt-1">
+                  <Image className="w-[25px] h-[35px]" src={icon1} alt="" />
+                  <p className="font-[500] text-[#353535] text-[14px]">
+                    কোর্সটি করছেন ৩৪২ জন
+                  </p>
+                </div>
+                <div className="flex gap-2 items-center mt-1">
+                  <Image className="w-[23px] h-[22px]" src={icon2} alt="" />
+                  <p className="font-[500] text-[#353535] text-[14px]">
+                    {singleCourses?.CTotalHours}
+                  </p>
+                </div>
+                <div className="flex gap-2 items-center mt-1">
+                  <Image
+                    className="w-[25px] h-[25px] mt-1"
+                    src={icon3}
+                    alt=""
+                  />
+                  <p className="font-[500] text-[#353535] text-[14px]">
+                    {singleCourses?.CTotalVideo}
+                  </p>
+                </div>
+                <div className="flex gap-2 items-center mt-2">
+                  <Image className="w-[25px] h-[25px] " src={icon4} alt="" />
+                  <p className="font-[500] text-[#353535] text-[14px]">
+                    {singleCourses?.CTotalAssignment}
+                  </p>
+                </div>
+                <div className="flex gap-2 items-center mt-2">
+                  <Image className="w-[25px] h-[25px]" src={icon5} alt="" />
+                  <p className="font-[500] text-[#353535] text-[14px]">
+                    {singleCourses?.CResourcesFolder}
+                  </p>
+                </div>
+                <div className="flex gap-2 items-center mt-1">
+                  <Image className="w-[30px] h-[30px]" src={icon6} alt="" />
+                  <p className="font-[500] text-[#353535] text-[14px]">
+                    {" "}
+                    ফেসবুক সাপোর্ট গ্রুপ
+                  </p>
+                </div>
+                <div className="flex gap-2 items-center mt-1">
+                  <Image
+                    className="w-[22px] h-[32px] ms-1"
+                    src={icon7}
+                    alt=""
+                  />
+                  <p className="font-[500] text-[#353535] text-[14px]">
+                    {singleCourses?.CProfessionalProject}
+                  </p>
+                </div>
+                <div className="flex gap-2  mt-1 pb-2">
+                  <span className=""></span>
+                  <Link href={""} className="font-[500] text-[#FE941E]">
+                    More..
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+
+        {/* ---------------- Course OverView ---------- */}
+        <div className="course-over-view mt-10 max-w-screen-xl mx-auto ">
+          <h1 className="text-[30px] font-[600] text-[#1F1F1F]  text-center">
+            কোর্স ওভারভিউ
+          </h1>
+          <div className="mt-5 course-box grid-cols-1 md:grid-cols-2 grid gap-5 border-2 p-5 rounded-lg">
+            {/* {courseInformation?.map((item, index) => (
+              <>
+                <div className="flex bg-[#FAF9FD] rounded-md gap-5 items-center module border-[1px] p-2 text-[#353535] text-[18px] font-[600]">
+                  <div className=" w-[65px] h-[62px]  text-[14px] py-1 text-white bg-[#FE941E] rounded-[12px] font-[900] flex flex-col items-center justify-cente border-2">
+                    <span className="text-[20px] ">{item?.module}</span>{" "}
+                    {item?.moduleNumber}
+                  </div>
+                  <p>{item?.moduleTitle} </p>
+                </div>
+              </>
+            ))} */}
+            {singleCourses?.allClass?.map((moduleObj, index) => (
+              <button
+                key={index}
+                className="group py-2 px-2 border-t border-r border-l border-b border-slate-300 focus:outline-none bg-[#faf9fd]"
+              >
+                {/* // this is Modulte title text field */}
+                <div className="flex  items-center justify-between h-14 font-semibold bg-[#FAF9FD]">
+                  <div className="flex h-[100%] items-center gap-2">
+                    <p className="truncate rounded-md text-center justify-center font-[800] text-white bg-[#FE941E] w-[75px] h-[100%] flex flex-col items-center">
+                      <span className="">মডিউল</span>{" "}
+                      <span className="">{index + 1}</span>{" "}
+                    </p>
+                    <span className="">{moduleObj[`module${index + 1}`]}</span>
+                  </div>
+                  <svg
+                    className="h-4 w-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+                {/* this is group open field */}
+                <div className="max-h-0  overflow-hidden duration-300 group-focus:max-h-[100vh]">
+                  {Object.keys(moduleObj).map((key) => {
+                    if (key.startsWith("moduleP")) {
+                      const classKey = key.replace("moduleP", "");
+                      return (
+                        <a
+                          key={key}
+                          className="flex items-center text-start cursor-text justify-start border-t-2 pt-2 mt-1 h-[auto] px-4 text-[16px]  pb-3 hover:bg-gray-200"
+                          href="#"
+                        >
+                          {moduleObj[key]}
+                        </a>
+                      );
+                    }
+                    return null;
+                  })}
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* ---------------- sedule courses ---------------- */}
       </div>
     </>
   );

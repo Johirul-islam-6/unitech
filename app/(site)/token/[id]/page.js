@@ -65,9 +65,9 @@ const TokenPage = () => {
 
   return (
     <div className=" h-[100vh] flex justify-center  bg-[#fff]">
-      <section class="w-full  md:w-[35%] h-[400px] mx-5 px-5  md:mx-auto rounded-md shadow-md bg-[#f6f5f7b3] mt-20">
+      <section className="w-full  md:w-[35%] h-[400px] mx-5 px-5  md:mx-auto rounded-md shadow-md bg-[#f6f5f7b3] mt-20">
         <form onSubmit={resetPassword}>
-          <div class="text-center pt-8 flex flex-col justify-center items-center">
+          <div className="text-center pt-8 flex flex-col justify-center items-center">
             <Image
               className="border-2 rounded-full"
               width={80}
@@ -75,14 +75,14 @@ const TokenPage = () => {
               src={logo}
               alt=""
             />
-            {/* <h2 class=" text-[18px] md:text-2xl font-bold text-[#3B82F6] GT ">
+            {/* <h2 className=" text-[18px] md:text-2xl font-bold text-[#3B82F6] GT ">
               Reset user Password
             </h2> */}
             <div className="w-[80px] h-[3px] bg-[#563A9F] mx-auto mt-2"></div>
           </div>
-          <div class="grid grid-cols-1 gap-x-6 gap-y-4 mt-8 sm:grid-cols-1 md:px-10 ">
+          <div className="grid grid-cols-1 gap-x-6 gap-y-4 mt-8 sm:grid-cols-1 md:px-10 ">
             <div className="password_2 block  relative">
-              <label class="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN">
+              <label className="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN">
                 New Password*
               </label>
               <div className="eye_div">
@@ -97,10 +97,10 @@ const TokenPage = () => {
             </div>
           </div>
 
-          <div class="flex justify-center mt-2">
+          <div className="flex justify-center mt-2">
             <button
               type="submit"
-              class={`my-5 px-12 flex justify-center bg-[#3B82F6] text-gray-100 py-3  rounded-md tracking-wide
+              className={`my-5 px-12 flex justify-center bg-[#3B82F6] text-gray-100 py-3  rounded-md tracking-wide
                  font-semibold  focus:outline-none focus:shadow-outline hover:bg-[#307fff] shadow-lg cursor-pointer transition ease-in duration-300 ${
                    buttonHidden ? "disabled-button" : ""
                  }`}
@@ -111,7 +111,7 @@ const TokenPage = () => {
                     width="20"
                     height="20"
                     fill="currentColor"
-                    class="mr-2 animate-spin"
+                    className="mr-2 animate-spin"
                     viewBox="0 0 1792 1792"
                     xmlns="http://www.w3.org/2000/svg"
                   >

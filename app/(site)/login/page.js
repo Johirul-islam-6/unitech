@@ -120,9 +120,9 @@ const Login = () => {
   return (
     <>
       <div className="bg-[#F6F5F7] border-2 pb-10">
-        <section class="max-w-2xl md:w-[35%] px-5 pt-7 mx-auto rounded-md shadow-md bg-[#FFFFFF] mt-3">
+        <section className="max-w-2xl md:w-[35%] px-5 pt-7 mx-auto rounded-md shadow-md bg-[#FFFFFF] mt-3">
           <form onSubmit={HandleSubmite}>
-            <div class="text-center flex justify-center flex-col">
+            <div className="text-center flex justify-center flex-col">
               {/* <div className="flex justify-center">
                 <Image
                   width={70}
@@ -132,15 +132,15 @@ const Login = () => {
                   alt=""
                 />
               </div> */}
-              <h2 class=" text-[30px] md:text-4xl font-bold text-[#563A9F] GT ">
+              <h2 className=" text-[30px] md:text-4xl font-bold text-[#563A9F] GT ">
                 Login
               </h2>
               <div className="w-[80px] h-[3px] bg-[#563A9F] mx-auto mt-2"></div>
             </div>
-            <div class="grid grid-cols-1 gap-x-6 gap-y-4 mt-8 sm:grid-cols-1 md:px-10 ">
+            <div className="grid grid-cols-1 gap-x-6 gap-y-4 mt-8 sm:grid-cols-1 md:px-10 ">
               <div>
                 <label
-                  class="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
+                  className="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
                   for="emailAddress"
                 >
                   Email Address*
@@ -151,14 +151,14 @@ const Login = () => {
                   name="email"
                   type="email"
                   placeholder="Enter Your valid Email"
-                  class={`input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN  placeholder:font-normal text-[16px] rounded-sm ${
+                  className={`input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN  placeholder:font-normal text-[16px] rounded-sm ${
                     inputError ? "border-red-400 border-2" : ""
                   }`}
                 />
               </div>
 
               <div className="password_2 block  relative">
-                <label class="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN">
+                <label className="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN">
                   Password*
                 </label>
                 <div className="eye_div">
@@ -219,8 +219,8 @@ const Login = () => {
                 </p>
               </div>
 
-              <div class="">
-                <h2 class="mt-4 text-[14px]  text-[#000] ">
+              <div className="">
+                <h2 className="mt-4 text-[14px]  text-[#000] ">
                   I agree all
                   <span className="text-[#BF1F49] px-1 underline ms-1 cursor-pointer">
                     Privacy & rull
@@ -234,10 +234,10 @@ const Login = () => {
               </div>
             </div>
 
-            <div class="flex justify-center mt-2">
+            <div className="flex justify-center mt-2">
               <button
                 type="submit"
-                class={`my-5 px-12 flex justify-center hover:bg-[#cb7a17] bg-[#e0871b] text-gray-100 py-3  rounded-md tracking-wide
+                className={`my-5 px-12 flex justify-center hover:bg-[#cb7a17] bg-[#e0871b] text-gray-100 py-3  rounded-md tracking-wide
                  font-semibold  focus:outline-none focus:shadow-outline  shadow-lg cursor-pointer transition ease-in duration-300 ${
                    buttonHidden ? "disabled-button" : ""
                  }`}
@@ -248,7 +248,7 @@ const Login = () => {
                       width="20"
                       height="20"
                       fill="currentColor"
-                      class="mr-2 animate-spin"
+                      className="mr-2 animate-spin"
                       viewBox="0 0 1792 1792"
                       xmlns="http://www.w3.org/2000/svg"
                     >

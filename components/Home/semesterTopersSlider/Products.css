@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.swiper-wrapper {
+  -webkit-transition-timing-function: linear !important;
+  -o-transition-timing-function: linear !important;
+  transition-timing-function: linear !important;
+}
+
+.explore_text_color {
+  background: linear-gradient(90deg, #bababa 0%, #fafafa 53.13%, #bababa 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.top-student-box-shadow {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.toper-box {
+  height: 280px !important;
+  width: 100% !important;
+}
+
+@media (max-width: 540px) {
+  .product_image {
+    width: 65px;
+    height: 61px;
+  }
+}
+@media (max-width: 400px) {
+  .product_image {
+    width: 55px;
+    height: 51px;
+  }
+}

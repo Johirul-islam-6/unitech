@@ -6,7 +6,7 @@ export const UserTable = () => {
     <>
       <tbody>
         <tr className="border-b-2">
-          <th class="flex gap-2 items-center px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] ">
+          <th className="flex gap-2 items-center px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] ">
             1.{" "}
             <Image
               width={30}
@@ -17,14 +17,14 @@ export const UserTable = () => {
             />
             <h1>Robayath Hasan</h1>
           </th>
-          <td class="px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] font-[600]">
+          <td className="px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] font-[600]">
             02722111218107
           </td>
-          <td class="px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] font-[600]">
+          <td className="px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] font-[600]">
             1st semester
           </td>
-          <td class="px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] font-[600]">
-            <i class="fas fa-arrow-up text-emerald-500 mr-4"></i>
+          <td className="px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] font-[600]">
+            <i className="fas fa-arrow-up text-emerald-500 mr-4"></i>
             Active
           </td>
         </tr>

@@ -16,7 +16,7 @@ const Announcement = () => {
           <div>
             <label
               for="price"
-              class=" text-[18px] font-medium leading-6 text-gray-900 flex gap-2 items-center pb-2"
+              className=" text-[18px] font-medium leading-6 text-gray-900 flex gap-2 items-center pb-2"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -35,28 +35,28 @@ const Announcement = () => {
               </svg>{" "}
               Post an announcement
             </label>
-            <div class="relative mt-2 rounded-md shadow-sm">
+            <div className="relative mt-2 rounded-md shadow-sm">
               <input
                 type="tex"
                 name="price"
                 id="price"
-                class=" flex w-full rounded-md border-0 py-4 placeholder:text-[18px]  text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-5"
+                className=" flex w-full rounded-md border-0 py-4 placeholder:text-[18px]  text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-5"
                 placeholder="Notic Title"
               />
             </div>
           </div>
           {/* <!-- component --> */}
-          <div class="w-full h-full flex justify-center bg-opacity-60 mt-5">
+          <div className="w-full h-full flex justify-center bg-opacity-60 mt-5">
             <div>
               <label className="">
                 <input
-                  class="text-sm cursor-pointer w-36 hidden"
+                  className="text-sm cursor-pointer w-36 hidden"
                   type="file"
                   multiple
                 />
-                <div class=" bg-white text-[#000000bd] font-[600] hover:text-amber-700 border-2 py-2 px-3 hover:border-amber-700 rounded-lg">
+                <div className=" bg-white text-[#000000bd] font-[600] hover:text-amber-700 border-2 py-2 px-3 hover:border-amber-700 rounded-lg">
                   <svg
-                    class="text-indigo-500  mx-auto "
+                    className="text-indigo-500  mx-auto "
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"

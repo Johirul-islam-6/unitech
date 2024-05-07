@@ -97,18 +97,11 @@ export default class ReviewsSlider extends Component {
         <Slider {...settings}>
           {reviewData?.map((student) => (
             <>
-              <div key={student?.id} class="mx-5">
-                <div className="reviewCard border-2 flex flex-col justify-center items-center p-5 ">
-                  <span>
-                    <FaQuoteRight className="text-[30px] text-[#00000080]" />
-                  </span>
-                  <h2 class="text-[16px] text-start SILIGURI mt-3">
-                    {student?.message?.slice(0, 140)}...
-                  </h2>
-
-                  <div className="flex flex-col  justify-center  mt-2">
+              <div key={student?.id} className="mx-5">
+                <div className="reviewCard border-2 flex flex-col justify-center items-center px-5 py-2 pb-5">
+                  <div className="flex flex-col  justify-center">
                     <Image
-                      width={60}
+                      width={100}
                       height={400}
                       className="border-2 flex justify-center mx-auto rounded-full"
                       src={student?.image}
@@ -121,6 +114,13 @@ export default class ReviewsSlider extends Component {
                       {student?.Personality}
                     </p>
                   </div>
+
+                  <span>
+                    <FaQuoteRight className="text-[25px] text-[#00000080] mt-2" />
+                  </span>
+                  <h2 className="text-[16px] text-start SILIGURI mt-3">
+                    {student?.message?.slice(0, 140)}...
+                  </h2>
                 </div>
               </div>
             </>

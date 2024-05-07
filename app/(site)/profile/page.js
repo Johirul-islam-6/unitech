@@ -100,11 +100,11 @@ const Profile = () => {
     return (
       <>
         <div className="w-[100%] flex h-[100vh] justify-center items-center">
-          <div class="relative flex justify-center items-center">
-            <div class="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-purple-500"></div>
+          <div className="relative flex justify-center items-center">
+            <div className="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-purple-500"></div>
             <img
               src="https://www.svgrepo.com/show/509001/avatar-thinking-9.svg"
-              class="rounded-full h-28 w-28"
+              className="rounded-full h-28 w-28"
             />
           </div>
         </div>
@@ -126,20 +126,20 @@ const Profile = () => {
 
   return (
     <>
-      <main class="profile-page">
-        <section class="relative block h-500-px">
-          <div class="absolute top-0 w-full h-full bg-center bg-cover background-profile">
+      <main className="profile-page">
+        <section className="relative block h-500-px">
+          <div className="absolute top-0 w-full h-full bg-center bg-cover background-profile">
             <span
               id="blackOverlay"
-              class="w-full h-full absolute opacity-50 bg-black"
+              className="w-full h-full absolute opacity-50 bg-black"
             ></span>
           </div>
           <div
-            class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
+            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
             // style="transform: translateZ(0px)"
           >
             <svg
-              class="absolute bottom-0 overflow-hidden"
+              className="absolute bottom-0 overflow-hidden"
               xmlns="http://www.w3.org/2000/svg"
               preserveAspectRatio="none"
               version="1.1"
@@ -148,21 +148,21 @@ const Profile = () => {
               y="0"
             >
               <polygon
-                class="text-blueGray-200 fill-current"
+                className="text-blueGray-200 fill-current"
                 points="2560 0 2560 100 0 100"
               ></polygon>
             </svg>
           </div>
         </section>
 
-        <section class="relative py-16 bg-blueGray-200">
+        <section className="relative py-16 bg-blueGray-200">
           {/* ---- old --- */}
-          <div class="container mx-auto px-1 md:px-4">
-            <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-[120px]">
-              <div class="px-6">
-                <div class="flex flex-wrap justify-center">
-                  <div class="absolute top-[-100px] p-10 border-2 rounded-md bg-white profile-shadow lg:order-2 flex justify-center">
-                    <div class="">
+          <div className="container mx-auto px-1 md:px-4">
+            <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-[120px]">
+              <div className="px-6">
+                <div className="flex flex-wrap justify-center">
+                  <div className="absolute top-[-100px] p-10 border-2 rounded-md bg-white profile-shadow lg:order-2 flex justify-center">
+                    <div className="">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         height="80"
@@ -173,16 +173,16 @@ const Profile = () => {
                       </svg>
                     </div>
                   </div>
-                  <div class="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">
-                    <div class="py-6 px-3 mt-32 sm:mt-0"></div>
+                  <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">
+                    <div className="py-6 px-3 mt-32 sm:mt-0"></div>
                   </div>
-                  <div class="w-full lg:w-4/12 px-4 lg:order-1"></div>
+                  <div className="w-full lg:w-4/12 px-4 lg:order-1"></div>
                 </div>
-                <div class="text-center mt-12">
-                  <h3 class="text-4xl font-semibold leading-normal md:pt-2 text-blueGray-700 ">
+                <div className="text-center mt-12">
+                  <h3 className="text-4xl font-semibold leading-normal md:pt-2 text-blueGray-700 ">
                     {cookiesInfo?.name}
                   </h3>
-                  <div class="text-[18px] leading-normal mt-2 text-amber-700 font-bold  ">
+                  <div className="text-[18px] leading-normal mt-2 text-amber-700 font-bold  ">
                     <h1 className="flex justify-center gap-2 items-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -202,14 +202,14 @@ const Profile = () => {
               </div>
 
               {/* ---user profile--- */}
-              <div class="text-gray-700 mt-8">
-                <div class="grid md:grid-cols-3 justify-center text-sm md:w-[80%] mx-auto">
-                  <div class="grid grid-cols-1">
-                    <div class="px-4 py-2 font-bold text-[#000]">
+              <div className="text-gray-700 mt-8">
+                <div className="grid md:grid-cols-3 justify-center text-sm md:w-[80%] mx-auto">
+                  <div className="grid grid-cols-1">
+                    <div className="px-4 py-2 font-bold text-[#000]">
                       Name :{" "}
                       <span className="font-[400]">{cookiesInfo?.name}</span>
                     </div>
-                    <div class="px-4 py-2 font-semibold">
+                    <div className="px-4 py-2 font-semibold">
                       Roll :{" "}
                       <span className="font-[400]">
                         {cookiesInfo?.studentRoll}
@@ -217,12 +217,12 @@ const Profile = () => {
                     </div>
                   </div>
 
-                  <div class="grid grid-cols-1">
-                    <div class="px-4 py-2 font-semibold">
+                  <div className="grid grid-cols-1">
+                    <div className="px-4 py-2 font-semibold">
                       Gender :{" "}
                       <span className="font-[400]">{cookiesInfo?.gender}</span>{" "}
                     </div>
-                    <div class="px-4 py-2 font-semibold">
+                    <div className="px-4 py-2 font-semibold">
                       Join Date:{" "}
                       <span className="font-[400]">
                         {cookiesInfo?.joinginDate}
@@ -230,41 +230,41 @@ const Profile = () => {
                     </div>
                   </div>
 
-                  <div class="grid grid-cols-1">
-                    <div class="px-4 py-2 font-semibold">
+                  <div className="grid grid-cols-1">
+                    <div className="px-4 py-2 font-semibold">
                       institute :{" "}
                       <span className="font-[400]">
                         {cookiesInfo?.institute}
                       </span>{" "}
                     </div>
-                    <div class="px-4 py-2 font-semibold">
+                    <div className="px-4 py-2 font-semibold">
                       Contact No :{" "}
                       <span className="font-[400]">
                         {cookiesInfo?.department}
                       </span>{" "}
                     </div>
                   </div>
-                  <div class="grid grid-cols-1">
-                    <div class="px-4 py-2 font-semibold">
+                  <div className="grid grid-cols-1">
+                    <div className="px-4 py-2 font-semibold">
                       Address:{" "}
                       <span className="font-[400]">{cookiesInfo?.address}</span>{" "}
                     </div>
                   </div>
-                  <div class="grid grid-cols-1">
-                    <div class="px-4 py-2 font-semibold">
+                  <div className="grid grid-cols-1">
+                    <div className="px-4 py-2 font-semibold">
                       Email:{" "}
                       <span className="font-[400]">{cookiesInfo?.email}</span>{" "}
                     </div>
                   </div>
-                  <div class="grid grid-cols-1">
-                    <div class="px-4 py-2 font-semibold">
+                  <div className="grid grid-cols-1">
+                    <div className="px-4 py-2 font-semibold">
                       Phone:{" "}
                       <span className="font-[400]">{cookiesInfo?.phone}</span>{" "}
                     </div>
                   </div>
                 </div>
                 <div className="mt-16 pb-10">
-                  <h1 class="mb-2 mt-5 text-blueGray-600 gap-3 flex-wrap flex justify-center items-centertext-start">
+                  <h1 className="mb-2 mt-5 text-blueGray-600 gap-3 flex-wrap flex justify-center items-centertext-start">
                     {cookiesInfo?.ruler === "admin" && (
                       <>
                         <Link href={`/dashboard`}>
@@ -311,37 +311,37 @@ const Profile = () => {
 
           {/* ------- all courses ----- */}
 
-          <div class="py-10 bg-gradient-to-tr from-[#ededed] to-white flex flex-col justify-center items-center">
+          {/* <div className="py-10 bg-gradient-to-tr from-[#ededed] to-white flex flex-col justify-center items-center">
             <div className="pb-5 ">
               <h1 className="pt-5 text-[18px] md:text-[22px] font-[600] uppercase">
                 All enroll Courses
               </h1>
               <div className="w-[80px] h-[5px] bg-blue-600 mx-auto mt-2"></div>
             </div>
-            <div class="md:px-4 md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 space-y-4 md:space-y-0">
-              <div class="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
-                <h3 class="mb-3 text-xl font-bold text-indigo-600">
+            <div className="md:px-4 md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 space-y-4 md:space-y-0">
+              <div className="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
+                <h3 className="mb-3 text-xl font-bold text-indigo-600">
                   Diploma Engineer
                 </h3>
-                <div class="relative">
+                <div className="relative">
                   <img
-                    class="w-full rounded-xl"
+                    className="w-full rounded-xl"
                     src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
                     alt="Colors"
                   />
-                  <p class="absolute top-0 bg-yellow-300 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
+                  <p className="absolute top-0 bg-yellow-300 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
                     6th months
                   </p>
                 </div>
-                <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">
+                <h1 className="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">
                   5th Semester Academic Courses.
                 </h1>
-                <div class="my-4">
-                  <div class="flex space-x-1 items-center">
+                <div className="my-4">
+                  <div className="flex space-x-1 items-center">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6 text-indigo-600 mb-1.5"
+                        className="h-6 w-6 text-indigo-600 mb-1.5"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -356,11 +356,11 @@ const Profile = () => {
                     </span>
                     <p>1:34:23 Minutes</p>
                   </div>
-                  <div class="flex space-x-1 items-center">
+                  <div className="flex space-x-1 items-center">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6 text-indigo-600 mb-1.5"
+                        className="h-6 w-6 text-indigo-600 mb-1.5"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -375,11 +375,11 @@ const Profile = () => {
                     </span>
                     <p>3 Parts</p>
                   </div>
-                  <div class="flex space-x-1 items-center">
+                  <div className="flex space-x-1 items-center">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6 text-indigo-600 mb-1.5"
+                        className="h-6 w-6 text-indigo-600 mb-1.5"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -394,37 +394,35 @@ const Profile = () => {
                     </span>
                     <p>Vanilla JS</p>
                   </div>
-                  <button class="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">
+                  <button className="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">
                     See Lesson
                   </button>
                 </div>
               </div>
-              <div class="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
-                <h3 class="mb-3 text-xl font-bold text-indigo-600">
+              <div className="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
+                <h3 className="mb-3 text-xl font-bold text-indigo-600">
                   Web Development
                 </h3>
-                <div class="relative">
+                <div className="relative">
                   <img
-                    class="w-full rounded-xl"
+                    className="w-full rounded-xl"
                     src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
                     alt="Colors"
                   />
-                  <p class="absolute top-0 bg-yellow-300 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
+                  <p className="absolute top-0 bg-yellow-300 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
                     4th Months
                   </p>
-                  {/* <p class="absolute top-0 right-0 bg-yellow-300 text-gray-800 font-semibold py-1 px-3 rounded-tr-lg rounded-bl-lg">
-                    %20 Discount
-                  </p> */}
+                
                 </div>
-                <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">
+                <h1 className="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">
                   Front-End Web Designer
                 </h1>
-                <div class="my-4">
-                  <div class="flex space-x-1 items-center">
+                <div className="my-4">
+                  <div className="flex space-x-1 items-center">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6 text-indigo-600 mb-1.5"
+                        className="h-6 w-6 text-indigo-600 mb-1.5"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -439,11 +437,11 @@ const Profile = () => {
                     </span>
                     <p>1:34:23 Minutes</p>
                   </div>
-                  <div class="flex space-x-1 items-center">
+                  <div className="flex space-x-1 items-center">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6 text-indigo-600 mb-1.5"
+                        className="h-6 w-6 text-indigo-600 mb-1.5"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -458,11 +456,11 @@ const Profile = () => {
                     </span>
                     <p>3 Parts</p>
                   </div>
-                  <div class="flex space-x-1 items-center">
+                  <div className="flex space-x-1 items-center">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6 text-indigo-600 mb-1.5"
+                        className="h-6 w-6 text-indigo-600 mb-1.5"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -477,34 +475,34 @@ const Profile = () => {
                     </span>
                     <p>TypeScript</p>
                   </div>
-                  <button class="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">
+                  <button className="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">
                     See Lesson
                   </button>
                 </div>
               </div>
-              <div class="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
-                <h3 class="mb-3 text-xl font-bold text-indigo-600">
+              <div className="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
+                <h3 className="mb-3 text-xl font-bold text-indigo-600">
                   Graphic Designer
                 </h3>
-                <div class="relative">
+                <div className="relative">
                   <img
-                    class="w-full rounded-xl"
+                    className="w-full rounded-xl"
                     src="https://images.unsplash.com/photo-1561835491-ed2567d96913?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
                     alt="Colors"
                   />
-                  <p class="absolute top-0 bg-yellow-300 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
+                  <p className="absolute top-0 bg-yellow-300 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
                     6th Months
                   </p>
                 </div>
-                <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">
+                <h1 className="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">
                   Professional Graphic Designer
                 </h1>
-                <div class="my-4">
-                  <div class="flex space-x-1 items-center">
+                <div className="my-4">
+                  <div className="flex space-x-1 items-center">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6 text-indigo-600 mb-1.5"
+                        className="h-6 w-6 text-indigo-600 mb-1.5"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -519,11 +517,11 @@ const Profile = () => {
                     </span>
                     <p>1:34:23 Minutes</p>
                   </div>
-                  <div class="flex space-x-1 items-center">
+                  <div className="flex space-x-1 items-center">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6 text-indigo-600 mb-1.5"
+                        className="h-6 w-6 text-indigo-600 mb-1.5"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -538,11 +536,11 @@ const Profile = () => {
                     </span>
                     <p>3 Parts</p>
                   </div>
-                  <div class="flex space-x-1 items-center">
+                  <div className="flex space-x-1 items-center">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6 text-indigo-600 mb-1.5"
+                        className="h-6 w-6 text-indigo-600 mb-1.5"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -557,13 +555,13 @@ const Profile = () => {
                     </span>
                     <p>Vanilla JS</p>
                   </div>
-                  <button class="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">
+                  <button className="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">
                     See Lesson
                   </button>
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </section>
 
         {/* ------------ all courses ---------- */}

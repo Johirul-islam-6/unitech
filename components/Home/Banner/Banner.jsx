@@ -1,9 +1,9 @@
 "use client";
 import "./Banner.css";
-import image1 from "@/app/Assets/image/banner.webp";
-import image2 from "@/app/Assets/image/dow.jpg";
-import image3 from "@/app/Assets/image/img3.jpg";
-import image4 from "@/app/Assets/image/img4.jpg";
+import image1 from "@/app/Assets/image/banner1.jpg";
+import image2 from "@/app/Assets/image/banner2.jpg";
+import image3 from "@/app/Assets/image/banner3.jpg";
+import image4 from "@/app/Assets/image/banner4.jpg";
 import Image from "next/image";
 import { useEffect } from "react";
 
@@ -80,9 +80,9 @@ export const Banner = () => {
   return (
     <div className="overflow-x-hidden">
       {/* ----------Banner image slider ----------- */}
-      <div class="slider">
-        <div class="list">
-          <div class="item">
+      <div className="slider">
+        <div className="list">
+          <div className="item">
             <Image
               className="slide_image"
               width={1200}
@@ -91,94 +91,94 @@ export const Banner = () => {
               alt=""
             />
 
-            <div class="slide_content">
-              <div class="title">একটাই লক্ষ্য </div>
-              <div class="type">হতে হবে দক্ষ</div>
-              <div class="description">
+            <div className="slide_content">
+              <div className="title">একটাই লক্ষ্য </div>
+              <div className="type">হতে হবে দক্ষ</div>
+              <div className="description">
                 ডিপ্লোমা একাডেমিক সেমিস্টার কোর্সের মূল্যায়নের পরিপূর্ণ বিবরণ
                 অনুসারে, এই প্রোগ্রামটি সম্পন্ন করার সময়ে ছাত্র-ছাত্রীদের
                 বিভিন্ন বিষয়ে গভীর জ্ঞান এবং প্রোফেশনাল দক্ষতা অর্জন করার সুযোগ
                 প্রদান করে।
               </div>
-              <div class="button">
+              <div className="button">
                 <button className="text-black rounded-md ">SEE MORE</button>
               </div>
             </div>
           </div>
 
-          <div class="item">
+          <div className="item">
             <Image width={1200} height={800} src={image2} alt="" />
 
-            <div class="slide_content">
-              <div class="title">দক্ষ হবো </div>
-              <div class="type">ইউনিটেক এর সাথে</div>
-              <div class="description text-justify">
+            <div className="slide_content">
+              <div className="title">দক্ষ হবো </div>
+              <div className="type">ইউনিটেক এর সাথে</div>
+              <div className="description text-justify">
                 ডিপ্লোমা একাডেমিক সেমিস্টার কোর্সের মূল্যায়নের পরিপূর্ণ বিবরণ
                 অনুসারে, এই প্রোগ্রামটি সম্পন্ন করার সময়ে ছাত্র-ছাত্রীদের
                 বিভিন্ন বিষয়ে গভীর জ্ঞান এবং প্রোফেশনাল দক্ষতা অর্জন করার সুযোগ
                 প্রদান করে।
               </div>
-              <div class="button">
+              <div className="button">
                 <button>SEE MORE</button>
               </div>
             </div>
           </div>
 
-          <div class="item">
+          <div className="item">
             <Image width={1200} height={800} src={image4} alt="" />
 
-            <div class="slide_content">
-              <div class="title">MAGIC SLIDER</div>
-              <div class="type">PLANT</div>
-              <div class="description">
+            <div className="slide_content">
+              <div className="title">MAGIC SLIDER</div>
+              <div className="type">PLANT</div>
+              <div className="description">
                 ডিপ্লোমা একাডেমিক সেমিস্টার কোর্সের মূল্যায়নের পরিপূর্ণ বিবরণ
                 অনুসারে, এই প্রোগ্রামটি সম্পন্ন করার সময়ে ছাত্র-ছাত্রীদের
                 বিভিন্ন বিষয়ে গভীর জ্ঞান এবং প্রোফেশনাল দক্ষতা অর্জন করার সুযোগ
                 প্রদান করে।
               </div>
-              <div class="button">
+              <div className="button">
                 <button>SEE MORE</button>
               </div>
             </div>
           </div>
 
-          <div class="item">
+          <div className="item">
             <Image width={1200} height={800} src={image3} alt="" />
 
-            <div class="slide_content">
-              <div class="title">MAGIC SLIDER</div>
-              <div class="type">NATURE</div>
-              <div class="description">
+            <div className="slide_content">
+              <div className="title">MAGIC SLIDER</div>
+              <div className="type">NATURE</div>
+              <div className="description">
                 ডিপ্লোমা একাডেমিক সেমিস্টার কোর্সের মূল্যায়নের পরিপূর্ণ বিবরণ
                 অনুসারে, এই প্রোগ্রামটি সম্পন্ন করার সময়ে ছাত্র-ছাত্রীদের
                 বিভিন্ন বিষয়ে গভীর জ্ঞান এবং প্রোফেশনাল দক্ষতা অর্জন করার সুযোগ
                 প্রদান করে।
               </div>
-              <div class="button">
+              <div className="button">
                 <button>SEE MORE</button>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="thumbnail">
-          <div class="item clickImage cursor-pointer">
+        <div className="thumbnail">
+          <div className="item clickImage cursor-pointer">
             <Image width={600} height={400} src={image1} alt="" />
           </div>
-          <div class="item clickImage cursor-pointer ">
+          <div className="item clickImage cursor-pointer ">
             <Image width={600} height={400} src={image2} alt="" />
           </div>
-          <div class="item clickImage cursor-pointer">
+          <div className="item clickImage cursor-pointer">
             <Image width={600} height={400} src={image3} alt="" />
           </div>
-          <div class="item clickImage cursor-pointer">
+          <div className="item clickImage cursor-pointer">
             <Image width={600} height={400} src={image4} alt="" />
           </div>
         </div>
 
-        <div class="nextPrevArrows">
-          <button class="prev"> {"<"} </button>
-          <button class="next"> {">"} </button>
+        <div className="nextPrevArrows">
+          <button className="prev"> {"<"} </button>
+          <button className="next"> {">"} </button>
         </div>
       </div>
     </div>

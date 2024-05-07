@@ -8,6 +8,7 @@ import "./globals.css";
 import { Reviews } from "@/components/Home/Reviews/Reviews";
 import { UnitechArchitectural } from "@/components/Home/UnitechArchitectural/UnitechArchitectural";
 import { Banner } from "@/components/Home/Banner/Banner";
+import CompnaySlier from "@/components/Home/semesterTopersSlider/CompnaySlier";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       </div>
       <div className="max-w-screen-xl mx-auto mt-5">
         <StudentInfo />
+        <CompnaySlier />
         <AchieveCourses />
         <Reviews />
         <UnitechArchitectural />

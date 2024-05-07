@@ -149,10 +149,10 @@ const SingelUsers = () => {
         <h3 className="text-[25px] font-[600] text-[#000]">
           {Loading ? (
             <>
-              <div class="flex gap-2 pb-2">
-                <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
-                <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
-                <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+              <div className="flex gap-2 pb-2">
+                <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
               </div>
             </>
           ) : (
@@ -163,10 +163,10 @@ const SingelUsers = () => {
           <p className=" bg-green-800 px-2 mt-2">
             {Loading ? (
               <>
-                <div class="flex gap-2 pb-2">
-                  <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
-                  <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
-                  <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                <div className="flex gap-2 pb-2">
+                  <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                  <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                  <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
                 </div>
               </>
             ) : (
@@ -174,18 +174,18 @@ const SingelUsers = () => {
             )}{" "}
           </p>
         </span>
-        <div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25"></div>
-        <div class="grid md:grid-cols-3 justify-center text-sm md:w-[80%] mx-auto mt-5">
-          <div class="grid grid-cols-1">
-            <div class="px-4 py-2 font-bold text-[#000]">
+        <div className="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25"></div>
+        <div className="grid md:grid-cols-3 justify-center text-sm md:w-[80%] mx-auto mt-5">
+          <div className="grid grid-cols-1">
+            <div className="px-4 py-2 font-bold text-[#000]">
               Name :{" "}
               <span className="font-[400]">
                 {Loading ? (
                   <>
-                    <div class="flex gap-2 pb-2">
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                    <div className="flex gap-2 pb-2">
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
                     </div>
                   </>
                 ) : (
@@ -193,15 +193,15 @@ const SingelUsers = () => {
                 )}{" "}
               </span>
             </div>
-            <div class="px-4 py-2 text-[#000] font-bold text-[16px] ">
+            <div className="px-4 py-2 text-[#000] font-bold text-[16px] ">
               Roll :{" "}
               <span className="font-[400]">
                 {Loading ? (
                   <>
-                    <div class="flex gap-2 pb-2">
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                    <div className="flex gap-2 pb-2">
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
                     </div>
                   </>
                 ) : (
@@ -211,16 +211,16 @@ const SingelUsers = () => {
             </div>
           </div>
 
-          <div class="grid grid-cols-1">
-            <div class="px-4 py-2 text-[#000] font-bold text-[16px] ">
+          <div className="grid grid-cols-1">
+            <div className="px-4 py-2 text-[#000] font-bold text-[16px] ">
               Gender :{" "}
               <span className="font-[400]">
                 {Loading ? (
                   <>
-                    <div class="flex gap-2 pb-2">
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                    <div className="flex gap-2 pb-2">
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
                     </div>
                   </>
                 ) : (
@@ -228,15 +228,15 @@ const SingelUsers = () => {
                 )}{" "}
               </span>{" "}
             </div>
-            <div class="px-4 py-2 text-[#000] font-bold text-[16px] ">
+            <div className="px-4 py-2 text-[#000] font-bold text-[16px] ">
               Join Date:{" "}
               <span className="font-[400]">
                 {Loading ? (
                   <>
-                    <div class="flex gap-2 pb-2">
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                    <div className="flex gap-2 pb-2">
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
                     </div>
                   </>
                 ) : (
@@ -246,16 +246,16 @@ const SingelUsers = () => {
             </div>
           </div>
 
-          <div class="grid grid-cols-1">
-            <div class="px-4 py-2 text-[#000] font-bold text-[16px] ">
+          <div className="grid grid-cols-1">
+            <div className="px-4 py-2 text-[#000] font-bold text-[16px] ">
               institute :{" "}
               <span className="font-[400]">
                 {Loading ? (
                   <>
-                    <div class="flex gap-2 pb-2">
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                    <div className="flex gap-2 pb-2">
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
                     </div>
                   </>
                 ) : (
@@ -263,15 +263,15 @@ const SingelUsers = () => {
                 )}{" "}
               </span>{" "}
             </div>
-            <div class="px-4 py-2 text-[#000] font-bold text-[16px] ">
+            <div className="px-4 py-2 text-[#000] font-bold text-[16px] ">
               Department :{" "}
               <span className="font-[400]">
                 {Loading ? (
                   <>
-                    <div class="flex gap-2 pb-2">
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                    <div className="flex gap-2 pb-2">
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
                     </div>
                   </>
                 ) : (
@@ -280,16 +280,16 @@ const SingelUsers = () => {
               </span>{" "}
             </div>
           </div>
-          <div class="grid grid-cols-1">
-            <div class="px-4 py-2 text-[#000] font-bold text-[16px] ">
+          <div className="grid grid-cols-1">
+            <div className="px-4 py-2 text-[#000] font-bold text-[16px] ">
               Address:{" "}
               <span className="font-[400]">
                 {Loading ? (
                   <>
-                    <div class="flex gap-2 pb-2">
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                    <div className="flex gap-2 pb-2">
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
                     </div>
                   </>
                 ) : (
@@ -298,16 +298,16 @@ const SingelUsers = () => {
               </span>{" "}
             </div>
           </div>
-          <div class="grid grid-cols-1">
-            <div class="px-4 py-2 text-[#000] font-bold text-[16px] ">
+          <div className="grid grid-cols-1">
+            <div className="px-4 py-2 text-[#000] font-bold text-[16px] ">
               Email:{" "}
               <span className="font-[400]">
                 {Loading ? (
                   <>
-                    <div class="flex gap-2 pb-2">
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                    <div className="flex gap-2 pb-2">
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
                     </div>
                   </>
                 ) : (
@@ -316,16 +316,16 @@ const SingelUsers = () => {
               </span>{" "}
             </div>
           </div>
-          <div class="grid grid-cols-1">
-            <div class="px-4 py-2 text-[#000] font-bold text-[16px] ">
+          <div className="grid grid-cols-1">
+            <div className="px-4 py-2 text-[#000] font-bold text-[16px] ">
               Phone:{" "}
               <span className="font-[400]">
                 {Loading ? (
                   <>
-                    <div class="flex gap-2 pb-2">
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
-                      <div class="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                    <div className="flex gap-2 pb-2">
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
+                      <div className="rounded-full h-[5px] w-[5px] bg-violet-800 animate-ping"></div>
                     </div>
                   </>
                 ) : (
@@ -336,7 +336,7 @@ const SingelUsers = () => {
           </div>
         </div>
         <div className="flex justify-center items-center">
-          <p class="pt-4 text-base  flex items-center justify-start lg:justify-start md:text-center text-center">
+          <p className="pt-4 text-base  flex items-center justify-start lg:justify-start md:text-center text-center">
             <FaRegDotCircle className="me-2 text-[#F69823]" />
             <span className="font-bold pe-2"> Roll : </span>{" "}
             <span className="relative">
@@ -355,10 +355,10 @@ const SingelUsers = () => {
             </span>
           </p>
         </div>
-        <div class="pt-12 pb-8 flex flex-wrap justify-center md:justify-start gap-2 ">
+        <div className="pt-12 pb-8 flex flex-wrap justify-center md:justify-start gap-2 ">
           <button
             onClick={() => RulerUpdate(singelUser?._id, "block")}
-            class="bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded-full"
+            className="bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded-full"
           >
             Block
           </button>
@@ -366,7 +366,7 @@ const SingelUsers = () => {
             <>
               <button
                 onClick={() => RulerUpdate(singelUser?._id, "admin")}
-                class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full"
+                className="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full"
               >
                 Create Admin
               </button>
@@ -376,7 +376,7 @@ const SingelUsers = () => {
             <>
               <button
                 onClick={() => RulerUpdate(singelUser?._id, "student")}
-                class="bg-amber-700 hover:bg-amber-800 text-white font-bold py-2 px-4 rounded-full"
+                className="bg-amber-700 hover:bg-amber-800 text-white font-bold py-2 px-4 rounded-full"
               >
                 Student
               </button>
@@ -386,7 +386,7 @@ const SingelUsers = () => {
             <>
               <button
                 onClick={() => RulerUpdate(singelUser?._id, "superAdmin")}
-                class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full"
+                className="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full"
               >
                 Super Admin
               </button>
@@ -403,12 +403,12 @@ const SingelUsers = () => {
               </h1>
             </>
           )}
-          <h1 class="text-2xl font-bold lg:pt-0 md:text-center text-center">
+          <h1 className="text-2xl font-bold lg:pt-0 md:text-center text-center">
             {" "}
             Total Enroll Courses
           </h1>
           <div className="pb-5 flex justify-center">
-            <div class="lg:mx-0 w-[80%] mx-auto pt-3 border-b-2 border-green-500 opacity-25"></div>
+            <div className="lg:mx-0 w-[80%] mx-auto pt-3 border-b-2 border-green-500 opacity-25"></div>
           </div>
           <div className="d">
             <div className="md:px-3 items-center gap-3 grid md:grid-cols-4">

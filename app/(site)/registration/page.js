@@ -226,19 +226,19 @@ const Registration = () => {
   return (
     <>
       <div className="bg-[#F6F5F7] border-2">
-        <section class="max-w-4xl px-5 pt-6 mx-auto rounded-md shadow-md bg-[#FFFFFF] mt-3">
-          <div class="text-center pb-3">
-            <h2 class=" text-[30px] md:text-4xl font-bold text-[#563A9F] GT ">
+        <section className="max-w-4xl px-5 pt-6 mx-auto rounded-md shadow-md bg-[#FFFFFF] mt-3">
+          <div className="text-center pb-3">
+            <h2 className=" text-[30px] md:text-4xl font-bold text-[#563A9F] GT ">
               Registration
             </h2>
             <div className="w-[80px] h-[3px] bg-[#563A9F] mx-auto mt-2"></div>
           </div>
 
           <form onSubmit={HandleSubmite}>
-            <div class="grid grid-cols-1 gap-x-6 gap-y-4 mt-4 sm:grid-cols-2 md:px-5">
+            <div className="grid grid-cols-1 gap-x-6 gap-y-4 mt-4 sm:grid-cols-2 md:px-5">
               <div>
                 <label
-                  class="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
+                  className="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
                   for="username"
                 >
                   Full name*
@@ -248,14 +248,14 @@ const Registration = () => {
                   type="text"
                   name="name"
                   placeholder="Johirul Islam"
-                  class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[15px] py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm"
+                  className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[15px] py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm"
                   required
                 />
               </div>
 
               <div>
                 <label
-                  class="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
+                  className="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
                   for="phone"
                 >
                   Student roll*
@@ -266,13 +266,13 @@ const Registration = () => {
                   name="roll"
                   placeholder="maximus 6 number"
                   type="number"
-                  class="input block border border-gray-300 placeholder:font-normal text-[15px] focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm"
+                  className="input block border border-gray-300 placeholder:font-normal text-[15px] focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm"
                 />
               </div>
 
               <div>
                 <label
-                  class="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
+                  className="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
                   for="institute"
                 >
                   Institute name*
@@ -282,7 +282,7 @@ const Registration = () => {
                   onChange={(e) => setSubject(e?.target?.value)}
                   required
                   name="institute_name"
-                  class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm"
+                  className="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm"
                 >
                   <option className="bg-[#E8F0FE]" value="select">
                     select
@@ -297,7 +297,7 @@ const Registration = () => {
 
               <div>
                 <label
-                  class="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
+                  className="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
                   for="phone"
                 >
                   Department name*
@@ -305,7 +305,7 @@ const Registration = () => {
 
                 <select
                   name="department"
-                  class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm"
+                  className="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm"
                 >
                   <option className="bg-[#E8F0FE]">select</option>
                   {institutes === "Dhaka Polytechnic Institute" && (
@@ -401,7 +401,7 @@ const Registration = () => {
 
               <div>
                 <label
-                  class="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
+                  className="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
                   for="emailAddress"
                 >
                   Current address*
@@ -412,7 +412,7 @@ const Registration = () => {
                   id="address"
                   name="address"
                   type="text"
-                  class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm placeholder:font-normal text-[15px]"
+                  className="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm placeholder:font-normal text-[15px]"
                   placeholder="technical More, Mymensingh"
                 /> */}
                 {add === "" ? (
@@ -420,7 +420,7 @@ const Registration = () => {
                     id="address"
                     name="address"
                     type="text"
-                    class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm placeholder:font-normal text-[15px]"
+                    className="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm placeholder:font-normal text-[15px]"
                     placeholder="technical More, Mymensingh"
                   />
                 ) : (
@@ -430,7 +430,7 @@ const Registration = () => {
                     id="address"
                     name="address"
                     type="text"
-                    class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm placeholder:font-normal text-[15px]"
+                    className="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm placeholder:font-normal text-[15px]"
                     placeholder="technical More, Mymensingh"
                   />
                 )}
@@ -438,7 +438,7 @@ const Registration = () => {
 
               <div>
                 <label
-                  class="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
+                  className="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
                   for="phone"
                 >
                   Phone number*
@@ -449,13 +449,13 @@ const Registration = () => {
                   name="phone"
                   placeholder="017822XXXXX"
                   type="phone"
-                  class="input block border border-gray-300 placeholder:font-normal text-[15px] focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm"
+                  className="input block border border-gray-300 placeholder:font-normal text-[15px] focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm"
                 />
               </div>
 
               <div>
                 <label
-                  class="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
+                  className="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
                   for="emailAddress"
                 >
                   Email address*
@@ -465,13 +465,13 @@ const Registration = () => {
                   id="emailAddress"
                   type="email"
                   name="email"
-                  class="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm placeholder:font-normal text-[15px]"
+                  className="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm placeholder:font-normal text-[15px]"
                   placeholder="Enter Your valid Email"
                 />
               </div>
 
               <div className="password_2 block  relative">
-                <label class="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN">
+                <label className="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN">
                   Password*
                 </label>
                 <div className="eye_div">
@@ -515,57 +515,57 @@ const Registration = () => {
 
             <div className="flex justify-between md:px-2">
               <div className="all-gender flex items-center gap-5 ps-5 py-3">
-                <div class="align-items-center d-flex form-check form-check-inline gap-2 items-center">
+                <div className="align-items-center d-flex form-check form-check-inline gap-2 items-center">
                   <input
                     required
                     type="radio"
                     name="gender"
                     id="male"
                     value="male"
-                    class="form-check-input is-valid dirty touched"
+                    className="form-check-input is-valid dirty touched"
                     // aria-required="true"
                     // aria-invalid="false"
                   />
                   <label
                     data-v-7a640f0b=""
                     for="male"
-                    class="form-check-label ps-[2px]"
+                    className="form-check-label ps-[2px]"
                   >
                     Male
                   </label>
                 </div>
-                <div class="align-items-center d-flex form-check form-check-inline gap-2 items-center">
+                <div className="align-items-center d-flex form-check form-check-inline gap-2 items-center">
                   <input
                     type="radio"
                     name="gender"
                     id="Female"
                     value="Female"
-                    class="form-check-input is-valid dirty touched"
+                    className="form-check-input is-valid dirty touched"
                     // aria-required="true"
                     // aria-invalid="false"
                   />
                   <label
                     data-v-7a640f0b=""
                     for="Female"
-                    class="form-check-label ps-[2px]"
+                    className="form-check-label ps-[2px]"
                   >
                     Female
                   </label>
                 </div>
-                <div class="align-items-center d-flex form-check form-check-inline gap-2 items-center">
+                <div className="align-items-center d-flex form-check form-check-inline gap-2 items-center">
                   <input
                     type="radio"
                     name="gender"
                     id="Others"
                     value="Others"
-                    class="form-check-input is-valid dirty touched"
+                    className="form-check-input is-valid dirty touched"
                     // aria-required="true"
                     // aria-invalid="false"
                   />
                   <label
                     data-v-7a640f0b=""
                     for="Others"
-                    class="form-check-label ps-[2px]"
+                    className="form-check-label ps-[2px]"
                   >
                     Others
                   </label>
@@ -576,9 +576,9 @@ const Registration = () => {
               </p> */}
             </div>
 
-            <div class="md:ps-6">
+            <div className="md:ps-6">
               <h2
-                class={`mt-4 text-[15px] text-[#000]  flex items-center gap-2 ${
+                className={`mt-4 text-[15px] text-[#000]  flex items-center gap-2 ${
                   ss ? ss : ""
                 } `}
               >
@@ -595,10 +595,10 @@ const Registration = () => {
                 </Link>
               </h2>
             </div>
-            <div class="flex justify-center mt-1">
+            <div className="flex justify-center mt-1">
               <button
                 type="submit"
-                class={`my-5 px-12 flex justify-center bg-[#F6931E] text-gray-100 py-3  rounded-md tracking-wide
+                className={`my-5 px-12 flex justify-center bg-[#F6931E] text-gray-100 py-3  rounded-md tracking-wide
                  font-semibold  focus:outline-none focus:shadow-outline hover:bg-[#cb7a17] shadow-lg cursor-pointer transition ease-in duration-300 ${
                    buttonHidden ? "disabled-button" : ""
                  } `}
@@ -609,7 +609,7 @@ const Registration = () => {
                       width="20"
                       height="20"
                       fill="currentColor"
-                      class="mr-2 animate-spin"
+                      className="mr-2 animate-spin"
                       viewBox="0 0 1792 1792"
                       xmlns="http://www.w3.org/2000/svg"
                     >

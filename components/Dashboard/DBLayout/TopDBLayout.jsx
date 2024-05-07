@@ -10,14 +10,14 @@ export const TopDBLayout = () => {
   return (
     <>
       <div className="top-dashboard-main border-b-2 border-t-2 ">
-        <div class="w-[60%]  justify-start hidden md:flex">
+        <div className="w-[60%]  justify-start hidden md:flex">
           <input
             type="search"
             name="serch"
             placeholder="Search anything.."
-            class="bg-[#f6f6f6] w-[100%] flex justify-start  h-10 px-8 text-[17px]  focus:outline-4 outline-[#d46a14] border-[1px]  mx-auto GT"
+            className="bg-[#f6f6f6] w-[100%] flex justify-start  h-10 px-8 text-[17px]  focus:outline-4 outline-[#d46a14] border-[1px]  mx-auto GT"
           />
-          <button class="absolute top-[8px] mt-3 ms-2">
+          <button className="absolute top-[8px] mt-3 ms-2">
             <Image
               width={20}
               height={20}

@@ -5,7 +5,7 @@ import "./Dashboard.css";
 const Dashboard = () => {
   return (
     <>
-      <div className="p-2 overflow-auto h-[100vh]">
+      <div className="p-2 overflow-auto h-[100vh] ">
         <DashbordMain />
       </div>
     </>

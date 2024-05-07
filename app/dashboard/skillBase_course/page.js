@@ -5,16 +5,32 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import "../Dashboard.css";
+import Cookies from "js-cookie";
 //mamunbooks.com/
 // resellbook.store
 const SkillBaseCourse = () => {
   const router = useRouter();
+
+  const accessToken = Cookies.get("accessToken");
+  const [userInfo, setUserInfo] = useState("");
+  const [Loadings, setLoading] = useState(true);
+  useEffect(() => {
+    if (!accessToken) {
+      router.push("/login");
+    }
+    if (accessToken) {
+      const getCookiesData = Cookies.get("CookieYouserData");
+      const cookiesInfo = JSON.parse(getCookiesData);
+      setUserInfo(cookiesInfo);
+    }
+    setLoading(false);
+  }, [accessToken]);
+
   // const [disable, disableButton] = useState(null);
   const [cetagorybook, setCetagory] = useState();
   const [postImage, setPostImage] = useState();
   const [buttonHidden, setHidden] = useState(false);
 
-  const publication = ["হক প্রকাশনী", "এস আর প্রকাশনী", "অন্যান্য"];
   const departmental = [
     "Web Design",
     "Web Development",
@@ -43,24 +59,30 @@ const SkillBaseCourse = () => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
-    const courseName = formData.get("courseName");
-    const courseImage = "image not send";
-    const coursePrice = formData.get("course-price");
-    // const courseImage = postImage;
-    const courseCode = formData.get("course-code");
-    const categoryCourse = formData.get("cetagory");
-    const enrollStartDate = formData.get("enroll-Start");
-    const enrollEndDate = formData.get("enroll-end");
-    const courseDuration = formData.get("course-duration");
-    const totalClass = formData.get("total-class");
-    const totalAssignment = formData.get("total-assignment");
-    const totalProject = formData.get("total-Projects");
-    const courseDescription = formData.get("discription");
-
-    // const email = userInfo?.email;
-    const location = formData.get("location");
-    const discription = formData.get("discription");
-    // const userId = userInfo?.id;
+    const CName = formData.get("CName");
+    const CCode = formData.get("course-code");
+    const CCategory = formData.get("cetagory");
+    // const CImage = "image not send";
+    const CImage = postImage;
+    const CDuration = formData.get("CDuration");
+    const CTotalClass = formData.get("total-class");
+    const CTotalAssignment = formData.get("total-assignment");
+    const CTotalHours = formData.get("CTotalHoure");
+    const CTotalVideo = formData.get("CTotalVideo");
+    const CResourcesFolder = formData.get("CRechorsesFolder");
+    const CProfessionalProject = formData.get("CTotalProject");
+    const CPrice = formData.get("CPrice");
+    const CEnrollEndDate = formData.get("Cenroll-end");
+    const CDescription = formData.get("CDiscription");
+    const COverview = formData.get("COverView");
+    //teacher
+    const CTeacher1Name = formData.get("CTeacher1Name");
+    const CTeacher1Post = formData.get("CTeacher1Post");
+    const CTeacher1Title = formData.get("CTeacher1Title");
+    const CTeacher2Name = formData.get("CTeacher2Name");
+    const CTeacher2Post = formData.get("CTeacher2Post");
+    const CTeacher2Title = formData.get("CTeacher2Title");
+    //Optional
     const status = "panding";
 
     // ---------- all class ------------
@@ -101,25 +123,36 @@ const SkillBaseCourse = () => {
     const moduleP12 = formData.get("module_P_12");
     // -----next
 
-    if (categoryCourse === "select") {
+    if (CCategory === "select") {
       return alert("Please select cetagoryCourse Cetagory !");
     }
 
     const courseInfoData = {
-      courseName,
-      courseImage,
-      coursePrice,
-      courseCode,
-      categoryCourse,
-      enrollStartDate,
-      enrollEndDate,
-      courseDuration,
-      totalClass,
-      totalAssignment,
-      totalProject,
-      courseDescription,
+      CName,
+      CCode,
+      CCategory,
+      CImage,
+      CDuration,
+      CTotalClass,
+      CTotalAssignment,
+      CTotalHours,
+      CTotalVideo,
+      CResourcesFolder,
+      CProfessionalProject,
+      CPrice,
+      CEnrollEndDate,
+      CDescription,
+      COverview,
+      CTeacher1Name,
+      CTeacher1Post,
+      CTeacher1Title,
+      CTeacher2Name,
+      CTeacher2Post,
+      CTeacher2Title,
+      status,
+      //Optional
       view: "0",
-      email: "rase@gmail.com",
+      email: userInfo?.email,
       allClass: [
         {
           module1,
@@ -172,13 +205,14 @@ const SkillBaseCourse = () => {
       ],
     };
     setHidden(true);
-
+    console.log("All create courses DAta", courseInfoData);
     try {
       const response = await axios.post(
+        // "https://unitech-server.vercel.app/api/v1/courses/create",
         "https://unitech-server.vercel.app/api/v1/courses/create",
         courseInfoData,
         {
-          maxContentLength: 10000000000,
+          maxContentLength: 100000000000,
         }
       );
       const result = response.data;
@@ -232,11 +266,11 @@ const SkillBaseCourse = () => {
         </h1>
         <div className="w-[180px] h-[5px] bg-amber-600 mx-auto mt-3"></div>
         <form onSubmit={HandleSubmite}>
-          <div class="grid grid-cols-1 gap-x-6 gap-y-4  sm:grid-cols-2 md:px-5 mt-10">
+          <div className="grid grid-cols-1 gap-x-6 gap-y-4  sm:grid-cols-2 md:px-5 mt-10">
             {/* ------ field number 01 ------- */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
                 কোর্সের এর নাম
@@ -244,16 +278,16 @@ const SkillBaseCourse = () => {
               <input
                 required
                 id="username"
-                name="courseName"
+                name="CName"
                 type="text"
-                placeholder="Web Design"
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                placeholder="Web Design-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
             {/* ------ field number 02 ------- */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
                 কোর্সের এর কোড
@@ -264,30 +298,13 @@ const SkillBaseCourse = () => {
                 name="course-code"
                 type="text"
                 placeholder="WD-1-2024"
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
-              />
-            </div>
-            {/* ------ field number 03 ------- */}
-            <div>
-              <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
-                for="username"
-              >
-                কোর্সের ফ্রী
-              </label>
-              <input
-                required
-                id="username"
-                name="course-price"
-                type="text"
-                placeholder="৫০০০ টাকা"
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
             {/* ------ field number 04 ------- */}
-            <div className="md:mt-2">
+            <div className="">
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="phone"
               >
                 ক্যাটাগরি
@@ -312,64 +329,28 @@ const SkillBaseCourse = () => {
                 ))}
               </select>
             </div>
-            {/* ------ field number 05 ------- */}
+            {/* ------------ */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
-                কোর্সের এর Duration
+                কোর্সের এর মেয়াদ
               </label>
               <input
                 required
                 id="username"
-                name="course-duration"
+                name="CDuration"
                 type="text"
-                placeholder="6 month"
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
-              />
-            </div>
-            {/* ------ field number 06 ------- */}
-            <div>
-              <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
-                for="username"
-              >
-                কোর্সের enroll শুরূ তারিখ
-              </label>
-              <input
-                required
-                defaultValue={formattedDate}
-                id="username"
-                type="text"
-                name="enroll-Start"
-                placeholder="24/02/2024"
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                placeholder="4 Months"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
 
-            {/* ------ field number 07 ------- */}
-            <div>
-              <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
-                for="username"
-              >
-                কোর্সের enroll শেষ তারিখ
-              </label>
-              <input
-                required
-                defaultValue={formattedDate}
-                id="username"
-                type="text"
-                name="enroll-end"
-                placeholder="24/02/2024"
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
-              />
-            </div>
             {/* ------ field number 08 ------- */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
                 সর্বমোট ক্লাস
@@ -379,97 +360,200 @@ const SkillBaseCourse = () => {
                 id="username"
                 name="total-class"
                 type="text"
-                placeholder="52"
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                placeholder="45"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
             {/* ------ field number 09 ------- */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
-                সর্বমোট Assignment
+                সর্বমোট অ্যাসাইনমেন্ট
               </label>
               <input
                 required
                 id="username"
                 name="total-assignment"
                 type="text"
-                placeholder="10+"
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                placeholder="35 টি অ্যাসাইনমেন্ট"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
-            {/* ------ field number 10 ------- */}
+            {/* ------ field number 09 ------- */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
-                সর্বমোট Projects
+                সর্বমোট ঘন্টা
               </label>
               <input
                 required
                 id="username"
-                name="total-Projects"
+                name="CTotalHoure"
                 type="text"
-                placeholder="30+"
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                placeholder="সময় লাগবে 480 ঘন্টা"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            {/* ------ field number 09 ------- */}
+            <div>
+              <label
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                for="username"
+              >
+                সর্বমোট ভিডিও
+              </label>
+              <input
+                required
+                id="username"
+                name="CTotalVideo"
+                type="text"
+                placeholder="48 টি ভিডিও"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            {/* ------ field number 09 ------- */}
+            <div>
+              <label
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                for="username"
+              >
+                সর্বমোট রিসোর্স ফোল্ডার
+              </label>
+              <input
+                required
+                id="username"
+                name="CRechorsesFolder"
+                type="text"
+                placeholder="৮ রিসোর্স ফোল্ডার"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            {/* ------ field number 09 ------- */}
+            <div>
+              <label
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                for="username"
+              >
+                সর্বমোট প্রফেশনাল প্রজেক্
+              </label>
+              <input
+                required
+                id="username"
+                name="CTotalProject"
+                type="text"
+                placeholder="১৩+ প্রফেশনাল প্রজেক্"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            {/* ------ field number 03 ------- */}
+            <div>
+              <label
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                for="username"
+              >
+                কোর্সের ফ্রী
+              </label>
+              <input
+                required
+                id="username"
+                name="CPrice"
+                type="text"
+                placeholder="৫০০০ টাকা"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+
+            {/* ------ field number 07 ------- */}
+            <div>
+              <label
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                for="username"
+              >
+                কোর্সের এনরোল করার শেষ তারিখ
+              </label>
+              <input
+                required
+                defaultValue={formattedDate}
+                id="username"
+                type="text"
+                name="Cenroll-end"
+                placeholder="24/02/2024"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
           </div>
           {/* ---- Courses Details ----- */}
-          <div class="grid grid-cols-1 gap-x-6 gap-y-4  sm:grid-cols-2 md:px-5 mt-10">
+          <div className="grid grid-cols-1 gap-x-6 gap-y-4  sm:grid-cols-2 md:px-5 mt-10">
             <div className="mt-2">
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN text-center flex justify-center"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN text-center flex justify-center"
                 for="username"
               >
                 কোর্সের বিবরণ সমূহ
               </label>
               <textarea
                 required
-                name="discription"
+                name="CDiscription"
                 id="username"
                 type="text"
-                placeholder="কমপক্ষে ৪০ শব্দের হতে হবে,  যেটা দ্বারা ছাত্র-ছাত্রী বই এর ভালো দিকগুলো জানতে জানতে পারে । "
-                class="input h-[140px] block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                placeholder="ভিজ্যুয়াল কনটেন্টের চাহিদা বেড়ে যাওয়ায় এখন মার্কেটাররা গ্রাফিক্যাল কনটেন্টের দিকে ঝুঁকেছেন তাই বিশ্বজুড়ে গ্রাফিক ডিজাইনারদের চাহিদা এখন আকাশচুম্বী এক জরিপে দেখা যায়, ভালো একটা লোগোর জন্য একটি ছোট প্রতিষ্ঠানও ৫০০ ডলার পর্যন্ত "
+                className="input h-[140px] block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            <div className="mt-2">
+              <label
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN text-center flex justify-center"
+                for="username"
+              >
+                কোর্স ওভারভিউ
+              </label>
+              <textarea
+                required
+                name="COverView"
+                id="username"
+                type="text"
+                placeholder="একজন সফল গ্রাফিক ডিজাইনার হতে হলে মানসম্পন্ন কারিকুলামে প্রশিক্ষণের পাশাপাশি প্রজেক্ট ভিত্তিক কাজের অভিজ্ঞতা আর মার্কেটপ্লেস সম্পর্কে ভালো ধারণা থাকা প্রয়োজন তাই এসব কিছুই একসাথে অন্তর্ভুক্ত করা হয়েছে আমাদের কোর্স মডিউলে গ্রাফিক ডিজাইন কোর্স থেকে আপনি অ্যাডোবি ফটোশপ "
+                className="input h-[140px] block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
             <div className="flex flex-col justify-center items-center">
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] text-center ps-[2px] font-bold  md:ps-1 md:pb-2 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] text-center ps-[2px] font-bold  md:ps-1 md:pb-2 IN"
                 for="username"
               >
                 কোর্সের এর ছবি
               </label>
 
-              <div class="relative px-2 mt-1">
+              <div className="relative px-2 mt-1">
                 <label
                   title="Click to upload"
                   for="bookImage"
-                  class="cursor-pointer flex justify-center h-[130px] items-center 
+                  className="cursor-pointer flex justify-center h-[100px] items-center 
                    before:border-gray-400/60 hover:before:border-gray-300 group dark:before:bg-darker
                     dark:hover:before:border-gray-500 before:bg-gray-100 dark:before:border-gray-600 
                     before:absolute before:inset-0 before:rounded-3xl before:border before:border-dashed
                      before:transition-transform before:duration-300 hover:before:scale-105
                       active:duration-75 active:before:scale-95"
                 >
-                  <div class="w-[50px] mt-9 relative flex justify-center items-center">
+                  <div className="w-[50px] mt-9 relative flex justify-center items-center">
                     <img
-                      class="mx-auto h-12 w-12"
+                      className="mx-auto h-12 w-12"
                       src="https://www.svgrepo.com/show/357902/image-upload.svg"
                       alt=""
                     />
                   </div>
 
-                  <div class="relative top-[20px]">
-                    <span class="block text-[14px] font-semibold relative text-blue-900 dark:text-black group-hover:text-blue-500">
+                  <div className="relative top-[20px]">
+                    <span className="block text-[14px] font-semibold relative text-blue-900 dark:text-black group-hover:text-blue-500">
                       {uploadeImages?.name
                         ? uploadeImages?.name?.slice(0, 16)
                         : "Upload a image"}
                     </span>
-                    <span class=" block text-[12px] text-gray-500 dark:text-gray-400">
+                    <span className=" block text-[12px] text-gray-500 dark:text-gray-400">
                       Max 980kb
                     </span>
                   </div>
@@ -480,21 +564,129 @@ const SkillBaseCourse = () => {
                   type="file"
                   name="bookImage"
                   id="bookImage"
-                  accept=".jpeg, .png, jpg"
-                  class="bg-[#F3F4F6] mb-1 "
+                  accept=".jpeg, .png, .jpg,.webp"
+                  className="bg-[#F3F4F6] mb-1 "
                 />
               </div>
             </div>
           </div>
+
+          {/* ------   কোর্সের কোর্স ইন্সট্রাক্টর ------- */}
+          <p className="text-center my-7 text-[#000] font-[600] uppercase py-2 bg-[#00000011]">
+            কোর্সের কোর্স ইন্সট্রাক্টর
+          </p>
+
+          <div className="grid grid-cols-1 gap-x-6 gap-y-4  sm:grid-cols-2 md:px-5 mt-3">
+            <div>
+              <label
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-[900]  md:ps-1 IN "
+                for="username"
+              >
+                কোর্সের ইন্সট্রাক্টর ০১
+              </label>
+              <input
+                required
+                id="username"
+                type="text"
+                name="CTeacher1Name"
+                placeholder="Md Amir Hamza Nirob"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            <div>
+              <label
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-[900]  md:ps-1 IN "
+                for="username"
+              >
+                কোর্সের ইন্সট্রাক্টর ০১ পদবি
+              </label>
+              <input
+                required
+                id="username"
+                type="text"
+                name="CTeacher1Post"
+                placeholder="Course Coordinator"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            <div>
+              <label
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-[900]  md:ps-1 IN "
+                for="username"
+              >
+                কোর্সের ইন্সট্রাক্টর ০১ অভিজ্ঞ
+              </label>
+              <input
+                required
+                id="username"
+                type="text"
+                name="CTeacher1Title"
+                placeholder="Graphic Designer, Social Media Expert"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-x-6 gap-y-4  sm:grid-cols-2 md:px-5 mt-5">
+            <div>
+              <label
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-[900]  md:ps-1 IN "
+                for="username"
+              >
+                কোর্সের ইন্সট্রাক্টর ০২
+              </label>
+              <input
+                required
+                id="username"
+                type="text"
+                name="CTeacher2Name"
+                placeholder="Md Amir Hamza Nirob"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            <div>
+              <label
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-[900]  md:ps-1 IN "
+                for="username"
+              >
+                কোর্সের ইন্সট্রাক্টর ০১ পদবি
+              </label>
+              <input
+                required
+                id="username"
+                type="text"
+                name="CTeacher2Post"
+                placeholder="Course Coordinator"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            <div>
+              <label
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-[900]  md:ps-1 IN "
+                for="username"
+              >
+                কোর্সের ইন্সট্রাক্টর ০১ অভিজ্ঞ
+              </label>
+              <input
+                required
+                id="username"
+                type="text"
+                name="CTeacher2Title"
+                placeholder="Graphic Designer, Social Media Expert"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+          </div>
+
           <p className="text-center my-7 text-[#000] font-[600] uppercase py-2 bg-[#00000037]">
             All Class Module Content
           </p>
-
-          <div class="grid grid-cols-1 gap-x-6 gap-y-4  sm:grid-cols-2 md:px-5 ">
+          {/* --------------- all Module ------------ */}
+          <div className="grid grid-cols-1 gap-x-6 gap-y-4  sm:grid-cols-2 md:px-5 ">
             {/* ------ field number 1 ------- */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
                 ১ নাম্বার Module
@@ -505,20 +697,20 @@ const SkillBaseCourse = () => {
                 id="username"
                 type="text"
                 placeholder="Module মেইন টপিক সমূহ.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
               <textarea
                 name="module_P_1"
                 id="username"
                 type="text"
                 placeholder="ক্লাসে কি কি থাকবে তা বননা.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
             {/* ------ field number 2 ------- */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
                 ২ নাম্বার Module
@@ -529,20 +721,20 @@ const SkillBaseCourse = () => {
                 id="username"
                 type="text"
                 placeholder="Module মেইন টপিক সমূহ.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
               <textarea
                 name="module_P_2"
                 id="username"
                 type="text"
                 placeholder="ক্লাসে কি কি থাকবে তা বননা.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
             {/* ------ field number 3 ------- */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
                 ৩ নাম্বার Module
@@ -553,20 +745,20 @@ const SkillBaseCourse = () => {
                 id="username"
                 type="text"
                 placeholder="Module মেইন টপিক সমূহ.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
               <textarea
                 name="module_P_3"
                 id="username"
                 type="text"
                 placeholder="ক্লাসে কি কি থাকবে তা বননা.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
             {/* ------ field number 4 ------- */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
                 ৪ নাম্বার Module
@@ -577,20 +769,20 @@ const SkillBaseCourse = () => {
                 id="username"
                 type="text"
                 placeholder="Module মেইন টপিক সমূহ.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
               <textarea
                 name="module_P_4"
                 id="username"
                 type="text"
                 placeholder="ক্লাসে কি কি থাকবে তা বননা.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
             {/* ------ field number 5 ------- */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
                 ৫ নাম্বার Module
@@ -601,20 +793,20 @@ const SkillBaseCourse = () => {
                 id="username"
                 type="text"
                 placeholder="Module মেইন টপিক সমূহ.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
               <textarea
                 name="module_P_5"
                 id="username"
                 type="text"
                 placeholder="ক্লাসে কি কি থাকবে তা বননা.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
             {/* ------ field number 6 ------- */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
                 ৬ নাম্বার Module
@@ -625,20 +817,20 @@ const SkillBaseCourse = () => {
                 id="username"
                 type="text"
                 placeholder="Module মেইন টপিক সমূহ.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
               <textarea
                 name="module_P_6"
                 id="username"
                 type="text"
                 placeholder="ক্লাসে কি কি থাকবে তা বননা.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
             {/* ------ field number 7 ------- */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
                 ৭ নাম্বার Module
@@ -649,20 +841,20 @@ const SkillBaseCourse = () => {
                 id="username"
                 type="text"
                 placeholder="Module মেইন টপিক সমূহ.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
               <textarea
                 name="module_P_7"
                 id="username"
                 type="text"
                 placeholder="ক্লাসে কি কি থাকবে তা বননা.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
             {/* ------ field number 8 ------- */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
                 ৮ নাম্বার Module
@@ -673,20 +865,20 @@ const SkillBaseCourse = () => {
                 id="username"
                 type="text"
                 placeholder="Module মেইন টপিক সমূহ.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
               <textarea
                 name="module_P_8"
                 id="username"
                 type="text"
                 placeholder="ক্লাসে কি কি থাকবে তা বননা.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
             {/* ------ field number 9 ------- */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
                 ৯ নাম্বার Module
@@ -697,20 +889,20 @@ const SkillBaseCourse = () => {
                 id="username"
                 type="text"
                 placeholder="Module মেইন টপিক সমূহ.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
               <textarea
                 name="module_P_9"
                 id="username"
                 type="text"
                 placeholder="ক্লাসে কি কি থাকবে তা বননা.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
             {/* ------ field number 10 ------- */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
                 ১০ নাম্বার Module
@@ -721,20 +913,20 @@ const SkillBaseCourse = () => {
                 id="username"
                 type="text"
                 placeholder="Module মেইন টপিক সমূহ.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
               <textarea
                 name="module_P_10"
                 id="username"
                 type="text"
                 placeholder="ক্লাসে কি কি থাকবে তা বননা.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
             {/* ------ field number 10 ------- */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
                 ১১ নাম্বার Module
@@ -745,20 +937,20 @@ const SkillBaseCourse = () => {
                 id="username"
                 type="text"
                 placeholder="Module মেইন টপিক সমূহ.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
               <textarea
                 name="module_P_11"
                 id="username"
                 type="text"
                 placeholder="ক্লাসে কি কি থাকবে তা বননা.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
             {/* ------ field number 10 ------- */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
                 ১2 নাম্বার Module
@@ -769,23 +961,23 @@ const SkillBaseCourse = () => {
                 id="username"
                 type="text"
                 placeholder="Module মেইন টপিক সমূহ.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
               <textarea
                 name="module_P_12"
                 id="username"
                 type="text"
                 placeholder="ক্লাসে কি কি থাকবে তা বননা.."
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
           </div>
 
-          <div class="flex justify-center mt-1">
+          <div className="flex justify-center mt-1">
             <button
               // onClick={() => disableButton("hidden")}
               type="submit"
-              class={`my-5 px-12 flex justify-center bg-[#563A9F] text-gray-100 py-3  rounded-md tracking-wide
+              className={`my-5 px-12 flex justify-center bg-[#563A9F] text-gray-100 py-3  rounded-md tracking-wide
                  font-semibold  focus:outline-none focus:shadow-outline hover:bg-[#8555fe] shadow-lg cursor-pointer transition ease-in duration-300 ${
                    buttonHidden ? "disabled-button" : ""
                  }`}
@@ -796,7 +988,7 @@ const SkillBaseCourse = () => {
                     width="20"
                     height="20"
                     fill="currentColor"
-                    class="mr-2 animate-spin"
+                    className="mr-2 animate-spin"
                     viewBox="0 0 1792 1792"
                     xmlns="http://www.w3.org/2000/svg"
                   >

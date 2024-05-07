@@ -42,21 +42,86 @@ export const LeftDBLayout = () => {
                 Dashboard
               </Link>
             </li>
-
             <li className="link-text py-[12px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
               <Image
                 width={20}
                 height={15}
                 className="w-[25px] h-[25px]"
-                src={Manage}
+                src={Settings}
                 alt=""
               />{" "}
               <Link
                 className=" uppercase font-[600] text-[400] "
-                href="/dashboard/management"
+                href="/dashboard/classToper"
               >
-                Manage Account
+                Class Toper
               </Link>
+            </li>
+            <li className="link-text py-[12px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
+              <Image
+                width={20}
+                height={15}
+                className="w-[25px] h-[25px]"
+                src={Announcement}
+                alt=""
+              />{" "}
+              <Link
+                className=" uppercase font-[600] text-[400] "
+                href="/dashboard/Announcement"
+              >
+                Announcement
+              </Link>
+            </li>
+            <li className="link-text py-[12px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
+              <div className="group relative cursor-pointer ">
+                <div className="flex gap-[6px] items-center justify-between  ">
+                  <Image
+                    width={20}
+                    height={15}
+                    className="w-[25px] h-[25px]"
+                    src={Banners}
+                    alt=""
+                  />{" "}
+                  <Link
+                    href={""}
+                    className="menu-hover uppercase font-[600] text-[400]"
+                    onClick=""
+                  >
+                    Create Courses
+                  </Link>
+                  <span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      className="h-6 w-6"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                      />
+                    </svg>
+                  </span>
+                </div>
+
+                <div className="invisible w-[280px] absolute  z-50 flex flex-col bg-[#fff] py-1 px-4 text-gray-800 shadow-xl group-hover:visible">
+                  <Link
+                    href={"/dashboard/academic_course"}
+                    className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black hover:underline "
+                  >
+                    + Academic Course
+                  </Link>
+                  <Link
+                    href={"/dashboard/skillBase_course"}
+                    className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black hover:underline"
+                  >
+                    + Skill Course
+                  </Link>
+                </div>
+              </div>
             </li>
             <li className="link-text py-[12px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
               <Image
@@ -72,57 +137,6 @@ export const LeftDBLayout = () => {
               >
                 Our Student
               </Link>
-            </li>
-            <li className="link-text py-[12px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
-              <div class="group relative cursor-pointer ">
-                <div class="flex gap-[6px] items-center justify-between  ">
-                  <Image
-                    width={20}
-                    height={15}
-                    className="w-[25px] h-[25px]"
-                    src={Banners}
-                    alt=""
-                  />{" "}
-                  <Link
-                    href={""}
-                    class="menu-hover uppercase font-[600] text-[400]"
-                    onClick=""
-                  >
-                    Create Courses
-                  </Link>
-                  <span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="h-6 w-6"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                      />
-                    </svg>
-                  </span>
-                </div>
-
-                <div class="invisible w-[280px] absolute  z-50 flex flex-col bg-[#fff] py-1 px-4 text-gray-800 shadow-xl group-hover:visible">
-                  <Link
-                    href={"/dashboard/academic_course"}
-                    class="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black hover:underline "
-                  >
-                    + Academic Course
-                  </Link>
-                  <Link
-                    href={"/dashboard/skillBase_course"}
-                    class="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black hover:underline"
-                  >
-                    + Skill Course
-                  </Link>
-                </div>
-              </div>
             </li>
             <li className="link-text py-[12px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
               <Image
@@ -144,31 +158,17 @@ export const LeftDBLayout = () => {
                 width={20}
                 height={15}
                 className="w-[25px] h-[25px]"
-                src={Announcement}
+                src={Manage}
                 alt=""
               />{" "}
               <Link
                 className=" uppercase font-[600] text-[400] "
-                href="/dashboard/Announcement"
+                href="/dashboard/management"
               >
-                Announcement
+                Manage Account
               </Link>
             </li>
-            <li className="link-text py-[12px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
-              <Image
-                width={20}
-                height={15}
-                className="w-[25px] h-[25px]"
-                src={Settings}
-                alt=""
-              />{" "}
-              <Link
-                className=" uppercase font-[600] text-[400] "
-                href="/dashboard"
-              >
-                Settings
-              </Link>
-            </li>
+
             <li className="link-text py-[12px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
               <Image
                 width={20}

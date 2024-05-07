@@ -14,9 +14,6 @@ const CetagoryCourses = () => {
 
         <div className="grid grid-cols-1 px-5 md:px-0 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-2 gap-y-10 md:gap-3 justify-center items-center mt-10">
           <AllCoursesss />
-          <AllCoursesss />
-          <AllCoursesss />
-          <AllCoursesss />
         </div>
       </div>
     </>

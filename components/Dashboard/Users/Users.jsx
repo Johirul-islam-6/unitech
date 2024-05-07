@@ -17,20 +17,23 @@ export const Users = () => {
               </h1>
               {/* ----drop down--- */}
               <input
-                class="dark-light"
+                className="dark-light"
                 type="checkbox"
                 id="dark-light"
                 name="dark-light"
               />
 
-              <div class="menu-dropdown sec-center whitespace-nowrap  pe-10 ps-2">
+              <div className="menu-dropdown sec-center whitespace-nowrap  pe-10 ps-2">
                 <input
-                  class="dropdown "
+                  className="dropdown "
                   type="checkbox"
                   id="dropdown"
                   name="dropdown"
                 />
-                <label class="for-dropdown flex items-center" for="dropdown">
+                <label
+                  className="for-dropdown flex items-center"
+                  for="dropdown"
+                >
                   All
                   <svg
                     className="uil"
@@ -43,33 +46,33 @@ export const Users = () => {
                   </svg>
                 </label>
                 {/* ----- dropdown box ---- */}
-                <div class="section-dropdown px-5">
+                <div className="section-dropdown px-5">
                   <a className="overView-a" href="#">
-                    Admin <i class="uil uil-arrow-right"></i>
+                    Admin <i className="uil uil-arrow-right"></i>
                   </a>
                   <input
-                    class="dropdown-sub"
+                    className="dropdown-sub"
                     type="checkbox"
                     id="dropdown-sub"
                     name="dropdown-sub"
                   />
 
                   <a className="overView-a" href="#">
-                    Teacher <i class="uil uil-arrow-right"></i>
+                    Teacher <i className="uil uil-arrow-right"></i>
                   </a>
 
                   <a className="overView-a" href="#">
-                    Student <i class="uil uil-arrow-right"></i>
+                    Student <i className="uil uil-arrow-right"></i>
                   </a>
                 </div>
               </div>
             </div>
             <div className="md:hidden flex justify-end   items-center gap-2 cursor-pointer  w-[60%]">
-              <div class="relative text-gray-600 focus-within:text-gray-400 flex  w-[100%]">
-                <span class="absolute inset-y-0 right-0 flex items-center pl-2">
+              <div className="relative text-gray-600 focus-within:text-gray-400 flex  w-[100%]">
+                <span className="absolute inset-y-0 right-0 flex items-center pl-2">
                   <button
                     type="submit"
-                    class=" focus:outline-none focus:shadow-outline  py-[7px] px-[6px] "
+                    className=" focus:outline-none focus:shadow-outline  py-[7px] px-[6px] "
                   >
                     <svg
                       fill="none"
@@ -78,7 +81,7 @@ export const Users = () => {
                       stroke-linejoin="round"
                       stroke-width="2"
                       viewBox="0 0 24 24"
-                      class="w-6 h-6"
+                      className="w-6 h-6"
                     >
                       <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
@@ -87,7 +90,7 @@ export const Users = () => {
                 <input
                   type="search"
                   name="q"
-                  class="block w-full py-2 px-4 bg-[#F6F6F6] rounded-mdocus:outline-4 outline-[#d46a14] border-[1px] GT"
+                  className="block w-full py-2 px-4 bg-[#F6F6F6] rounded-mdocus:outline-4 outline-[#d46a14] border-[1px] GT"
                   placeholder="Student name, phone etc..."
                   autocomplete="off"
                 />
@@ -112,11 +115,11 @@ export const Users = () => {
             </div>
           </div>
           <div className="md:flex hidden justify-center  items-center gap-2 cursor-pointer  w-[23%]">
-            <div class="relative text-gray-600 focus-within:text-gray-400 flex  w-[100%]">
-              <span class="absolute inset-y-0 right-0 flex items-center pl-2">
+            <div className="relative text-gray-600 focus-within:text-gray-400 flex  w-[100%]">
+              <span className="absolute inset-y-0 right-0 flex items-center pl-2">
                 <button
                   type="submit"
-                  class=" focus:outline-none focus:shadow-outline bg-amber-600 py-[7px] px-[6px] "
+                  className=" focus:outline-none focus:shadow-outline bg-amber-600 py-[7px] px-[6px] "
                 >
                   <svg
                     fill="none"
@@ -125,7 +128,7 @@ export const Users = () => {
                     stroke-linejoin="round"
                     stroke-width="2"
                     viewBox="0 0 24 24"
-                    class="w-6 h-6"
+                    className="w-6 h-6"
                   >
                     <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                   </svg>
@@ -134,7 +137,7 @@ export const Users = () => {
               <input
                 type="search"
                 name="q"
-                class="block w-full py-2 px-4 bg-[#F6F6F6] rounded-mdocus:outline-4 outline-[#d46a14] border-[1px] GT"
+                className="block w-full py-2 px-4 bg-[#F6F6F6] rounded-mdocus:outline-4 outline-[#d46a14] border-[1px] GT"
                 placeholder="Student name, phone etc..."
                 autocomplete="off"
               />
@@ -144,23 +147,23 @@ export const Users = () => {
 
         {/* ---- user Card --- */}
         <div className="mt-5 md:mt-5">
-          <section class="py-1 flex md:flex-row flex-col justify-center md:justify-between gap-2">
-            <div class="w-full xl:w-9/12 mb-12 xl:mb-0 ">
-              <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded pb-3">
-                <div class="block w-full overflow-x-auto overflow-y-auto h-[75vh] pb-5">
-                  <table class="items-center bg-transparent w-full border-2 ">
+          <section className="py-1 flex md:flex-row flex-col justify-center md:justify-between gap-2">
+            <div className="w-full xl:w-9/12 mb-12 xl:mb-0 ">
+              <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded pb-3">
+                <div className="block w-full overflow-x-auto overflow-y-auto h-[75vh] pb-5">
+                  <table className="items-center bg-transparent w-full border-2 ">
                     <thead>
                       <tr>
-                        <th class="text-[14px] text-[#888888] px-6  align-middle border border-solid border-blueGray-100 py-3  uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left">
+                        <th className="text-[14px] text-[#888888] px-6  align-middle border border-solid border-blueGray-100 py-3  uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left">
                           Users (1149)
                         </th>
-                        <th class="text-[14px] text-[#888888] px-6  align-middle border border-solid border-blueGray-100 py-3  uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left">
+                        <th className="text-[14px] text-[#888888] px-6  align-middle border border-solid border-blueGray-100 py-3  uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left">
                           User ID
                         </th>
-                        <th class="text-[14px] text-[#888888] px-6  align-middle border border-solid border-blueGray-100 py-3  uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left">
+                        <th className="text-[14px] text-[#888888] px-6  align-middle border border-solid border-blueGray-100 py-3  uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left">
                           Course
                         </th>
-                        <th class="text-[14px] text-[#888888] px-6  align-middle border border-solid border-blueGray-100 py-3  uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left">
+                        <th className="text-[14px] text-[#888888] px-6  align-middle border border-solid border-blueGray-100 py-3  uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left">
                           Status
                         </th>
                       </tr>
@@ -202,17 +205,17 @@ export const Users = () => {
               <div className="mt-2">
                 <label
                   for="name"
-                  class="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-medium leading-6 text-gray-900"
                 >
                   Student ID
                 </label>
-                <div class="relative mt-1 rounded-md shadow-sm">
-                  <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
+                <div className="relative mt-1 rounded-md shadow-sm">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
                   <input
                     type="text"
                     name="price"
                     id="price"
-                    class="block w-full rounded-md border-0 py-2 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-2 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     placeholder="User Id"
                   />
                 </div>

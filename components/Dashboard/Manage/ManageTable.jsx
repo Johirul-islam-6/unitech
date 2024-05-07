@@ -6,7 +6,7 @@ export const ManageTable = () => {
     <>
       <tbody>
         <tr className="border-b-2">
-          <th class="flex gap-2 items-center px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] ">
+          <th className="flex gap-2 items-center px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] ">
             1.{" "}
             <Image
               width={30}
@@ -17,13 +17,13 @@ export const ManageTable = () => {
             />
             <h1>Robayath Hasan</h1>
           </th>
-          <td class="px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] font-[600]">
+          <td className="px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] font-[600]">
             02722111218107
           </td>
-          <td class="px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] font-[600]">
+          <td className="px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] font-[600]">
             Tk. 1,000
           </td>
-          <td class="px-6  align-middle  text-[14px] whitespace-nowrap py-[2px] text-left text-[#ffffff] font-[600]">
+          <td className="px-6  align-middle  text-[14px] whitespace-nowrap py-[2px] text-left text-[#ffffff] font-[600]">
             <button className="border-2 px-2 py-1 rounded-md bg-green-700 text-white">
               {" "}
               UNBLOCK

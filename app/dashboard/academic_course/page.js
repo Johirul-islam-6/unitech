@@ -1,5 +1,6 @@
 "use client";
 import axios from "axios";
+import Cookies from "js-cookie";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -8,7 +9,22 @@ import Swal from "sweetalert2";
 // resellbook.store
 const AcademicCourses = () => {
   const router = useRouter();
-  // const [disable, disableButton] = useState(null);
+
+  const accessToken = Cookies.get("accessToken");
+  const [userInfo, setUserInfo] = useState("");
+  const [Loadings, setLoading] = useState(true);
+  useEffect(() => {
+    if (!accessToken) {
+      router.push("/login");
+    }
+    if (accessToken) {
+      const getCookiesData = Cookies.get("CookieYouserData");
+      const cookiesInfo = JSON.parse(getCookiesData);
+      setUserInfo(cookiesInfo);
+    }
+    setLoading(false);
+  }, [accessToken]);
+
   const [cetagorybook, setCetagory] = useState();
   const [cetagorybook2, setCetagory2] = useState();
   const [postImage, setPostImage] = useState();
@@ -42,45 +58,41 @@ const AcademicCourses = () => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
-    const courseName = formData.get("courseName");
-    // const courseImage = formData.get("courseImage");
-    const coursePrice = formData.get("course-price");
-    // const courseImage = postImage;
-    const courseImage = "image not send";
-    const courseCode = formData.get("course-code");
-    const categoryCourse = formData.get("cetagory");
-    const enrollStartDate = formData.get("enroll-Start");
-    const enrollEndDate = formData.get("enroll-end");
-    const courseDuration = formData.get("course-duration");
-    const totalClass = formData.get("total-class");
-    const totalAssignment = formData.get("total-assignment");
-    const totalProject = formData.get("total-Projects");
-    const courseDescription = formData.get("discription");
+    const CName = formData.get("CName");
+    const CCode = formData.get("course-code");
+    const courseImage = postImage;
+    const CCategory = formData.get("cetagory");
+    const CDuration = formData.get("CDuration");
+    const CTotalClass = formData.get("total-class");
+    const CAssignment = formData.get("total-assignment");
+    const CQuize = formData.get("CQuize");
+    const CExam = formData.get("CExam");
+    const CPrice = formData.get("CPrice");
+    const CDescription = formData.get("CDiscription");
+    const COverview = formData.get("COverView");
 
     // const email = userInfo?.email;
-    const location = formData.get("location");
-    const discription = formData.get("discription");
     // const userId = userInfo?.id;
 
-    if (categoryCourse === "select") {
+    if (CCategory === "select") {
       return alert("Please select cetagoryCourse Cetagory !");
     }
 
     const courseInfoData = {
-      courseName,
+      CName,
+      CCode,
       courseImage,
-      coursePrice,
-      courseCode,
-      categoryCourse,
-      enrollStartDate,
-      enrollEndDate,
-      courseDuration,
-      totalClass,
-      totalAssignment,
-      totalProject,
-      courseDescription,
+      CCategory,
+      CDuration,
+      CTotalClass,
+      CAssignment,
+      CQuize,
+      CExam,
+      CPrice,
+      CDescription,
+      COverview,
       view: "0",
-      email: "rase@gmail.com",
+      email: userInfo?.email,
     };
     setHidden(true);
 
@@ -89,7 +101,7 @@ const AcademicCourses = () => {
         "https://unitech-server.vercel.app/api/v1/Academic-courses/create",
         courseInfoData,
         {
-          maxContentLength: 100000000000,
+          maxContentLength: 1000000000000,
         }
       );
       const result = response.data;
@@ -143,28 +155,28 @@ const AcademicCourses = () => {
         </h1>
         <div className="w-[180px] h-[5px] bg-amber-600 mx-auto mt-3"></div>
         <form onSubmit={HandleSubmite}>
-          <div class="grid grid-cols-1 gap-x-6 gap-y-4  sm:grid-cols-2 md:px-5 mt-10">
+          <div className="grid grid-cols-1 gap-x-6 gap-y-4  sm:grid-cols-2 md:px-5 mt-10">
             {/* ------ field number 01 ------- */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
-                কোর্সের এর নাম
+                কোর্সের এর সেমিস্টার নাম
               </label>
               <input
                 required
                 id="username"
-                name="courseName"
+                name="CName"
                 type="text"
-                placeholder="Web Design"
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                placeholder="Web Design-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
             {/* ------ field number 02 ------- */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
                 কোর্সের এর কোড
@@ -175,33 +187,16 @@ const AcademicCourses = () => {
                 name="course-code"
                 type="text"
                 placeholder="WD-1-2024"
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
-              />
-            </div>
-            {/* ------ field number 03 ------- */}
-            <div>
-              <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
-                for="username"
-              >
-                কোর্সের ফ্রী
-              </label>
-              <input
-                required
-                id="username"
-                name="course-price"
-                type="text"
-                placeholder="৫০০০ টাকা"
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
             {/* ------ field number 04 ------- */}
-            <div className="md:mt-2">
+            <div className="">
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="phone"
               >
-                সেমিষ্টার
+                সেমিস্টার ক্যাটাগরি
               </label>
 
               <select
@@ -223,165 +218,199 @@ const AcademicCourses = () => {
                 ))}
               </select>
             </div>
-            {/* ------ field number 05 ------- */}
+            {/* ------------ */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
-                কোর্সের এর Duration
+                কোর্সের এর মেয়াদ
               </label>
               <input
                 required
                 id="username"
-                name="course-duration"
+                name="CDuration"
                 type="text"
-                placeholder="6 month"
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
-              />
-            </div>
-            {/* ------ field number 06 ------- */}
-            <div>
-              <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
-                for="username"
-              >
-                কোর্সের enroll শুরূ তারিখ
-              </label>
-              <input
-                required
-                defaultValue={formattedDate}
-                id="username"
-                type="text"
-                name="enroll-Start"
-                placeholder="24/02/2024"
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                placeholder="4 Months"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
 
-            {/* ------ field number 07 ------- */}
-            <div>
-              <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
-                for="username"
-              >
-                কোর্সের enroll শেষ তারিখ
-              </label>
-              <input
-                required
-                defaultValue={formattedDate}
-                id="username"
-                type="text"
-                name="enroll-end"
-                placeholder="24/02/2024"
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
-              />
-            </div>
             {/* ------ field number 08 ------- */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
-                সর্বমোট ক্লাস টেস্ট
+                সর্বমোট ক্লাস
               </label>
               <input
                 required
                 id="username"
                 name="total-class"
                 type="text"
-                placeholder="52"
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                placeholder="45 টি"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
             {/* ------ field number 09 ------- */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
-                সর্বমোট Assignment
+                সর্বমোট অ্যাসাইনমেন্ট
               </label>
               <input
                 required
                 id="username"
                 name="total-assignment"
                 type="text"
-                placeholder="10+"
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                placeholder="35 টি অ্যাসাইনমেন্ট"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
-            {/* ------ field number 10 ------- */}
+            {/* ------ field number 09 ------- */}
             <div>
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
-                সর্বমোট Projects
+                সর্বমোট কুইজ
               </label>
               <input
                 required
                 id="username"
-                name="total-Projects"
+                name="CQuize"
                 type="text"
-                placeholder="30+"
-                class="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                placeholder="বিশেষ কুইজ"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+
+            {/* ------ field number 09 ------- */}
+            <div>
+              <label
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                for="username"
+              >
+                সর্বমোট ফাইনাল পরিক্ষা
+              </label>
+              <input
+                required
+                id="username"
+                name="CExam"
+                type="text"
+                placeholder="১৩+ ফাইনাল পরিক্ষা"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            {/* ------ field number 03 ------- */}
+            <div>
+              <label
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                for="username"
+              >
+                কোর্সের ফ্রী
+              </label>
+              <input
+                required
+                id="username"
+                name="CPrice"
+                type="text"
+                placeholder="৫০০০ টাকা"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+
+            {/* ------ field number 07 ------- */}
+            <div>
+              <label
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                for="username"
+              >
+                কোর্সের এনরোল করার শেষ তারিখ
+              </label>
+              <input
+                required
+                defaultValue={formattedDate}
+                id="username"
+                type="text"
+                name="Cenroll-end"
+                placeholder="24/02/2024"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
           </div>
 
           {/* ---- Courses Details ----- */}
-          <div class="grid grid-cols-1 gap-x-6 gap-y-4  sm:grid-cols-2 md:px-5 mt-10">
+          <div className="grid grid-cols-1 gap-x-6 gap-y-4  sm:grid-cols-2 md:px-5 mt-10">
             <div className="mt-2">
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN text-center flex justify-center"
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN text-center flex justify-center"
                 for="username"
               >
                 কোর্সের বিবরণ সমূহ
               </label>
               <textarea
                 required
-                name="discription"
+                name="CDiscription"
                 id="username"
                 type="text"
-                placeholder="কমপক্ষে ৪০ শব্দের হতে হবে,  যেটা দ্বারা ছাত্র-ছাত্রী বই এর ভালো দিকগুলো জানতে জানতে পারে । "
-                class="input h-[140px] block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+                placeholder="ভিজ্যুয়াল কনটেন্টের চাহিদা বেড়ে যাওয়ায় এখন মার্কেটাররা গ্রাফিক্যাল কনটেন্টের দিকে ঝুঁকেছেন তাই বিশ্বজুড়ে গ্রাফিক ডিজাইনারদের চাহিদা এখন আকাশচুম্বী এক জরিপে দেখা যায়, ভালো একটা লোগোর জন্য একটি ছোট প্রতিষ্ঠানও ৫০০ ডলার পর্যন্ত "
+                className="input h-[140px] block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            <div className="mt-2">
+              <label
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN text-center flex justify-center"
+                for="username"
+              >
+                কোর্স ওভারভিউ
+              </label>
+              <textarea
+                required
+                name="COverView"
+                id="username"
+                type="text"
+                placeholder="একজন সফল গ্রাফিক ডিজাইনার হতে হলে মানসম্পন্ন কারিকুলামে প্রশিক্ষণের পাশাপাশি প্রজেক্ট ভিত্তিক কাজের অভিজ্ঞতা আর মার্কেটপ্লেস সম্পর্কে ভালো ধারণা থাকা প্রয়োজন তাই এসব কিছুই একসাথে অন্তর্ভুক্ত করা হয়েছে আমাদের কোর্স মডিউলে গ্রাফিক ডিজাইন কোর্স থেকে আপনি অ্যাডোবি ফটোশপ "
+                className="input h-[140px] block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
             <div className="flex flex-col justify-center items-center">
               <label
-                class="text-[#000b] md:text-[14px] text-[14px] text-center ps-[2px] font-bold  md:ps-1 md:pb-2 IN"
+                className="text-[#000b] md:text-[14px] text-[14px] text-center ps-[2px] font-bold  md:ps-1 md:pb-2 IN"
                 for="username"
               >
                 কোর্সের এর ছবি
               </label>
 
-              <div class="relative px-2 mt-1">
+              <div className="relative px-2 mt-1">
                 <label
                   title="Click to upload"
                   for="bookImage"
-                  class="cursor-pointer flex justify-center h-[130px] items-center 
+                  className="cursor-pointer flex justify-center h-[100px] items-center 
                    before:border-gray-400/60 hover:before:border-gray-300 group dark:before:bg-darker
                     dark:hover:before:border-gray-500 before:bg-gray-100 dark:before:border-gray-600 
                     before:absolute before:inset-0 before:rounded-3xl before:border before:border-dashed
                      before:transition-transform before:duration-300 hover:before:scale-105
                       active:duration-75 active:before:scale-95"
                 >
-                  <div class="w-[50px] mt-9 relative flex justify-center items-center">
+                  <div className="w-[50px] mt-9 relative flex justify-center items-center">
                     <img
-                      class="mx-auto h-12 w-12"
+                      className="mx-auto h-12 w-12"
                       src="https://www.svgrepo.com/show/357902/image-upload.svg"
                       alt=""
                     />
                   </div>
 
-                  <div class="relative top-[20px]">
-                    <span class="block text-[14px] font-semibold relative text-blue-900 dark:text-black group-hover:text-blue-500">
+                  <div className="relative top-[20px]">
+                    <span className="block text-[14px] font-semibold relative text-blue-900 dark:text-black group-hover:text-blue-500">
                       {uploadeImages?.name
                         ? uploadeImages?.name?.slice(0, 16)
                         : "Upload a image"}
                     </span>
-                    <span class=" block text-[12px] text-gray-500 dark:text-gray-400">
+                    <span className=" block text-[12px] text-gray-500 dark:text-gray-400">
                       Max 980kb
                     </span>
                   </div>
@@ -392,18 +421,18 @@ const AcademicCourses = () => {
                   type="file"
                   name="bookImage"
                   id="bookImage"
-                  accept=".jpeg, .png, jpg"
-                  class="bg-[#F3F4F6] mb-1 "
+                  accept=".jpeg, .png, .jpg,.webp"
+                  className="bg-[#F3F4F6] mb-1 "
                 />
               </div>
             </div>
           </div>
 
-          <div class="flex justify-center mt-1">
+          <div className="flex justify-center mt-1">
             <button
               // onClick={() => disableButton("hidden")}
               type="submit"
-              class={`my-5 px-12 flex justify-center bg-[#563A9F] text-gray-100 py-3  rounded-md tracking-wide
+              className={`my-5 px-12 flex justify-center bg-[#563A9F] text-gray-100 py-3  rounded-md tracking-wide
                  font-semibold  focus:outline-none focus:shadow-outline hover:bg-[#8555fe] shadow-lg cursor-pointer transition ease-in duration-300 ${
                    buttonHidden ? "disabled-button" : ""
                  }`}
@@ -414,7 +443,7 @@ const AcademicCourses = () => {
                     width="20"
                     height="20"
                     fill="currentColor"
-                    class="mr-2 animate-spin"
+                    className="mr-2 animate-spin"
                     viewBox="0 0 1792 1792"
                     xmlns="http://www.w3.org/2000/svg"
                   >

@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------- project layOut max width -------->  */
+.d-max-w-screen-xl {
+  max-width: 1900px;
+}
+
+@media (max-width: 1023px) {
+  .d-max-w-screen-xl {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
 .dashboard-left-container {
   width: 25%;
   background-color: #fff;
@@ -9,9 +21,6 @@
 }
 .dashboard-body {
   width: 100%;
-}
-.dashboard-max-w-screen-xl {
-  max-width: 1500px;
 }
 
 .Academic-Courses {

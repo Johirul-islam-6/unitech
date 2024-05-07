@@ -20,15 +20,3 @@
 .IBM {
   font-family: "IBM Plex Sans", sans-serif;
 }
-
-/* ---------- project layOut max width -------->  */
-.max-w-screen-xl {
-  max-width: 1400px;
-}
-
-@media (max-width: 1023px) {
-  .max-w-screen-xl {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-}

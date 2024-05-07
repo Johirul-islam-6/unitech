@@ -57,11 +57,11 @@ const OurStudent = () => {
 
             {/* ---- search bar --- */}
             <div className="md:flex  justify-center  items-center gap-2 cursor-pointer  md:w-[23%]">
-              <div class="relative text-gray-600 focus-within:text-gray-400 flex  w-[100%]">
-                <span class="absolute inset-y-0 right-0 flex items-center pl-2">
+              <div className="relative text-gray-600 focus-within:text-gray-400 flex  w-[100%]">
+                <span className="absolute inset-y-0 right-0 flex items-center pl-2">
                   <button
                     type="submit"
-                    class=" focus:outline-none focus:shadow-outline bg-amber-600 py-[7px] px-[6px] "
+                    className=" focus:outline-none focus:shadow-outline bg-amber-600 py-[7px] px-[6px] "
                   >
                     <svg
                       fill="none"
@@ -70,7 +70,7 @@ const OurStudent = () => {
                       stroke-linejoin="round"
                       stroke-width="2"
                       viewBox="0 0 24 24"
-                      class="w-6 h-6"
+                      className="w-6 h-6"
                     >
                       <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
@@ -81,7 +81,7 @@ const OurStudent = () => {
                   type="search"
                   name="search"
                   id="search"
-                  class="block w-full py-[8px] px-4 bg-[#F6F6F6] text-[17px] rounded-mdocus:outline-4 outline-[#d46a14] border-[1px] GT"
+                  className="block w-full py-[8px] px-4 bg-[#F6F6F6] text-[17px] rounded-mdocus:outline-4 outline-[#d46a14] border-[1px] GT"
                   placeholder="search anythis..."
                   autocomplete="off"
                 />
@@ -93,34 +93,34 @@ const OurStudent = () => {
         {/* ---- user Card --- */}
         <div className="mt-5">
           {Loading && (
-            <div class="h-screen w-[100%] bg-white flex justify-center mt-40">
+            <div className="h-screen w-[100%] bg-white flex justify-center mt-40">
               <img
-                class="h-16 w-16"
+                className="h-16 w-16"
                 src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif"
                 alt=""
               />
             </div>
           )}
-          <section class="py-1 flex md:flex-row flex-col justify-center md:justify-between gap-2">
-            <div class="w-full  mb-12 xl:mb-0 ">
-              <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded pb-3">
-                <div class="block w-full overflow-x-auto overflow-y-auto h-[75vh] pb-5">
-                  <table class="items-center bg-transparent w-full border-2 ">
+          <section className="py-1 flex md:flex-row flex-col justify-center md:justify-between gap-2">
+            <div className="w-full  mb-12 xl:mb-0 ">
+              <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded pb-3">
+                <div className="block w-full overflow-x-auto overflow-y-auto h-[75vh] pb-5">
+                  <table className="items-center bg-transparent w-full border-2 ">
                     <thead className="border-b-2 ">
                       <tr>
-                        <th class="text-[14px] text-[#888888] px-6  align-middle border border-solid border-blueGray-100 py-3  uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left">
+                        <th className="text-[14px] text-[#888888] px-6  align-middle border border-solid border-blueGray-100 py-3  uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left">
                           Student Name
                         </th>
-                        <th class="text-[14px] text-[#888888] px-6  align-middle border border-solid border-blueGray-100 py-3  uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left">
+                        <th className="text-[14px] text-[#888888] px-6  align-middle border border-solid border-blueGray-100 py-3  uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left">
                           Email
                         </th>
-                        <th class="text-[14px] text-[#888888] px-6  align-middle border border-solid border-blueGray-100 py-3  uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left">
+                        <th className="text-[14px] text-[#888888] px-6  align-middle border border-solid border-blueGray-100 py-3  uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left">
                           Role
                         </th>
-                        <th class="text-[14px] text-[#888888] px-6  align-middle text-center border border-solid border-blueGray-100 py-3  uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left">
+                        <th className="text-[14px] text-[#888888] px-6  align-middle text-center border border-solid border-blueGray-100 py-3  uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left">
                           Gender
                         </th>
-                        {/* <th class="text-[14px] text-[#888888] px-6  align-middle border border-solid border-blueGray-100 py-3  uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left"></th> */}
+                        {/* <th className="text-[14px] text-[#888888] px-6  align-middle border border-solid border-blueGray-100 py-3  uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left"></th> */}
                       </tr>
                     </thead>
 
@@ -129,7 +129,7 @@ const OurStudent = () => {
                       {ourStudent?.map((user, index) => (
                         <>
                           <tr className="border-b-2 hover:bg-[#e1b42f8a] mt-2  cursor-pointer">
-                            <th class="flex gap-2 items-center px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] ">
+                            <th className="flex gap-2 items-center px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] ">
                               {index + 1}
                               <Image
                                 width={30}
@@ -140,22 +140,22 @@ const OurStudent = () => {
                               />
                               <h1>{user?.name}</h1>
                             </th>
-                            <td class="px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] font-[600]">
+                            <td className="px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] font-[600]">
                               {user?.email}
                             </td>
-                            <td class="px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] font-[600]">
+                            <td className="px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] font-[600]">
                               {user?.studentRoll}
                             </td>
-                            <td class="px-6 text-center align-middle  text-[14px] whitespace-nowrap py-[2px]  text-[#000000] font-[600]">
+                            <td className="px-6 text-center align-middle  text-[14px] whitespace-nowrap py-[2px]  text-[#000000] font-[600]">
                               {user?.gender}
                             </td>
-                            <td class="p-3 px-5 flex justify-end">
+                            <td className="p-3 px-5 flex justify-end">
                               <Link
                                 href={`/dashboard/singel_user/${user?._id}`}
                               >
                                 <button
                                   type="button"
-                                  class="mr-3 text-sm view-button-user hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+                                  className="mr-3 text-sm view-button-user hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
                                 >
                                   view
                                 </button>

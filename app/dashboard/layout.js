@@ -26,20 +26,18 @@ export default function RootLayout({ children }) {
     setLoading(false);
   }, [accessToken]);
 
-  console.log("dahs==>", userInfo);
-
   return (
     <html lang="en">
-      <body className={`dashboard-max-w-screen-xl mx-auto`}>
+      <body className={``}>
         <ToastContainer />
         {Loading && (
           <>
             <div className="absolute w-[100%] bg-white h-[140vh] z-[1000]">
-              <div class="flex space-x-2 justify-center items-center bg-white h-screen  ">
-                <span class="sr-only">Loading...</span>
-                <div class="h-8 w-8 bg-[#563A9F] rounded-full animate-bounce [animation-delay:-0.3s]"></div>
-                <div class="h-8 w-8 bg-[#563A9F] rounded-full animate-bounce [animation-delay:-0.15s]"></div>
-                <div class="h-8 w-8 bg-[#563A9F] rounded-full animate-bounce"></div>
+              <div className="flex space-x-2 justify-center items-center bg-white h-screen  ">
+                <span className="sr-only">Loading...</span>
+                <div className="h-8 w-8 bg-[#563A9F] rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+                <div className="h-8 w-8 bg-[#563A9F] rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+                <div className="h-8 w-8 bg-[#563A9F] rounded-full animate-bounce"></div>
               </div>
             </div>
           </>
@@ -48,35 +46,35 @@ export default function RootLayout({ children }) {
         {userInfo?.ruler === "student" ? (
           <>
             <div className="d">
-              <div class="h-screen w-screen bg-[#ffffffd1] flex justify-center items-center gap-5">
-                <div class="relative inline-flex  group">
-                  <div class="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
+              <div className="h-screen w-screen bg-[#ffffffd1] flex justify-center items-center gap-5">
+                <div className="relative inline-flex  group">
+                  <div className="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
                   <a
                     href="#"
                     title="Get quote now"
-                    class="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+                    className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
                     role="button"
                   >
                     You are not admin
                   </a>
                 </div>
-                <div class="relative inline-flex  group">
-                  <div class="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
+                <div className="relative inline-flex  group">
+                  <div className="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
                   <a
                     href="#"
                     title="Get quote now"
-                    class="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+                    className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
                     role="button"
                   >
                     Go
                   </a>
                 </div>
-                <div class="relative inline-flex  group">
-                  <div class="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
+                <div className="relative inline-flex  group">
+                  <div className="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
                   <Link
                     href="/"
                     title="Get quote now"
-                    class="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+                    className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
                     role="button"
                   >
                     Back Home
@@ -87,7 +85,7 @@ export default function RootLayout({ children }) {
           </>
         ) : (
           <>
-            <div className="flex ">
+            <div className="flex d-max-w-screen-xl mx-auto">
               <div className="dashboard-left-container md:block hidden border-r-2 border-l-2 ">
                 <LeftDBLayout />
               </div>
