@@ -21,7 +21,7 @@ export const ManageAccount = () => {
     async function fetchData() {
       try {
         const result = await axios.get(
-          `https://unitech-server.vercel.app/api/v1/users/?searchTerm=${searchingValue}&page=1&limit=20&sort=createdAt&sortOrder=desc`
+          `https://unitech-server.vercel.app/api/v1/users/?searchTerm=${searchingValue}&page=1&limit=10000000&sort=createdAt&sortOrder=desc`
         );
 
         setUser(result?.data?.data);

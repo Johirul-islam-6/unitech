@@ -21,7 +21,10 @@ export const DashbordMain = () => {
   const [Loading2, setLoading2] = useState(true);
   const [AcademicCourse, setAcademicCourse] = useState();
   const [SkillCourses, setSkillCourses] = useState();
-
+  const [totalSiteView, settotalSiteView] = useState();
+  const [perfromanceLoading, setPerfromanceLoading] = useState(true);
+  const [perfromanceLoading2, setPerfromanceLoading2] = useState(true);
+  const [allUserss, setUser] = useState();
   const [reloades, setReload] = useState(false);
 
   useEffect(() => {
@@ -58,6 +61,42 @@ export const DashbordMain = () => {
 
     fetchData2();
   }, [reloades]);
+
+  // ------------ total site visitor ---------
+
+  useEffect(() => {
+    // ---- view show----
+    async function viewCount() {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/api/v1/siteView`
+        );
+        const result = response?.data?.data[0];
+        settotalSiteView(result);
+        setPerfromanceLoading(false);
+        // if get the data then save
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+    viewCount();
+    //  ---------- all users -----------
+    async function fetchData() {
+      try {
+        const result = await axios.get(
+          `https://unitech-server.vercel.app/api/v1/users/?searchTerm=&page=1&limit=10000000&sort=createdAt&sortOrder=desc`
+        );
+
+        setUser(result?.data?.data);
+
+        setPerfromanceLoading2(false);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetchData();
+  }, []);
 
   // ----------- delete courses book -------------
 
@@ -192,9 +231,20 @@ export const DashbordMain = () => {
             <div className="Visitors bg-[#d7d7d7] px-4 py-6 rounded-lg dashbord-box-shadow ">
               <p className="text-[18px] font-[700] text-[#0c0b15] ">Visitors</p>
               <div className="flex items-center ">
-                <h1 className="total-count-number text-[30px] md:text-[40px] text-[#0c0b15] ">
-                  79.1k
-                </h1>
+                {perfromanceLoading ? (
+                  <>
+                    <div class="flex gap-2 pt-4 ">
+                      <div class="rounded-full h-[6px] w-[6px] bg-violet-800 animate-ping"></div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <h1 className="total-count-number text-[30px] md:text-[35px] text-[#0c0b15ea] ">
+                      {totalSiteView?.totalView}
+                    </h1>
+                  </>
+                )}
+
                 <span className="text-[14px] font-[600] text-red-800 flex gap-1 md:mt-5 justify-end items-center ps-2">
                   +11.02%{" "}
                   <svg
@@ -272,11 +322,22 @@ export const DashbordMain = () => {
                 Total Users
               </p>
               <div className="flex items-center ">
-                <h1 className="total-count-number text-[30px] md:text-[40px] text-[#0c0b15]">
-                  22.2k
-                </h1>
+                {perfromanceLoading2 ? (
+                  <>
+                    <div class="flex gap-2 pt-4 ">
+                      <div class="rounded-full h-[6px] w-[6px] bg-violet-800 animate-ping"></div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <h1 className="total-count-number text-[30px] md:text-[35px] text-[#0c0b15]">
+                      {allUserss?.length}
+                    </h1>
+                  </>
+                )}
+
                 <span className="text-[14px] font-[600] text-red-800 flex gap-1 md:mt-5 justify-end items-center ps-2">
-                  +60.03%{" "}
+                  +1.03%{" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"

@@ -4,6 +4,7 @@ import image1 from "@/app/Assets/image/banner1.jpg";
 import image2 from "@/app/Assets/image/banner2.jpg";
 import image3 from "@/app/Assets/image/banner3.jpg";
 import image4 from "@/app/Assets/image/banner4.jpg";
+import axios from "axios";
 import Image from "next/image";
 import { useEffect } from "react";
 

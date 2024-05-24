@@ -12,133 +12,180 @@ import icon4 from "@/app/Assets/skill_courses_details/courseIcon/4.png";
 import icon5 from "@/app/Assets/skill_courses_details/courseIcon/5.png";
 import icon6 from "@/app/Assets/skill_courses_details/courseIcon/6.png";
 import icon7 from "@/app/Assets/skill_courses_details/courseIcon/7.png";
+import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 export const CourseDetails = ({ singleCourses }) => {
-  const courseInformation = [
-    {
-      module: "১",
-      moduleNumber: "ক্লাস",
-      moduleTitle: "Setup Function",
-    },
-    {
-      module: "২",
-      moduleNumber: "ক্লাস",
-      moduleTitle: "Structural draft",
-    },
-    {
-      module: "৩",
-      moduleNumber: "ক্লাস",
-      moduleTitle: "Footing And Column Section ",
-    },
-    {
-      module: "৪",
-      moduleNumber: "ক্লাস",
-      moduleTitle: "Basic Drawing & Editing Commands (Draw Toolbar)",
-    },
-    {
-      module: "৫",
-      moduleNumber: "ক্লাস",
-      moduleTitle: "Footing & Column Schedule",
-    },
-    {
-      module: "৬",
-      moduleNumber: "ক্লাস",
-      moduleTitle: " Basic Drawing & Editing Commands (Draw Toolbar)",
-    },
-    {
-      module: " ৭",
-      moduleNumber: "ক্লাস",
-      moduleTitle: "Beam Section Details",
-    },
-    {
-      module: "৮",
-      moduleNumber: "ক্লাস",
-      moduleTitle: "Basic Drawing & Editing Commands (Dimension Toolbar) ",
-    },
-    {
-      module: "৯",
-      moduleNumber: "ক্লাস",
-      moduleTitle: "Stair Reinforcement Details",
-    },
-    {
-      module: "১০",
-      moduleNumber: "ক্লাস",
-      moduleTitle: "Basic Drawing & Editing Commands (Modify toolbar)",
-    },
-    {
-      module: "১১",
-      moduleNumber: "ক্লাস",
-      moduleTitle: "Slab Reinforcement details",
-    },
-    {
-      module: "১২",
-      moduleNumber: "ক্লাস",
-      moduleTitle: "Basic Drawing & Editing Commands",
-    },
-    {
-      module: "১৩",
-      moduleNumber: "ক্লাস",
-      moduleTitle: "Septic Tank Design",
-    },
-    {
-      module: " ১৪",
-      moduleNumber: "ক্লাস",
-      moduleTitle: "Rajuk/ Powrosova Rules (Theory)",
-    },
-    {
-      module: "১৫",
-      moduleNumber: "ক্লাস",
-      moduleTitle: "Electrical",
-    },
-    {
-      module: "১৬",
-      moduleNumber: "ক্লাস",
-      moduleTitle: " Floor plan",
-    },
-    {
-      module: "১৭",
-      moduleNumber: "ক্লাস",
-      moduleTitle: "Dhaka Project",
-    },
-    {
-      module: "১৮",
-      moduleNumber: "ক্লাস",
-      moduleTitle: "Elevation",
-    },
-    {
-      module: "১৯",
-      moduleNumber: "ক্লাস",
-      moduleTitle: "Dhaka Project",
-    },
-    {
-      module: "২০",
-      moduleNumber: "ক্লাস",
-      moduleTitle: " Cross Section",
-    },
-    {
-      module: "২১",
-      moduleNumber: "ক্লাস",
-      moduleTitle: " Cross Section",
-    },
-    {
-      module: "২২",
-      moduleNumber: "ক্লাস",
-      moduleTitle: " Cross Section",
-    },
-    {
-      module: "২৩",
-      moduleNumber: "ক্লাস",
-      moduleTitle: " Structural Part",
-    },
-    {
-      module: "২৪",
-      moduleNumber: "ক্লাস",
-      moduleTitle: " Layout & Scal",
-    },
-  ];
+  const [openModal, closeModal] = useState(true);
+
+  const [Loading, setLoading] = useState(true);
+  const accessToken = Cookies.get("accessToken");
+  const [userInfo, setUserInfo] = useState("");
+  // ------ login access checked ------
+  useEffect(() => {
+    if (!accessToken) {
+      route.push("/login");
+    }
+    if (accessToken) {
+      const getCookiesData = Cookies.get("CookieYouserData");
+      const cookiesInfo = JSON.parse(getCookiesData);
+      setUserInfo(cookiesInfo);
+    }
+    setLoading(false);
+  }, [accessToken]);
+
+  const ModalOpenButton = () => {
+    closeModal(!openModal);
+  };
 
   return (
     <>
+      {openModal && (
+        <>
+          <from className="w-[100%] h-[100vh] bg-[#00000087] absolute z-20">
+            <div className="bg-[#fff] md:w-[800px] mx-auto h-[auto] p-5 py-10 mt-5">
+              <div className="flex justify-between relative ">
+                <h1>
+                  আপনি কোর্সটি করতে কি আগ্রহী{" "}
+                  <span className="text-green-500">OnSite</span>
+                </h1>
+                <button
+                  onClick={() => closeModal(false)}
+                  className="text-[30px] font-[600] absolute right-0 top-[-10px]"
+                >
+                  x
+                </button>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-5 justify-center items-center mt-10">
+                {/* ------ field number 01 ------- */}
+                <div>
+                  <input
+                    required
+                    id="username"
+                    name="CName"
+                    type="text"
+                    defaultValue={userInfo?.name}
+                    disabled
+                    className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-3 px-3 w-full focus:outline-none mt-1"
+                  />
+                </div>
+                {/* ------ field number 01 ------- */}
+                <div>
+                  <input
+                    required
+                    id="username"
+                    name="CName"
+                    type="text"
+                    defaultValue={userInfo?.studentRoll}
+                    disabled
+                    className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-3 px-3 w-full focus:outline-none mt-1"
+                  />
+                </div>
+                {/* ------ field number 01 ------- */}
+                <div>
+                  <input
+                    required
+                    id="username"
+                    name="CName"
+                    type="text"
+                    defaultValue={userInfo?.email}
+                    disabled
+                    className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-3 px-3 w-full focus:outline-none mt-1"
+                  />
+                </div>
+                {/* ------ field number 01 ------- */}
+                <div>
+                  <input
+                    required
+                    id="username"
+                    name="CName"
+                    type="text"
+                    defaultValue={userInfo?.phone}
+                    className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-3 px-3 w-full focus:outline-none mt-1"
+                  />
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-5 justify-center items-center mt-10">
+                {/* ------ field number 01 ------- */}
+                <div>
+                  <input
+                    required
+                    id="username"
+                    name="CName"
+                    type="text"
+                    defaultValue={singleCourses?.CName}
+                    disabled
+                    className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-3 px-3 w-full focus:outline-none mt-1"
+                  />
+                </div>
+                {/* ------ field number 01 ------- */}
+                <div>
+                  <input
+                    required
+                    id="username"
+                    name="CName"
+                    type="text"
+                    defaultValue={singleCourses?.CCode}
+                    disabled
+                    className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-3 px-3 w-full focus:outline-none mt-1"
+                  />
+                </div>
+                {/* ------ field number 01 ------- */}
+                <div>
+                  <input
+                    required
+                    id="username"
+                    name="CName"
+                    type="text"
+                    defaultValue={"2 Batch"}
+                    disabled
+                    className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-3 px-3 w-full focus:outline-none mt-1"
+                  />
+                </div>
+                {/* ------ field number 01 ------- */}
+                <div>
+                  <input
+                    required
+                    id="username"
+                    name="CName"
+                    type="text"
+                    defaultValue={singleCourses?.CDuration}
+                    disabled
+                    className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-3 px-3 w-full focus:outline-none mt-1"
+                  />
+                </div>
+                {/* ------ field number 01 ------- */}
+                <div>
+                  <input
+                    required
+                    id="username"
+                    name="CName"
+                    type="text"
+                    defaultValue={singleCourses?.CPrice + " টাকা"}
+                    disabled
+                    className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-3 px-3 w-full focus:outline-none mt-1"
+                  />
+                </div>
+                {/* ------ field number 01 ------- */}
+                <div>
+                  <input
+                    required
+                    id="username"
+                    name="CName"
+                    type="text"
+                    defaultValue={"OnSite"}
+                    disabled
+                    className="input text-green-600 block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-3 px-3 w-full focus:outline-none mt-1"
+                  />
+                </div>
+              </div>
+            </div>
+          </from>
+        </>
+      )}
+
       <div className="d">
         <div className="mt-1 pt-4 bg-[#FAF9FD] max-w-screen-xl mx-auto flex flex-col-reverse md:grid grid-cols-2 gap-5 md:gap-x-2 justify-between  ">
           {/* -------------Col-1 course Details-------- */}
@@ -189,7 +236,10 @@ export const CourseDetails = ({ singleCourses }) => {
                 {singleCourses?.CDescription}
               </p>
               <div className="flex md:justify-start gap-5 justify-center ">
-                <button className="SILIGURI px-6 py-4 bg-amber-600 hover:bg-amber-500 text-white text-[12px] md:text-[14px] font-[600] rounded-md">
+                <button
+                  onClick={() => ModalOpenButton()}
+                  className="SILIGURI px-6 py-4 bg-amber-600 hover:bg-amber-500 text-white text-[12px] md:text-[14px] font-[600] rounded-md"
+                >
                   এনরোল করুন
                 </button>
                 <button className="SILIGURI px-6 py-4 bg-[#080D2A] hover:bg-[#151b3f] text-white text-[12px] md:text-[14px] font-[600] rounded-md">
