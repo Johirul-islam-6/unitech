@@ -73,6 +73,21 @@ export const LeftDBLayout = () => {
               </Link>
             </li>
             <li className="link-text py-[12px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
+              <Image
+                width={20}
+                height={15}
+                className="w-[25px] h-[25px]"
+                src={Announcement}
+                alt=""
+              />{" "}
+              <Link
+                className=" uppercase font-[600] text-[400] "
+                href="/dashboard/enrollStudent"
+              >
+                Enroll Student
+              </Link>
+            </li>
+            <li className="link-text py-[12px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
               <div className="group relative cursor-pointer ">
                 <div className="flex gap-[6px] items-center justify-between  ">
                   <Image

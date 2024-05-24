@@ -13,9 +13,11 @@ import CompnaySlier from "@/components/Home/semesterTopersSlider/CompnaySlier";
 export default function Home() {
   return (
     <>
+      {/* <div className="w-[100%] bg-amber-200"> */}
       <div className=" mt-2 md:mt-1">
         <Banner />
       </div>
+      {/* </div> */}
       <div className="mt-[2px]">
         <Career />
       </div>

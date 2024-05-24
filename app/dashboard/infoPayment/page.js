@@ -19,6 +19,9 @@ const InfoPayment = () => {
     }
     setLoading(false);
   }, [accessToken]);
+
+
+  
   return (
     <>
       <PaymentInfo userInfo={userInfo} />

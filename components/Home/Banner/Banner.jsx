@@ -77,6 +77,23 @@ export const Banner = () => {
     };
   }, []);
 
+  //  ------------- total site visitor --------------------
+  useEffect(() => {
+    async function viewCount() {
+      try {
+        const response = await axios.patch(
+          `http://localhost:8080/api/v1/siteView/view/66501be73b986cc58347cd43`
+        );
+        const result = response.data;
+
+        // if get the data then save
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+    viewCount();
+  }, []);
+
   return (
     <div className="overflow-x-hidden">
       {/* ----------Banner image slider ----------- */}
@@ -84,35 +101,17 @@ export const Banner = () => {
         <div className="list">
           <div className="item">
             <Image
-              className="slide_image"
+              className="img-fluid"
               width={1200}
               height={800}
               src={image1}
               alt=""
             />
 
-            <div className="slide_content">
-              <div className="title">একটাই লক্ষ্য </div>
-              <div className="type">হতে হবে দক্ষ</div>
-              <div className="description">
-                ডিপ্লোমা একাডেমিক সেমিস্টার কোর্সের মূল্যায়নের পরিপূর্ণ বিবরণ
-                অনুসারে, এই প্রোগ্রামটি সম্পন্ন করার সময়ে ছাত্র-ছাত্রীদের
-                বিভিন্ন বিষয়ে গভীর জ্ঞান এবং প্রোফেশনাল দক্ষতা অর্জন করার সুযোগ
-                প্রদান করে।
-              </div>
-              <div className="button">
-                <button className="text-black rounded-md ">SEE MORE</button>
-              </div>
-            </div>
-          </div>
-
-          <div className="item">
-            <Image width={1200} height={800} src={image2} alt="" />
-
-            <div className="slide_content">
+            <div className="slide_content ">
               <div className="title">দক্ষ হবো </div>
               <div className="type">ইউনিটেক এর সাথে</div>
-              <div className="description text-justify">
+              <div className="description py-5 text-justify">
                 ডিপ্লোমা একাডেমিক সেমিস্টার কোর্সের মূল্যায়নের পরিপূর্ণ বিবরণ
                 অনুসারে, এই প্রোগ্রামটি সম্পন্ন করার সময়ে ছাত্র-ছাত্রীদের
                 বিভিন্ন বিষয়ে গভীর জ্ঞান এবং প্রোফেশনাল দক্ষতা অর্জন করার সুযোগ
@@ -125,12 +124,18 @@ export const Banner = () => {
           </div>
 
           <div className="item">
-            <Image width={1200} height={800} src={image4} alt="" />
+            <Image
+              className="img-fluid"
+              width={1200}
+              height={800}
+              src={image2}
+              alt=""
+            />
 
-            <div className="slide_content">
-              <div className="title">MAGIC SLIDER</div>
-              <div className="type">PLANT</div>
-              <div className="description">
+            <div className="slide_content ">
+              <div className="title">দক্ষ হবো </div>
+              <div className="type">ইউনিটেক এর সাথে</div>
+              <div className="description py-5 text-justify">
                 ডিপ্লোমা একাডেমিক সেমিস্টার কোর্সের মূল্যায়নের পরিপূর্ণ বিবরণ
                 অনুসারে, এই প্রোগ্রামটি সম্পন্ন করার সময়ে ছাত্র-ছাত্রীদের
                 বিভিন্ন বিষয়ে গভীর জ্ঞান এবং প্রোফেশনাল দক্ষতা অর্জন করার সুযোগ
@@ -143,12 +148,41 @@ export const Banner = () => {
           </div>
 
           <div className="item">
-            <Image width={1200} height={800} src={image3} alt="" />
+            <Image
+              className="img-fluid"
+              width={1200}
+              height={800}
+              src={image4}
+              alt=""
+            />
+            <div className="slide_content ">
+              <div className="title">দক্ষ হবো </div>
+              <div className="type">ইউনিটেক এর সাথে</div>
+              <div className="description py-5 text-justify">
+                ডিপ্লোমা একাডেমিক সেমিস্টার কোর্সের মূল্যায়নের পরিপূর্ণ বিবরণ
+                অনুসারে, এই প্রোগ্রামটি সম্পন্ন করার সময়ে ছাত্র-ছাত্রীদের
+                বিভিন্ন বিষয়ে গভীর জ্ঞান এবং প্রোফেশনাল দক্ষতা অর্জন করার সুযোগ
+                প্রদান করে।
+              </div>
+              <div className="button">
+                <button>SEE MORE</button>
+              </div>
+            </div>
+          </div>
 
-            <div className="slide_content">
-              <div className="title">MAGIC SLIDER</div>
-              <div className="type">NATURE</div>
-              <div className="description">
+          <div className="item">
+            <Image
+              className="img-fluid"
+              width={1200}
+              height={800}
+              src={image3}
+              alt=""
+            />
+
+            <div className="slide_content ">
+              <div className="title">দক্ষ হবো </div>
+              <div className="type">ইউনিটেক এর সাথে</div>
+              <div className="description py-5 text-justify">
                 ডিপ্লোমা একাডেমিক সেমিস্টার কোর্সের মূল্যায়নের পরিপূর্ণ বিবরণ
                 অনুসারে, এই প্রোগ্রামটি সম্পন্ন করার সময়ে ছাত্র-ছাত্রীদের
                 বিভিন্ন বিষয়ে গভীর জ্ঞান এবং প্রোফেশনাল দক্ষতা অর্জন করার সুযোগ

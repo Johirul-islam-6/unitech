@@ -206,7 +206,7 @@ const Registration = () => {
         setHidden(false);
         router.push("/profile");
       }
-
+      router.push("/profile");
       setTimeout(() => {
         window.location.reload();
       }, 700);

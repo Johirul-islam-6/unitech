@@ -1,9 +1,30 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import "./PaymentInfo.css";
 
 import { PaymentInfoTable } from "./PaymentInfoTable";
+import Swal from "sweetalert2";
+import axios from "axios";
+import { PageLoding } from "@/components/Loading/PageLoding";
 
 export const PaymentInfo = ({ userInfo }) => {
+  const [buttonHidden, setHidden] = useState(false);
+  const [searchingValue, setSearchingValue] = useState("");
+  const [Loading, setLoading] = useState(true);
+  const [AllPaymentInfo, setAllPaymentInfo] = useState();
+  const [reloades, setReload] = useState(false);
+
+  // ---------- this date formate functions ----------
+  function padZero(num) {
+    return num < 10 ? `0${num}` : num;
+  }
+  const today = new Date();
+  // Format the date to DD/MM/YYYY
+  const formattedDate = `${padZero(today.getDate())}/${padZero(
+    today.getMonth() + 1
+  )}/${today.getFullYear()}`;
+
+  // all departments
   const departmental = [
     "Academic Semester",
     "Web Design",
@@ -17,24 +38,100 @@ export const PaymentInfo = ({ userInfo }) => {
     "Ai",
   ];
 
-  function padZero(num) {
-    return num < 10 ? `0${num}` : num;
-  }
-
-  // Get today's date
-  const today = new Date();
-  // Format the date to DD/MM/YYYY
-  const formattedDate = `${padZero(today.getDate())}/${padZero(
-    today.getMonth() + 1
-  )}/${today.getFullYear()}`;
-
+  // --------- cetagory feild value ------------------
   const FindDepartment = (cetagoryName) => {
     console.log(cetagoryName);
+    setSearchingValue(cetagoryName);
   };
 
-  console.log(formattedDate);
+  const HandleSubmite = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const SName = formData.get("SName");
+    const SRoll = formData.get("SRoll");
+    const SCetagory = formData.get("SCetagory");
+    const Cbatch = formData.get("Cbatch");
+    const SPhone = formData.get("SPhone");
+    const SEmail = formData.get("SEmail");
+    const SFree = formData.get("SFree");
+    const SPaid = formData.get("SPaid");
+
+    // ----get object ---
+
+    const PayInformation = {
+      SName,
+      SRoll,
+      SCetagory,
+      Cbatch,
+      SPhone,
+      SEmail,
+      SFree,
+      SPaid,
+      CDate: formattedDate,
+      updatePayment: "00/00/0000",
+      PAdmin: userInfo?.email,
+    };
+    setHidden(true);
+
+    try {
+      const response = await axios.post(
+        "https://unitech-server.vercel.app/api/v1/payment/create",
+        PayInformation,
+        {
+          maxContentLength: 1000000000000,
+        }
+      );
+      const result = response.data;
+
+      // if get the data then save
+      if (result?.success) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `${result?.message}`,
+          text: "Thank you",
+          showConfirmButton: false,
+          timer: 2500,
+        });
+        setReload(true);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+
+      Swal.fire({
+        title: `${error?.response?.data?.errorMessages[0]?.message}`,
+        text: ` Field : ${error?.response?.data?.errorMessages[0]?.path}`,
+        icon: "error",
+      });
+      setHidden(false);
+    }
+
+    setHidden(false);
+  };
+
+  // --------------- get Filter Data --------------------
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const result = await axios.get(
+          `https://unitech-server.vercel.app/api/v1/payment/?searchTerm=${searchingValue}&page=1&limit=100000&sort=createdAt&sortOrder=desc`
+        );
+
+        setAllPaymentInfo(result?.data?.data);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetchData();
+  }, [reloades, searchingValue]);
+
   return (
     <>
+      <PageLoding Loading={Loading} />
       <div className=" p-2">
         {/* --- user navbar-- */}
         <div className=" flex gap-5 justify-between items-center mt-2">
@@ -118,6 +215,7 @@ export const PaymentInfo = ({ userInfo }) => {
                   </button>
                 </span>
                 <input
+                  onChange={(e) => setSearchingValue(e?.target?.value)}
                   type="search"
                   name="q"
                   className="block w-full py-2 px-4 bg-[#F6F6F6] rounded-mdocus:outline-4 outline-[#d46a14] border-[1px] GT"
@@ -127,21 +225,9 @@ export const PaymentInfo = ({ userInfo }) => {
               </div>
             </div>
             <div className="hidden md:flex items-center gap-2 cursor-pointer ">
-              <h1 className="text-[#0984E3] font-[700] hidden md:flex">
-                Download the list (PDF)
+              <h1 className="text-[#0984E3] text-[14px] font-[700] hidden md:flex">
+                All {searchingValue === "0" ? " " : searchingValue} Student
               </h1>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-              >
-                <path
-                  d="M14.29 17.29L13 18.59V13C13 12.7348 12.8947 12.4804 12.7071 12.2929C12.5196 12.1054 12.2652 12 12 12C11.7348 12 11.4804 12.1054 11.2929 12.2929C11.1054 12.4804 11 12.7348 11 13V18.59L9.71001 17.29C9.61677 17.1968 9.50608 17.1228 9.38426 17.0724C9.26244 17.0219 9.13187 16.9959 9.00001 16.9959C8.86815 16.9959 8.73758 17.0219 8.61576 17.0724C8.49394 17.1228 8.38325 17.1968 8.29001 17.29C8.19677 17.3833 8.12281 17.4939 8.07235 17.6158C8.02189 17.7376 7.99592 17.8682 7.99592 18C7.99592 18.1319 8.02189 18.2624 8.07235 18.3843C8.12281 18.5061 8.19677 18.6168 8.29001 18.71L11.29 21.71C11.3851 21.8011 11.4973 21.8724 11.62 21.92C11.7397 21.9729 11.8691 22.0002 12 22.0002C12.1309 22.0002 12.2603 21.9729 12.38 21.92C12.5028 21.8724 12.6149 21.8011 12.71 21.71L15.71 18.71C15.8983 18.5217 16.0041 18.2663 16.0041 18C16.0041 17.7337 15.8983 17.4783 15.71 17.29C15.5217 17.1017 15.2663 16.9959 15 16.9959C14.7337 16.9959 14.4783 17.1017 14.29 17.29ZM18.42 6.22002C17.809 4.81602 16.7545 3.65109 15.4181 2.90374C14.0817 2.15639 12.5371 1.86785 11.021 2.08233C9.50489 2.2968 8.10094 3.00247 7.02427 4.09119C5.9476 5.17991 5.2576 6.59163 5.06001 8.11002C4.1066 8.33834 3.27023 8.90885 2.70975 9.71321C2.14927 10.5176 1.9037 11.4997 2.01968 12.4732C2.13566 13.4467 2.60511 14.3437 3.33888 14.9939C4.07265 15.644 5.01964 16.0021 6.00001 16C6.26523 16 6.51958 15.8947 6.70712 15.7071C6.89466 15.5196 7.00001 15.2652 7.00001 15C7.00001 14.7348 6.89466 14.4804 6.70712 14.2929C6.51958 14.1054 6.26523 14 6.00001 14C5.46958 14 4.96087 13.7893 4.5858 13.4142C4.21073 13.0392 4.00001 12.5304 4.00001 12C4.00001 11.4696 4.21073 10.9609 4.5858 10.5858C4.96087 10.2107 5.46958 10 6.00001 10C6.26523 10 6.51958 9.89466 6.70712 9.70712C6.89466 9.51959 7.00001 9.26523 7.00001 9.00002C7.00257 7.81729 7.4243 6.67377 8.19028 5.7726C8.95627 4.87143 10.0169 4.27097 11.1838 4.07789C12.3506 3.88481 13.5481 4.11162 14.5636 4.71803C15.579 5.32443 16.3466 6.27116 16.73 7.39002C16.7872 7.56186 16.8899 7.71495 17.0273 7.83295C17.1647 7.95095 17.3315 8.02943 17.51 8.06002C18.1761 8.18589 18.7799 8.53362 19.223 9.04655C19.6662 9.55948 19.9226 10.2074 19.9504 10.8847C19.9782 11.5619 19.7759 12.2287 19.3763 12.7762C18.9767 13.3238 18.4035 13.7199 17.75 13.9C17.6226 13.9328 17.503 13.9904 17.3978 14.0695C17.2927 14.1486 17.2042 14.2476 17.1373 14.3609C17.0705 14.4742 17.0266 14.5995 17.0082 14.7298C16.9898 14.86 16.9972 14.9926 17.03 15.12C17.0628 15.2474 17.1204 15.3671 17.1995 15.4722C17.2786 15.5773 17.3776 15.6658 17.4909 15.7327C17.6042 15.7995 17.7295 15.8434 17.8598 15.8619C17.99 15.8803 18.1226 15.8728 18.25 15.84C19.3024 15.5619 20.2353 14.948 20.907 14.0915C21.5787 13.235 21.9526 12.1826 21.9718 11.0943C21.9911 10.0059 21.6546 8.94106 21.0136 8.06134C20.3725 7.18161 19.4619 6.53511 18.42 6.22002Z"
-                  fill="#0984E3"
-                />
-              </svg>
             </div>
           </div>
           <div className="md:flex hidden justify-center  items-center gap-2 cursor-pointer  w-[23%]">
@@ -165,6 +251,7 @@ export const PaymentInfo = ({ userInfo }) => {
                 </button>
               </span>
               <input
+                onChange={(e) => setSearchingValue(e?.target?.value)}
                 type="search"
                 name="q"
                 className="block w-full py-2 px-4 bg-[#F6F6F6] rounded-mdocus:outline-4 outline-[#d46a14] border-[1px]   GT"
@@ -175,7 +262,7 @@ export const PaymentInfo = ({ userInfo }) => {
           </div>
         </div>
 
-        {/* ---- user Card --- */}
+        {/* ---- user Payment Card --- */}
         <div className="mt-5">
           <section className="py-1 flex md:flex-row flex-col justify-center md:justify-between gap-2">
             <div className="w-full xl:w-9/12 mb-12 xl:mb-0 ">
@@ -206,42 +293,33 @@ export const PaymentInfo = ({ userInfo }) => {
                       </tr>
                     </thead>
 
-                    <PaymentInfoTable />
-                    <PaymentInfoTable />
-                    <PaymentInfoTable />
-                    <PaymentInfoTable />
-                    <PaymentInfoTable />
-                    <PaymentInfoTable />
-                    <PaymentInfoTable />
-                    <PaymentInfoTable />
-                    <PaymentInfoTable />
-                    <PaymentInfoTable />
-                    <PaymentInfoTable />
-                    <PaymentInfoTable />
-                    <PaymentInfoTable />
+                    <PaymentInfoTable AllPaymentInfo={AllPaymentInfo} />
                   </table>
                 </div>
               </div>
               {/* ---total price -- */}
-              <thead className="flex justify-end">
-                <tr className="flex flex-row gap-5 justify-end ">
-                  <div className="box-price border-l-4 border-[#F89521] p-2">
+              <div className="flex justify-end">
+                <div className="flex flex-row gap-5 justify-end ">
+                  <span className="box-price border-l-4 border-[#F89521] p-2">
                     <p>Total Amount</p>
                     <h1 className="text-[20px] font-[700]">Tk. 11,0950</h1>
-                  </div>
-                  <div className="box-price border-l-4 border-[##35BD95] p-2">
+                  </span>
+                  <span className="box-price border-l-4 border-[##35BD95] p-2">
                     <p>Paid Amount</p>
                     <h1 className="text-[20px] font-[700]">Tk. 9,0950</h1>
-                  </div>
-                  <div className="box-price border-l-4 border-[##FF5C5C] p-2">
+                  </span>
+                  <span className="box-price border-l-4 border-[##FF5C5C] p-2">
                     <p>Due Amount </p>
                     <h1 className="text-[20px] font-[700]">Tk. 9,0950</h1>
-                  </div>
-                </tr>
-              </thead>
+                  </span>
+                </div>
+              </div>
             </div>
             {/* ---- searching button ---- */}
-            <div className=" px-3 py-1 bg-[#FFF] box-shdow-5 h-[500px] rounded-lg ">
+            <form
+              onSubmit={HandleSubmite}
+              className=" px-3 py-1 bg-[#FFF] box-shdow-5 h-[500px] rounded-lg "
+            >
               <div className="flex justify-between items-center">
                 <h1 className="text-[18px] font-[700] py-3">Payment</h1>
                 <svg
@@ -291,7 +369,7 @@ export const PaymentInfo = ({ userInfo }) => {
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
                     <input
                       type="text"
-                      name="Sroll"
+                      name="SRoll"
                       id="price"
                       className="block w-full rounded-md border-0 py-2 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       placeholder="574206"
@@ -307,7 +385,10 @@ export const PaymentInfo = ({ userInfo }) => {
                   >
                     Courses
                   </label>
-                  <select className="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1">
+                  <select
+                    name="SCetagory"
+                    className="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1"
+                  >
                     <option className="bg-[#E8F0FE]">select</option>
                     {departmental?.map((singel, index) => (
                       <>
@@ -317,6 +398,25 @@ export const PaymentInfo = ({ userInfo }) => {
                   </select>
                 </div>
 
+                {/* ---courses--- */}
+                <div className="mt-3">
+                  <label
+                    for="name"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Course Batch S.L
+                  </label>
+                  <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
+                    <input
+                      type="text"
+                      name="Cbatch"
+                      id="price"
+                      className="block w-full rounded-md border-0 py-2 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      placeholder="batch-10"
+                    />
+                  </div>
+                </div>
                 {/* ---courses--- */}
                 <div className="mt-3">
                   <label
@@ -356,26 +456,7 @@ export const PaymentInfo = ({ userInfo }) => {
                     />
                   </div>
                 </div>
-                {/* ---courses--- */}
-                <div className="mt-3">
-                  <label
-                    for="name"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    Date
-                  </label>
-                  <div className="relative mt-1 rounded-md shadow-sm">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
-                    <input
-                      defaultValue={formattedDate}
-                      type="text"
-                      name="SDate"
-                      id="price"
-                      className="block w-full rounded-md border-0 py-2 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      disabled
-                    />
-                  </div>
-                </div>
+
                 {/* ---courses--- */}
                 <div className="mt-3">
                   <label
@@ -388,7 +469,7 @@ export const PaymentInfo = ({ userInfo }) => {
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
                     <input
                       type="text"
-                      name="CFree"
+                      name="SFree"
                       id="price"
                       className="block w-full rounded-md border-0 py-2 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       placeholder="15000"
@@ -397,7 +478,7 @@ export const PaymentInfo = ({ userInfo }) => {
                 </div>
 
                 {/* ---courses--- */}
-                <div className="mt-3">
+                <div className="mt-3 ">
                   <label
                     for="name"
                     className="block text-sm font-medium leading-6 text-gray-900"
@@ -408,7 +489,7 @@ export const PaymentInfo = ({ userInfo }) => {
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
                     <input
                       type="text"
-                      name="CPaid"
+                      name="SPaid"
                       id="price"
                       className="block w-full rounded-md border-0 py-2 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       placeholder="5000"
@@ -416,10 +497,29 @@ export const PaymentInfo = ({ userInfo }) => {
                   </div>
                 </div>
               </div>
-              <button className="py-3 px-2 bg-[#F89521] w-full flex text-center rounded-md justify-center font-[700] text-[16px] mt-4 text-[#212121]">
+              <button
+                type="submit"
+                className={`py-3 px-2 bg-[#F89521] hover:bg-[#ce7b1c] hover:text-white w-full flex text-center rounded-md justify-center font-[700] text-[16px] mt-4  text-[#212121] ${
+                  buttonHidden ? "disabled-button" : ""
+                }`}
+              >
+                {buttonHidden && (
+                  <>
+                    <svg
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      className="mr-2 animate-spin"
+                      viewBox="0 0 1792 1792"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z"></path>
+                    </svg>
+                  </>
+                )}
                 Submit
               </button>
-            </div>
+            </form>
           </section>
         </div>
       </div>
