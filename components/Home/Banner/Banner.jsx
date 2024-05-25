@@ -83,7 +83,7 @@ export const Banner = () => {
     async function viewCount() {
       try {
         const response = await axios.patch(
-          `http://localhost:8080/api/v1/siteView/view/66501be73b986cc58347cd43`
+          `https://unitech-server.vercel.app/api/v1/siteView/view/66501be73b986cc58347cd43`
         );
         const result = response.data;
 

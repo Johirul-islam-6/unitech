@@ -14,18 +14,21 @@ import icon6 from "@/app/Assets/skill_courses_details/courseIcon/6.png";
 import icon7 from "@/app/Assets/skill_courses_details/courseIcon/7.png";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
+import { EnrollFrom } from "../Untility/EnrollFrom";
+import { useRouter } from "next/navigation";
 
 export const CourseDetails = ({ singleCourses }) => {
-  const [openModal, closeModal] = useState(true);
+  const [openModal, closeModal] = useState(false);
+  const router = useRouter();
 
   const [Loading, setLoading] = useState(true);
   const accessToken = Cookies.get("accessToken");
   const [userInfo, setUserInfo] = useState("");
   // ------ login access checked ------
   useEffect(() => {
-    if (!accessToken) {
-      route.push("/login");
-    }
+    // if (!accessToken) {
+    //   route.push("/login");
+    // }
     if (accessToken) {
       const getCookiesData = Cookies.get("CookieYouserData");
       const cookiesInfo = JSON.parse(getCookiesData);
@@ -34,6 +37,9 @@ export const CourseDetails = ({ singleCourses }) => {
     setLoading(false);
   }, [accessToken]);
 
+  const closeModalFunction = (e) => {
+    closeModal(e);
+  };
   const ModalOpenButton = () => {
     closeModal(!openModal);
   };
@@ -42,147 +48,12 @@ export const CourseDetails = ({ singleCourses }) => {
     <>
       {openModal && (
         <>
-          <from className="w-[100%] h-[100vh] bg-[#00000087] absolute z-20">
-            <div className="bg-[#fff] md:w-[800px] mx-auto h-[auto] p-5 py-10 mt-5">
-              <div className="flex justify-between relative ">
-                <h1>
-                  আপনি কোর্সটি করতে কি আগ্রহী{" "}
-                  <span className="text-green-500">OnSite</span>
-                </h1>
-                <button
-                  onClick={() => closeModal(false)}
-                  className="text-[30px] font-[600] absolute right-0 top-[-10px]"
-                >
-                  x
-                </button>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-5 justify-center items-center mt-10">
-                {/* ------ field number 01 ------- */}
-                <div>
-                  <input
-                    required
-                    id="username"
-                    name="CName"
-                    type="text"
-                    defaultValue={userInfo?.name}
-                    disabled
-                    className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-3 px-3 w-full focus:outline-none mt-1"
-                  />
-                </div>
-                {/* ------ field number 01 ------- */}
-                <div>
-                  <input
-                    required
-                    id="username"
-                    name="CName"
-                    type="text"
-                    defaultValue={userInfo?.studentRoll}
-                    disabled
-                    className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-3 px-3 w-full focus:outline-none mt-1"
-                  />
-                </div>
-                {/* ------ field number 01 ------- */}
-                <div>
-                  <input
-                    required
-                    id="username"
-                    name="CName"
-                    type="text"
-                    defaultValue={userInfo?.email}
-                    disabled
-                    className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-3 px-3 w-full focus:outline-none mt-1"
-                  />
-                </div>
-                {/* ------ field number 01 ------- */}
-                <div>
-                  <input
-                    required
-                    id="username"
-                    name="CName"
-                    type="text"
-                    defaultValue={userInfo?.phone}
-                    className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-3 px-3 w-full focus:outline-none mt-1"
-                  />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-5 justify-center items-center mt-10">
-                {/* ------ field number 01 ------- */}
-                <div>
-                  <input
-                    required
-                    id="username"
-                    name="CName"
-                    type="text"
-                    defaultValue={singleCourses?.CName}
-                    disabled
-                    className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-3 px-3 w-full focus:outline-none mt-1"
-                  />
-                </div>
-                {/* ------ field number 01 ------- */}
-                <div>
-                  <input
-                    required
-                    id="username"
-                    name="CName"
-                    type="text"
-                    defaultValue={singleCourses?.CCode}
-                    disabled
-                    className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-3 px-3 w-full focus:outline-none mt-1"
-                  />
-                </div>
-                {/* ------ field number 01 ------- */}
-                <div>
-                  <input
-                    required
-                    id="username"
-                    name="CName"
-                    type="text"
-                    defaultValue={"2 Batch"}
-                    disabled
-                    className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-3 px-3 w-full focus:outline-none mt-1"
-                  />
-                </div>
-                {/* ------ field number 01 ------- */}
-                <div>
-                  <input
-                    required
-                    id="username"
-                    name="CName"
-                    type="text"
-                    defaultValue={singleCourses?.CDuration}
-                    disabled
-                    className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-3 px-3 w-full focus:outline-none mt-1"
-                  />
-                </div>
-                {/* ------ field number 01 ------- */}
-                <div>
-                  <input
-                    required
-                    id="username"
-                    name="CName"
-                    type="text"
-                    defaultValue={singleCourses?.CPrice + " টাকা"}
-                    disabled
-                    className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-3 px-3 w-full focus:outline-none mt-1"
-                  />
-                </div>
-                {/* ------ field number 01 ------- */}
-                <div>
-                  <input
-                    required
-                    id="username"
-                    name="CName"
-                    type="text"
-                    defaultValue={"OnSite"}
-                    disabled
-                    className="input text-green-600 block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-3 px-3 w-full focus:outline-none mt-1"
-                  />
-                </div>
-              </div>
-            </div>
-          </from>
+          <EnrollFrom
+            accessToken={accessToken}
+            userInfo={userInfo}
+            singleCourses={singleCourses}
+            closeModalFunction={closeModalFunction}
+          />
         </>
       )}
 

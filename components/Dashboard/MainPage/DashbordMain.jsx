@@ -69,7 +69,7 @@ export const DashbordMain = () => {
     async function viewCount() {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/v1/siteView`
+          `https://unitech-server.vercel.app/api/v1/siteView`
         );
         const result = response?.data?.data[0];
         settotalSiteView(result);

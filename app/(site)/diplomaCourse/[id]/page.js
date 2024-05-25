@@ -2,7 +2,7 @@
 import StudentImageSlide from "@/components/StudentImageSlider/StudentImageSlide";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import teacherProfile from "@/app/Assets/skill_courses_details/teacher.png";
 
@@ -16,6 +16,8 @@ import icon7 from "@/app/Assets/skill_courses_details/courseIcon/7.png";
 import { Video } from "@/components/AcademicCourse/Video";
 import axios from "axios";
 import { LoadingPage } from "@/components/Loading/LoadingPage";
+import Cookies from "js-cookie";
+import { EnrollFrom } from "@/components/Untility/EnrollFrom";
 
 const DetailsCourse = () => {
   const { id } = useParams();
@@ -40,16 +42,54 @@ const DetailsCourse = () => {
     fetchData();
   }, [id]);
 
+  // ------------- Enroll -------------
+
+  const [openModal, closeModal] = useState(false);
+  const router = useRouter();
+
+  const [Loading2, setLoading2] = useState(true);
+  const accessToken = Cookies.get("accessToken");
+  const [userInfo, setUserInfo] = useState("");
+  // ------ login access checked ------
+  useEffect(() => {
+    // if (!accessToken) {
+    //   route.push("/login");
+    // }
+    if (accessToken) {
+      const getCookiesData = Cookies.get("CookieYouserData");
+      const cookiesInfo = JSON.parse(getCookiesData);
+      setUserInfo(cookiesInfo);
+    }
+    setLoading2(false);
+  }, [accessToken]);
+
+  const closeModalFunction = (e) => {
+    closeModal(e);
+  };
+  const ModalOpenButton = () => {
+    closeModal(!openModal);
+  };
+
   return (
     <>
-      <div className=" max-w-screen-xl mx-auto">
+      <div className=" ">
         {Loading ? (
           <>
             <LoadingPage content={"ইউনিটেক"} />
           </>
         ) : (
           <>
-            <div className="">
+            {openModal && (
+              <>
+                <EnrollFrom
+                  accessToken={accessToken}
+                  userInfo={userInfo}
+                  singleCourses={singleCourses}
+                  closeModalFunction={closeModalFunction}
+                />
+              </>
+            )}
+            <div className="w-[100%] max-w-screen-xl mx-auto">
               <div className="mt-1 pt-4 bg-[#FAF9FD] max-w-screen-xl mx-auto flex flex-col-reverse md:grid grid-cols-2 gap-5 md:gap-x-2 justify-between  ">
                 {/* -------------Col-1 course Details-------- */}
                 <div className="container-text ">
@@ -99,7 +139,10 @@ const DetailsCourse = () => {
                       {singleCourses?.CDescription?.slice(0, 480)}...
                     </p>
                     <div className="flex md:justify-start gap-5 justify-center ">
-                      <button className="SILIGURI px-6 py-4 bg-amber-600 hover:bg-amber-500 text-white text-[12px] md:text-[14px] font-[600] rounded-md">
+                      <button
+                        onClick={() => ModalOpenButton()}
+                        className="SILIGURI px-6 py-4 bg-amber-600 hover:bg-amber-500 text-white text-[12px] md:text-[14px] font-[600] rounded-md"
+                      >
                         এনরোল করুন
                       </button>
                       <button className="SILIGURI px-6 py-4 bg-[#080D2A] hover:bg-[#151b3f] text-white text-[12px] md:text-[14px] font-[600] rounded-md">
@@ -223,10 +266,8 @@ const DetailsCourse = () => {
                   </div>
                 </div>
               </div>
+              <StudentImageSlide />
             </div>
-
-            {/* --------------- studetn Image Slider ---------- */}
-            <StudentImageSlide />
           </>
         )}
       </div>
