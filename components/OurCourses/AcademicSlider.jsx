@@ -67,7 +67,6 @@ const AcademicSlider = () => {
     fetchData();
   }, []);
 
-  console.log("AcademicCourse", AcademicCourse);
   return (
     <div className="">
       {Loading && (

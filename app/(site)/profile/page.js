@@ -312,7 +312,7 @@ const Profile = () => {
 
           {/* ------- all courses ----- */}
 
-          <ProfileCourses />
+          <ProfileCourses cookiesInfo={cookiesInfo} />
         </section>
 
         {/* ------------ all courses ---------- */}
