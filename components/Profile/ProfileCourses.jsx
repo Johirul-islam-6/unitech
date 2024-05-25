@@ -40,6 +40,7 @@ export const ProfileCourses = ({ cookiesInfo }) => {
             <h3 className="mb-3 text-xl font-bold text-indigo-600">
               Diploma Engineer
             </h3>
+
             <div className="relative">
               <Image
                 className="w-full rounded-xl"
