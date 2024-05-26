@@ -137,7 +137,7 @@ const ProductSlider = () => {
               <div className="bg-[#fff] relative border-t-2 border-b-2 border-[#48444189] top-student-box-shadow  overflow-hidden rounded-lg flex flex-col gap-1 items-center justify-center mt-8 pb-4">
                 <div className="toper-box">
                   <p className="text-[#ffffff] text-[12px] md:text-[18px] font-[900] absolute bg-[#e87432] right-[5px] top-[5px] p-1">
-                    {/* {item?.CSession} */} ১ম
+                    {item?.CSession}
                   </p>
                   <Image
                     src={item?.ToperImage}

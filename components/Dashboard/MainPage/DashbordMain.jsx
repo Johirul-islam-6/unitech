@@ -673,7 +673,7 @@ export const DashbordMain = () => {
                             width={160}
                             height={160}
                             className="rounded-t-md d-image w-[100%] h-[230px] object-cover"
-                            src={single?.CImage}
+                            src={single?.courseImage}
                             alt=""
                           />
                           <h1 className="absolute bottom-0 text-[#fff] text-[18px] md:text-[25px] font-[700] pb-2 ps-2">

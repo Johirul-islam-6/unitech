@@ -9,6 +9,7 @@ export const EnrollFrom = ({
   userInfo,
   singleCourses,
   closeModalFunction,
+  CCetagorys,
 }) => {
   const [buttonHidden, setHidden] = useState(false);
 
@@ -32,12 +33,14 @@ export const EnrollFrom = ({
       SRoll: userInfo?.studentRoll,
       SEmail: userInfo?.email,
       SPhone: userInfo?.phone,
+      SLocation: userInfo?.address,
 
+      courseImage: singleCourses?.courseImage,
       CourseID: singleCourses?._id,
-      CCetagory: "Skill Base Courses",
+      CCetagory: CCetagorys,
       CName: singleCourses?.CName,
       CId: singleCourses?.CCode,
-      CBatch: "2 Batch",
+      CBatch: singleCourses?.CBatch ? singleCourses?.CBatch : "1 batch",
       CDuration: singleCourses?.CDuration,
       CPrice: singleCourses?.CPrice.toString(),
       status: "panding",
@@ -127,8 +130,7 @@ export const EnrollFrom = ({
                     id="username"
                     name="CName"
                     type="text"
-                    defaultValue={userInfo?.studentRoll}
-                    disabled
+                    defaultValue={userInfo?.address}
                     className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-3 px-3 w-full focus:outline-none mt-1"
                   />
                 </div>
@@ -165,7 +167,7 @@ export const EnrollFrom = ({
                     id="username"
                     name="CName"
                     type="text"
-                    defaultValue={"Skill Base Courses"}
+                    defaultValue={CCetagorys}
                     disabled
                     className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-3 px-3 w-full focus:outline-none mt-1"
                   />

@@ -53,6 +53,7 @@ export const CourseDetails = ({ singleCourses }) => {
             userInfo={userInfo}
             singleCourses={singleCourses}
             closeModalFunction={closeModalFunction}
+            CCetagorys={"Skill"}
           />
         </>
       )}
@@ -113,9 +114,15 @@ export const CourseDetails = ({ singleCourses }) => {
                 >
                   এনরোল করুন
                 </button>
-                <button className="SILIGURI px-6 py-4 bg-[#080D2A] hover:bg-[#151b3f] text-white text-[12px] md:text-[14px] font-[600] rounded-md">
-                  ফ্রি ক্লাস জয়েন করুন
-                </button>
+                <Link
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={`https://www.facebook.com/groups/813066086240252/`}
+                >
+                  <button className="SILIGURI px-6 py-4 bg-[#080D2A] hover:bg-[#151b3f] text-white text-[12px] md:text-[14px] font-[600] rounded-md">
+                    ফ্রি ক্লাস জয়েন করুন
+                  </button>
+                </Link>
               </div>
             </div>
             {/* ----------- teacher list ------- */}

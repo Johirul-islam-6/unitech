@@ -8,7 +8,7 @@ export const ProfileCourses = ({ cookiesInfo }) => {
   const [EnrollCourses, setEnrollCourses] = useState();
 
   useEffect(() => {
-    // ------- academic courses--------
+    // ------- all this user enroll courses courses--------
     async function fetchData() {
       try {
         const result = await axios.get(

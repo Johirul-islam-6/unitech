@@ -11,7 +11,7 @@ import {
 } from "react-icons/fa";
 import Link from "next/link";
 // https://keen-slider.io/examples#examples
-export const Banner = () => {
+export const Banner2 = () => {
   return (
     <>
       <div className="banner flex flex-col-reverse md:grid gap-y-6  md:grid-cols-2 justify-center items-center p-8">
@@ -42,9 +42,9 @@ export const Banner = () => {
           <div className="link-text wrapper mt-5 flex justify-center md:justify-start">
             <Link
               className="apply-button link-text text-center py-[16px]"
-              href=""
+              href="/ourCourses"
             >
-              <span className="flex items-center justify-center uppercase">
+              <span className="flex bg-amber-700 px-8 py-3 text-white items-center justify-center uppercase">
                 Apply Now <FaAngleDoubleRight className="ps-[3px]" />
               </span>
             </Link>

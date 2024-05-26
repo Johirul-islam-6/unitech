@@ -19,7 +19,7 @@ export const AllCoursesss = ({ SkillCourses }) => {
                   width={324}
                   height={450}
                   className="rounded-t-md d-image border-2"
-                  src={single?.CImage}
+                  src={single?.courseImage}
                   alt=""
                 />
                 <h1 className="absolute bottom-0  text-[#fff] text-[18px] md:text-[20px] font-[900] pb-2 ps-2">

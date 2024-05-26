@@ -21,7 +21,7 @@ export const Video = ({ singleCourses }) => {
         >
           <Image
             className="rounded-md shadow-2xl transition-shadow duration-300 ease-in-out"
-            src={singleCourses?.CImage}
+            src={singleCourses?.courseImage}
             width={500}
             height={500}
             priority

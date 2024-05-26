@@ -9,13 +9,17 @@ import { Reviews } from "@/components/Home/Reviews/Reviews";
 import { UnitechArchitectural } from "@/components/Home/UnitechArchitectural/UnitechArchitectural";
 import { Banner } from "@/components/Home/Banner/Banner";
 import CompnaySlier from "@/components/Home/semesterTopersSlider/CompnaySlier";
+import { Banner2 } from "@/components/Home/Banner/Banner2";
 
 export default function Home() {
   return (
     <>
       {/* <div className="w-[100%] bg-amber-200"> */}
-      <div className=" mt-2 md:mt-1">
+      <div className="hidden md:block mt-2 md:mt-1">
         <Banner />
+      </div>
+      <div className=" md:hidden mt-2 md:mt-1">
+        <Banner2 />
       </div>
       {/* </div> */}
       <div className="mt-[2px]">

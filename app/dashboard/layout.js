@@ -90,7 +90,7 @@ export default function RootLayout({ children }) {
                 <LeftDBLayout />
               </div>
               <div className="dashboard-body border-t-2 border-b-2 ">
-                <TopDBLayout />
+                <TopDBLayout userInfo={userInfo} />
                 {children}
               </div>
             </div>

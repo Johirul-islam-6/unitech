@@ -78,6 +78,7 @@ const ClassToper = () => {
           showConfirmButton: false,
           timer: 2500,
         });
+        router.push("/dashboard");
         setReload(true);
       }
     } catch (error) {
@@ -231,7 +232,7 @@ const ClassToper = () => {
                 className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
-                সেশন
+                পজিশন/স্থান
               </label>
               <input
                 required
@@ -244,7 +245,7 @@ const ClassToper = () => {
             </div>
           </div>
 
-          {/* ---- Courses Details ----- */}
+          {/* ---- Courses Image ----- */}
           <div className="flex justify-center items-center mt-5">
             <div className="flex flex-col justify-center items-center">
               <div className="relative px-2">

@@ -62,8 +62,8 @@ const SkillBaseCourse = () => {
     const CName = formData.get("CName");
     const CCode = formData.get("course-code");
     const CCategory = formData.get("cetagory");
-    // const CImage = "image not send";
-    const CImage = postImage;
+    // const courseImage = "image not send";
+    const courseImage = postImage;
     const CDuration = formData.get("CDuration");
     const CTotalClass = formData.get("total-class");
     const CTotalAssignment = formData.get("total-assignment");
@@ -72,6 +72,7 @@ const SkillBaseCourse = () => {
     const CResourcesFolder = formData.get("CRechorsesFolder");
     const CProfessionalProject = formData.get("CTotalProject");
     const CPrice = formData.get("CPrice");
+    const CBatch = formData.get("CBatch");
     const CEnrollEndDate = formData.get("Cenroll-end");
     const CDescription = formData.get("CDiscription");
     const COverview = formData.get("COverView");
@@ -122,6 +123,15 @@ const SkillBaseCourse = () => {
     const module12 = formData.get("module_12");
     const moduleP12 = formData.get("module_P_12");
     // -----next
+    const module13 = formData.get("module_13");
+    const moduleP13 = formData.get("module_P_13");
+    // -----next
+    const module14 = formData.get("module_14");
+    const moduleP14 = formData.get("module_P_14");
+    // -----next
+    const module15 = formData.get("module_15");
+    const moduleP15 = formData.get("module_P_15");
+    // -----next
 
     if (CCategory === "select") {
       return alert("Please select cetagoryCourse Cetagory !");
@@ -131,12 +141,13 @@ const SkillBaseCourse = () => {
       CName,
       CCode,
       CCategory,
-      CImage,
+      courseImage,
       CDuration,
       CTotalClass,
       CTotalAssignment,
       CTotalHours,
       CTotalVideo,
+      CBatch,
       CResourcesFolder,
       CProfessionalProject,
       CPrice,
@@ -205,7 +216,7 @@ const SkillBaseCourse = () => {
       ],
     };
     setHidden(true);
-    console.log("All create courses DAta", courseInfoData);
+    console.log("All create courses Dat ===>a", courseInfoData);
     try {
       const response = await axios.post(
         // "https://unitech-server.vercel.app/api/v1/courses/create",
@@ -343,6 +354,23 @@ const SkillBaseCourse = () => {
                 name="CDuration"
                 type="text"
                 placeholder="4 Months"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            {/* ------------ */}
+            <div>
+              <label
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                for="username"
+              >
+                কোর্সের Batch
+              </label>
+              <input
+                required
+                id="username"
+                name="CBatch"
+                type="text"
+                placeholder="Batch-৩"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -965,6 +993,78 @@ const SkillBaseCourse = () => {
               />
               <textarea
                 name="module_P_12"
+                id="username"
+                type="text"
+                placeholder="ক্লাসে কি কি থাকবে তা বননা.."
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            {/* ------ field number 10 ------- */}
+            <div>
+              <label
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                for="username"
+              >
+                ১৩ নাম্বার Module
+              </label>
+
+              <input
+                name="module_13"
+                id="username"
+                type="text"
+                placeholder="Module মেইন টপিক সমূহ.."
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+              <textarea
+                name="module_P_13"
+                id="username"
+                type="text"
+                placeholder="ক্লাসে কি কি থাকবে তা বননা.."
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            {/* ------ field number 10 ------- */}
+            <div>
+              <label
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                for="username"
+              >
+                ১৪ নাম্বার Module
+              </label>
+
+              <input
+                name="module_14"
+                id="username"
+                type="text"
+                placeholder="Module মেইন টপিক সমূহ.."
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+              <textarea
+                name="module_P_14"
+                id="username"
+                type="text"
+                placeholder="ক্লাসে কি কি থাকবে তা বননা.."
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            {/* ------ field number 10 ------- */}
+            <div>
+              <label
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                for="username"
+              >
+                ১৫ নাম্বার Module
+              </label>
+
+              <input
+                name="module_15"
+                id="username"
+                type="text"
+                placeholder="Module মেইন টপিক সমূহ.."
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+              <textarea
+                name="module_P_15"
                 id="username"
                 type="text"
                 placeholder="ক্লাসে কি কি থাকবে তা বননা.."

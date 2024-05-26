@@ -10,7 +10,7 @@ import { useEffect } from "react";
 
 export const Banner = () => {
   useEffect(() => {
-    let cliecImage = document.querySelector(".clickImage");
+    let cliecourseImage = document.querySelector(".clickImage");
     let nextBtn = document.querySelector(".next");
     let prevBtn = document.querySelector(".prev");
     let slider = document.querySelector(".slider");
@@ -21,7 +21,7 @@ export const Banner = () => {
     thumbnail.appendChild(thumbnailItems[0]);
 
     // Function for next button
-    cliecImage.onclick = function () {
+    cliecourseImage.onclick = function () {
       moveSlider("next");
     };
 
