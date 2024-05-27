@@ -5,7 +5,7 @@ import { useState, useRef, Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import thumb from "@/app/Assets/skill_courses_details/thumbel.jpg";
 
-export const Video = ({ singleCourses }) => {
+export const Video = ({ singleCourses, ModalOpenButton }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const videoRef = useRef(null);
   return (

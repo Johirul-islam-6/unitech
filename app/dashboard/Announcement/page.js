@@ -56,7 +56,7 @@ const Announcement = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/v1/notice/create-notice",
+        "https://unitech-server.vercel.app/api/v1/notice/create-notice",
         NoticInformation,
         {
           maxContentLength: 1000000000000,
@@ -88,7 +88,7 @@ const Announcement = () => {
 
     setHidden(false);
 
-    route.push("/notices");
+    // route.push("/notices");
   };
 
   // ----------- image converted base64 ----------

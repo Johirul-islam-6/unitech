@@ -185,7 +185,10 @@ const DetailsCourse = () => {
                 {/* -------------- Col-2 Video container  ---------- */}
                 <div className="video-card   ">
                   <div className="md:w-[500px] mx-auto p-4 border-2">
-                    <Video singleCourses={singleCourses} />
+                    <Video
+                      ModalOpenButton={ModalOpenButton}
+                      singleCourses={singleCourses}
+                    />
                     <h1 className="text-[26px] font-[900] text-[#1F1F1F] text-center md:text-start">
                       ৳{singleCourses?.CPrice}
                     </h1>
@@ -193,7 +196,10 @@ const DetailsCourse = () => {
                       {singleCourses?.CName}
                     </h1>
                     <Link href={""}>
-                      <button className="flex rounded-[5px] justify-center text-[16px] mt-5 font-bold items-center text-white bg-[#FE941E] w-[100%] h-[55px]">
+                      <button
+                        onClick={() => ModalOpenButton()}
+                        className="flex rounded-[5px] justify-center text-[16px] mt-5 font-bold items-center text-white bg-[#FE941E] w-[100%] h-[55px]"
+                      >
                         কোর্সটি কিনুন
                       </button>
                     </Link>

@@ -186,7 +186,10 @@ export const CourseDetails = ({ singleCourses }) => {
                 {singleCourses?.CName}
               </h1>
               <Link href={""}>
-                <button className="flex rounded-[5px] justify-center text-[16px] mt-5 font-bold items-center text-white bg-[#FE941E] w-[100%] h-[55px]">
+                <button
+                  onClick={() => ModalOpenButton()}
+                  className="flex rounded-[5px] justify-center text-[16px] mt-5 font-bold items-center text-white bg-[#FE941E] w-[100%] h-[55px]"
+                >
                   কোর্সটি কিনুন
                 </button>
               </Link>

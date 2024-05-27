@@ -4,11 +4,13 @@ import { NoticsCard } from "./NoticsCard";
 import "./Notics.css";
 import axios from "axios";
 import { LoadingPage } from "../Loading/LoadingPage";
+import Swal from "sweetalert2";
 
 export const Notics = () => {
   // get all toper
   const [Loading, setLoading] = useState(true);
   const [allNotic, setallNotic] = useState();
+  const [reload, setreload] = useState(false);
 
   useEffect(() => {
     // ------- academic courses--------
@@ -25,7 +27,7 @@ export const Notics = () => {
     }
 
     fetchData();
-  }, []);
+  }, [reload]);
 
   // ----------- delete Toper book -------------
 
@@ -41,9 +43,8 @@ export const Notics = () => {
           text: `Delete Complited`,
           icon: "success",
         });
-        setReload(true);
       }
-      setReload(true);
+      setreload(true);
     } catch (error) {
       console.error("Error deleting book:", error);
     }
@@ -59,7 +60,7 @@ export const Notics = () => {
       ) : (
         <div className="notics-div overflow-hidden overflow-y-auto border-shadow">
           <div className="px-5 flex gap-x-2 gap-y-4 pb-16 flex-wrap justify-center items-center mt-5">
-            <NoticsCard allNotic={allNotic} />
+            <NoticsCard deleteToper={deleteToper} allNotic={allNotic} />
           </div>
         </div>
       )}

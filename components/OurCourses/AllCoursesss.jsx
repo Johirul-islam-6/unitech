@@ -16,9 +16,9 @@ export const AllCoursesss = ({ SkillCourses }) => {
               <div className="image relative">
                 <div className="bg-[#0008] hover:bg-[#00000019] w-[100%] h-[100%] absolute rounded-t-md"></div>
                 <Image
-                  width={324}
-                  height={450}
-                  className="rounded-t-md d-image border-2"
+                  width={1}
+                  height={1}
+                  className="rounded-t-md d-image border-2 h-[250px] w-[100%]"
                   src={single?.courseImage}
                   alt=""
                 />
