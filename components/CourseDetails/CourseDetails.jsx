@@ -185,6 +185,7 @@ export const CourseDetails = ({ singleCourses }) => {
               <h1 className="pt-1 text-[18px] font-[600] text-[#1f1f1fb0] text-center md:text-start">
                 {singleCourses?.CName}
               </h1>
+
               <Link href={""}>
                 <button
                   onClick={() => ModalOpenButton()}
