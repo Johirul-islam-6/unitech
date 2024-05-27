@@ -6,6 +6,7 @@ import marketing from "@/app/Assets/career/Digital Marketing.png";
 import computer from "@/app/Assets/career/Basic Computer.png";
 import autocad from "@/app/Assets/career/Autocad Basic & premium.png";
 import autocad3D from "@/app/Assets/career/Autocad 3d.png";
+import video from "@/app/Assets/career/videoIcon.png";
 import "./Career.css";
 import { CourseCard } from "./CourseCard";
 
@@ -21,23 +22,15 @@ export const Career = () => {
       description: "",
     },
     {
-      id: "1",
-      cetagory: "web-development",
-      name: "Web Development",
-      icon: web,
-      price: "",
-      duration: "",
-      description: "",
-    },
-    {
       id: "2",
       cetagory: "graphic-desing",
-      name: "Graphic Design",
+      name: "graphic-desing",
       icon: graphic,
       price: "",
       duration: "",
       description: "",
     },
+
     {
       id: "3",
       cetagory: "digital-marketing",
@@ -49,7 +42,7 @@ export const Career = () => {
     },
     {
       id: "4",
-      cetagory: "computer",
+      cetagory: "basic-computer",
       name: "Basic Computer",
       icon: computer,
       price: "",
@@ -58,7 +51,7 @@ export const Career = () => {
     },
     {
       id: "5",
-      cetagory: "civil-design",
+      cetagory: "Autocad-basic/premium",
       name: "Autocad Basic & premium",
       icon: autocad,
       price: "",
@@ -67,7 +60,7 @@ export const Career = () => {
     },
     {
       id: "6",
-      cetagory: "civil-design",
+      cetagory: "autocad-3d",
       name: "Autocad 3d",
       icon: autocad3D,
       price: "",
@@ -76,9 +69,18 @@ export const Career = () => {
     },
 
     {
-      id: "8",
-      name: "UX/UI Design",
+      id: "7",
+      name: "ux/ui-design",
       icon: graphic,
+      price: "",
+      duration: "",
+      description: "",
+    },
+    {
+      id: "8",
+      cetagory: "video-editing",
+      name: "Video Editing",
+      icon: video,
       price: "",
       duration: "",
       description: "",

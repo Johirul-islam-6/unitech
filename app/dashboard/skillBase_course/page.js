@@ -32,14 +32,14 @@ const SkillBaseCourse = () => {
   const [buttonHidden, setHidden] = useState(false);
 
   const departmental = [
-    "Web Design",
-    "Web Development",
-    "Graphic Design",
-    "Digital Marketing",
-    "Basic Computer",
-    "Autocad Basic & premium",
-    "Autocad 3d",
-    "UX/UI Design",
+    "web-development",
+    "graphic-desing",
+    "digital-marketing",
+    "video-editing",
+    "basic-computer",
+    "Autocad-basic/premium",
+    "autocad-3d",
+    "ux/ui-design",
     "Ai",
   ];
 
