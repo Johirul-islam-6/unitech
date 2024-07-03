@@ -36,7 +36,7 @@ export const LeftDBLayout = () => {
                 alt=""
               />{" "}
               <Link
-                className=" uppercase font-[600] text-[400] "
+                className=" uppercase font-[600] flex w-[100%] text-[400] "
                 href="/dashboard"
               >
                 Dashboard
@@ -51,7 +51,7 @@ export const LeftDBLayout = () => {
                 alt=""
               />{" "}
               <Link
-                className=" uppercase font-[600] text-[400] "
+                className=" uppercase font-[600] flex w-[100%] text-[400] "
                 href="/dashboard/classToper"
               >
                 Class Toper
@@ -66,7 +66,22 @@ export const LeftDBLayout = () => {
                 alt=""
               />{" "}
               <Link
-                className=" uppercase font-[600] text-[400] "
+                className=" uppercase font-[600] flex w-[100%] text-[400] "
+                href="/dashboard/review"
+              >
+                Review write
+              </Link>
+            </li>
+            <li className="link-text py-[12px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
+              <Image
+                width={20}
+                height={15}
+                className="w-[25px] h-[25px]"
+                src={Announcement}
+                alt=""
+              />{" "}
+              <Link
+                className=" uppercase font-[600] flex w-[100%] text-[400] "
                 href="/dashboard/Announcement"
               >
                 Announcement
@@ -81,7 +96,22 @@ export const LeftDBLayout = () => {
                 alt=""
               />{" "}
               <Link
-                className=" uppercase font-[600] text-[400] "
+                className=" uppercase font-[600] flex w-[100%] text-[400] "
+                href="/dashboard/attachmentenroll"
+              >
+                Attachmentenroll
+              </Link>
+            </li>
+            <li className="link-text py-[12px] items-center px-2 border-b-2 w-[100%] hover:bg-[#c0bfbf] text-[#464646]  hover:text-white flex gap-2  duration-300 cursor-pointer">
+              <Image
+                width={20}
+                height={15}
+                className="w-[25px] h-[25px]"
+                src={Announcement}
+                alt=""
+              />{" "}
+              <Link
+                className=" uppercase font-[600] flex w-[100%] text-[400] "
                 href="/dashboard/enrollStudent"
               >
                 Enroll Student
@@ -147,7 +177,7 @@ export const LeftDBLayout = () => {
                 alt=""
               />{" "}
               <Link
-                className=" uppercase font-[600] text-[400] "
+                className=" uppercase font-[600] flex w-[100%] text-[400] "
                 href="/dashboard/ourStudent"
               >
                 Our Student
@@ -162,7 +192,7 @@ export const LeftDBLayout = () => {
                 alt=""
               />{" "}
               <Link
-                className=" uppercase font-[600] text-[400] "
+                className=" uppercase font-[600] flex w-[100%] text-[400] "
                 href="/dashboard/infoPayment"
               >
                 Payment Info
@@ -177,7 +207,7 @@ export const LeftDBLayout = () => {
                 alt=""
               />{" "}
               <Link
-                className=" uppercase font-[600] text-[400] "
+                className=" uppercase font-[600] flex w-[100%] text-[400] "
                 href="/dashboard/management"
               >
                 Manage Account
@@ -193,8 +223,8 @@ export const LeftDBLayout = () => {
                 alt=""
               />{" "}
               <Link
-                className=" uppercase font-[600] text-[400] "
-                href="/dashboard/Exit"
+                className=" uppercase font-[600] flex w-[100%] text-[400] "
+                href="/"
               >
                 Exit
               </Link>

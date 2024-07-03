@@ -12,6 +12,7 @@ import Cookies from "js-cookie";
 const Registration = () => {
   const router = useRouter();
   const [institutes, setSubject] = useState();
+  const [BloodGroup, setbloodGroup] = useState();
   const [buttonHidden, setHidden] = useState(false);
   const [passValue, setPassValue] = useState({
     password: "",
@@ -24,89 +25,66 @@ const Registration = () => {
   const handleClickShowPassword = () => {
     setPassValue({ ...passValue, showPassword: !passValue.showPassword });
   };
-  const departmental = ["কারিগরি", "জেনারেল", "মেডিকেল", "অন্যান্য"];
+
   const allAcademic = [
     { name: "Dhaka Polytechnic Institute", valueI: "polytechnic" },
+    { name: "Dhaka Mohila Polytechnic Institute", valueI: "polytechnic" },
+    { name: "Govt. Graphic Arts Institute", valueI: "polytechnic" },
+    { name: "National Polytechnic Institute", valueI: "polytechnic" },
+    { name: "Ucep Institute of Science & Technology", valueI: "polytechnic" },
+    { name: "Daffodil Polytechnic Institute", valueI: "polytechnic" },
     { name: "Mymensingh Polytechnic Institute", valueI: "polytechnic" },
-    { name: "Rumdo institute of modern technology", valueI: "polytechnic" },
-    { name: "Mymensingh Medical college", valueI: "medical" },
-    { name: "SSC In", valueI: "SSC" },
-    { name: "HSC In", valueI: "HSC" },
-    { name: "Honors", valueI: "Honors" },
+    {
+      name: "Ahsanullah Institute of Technical & Vocational Education & Training",
+      valueI: "polytechnic",
+    },
+    { name: "SSC", valueI: "SSC" },
+    { name: "HSC", valueI: "HSC" },
     { name: "Others...", valueI: "others" },
+  ];
+  const bloodGroup = [
+    "A+",
+    "A-",
+    "B+",
+    "B-",
+    "AB+",
+    "AB-",
+    "O+",
+    "O-",
+    "don't know",
   ];
 
   const polytechnic = [
     "Computer Science and Technology",
-    "Electronics Technology",
     "Civil Technology",
-    "Mechanical Technology",
-    "Power Technology",
-    "Electro-Medical Technology",
     "Electrical Technology",
-    "Food Technology",
-    "Automobile Technology",
-  ];
-  const Romdo = [
-    "Computer Science and Technology",
     "Electronics Technology",
-    "Civil Technology",
     "Mechanical Technology",
-    "Electrical Technology",
-    "Automobile Technology",
+    "Architecture Technology",
     "Food Technology",
-    "Power Technology",
-    "Architecture and Interior Design Technology",
-    "Tourism and Hospitality Management",
+    "Chemical Technology",
+    "Environmental Technology",
+    "Automobile Technology",
+    "Refrigeration and Air Conditioning Technology",
     "Electro-Medical Technology",
-    "Nursing",
-  ];
-  const genaralSSC = ["vocational", "Science", "Commerce", "Arts", "Others"];
-  const genaralHSC = ["Science", "Commerce", "Arts", "Others"];
-  const others = ["Others"];
-
-  const genaralHight = [
-    "Physics",
-    "Mathematics",
-    "Chemistry",
-    "Computer Science",
-    "Biology",
-    "Economics",
-    "Accounting",
-    "Management",
-    "English Literature",
-    "History",
-    "Political Science",
-    "Sociology",
-    "Others..",
-  ];
-  const doctor = [
-    "Anatomy",
-    "Physiology",
-    "Biochemistry",
-    "Pharmacology",
-    "Pathology",
-    "Microbiology",
-    "Community Medicine",
-    "Medicine",
-    "Surgery",
-    "Dermatology",
-    "Psychiatry",
-    "Radiology",
-    "Others..",
+    "Glass Technology",
+    "Print Technology",
+    "Graphics Technology",
+    "Telecommunication Technology",
+    "Others",
   ];
 
-  // ======== get location =====
+  const genaral = ["vocational", "Science", "Commerce", "Arts", "Others"];
+  const others = ["another subject"];
+
+  // ======== get address location start =====
   const [locationLoading, setLocation] = useState(true);
   const [add, setAdd] = useState("");
-  // `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
   const IpaddressTown = add?.county;
   const IpaddressCity = add?.city;
   const Ipaddress =
     (IpaddressTown ? IpaddressTown + ", " : "") +
     (IpaddressCity ? IpaddressCity : "");
-
-  console.log(Ipaddress); // This will print the joined text
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((pos) => {
@@ -138,8 +116,8 @@ const Registration = () => {
     e.preventDefault();
     // Extract form data directly without FormData
     const name = e.target.elements.name.value;
-    const studentRolls = e.target.elements.roll.value;
-    const institute = e.target.elements.institute_name.value;
+    const blodGroup = BloodGroup;
+    const institute = institutes;
     const department = e.target.elements.department.value;
     const address = e.target.elements.address.value;
     const phone = e.target.elements.phone.value;
@@ -166,6 +144,7 @@ const Registration = () => {
     const userData = {
       name,
       studentRoll: "0000",
+      blodGroup,
       institute,
       department,
       address,
@@ -181,7 +160,7 @@ const Registration = () => {
     try {
       setHidden(true);
       const response = await axios.post(
-        "https://unitech-server.vercel.app/api/v1/users/create-user",
+        "https://api.unitechbangladesh.com/api/v1/users/create-user",
         userData
       );
       const result = response.data;
@@ -222,7 +201,6 @@ const Registration = () => {
     }
   };
 
-  console.log(add, "sfsfh");
   return (
     <>
       <div className="bg-[#F6F5F7] border-2">
@@ -256,23 +234,6 @@ const Registration = () => {
               <div>
                 <label
                   className="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
-                  for="phone"
-                >
-                  Student roll*
-                </label>
-                <input
-                  required
-                  id="roll"
-                  name="roll"
-                  placeholder="maximus 6 number"
-                  type="number"
-                  className="input block border border-gray-300 placeholder:font-normal text-[15px] focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm"
-                />
-              </div>
-
-              <div>
-                <label
-                  className="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
                   for="institute"
                 >
                   Institute name*
@@ -287,7 +248,7 @@ const Registration = () => {
                   <option className="bg-[#E8F0FE]" value="select">
                     select
                   </option>
-                  {allAcademic.map((item, index) => (
+                  {allAcademic?.map((item, index) => (
                     <option key={index} value={item?.name}>
                       {item?.name}
                     </option>
@@ -308,94 +269,76 @@ const Registration = () => {
                   className="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm"
                 >
                   <option className="bg-[#E8F0FE]">select</option>
-                  {institutes === "Dhaka Polytechnic Institute" && (
-                    <>
-                      {polytechnic?.map((item, index) => (
-                        <>
-                          <option key={index} className="">
-                            {item}
-                          </option>{" "}
-                        </>
-                      ))}
-                    </>
-                  )}
-                  {institutes === "Mymensingh Polytechnic Institute" && (
-                    <>
-                      {polytechnic?.map((item, index) => (
-                        <>
-                          <option key={index} className="">
-                            {item}
-                          </option>{" "}
-                        </>
-                      ))}
-                    </>
-                  )}
-                  {institutes === "Rumdo institute of modern technology" && (
-                    <>
-                      {Romdo?.map((item, index) => (
-                        <>
-                          <option key={index} className="">
-                            {item}
-                          </option>{" "}
-                        </>
-                      ))}
-                    </>
-                  )}
-                  {institutes === "SSC In" && (
-                    <>
-                      {genaralSSC?.map((item, index) => (
-                        <>
-                          <option key={index} className="">
-                            {item}
-                          </option>{" "}
-                        </>
-                      ))}
-                    </>
-                  )}
-                  {institutes === "HSC In" && (
-                    <>
-                      {genaralHSC?.map((item, index) => (
-                        <>
-                          <option key={index} className="">
-                            {item}
-                          </option>{" "}
-                        </>
-                      ))}
-                    </>
-                  )}
-                  {institutes === "Honors" && (
-                    <>
-                      {genaralHight?.map((item, index) => (
-                        <>
-                          <option key={index} className="">
-                            {item}
-                          </option>{" "}
-                        </>
-                      ))}
-                    </>
-                  )}
-                  {institutes === "Mymensingh Medical college" && (
-                    <>
-                      {doctor?.map((item, index) => (
-                        <>
-                          <option key={index} className="">
-                            {item}
-                          </option>{" "}
-                        </>
-                      ))}
-                    </>
-                  )}
-                  {institutes === "others" && (
-                    <>
-                      {others?.map((item, index) => (
-                        <>
-                          <option key={index} className="">
-                            {item}
-                          </option>{" "}
-                        </>
-                      ))}
-                    </>
-                  )}
+                  <>
+                    {allAcademic?.map((academic, index) => (
+                      <>
+                        {institutes === academic.name && (
+                          <>
+                            {academic.valueI === "polytechnic" &&
+                              polytechnic.map((item, idx) => (
+                                <option key={idx} className="">
+                                  {item}
+                                </option>
+                              ))}
+                          </>
+                        )}
+                        {institutes === academic.name && (
+                          <>
+                            {academic.valueI === "SSC" &&
+                              genaral.map((item, idx) => (
+                                <option key={idx} className="">
+                                  {item}
+                                </option>
+                              ))}
+                          </>
+                        )}
+                        {institutes === academic.name && (
+                          <>
+                            {academic.valueI === "HSC" &&
+                              genaral.map((item, idx) => (
+                                <option key={idx} className="">
+                                  {item}
+                                </option>
+                              ))}
+                          </>
+                        )}
+                        {institutes === academic.name && (
+                          <>
+                            {academic.valueI === "others" &&
+                              others?.map((item, idx) => (
+                                <option key={idx} className="">
+                                  {item}
+                                </option>
+                              ))}
+                          </>
+                        )}
+                      </>
+                    ))}
+                  </>
+                </select>
+              </div>
+
+              <div>
+                <label
+                  className="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
+                  for="phone"
+                >
+                  blood Group*
+                </label>
+                <select
+                  onChange={(e) => setbloodGroup(e?.target?.value)}
+                  required
+                  name="institute_name"
+                  className="input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN rounded-sm"
+                >
+                  <option className="bg-[#E8F0FE]" value="select">
+                    select
+                  </option>
+                  {bloodGroup?.map((item, index) => (
+                    <option key={index} value={item}>
+                      {item}
+                    </option>
+                  ))}
                 </select>
               </div>
 

@@ -4,8 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import teacherProfile from "@/app/Assets/skill_courses_details/teacher.png";
-
+import "./coursesD.css";
 import icon1 from "@/app/Assets/skill_courses_details/courseIcon/1.png";
 import icon2 from "@/app/Assets/skill_courses_details/courseIcon/2.png";
 import icon3 from "@/app/Assets/skill_courses_details/courseIcon/3.png";
@@ -13,6 +12,7 @@ import icon4 from "@/app/Assets/skill_courses_details/courseIcon/4.png";
 import icon5 from "@/app/Assets/skill_courses_details/courseIcon/5.png";
 import icon6 from "@/app/Assets/skill_courses_details/courseIcon/6.png";
 import icon7 from "@/app/Assets/skill_courses_details/courseIcon/7.png";
+import icon8 from "@/app/Assets/skill_courses_details/courseIcon/8.png";
 import { Video } from "@/components/AcademicCourse/Video";
 import axios from "axios";
 import { LoadingPage } from "@/components/Loading/LoadingPage";
@@ -28,7 +28,7 @@ const DetailsCourse = () => {
     async function fetchData() {
       try {
         const result = await axios.get(
-          `https://unitech-server.vercel.app/api/v1/Academic-courses/${id}`
+          `https://api.unitechbangladesh.com/api/v1/Academic-courses/${id}`
         );
 
         setSingleCourses(result?.data?.data);
@@ -176,7 +176,7 @@ const DetailsCourse = () => {
                     <h1 className="text-[30px] font-[600] text-[#1F1F1F] ">
                       কোর্স ওভারভিউ
                     </h1>
-                    <p className="py-3 text-justify text-[16px] font-[400] SILIGURI">
+                    <p className="py-3 text-justify text-[16px] font-[400] SILIGURI line-hight-course-details">
                       {singleCourses?.COverview}
                     </p>
                   </div>
@@ -207,9 +207,9 @@ const DetailsCourse = () => {
                       <h1 className="text-[22px] font-[900] text-[#353535] text-start">
                         এই কোর্সে যা থাকছে
                       </h1>
-                      <div className="flex gap-2 items-center mt-1">
+                      <div className="flex gap-2 items-center mt-1 SILIGURI">
                         <Image
-                          className="w-[25px] h-[35px]"
+                          className="w-[25px] h-[32px]"
                           src={icon1}
                           alt=""
                         />
@@ -218,9 +218,9 @@ const DetailsCourse = () => {
                         </p>
                       </div>
 
-                      <div className="flex gap-2 items-center mt-2">
+                      <div className="flex gap-2 items-center mt-1 SILIGURI">
                         <Image
-                          className="w-[25px] h-[25px] "
+                          className="w-[19px] h-[20px] "
                           src={icon4}
                           alt=""
                         />
@@ -228,9 +228,9 @@ const DetailsCourse = () => {
                           {singleCourses?.CAssignment}
                         </p>
                       </div>
-                      <div className="flex gap-2 items-center mt-2">
+                      <div className="flex gap-2 items-center mt-2 SILIGURI">
                         <Image
-                          className="w-[25px] h-[25px]"
+                          className="w-[20px] h-[20px]"
                           src={icon5}
                           alt=""
                         />
@@ -238,19 +238,19 @@ const DetailsCourse = () => {
                           {singleCourses?.CQuize}
                         </p>
                       </div>
-                      <div className="flex gap-2 items-center mt-2">
+                      <div className="flex gap-2 items-center mt-2 SILIGURI">
                         <Image
-                          className="w-[25px] h-[25px]"
-                          src={icon5}
+                          className="w-[20px] h-[20px]"
+                          src={icon3}
                           alt=""
                         />
                         <p className="font-[500] text-[#353535] text-[14px]">
                           বিশেষ সাপট
                         </p>
                       </div>
-                      <div className="flex gap-2 items-center mt-1">
+                      <div className="flex gap-2 items-center mt-2 SILIGURI">
                         <Image
-                          className="w-[30px] h-[30px]"
+                          className="w-[20px] h-[20px]"
                           src={icon6}
                           alt=""
                         />
@@ -259,9 +259,9 @@ const DetailsCourse = () => {
                           ফেসবুক সাপোর্ট গ্রুপ
                         </p>
                       </div>
-                      <div className="flex gap-2 items-center mt-1">
+                      <div className="flex gap-2 items-center mt-2 SILIGURI">
                         <Image
-                          className="w-[22px] h-[32px] ms-1"
+                          className="w-[20px] h-[20px] "
                           src={icon7}
                           alt=""
                         />
@@ -269,11 +269,15 @@ const DetailsCourse = () => {
                           {singleCourses?.CExam}
                         </p>
                       </div>
-                      <div className="flex gap-2  mt-1 pb-2">
-                        <span className=""></span>
-                        <Link href={""} className="font-[500] text-[#FE941E]">
+                      <div className="flex gap-2 items-center mt-2 SILIGURI">
+                        <Image
+                          className="w-[20px] h-[20px] "
+                          src={icon8}
+                          alt=""
+                        />
+                        <p className="font-[500] text-[#db880c] text-[14px]">
                           More..
-                        </Link>
+                        </p>
                       </div>
                     </div>
                   </div>

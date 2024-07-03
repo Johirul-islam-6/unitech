@@ -55,7 +55,7 @@ const AcademicSlider = () => {
     async function fetchData() {
       try {
         const result = await axios.get(
-          `https://unitech-server.vercel.app/api/v1/Academic-courses/?searchTerm=&page=1&limit=12&sort=createdAt&sortOrder=desc`
+          `https://api.unitechbangladesh.com/api/v1/Academic-courses/?searchTerm=&page=1&limit=120&sort=createdAt&sortOrder=desc`
         );
 
         setAcademicCourse(result?.data?.data);

@@ -98,7 +98,7 @@ const AcademicCourses = () => {
 
     try {
       const response = await axios.post(
-        "https://unitech-server.vercel.app/api/v1/Academic-courses/create",
+        "https://api.unitechbangladesh.com/api/v1/Academic-courses/create",
         courseInfoData,
         {
           maxContentLength: 1000000000000,

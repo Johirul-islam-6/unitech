@@ -1,20 +1,14 @@
 import React from "react";
-import "./Banner.css";
+import "./Banner2.css";
 import Image from "next/image";
-import banner from "@/app/Assets/Banner/website banner.jpg";
-import {
-  FaAngleDoubleRight,
-  FaArrowCircleRight,
-  FaArrowsAltV,
-  FaLongArrowAltRight,
-  FaRegArrowAltCircleRight,
-} from "react-icons/fa";
+import banner from "@/app/Assets/Banner/aboutG.png";
+import { FaAngleDoubleRight } from "react-icons/fa";
 import Link from "next/link";
-// https://keen-slider.io/examples#examples
+
 export const Banner2 = () => {
   return (
     <>
-      <div className="banner flex flex-col-reverse md:grid gap-y-6  md:grid-cols-2 justify-center items-center p-8">
+      <div className="homeBanner flex flex-col-reverse md:grid gap-y-6  md:grid-cols-2 justify-center items-center p-8">
         <div className="">
           <h1 className="md:text-[55px] text-[30px] text-center md:text-start font-[600] SILIGURI ">
             দক্ষ হবো <span className="text-red-600">ইউনিটেক</span> এর সাথে..
@@ -39,14 +33,59 @@ export const Banner2 = () => {
               alt="Typing SVG"
             />
           </a>
-          <div className="link-text wrapper mt-5 flex justify-center md:justify-start">
-            <Link
-              className="apply-button link-text text-center py-[16px]"
-              href="/ourCourses"
-            >
-              <span className="flex bg-amber-700 px-8 py-3 text-white items-center justify-center uppercase">
-                Apply Now <FaAngleDoubleRight className="ps-[3px]" />
-              </span>
+          {/* ------------- button------------ */}
+          <div className="flex justify-center items-center mt-5">
+            <Link href={"/ourCourses"}>
+              <button
+                class="
+        group
+        p-5
+        cursor-pointer 
+        relative  
+        text-xl 
+        border-0 
+        flex 
+        items-center 
+        justify-center
+        h-[60px]
+        rounded-lg
+       bg-amber-500
+       hover:bg-transparent
+         text-[#ffffffb3]
+         hover:text-[#000000b3]
+         font-[600]
+         w-[170px]  
+         overflow-hidden   
+         transition-all
+         duration-100"
+              >
+                <span
+                  class="
+        group-hover:w-full
+        absolute 
+        left-0 
+        h-full 
+        w-5 
+        border-y
+        border-l
+         border-red-500
+           transition-all
+         duration-500"
+                ></span>
+
+                <p
+                  class="group-hover:opacity-0 group-hover:translate-x-[-100%] absolute translate-x-0 transition-all
+         duration-200"
+                >
+                  Our Courses
+                </p>
+
+                <span class="group-hover:translate-x-0  group-hover:opacity-100 absolute  translate-x-full opacity-0  transition-all duration-200">
+                  Click Now
+                </span>
+
+                <span class="group-hover:w-full absolute right-0 h-full w-5  border-y border-r  border-red-500 transition-all duration-500"></span>
+              </button>
             </Link>
           </div>
         </div>

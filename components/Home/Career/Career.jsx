@@ -6,7 +6,7 @@ import marketing from "@/app/Assets/career/Digital Marketing.png";
 import computer from "@/app/Assets/career/Basic Computer.png";
 import autocad from "@/app/Assets/career/Autocad Basic & premium.png";
 import autocad3D from "@/app/Assets/career/Autocad 3d.png";
-import video from "@/app/Assets/career/videoIcon.png";
+import video from "@/app/Assets/career/videoIcon.webp";
 import "./Career.css";
 import { CourseCard } from "./CourseCard";
 
@@ -15,7 +15,7 @@ export const Career = () => {
     {
       id: "1",
       cetagory: "web-development",
-      name: "Web Design",
+      name: "Web Development",
       icon: web,
       price: "",
       duration: "",
@@ -23,7 +23,7 @@ export const Career = () => {
     },
     {
       id: "2",
-      cetagory: "graphic-desing",
+      cetagory: "Graphic-desing",
       name: "graphic-desing",
       icon: graphic,
       price: "",
@@ -31,15 +31,6 @@ export const Career = () => {
       description: "",
     },
 
-    {
-      id: "3",
-      cetagory: "digital-marketing",
-      name: "Digital Marketing",
-      icon: marketing,
-      price: "",
-      duration: "",
-      description: "",
-    },
     {
       id: "4",
       cetagory: "basic-computer",
@@ -51,7 +42,7 @@ export const Career = () => {
     },
     {
       id: "5",
-      cetagory: "Autocad-basic/premium",
+      cetagory: "Autocad-basic-premium",
       name: "Autocad Basic & premium",
       icon: autocad,
       price: "",
@@ -60,7 +51,7 @@ export const Career = () => {
     },
     {
       id: "6",
-      cetagory: "autocad-3d",
+      cetagory: "autocad",
       name: "Autocad 3d",
       icon: autocad3D,
       price: "",
@@ -70,6 +61,16 @@ export const Career = () => {
 
     {
       id: "7",
+      cetagory: "digital-marketing",
+      name: "Digital Marketing",
+      icon: marketing,
+      price: "",
+      duration: "",
+      description: "",
+    },
+    {
+      id: "3",
+      cetagory: "ux-ui-design",
       name: "ux/ui-design",
       icon: graphic,
       price: "",

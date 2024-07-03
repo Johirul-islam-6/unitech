@@ -37,10 +37,10 @@ const SkillBaseCourse = () => {
     "digital-marketing",
     "video-editing",
     "basic-computer",
-    "Autocad-basic/premium",
-    "autocad-3d",
-    "ux/ui-design",
-    "Ai",
+    "Autocad-basic-premium",
+    "autocad",
+    "ux-ui-design",
+    "video",
   ];
 
   // Date genarate---
@@ -216,11 +216,11 @@ const SkillBaseCourse = () => {
       ],
     };
     setHidden(true);
-    console.log("All create courses Dat ===>a", courseInfoData);
+
     try {
       const response = await axios.post(
-        // "https://unitech-server.vercel.app/api/v1/courses/create",
-        "https://unitech-server.vercel.app/api/v1/courses/create",
+        // "https://api.unitechbangladesh.com/api/v1/courses/create",
+        "https://api.unitechbangladesh.com/api/v1/courses/create",
         courseInfoData,
         {
           maxContentLength: 100000000000,

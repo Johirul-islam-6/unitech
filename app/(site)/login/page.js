@@ -39,7 +39,7 @@ const Login = () => {
     setHidden(true);
     try {
       const response = await axios.post(
-        "https://unitech-server.vercel.app/api/v1/users/login",
+        "https://api.unitechbangladesh.com/api/v1/users/login",
         userData
       );
       const result = response.data;
@@ -94,7 +94,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "https://unitech-server.vercel.app/api/v1/users/forgotPass",
+        "https://api.unitechbangladesh.com/api/v1/users/forgotPass",
         { email }
       );
       const result = response.data.message;
@@ -123,24 +123,25 @@ const Login = () => {
         <section className="max-w-2xl md:w-[35%] px-5 pt-7 mx-auto rounded-md shadow-md bg-[#FFFFFF] mt-3">
           <form onSubmit={HandleSubmite}>
             <div className="text-center flex justify-center flex-col">
-              {/* <div className="flex justify-center">
+              <div className="flex justify-center">
                 <Image
-                  width={70}
-                  height={70}
+                  width={100}
+                  height={80}
                   src={logo}
-                  className="rounded-full border-2 "
+                  className=" "
                   alt=""
                 />
-              </div> */}
-              <h2 className=" text-[30px] md:text-4xl font-bold text-[#563A9F] GT ">
-                Login
-              </h2>
-              <div className="w-[80px] h-[3px] bg-[#563A9F] mx-auto mt-2"></div>
+              </div>
+
+              {/* <div className="w-[80px] h-[3px] bg-[#563A9F] mx-auto mt-2"></div> */}
             </div>
             <div className="grid grid-cols-1 gap-x-6 gap-y-4 mt-8 sm:grid-cols-1 md:px-10 ">
-              <div>
+              <h2 className=" text-[22px] text-center md:text-[25px] font-bold text-[#030303d2] SILIGURI">
+                Welcome back✋
+              </h2>
+              <div className="mt-2">
                 <label
-                  className="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 IN"
+                  className="text-[#2C293B] md:text-[14px] text-[14px] ps-[2px] font-[550]  md:ps-1 SILIGURI "
                   for="emailAddress"
                 >
                   Email Address*
@@ -153,7 +154,7 @@ const Login = () => {
                   placeholder="Enter Your valid Email"
                   className={`input block border border-gray-300 focus:border-pitch-black  py-2 px-3 w-full focus:outline-none mt-1 IN  placeholder:font-normal text-[16px] rounded-sm ${
                     inputError ? "border-red-400 border-2" : ""
-                  }`}
+                  } SILIGURI`}
                 />
               </div>
 

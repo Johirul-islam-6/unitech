@@ -1,9 +1,10 @@
 "use client";
 import "./Banner.css";
-import image1 from "@/app/Assets/image/banner1.jpg";
-import image2 from "@/app/Assets/image/banner2.jpg";
-import image3 from "@/app/Assets/image/banner3.jpg";
-import image4 from "@/app/Assets/image/banner4.jpg";
+import image1 from "@/app/Assets/Banner/banner1.png";
+import BannerLImage from "@/app/Assets/Banner/bannerL1.png";
+import image2 from "@/app/Assets/Banner/banner2.jpg";
+import image3 from "@/app/Assets/Banner/banner3.jpg";
+import image4 from "@/app/Assets/Banner/banner4.jpg";
 import axios from "axios";
 import Image from "next/image";
 import { useEffect } from "react";
@@ -83,7 +84,7 @@ export const Banner = () => {
     async function viewCount() {
       try {
         const response = await axios.patch(
-          `https://unitech-server.vercel.app/api/v1/siteView/view/66501be73b986cc58347cd43`
+          `https://api.unitechbangladesh.com/api/v1/siteView/view/66501be73b986cc58347cd43`
         );
         const result = response.data;
 

@@ -1,11 +1,12 @@
 "use client";
 import Image from "next/image";
 import React, { useEffect } from "react";
-import course1 from "@/app/Assets/All Courses Image/course1.jpg";
+
 import "./CourseCard.css";
 import Link from "next/link";
 
 export const AllCoursesss = ({ SkillCourses }) => {
+  console.log("get data", SkillCourses);
   return (
     <>
       {SkillCourses &&
@@ -18,7 +19,7 @@ export const AllCoursesss = ({ SkillCourses }) => {
                 <Image
                   width={1}
                   height={1}
-                  className="rounded-t-md d-image border-2 h-[250px] w-[100%]"
+                  className="rounded-t-md d-image border-2 h-[280px] w-[100%]"
                   src={single?.courseImage}
                   alt=""
                 />

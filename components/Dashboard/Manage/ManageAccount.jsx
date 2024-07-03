@@ -21,7 +21,7 @@ export const ManageAccount = () => {
     async function fetchData() {
       try {
         const result = await axios.get(
-          `https://unitech-server.vercel.app/api/v1/users/?searchTerm=${searchingValue}&page=1&limit=10000000&sort=createdAt&sortOrder=desc`
+          `https://api.unitechbangladesh.com/api/v1/users/?searchTerm=${searchingValue}&page=1&limit=10000000&sort=createdAt&sortOrder=desc`
         );
 
         setUser(result?.data?.data);
@@ -42,6 +42,8 @@ export const ManageAccount = () => {
     //   setPendingBook(result);
     // }
   }, [searchingValue]);
+
+  console.log("first", allUser, searchingValue);
 
   return (
     <>

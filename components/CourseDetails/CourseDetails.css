@@ -6,6 +6,10 @@
   max-height: 0;
 }
 
+.line-hight-course-details {
+  line-height: 31px !important;
+}
+
 .group:focus .group-focus\:max-h-40 {
   max-height: 10rem;
 }

@@ -1,8 +1,11 @@
+/* eslint-disable @next/next/no-document-import-in-page */
 import { Inter } from "next/font/google";
 import "./globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "sweetalert2/src/sweetalert2.scss";
+import Head from "next/head";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -13,6 +16,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <Head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
       <body className={inter.className}>{children}</body>
     </html>
   );

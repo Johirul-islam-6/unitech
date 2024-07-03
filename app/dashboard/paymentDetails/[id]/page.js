@@ -25,7 +25,7 @@ const PaymentDetails = () => {
     async function fetchData() {
       try {
         const result = await axios.get(
-          `https://unitech-server.vercel.app/api/v1/payment/${id}`
+          `https://api.unitechbangladesh.com/api/v1/payment/${id}`
         );
 
         setSingleCourses(result?.data?.data);
@@ -55,7 +55,7 @@ const PaymentDetails = () => {
 
     try {
       const response = await axios.patch(
-        `https://unitech-server.vercel.app/api/v1/payment/${id}`,
+        `https://api.unitechbangladesh.com/api/v1/payment/${id}`,
         depositUpdate,
         {
           maxContentLength: 1000000000000,
@@ -101,7 +101,7 @@ const PaymentDetails = () => {
                 </p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-2 w-[100%] md:px-10 px-3">
                   {/* <!-- Card --> */}
-                  <div class="flex w-[100%] items-center p-4 rounded-lg shadow-xs bg-gray-800">
+                  <div class="flex w-[100%] items-center p-4 rounded-lg shadow-xs bg-white shadow-xl">
                     <div class="p-3 mr-4 text-orange-500  rounded-full dark:text-orange-100 bg-orange-500">
                       <svg
                         class="w-5 h-5"
@@ -112,16 +112,16 @@ const PaymentDetails = () => {
                       </svg>
                     </div>
                     <div>
-                      <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                      <p class="mb-2 text-sm font-bold text-gray-800 ">
                         Course Free
                       </p>
-                      <p class="text-[18px] font-semibold text-gray-700 dark:text-gray-200">
+                      <p class="text-[14px] font-extrabold text-gray-700">
                         {singleCourses?.SFree}
                       </p>
                     </div>
                   </div>
                   {/* <!-- Card --> */}
-                  <div class="flex   items-center p-4 rounded-lg shadow-xs bg-gray-800">
+                  <div class="flex   items-center p-4 rounded-lg shadow-xs bg-white shadow-xl">
                     <div class="p-3 mr-4 text-orange-500  rounded-full dark:text-orange-100 bg-orange-500">
                       <svg
                         class="w-5 h-5"
@@ -132,16 +132,16 @@ const PaymentDetails = () => {
                       </svg>
                     </div>
                     <div>
-                      <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                      <p class="mb-2 text-sm font-bold text-gray-800 ">
                         Old Deposite
                       </p>
-                      <p class="text-[18px] font-semibold text-gray-700 dark:text-gray-200">
+                      <p class="text-[14px] font-extrabold text-gray-700">
                         {singleCourses?.SPaid}
                       </p>
                     </div>
                   </div>
                   {/* <!-- Card --> */}
-                  <div class="flex  items-center p-4 rounded-lg shadow-xs bg-gray-800">
+                  <div class="flex  items-center p-4 rounded-lg shadow-xs bg-white shadow-xl">
                     <div class="p-3 mr-4 text-orange-500  rounded-full dark:text-orange-100 bg-orange-500">
                       <svg
                         class="w-5 h-5"
@@ -152,16 +152,16 @@ const PaymentDetails = () => {
                       </svg>
                     </div>
                     <div>
-                      <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                      <p class="mb-2 text-sm font-bold text-gray-800 ">
                         New Deposite
                       </p>
-                      <p class="text-[18px] font-semibold text-gray-700 dark:text-gray-200">
+                      <p class="text-[14px] font-extrabold text-gray-700">
                         {NewPaid}
                       </p>
                     </div>
                   </div>
                   {/* <!-- Card --> */}
-                  <div class="flex  items-center p-4 rounded-lg shadow-xs bg-gray-800">
+                  <div class="flex  items-center p-4 rounded-lg shadow-xs bg-white shadow-xl">
                     <div class="p-3 mr-4 text-orange-500  rounded-full dark:text-orange-100 bg-orange-500">
                       <svg
                         class="w-5 h-5"
@@ -172,10 +172,10 @@ const PaymentDetails = () => {
                       </svg>
                     </div>
                     <div>
-                      <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                      <p class="mb-2 text-sm font-bold text-gray-800 ">
                         Total Paid
                       </p>
-                      <p class="text-[18px] font-semibold text-gray-700 dark:text-gray-200">
+                      <p class="text-[14px] font-extrabold text-gray-700">
                         <span className="text-blue-500">
                           {Number(singleCourses?.SPaid) + Number(NewPaid)}{" "}
                         </span>
@@ -184,13 +184,13 @@ const PaymentDetails = () => {
                   </div>
                 </div>
                 {/* <!-- Card --> */}
-                <div class="flex mt-3 items-center p-4 rounded-lg shadow-xs bg-gray-800">
+                <div class="flex mt-3 items-center p-4 rounded-lg shadow-xs bg-white shadow-xl">
                   <div>
-                    <p class="mb-2 text-[16px] text-center font-medium text-gray-600 dark:text-gray-400">
+                    <p class="mb-2 text-[16px] text-center font-bold text-gray-800 ">
                       {" "}
                       সর্বমোট বাকি{" "}
                     </p>
-                    <p class="text-[18px] font-semibold text-gray-700 dark:text-gray-200">
+                    <p class="text-[14px] font-extrabold text-gray-700">
                       <span className=" text-center">
                         {singleCourses?.SFree} -{" "}
                         <span className="text-green-500">
@@ -245,7 +245,7 @@ const PaymentDetails = () => {
               {/* <!-- Cards --> */}
               <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
                 {/* <!-- Card --> */}
-                <div class="flex items-center p-4  rounded-lg shadow-xs bg-gray-800">
+                <div class="flex items-center p-4  rounded-lg shadow-xs bg-white shadow-xl">
                   <div class="p-3 mr-4 text-orange-500  rounded-full dark:text-orange-100 bg-orange-500">
                     <svg
                       class="w-5 h-5"
@@ -256,16 +256,16 @@ const PaymentDetails = () => {
                     </svg>
                   </div>
                   <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                    <p class="mb-2 text-sm font-bold text-gray-800 ">
                       Student Roll
                     </p>
-                    <p class="text-[18px] font-semibold text-gray-700 dark:text-gray-200">
+                    <p class="text-[14px] font-extrabold text-gray-700">
                       {singleCourses?.SRoll}
                     </p>
                   </div>
                 </div>
                 {/* <!-- Card --> */}
-                <div class="flex items-center p-4  rounded-lg shadow-xs bg-gray-800">
+                <div class="flex items-center p-4  rounded-lg shadow-xs bg-white shadow-xl">
                   <div class="p-3 mr-4 text-green-500  rounded-full dark:text-green-100 bg-green-500">
                     <svg
                       class="w-5 h-5"
@@ -280,16 +280,16 @@ const PaymentDetails = () => {
                     </svg>
                   </div>
                   <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                    <p class="mb-2 text-sm font-bold text-gray-800 ">
                       Course Name
                     </p>
-                    <p class="text-[16px] font-semibold text-gray-700 dark:text-gray-200">
+                    <p class="text-[14px] font-extrabold text-gray-700">
                       {singleCourses?.SCetagory}
                     </p>
                   </div>
                 </div>
                 {/* <!-- Card --> */}
-                <div class="flex items-center p-4 rounded-lg shadow-xs bg-gray-800">
+                <div class="flex items-center p-4 rounded-lg shadow-xs bg-white shadow-xl">
                   <div class="p-3 mr-4 text-teal-500 rounded-full dark:text-teal-100 bg-teal-500">
                     <svg
                       class="w-5 h-5"
@@ -304,16 +304,14 @@ const PaymentDetails = () => {
                     </svg>
                   </div>
                   <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                    <p class="mb-2 text-sm font-bold text-gray-800 ">
                       My Tutorials
                     </p>
-                    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                      376
-                    </p>
+                    <p class="tex4-lg font-extrabold text-gray-700">376</p>
                   </div>
                 </div>
                 {/* <!-- Card --> */}
-                <div class="flex items-center p-4  rounded-lg shadow-xs bg-gray-800">
+                <div class="flex items-center p-4  rounded-lg shadow-xs bg-white shadow-xl">
                   <div class="p-3 mr-4 text-blue-500  rounded-full dark:text-blue-100 bg-blue-500">
                     <svg
                       class="w-5 h-5"
@@ -324,16 +322,16 @@ const PaymentDetails = () => {
                     </svg>
                   </div>
                   <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                    <p class="mb-2 text-sm font-bold text-gray-800 ">
                       Student Phone
                     </p>
-                    <p class="text-[16px] font-semibold text-gray-700 dark:text-gray-200">
+                    <p class="text-[14px] font-extrabold text-gray-700">
                       {singleCourses?.SPhone}
                     </p>
                   </div>
                 </div>
                 {/* <!-- Card --> */}
-                <div class="flex items-center p-4  rounded-lg shadow-xs bg-gray-800">
+                <div class="flex items-center p-4  rounded-lg shadow-xs bg-white shadow-xl">
                   <div class="p-3 mr-4 text-blue-500  rounded-full dark:text-blue-100 bg-blue-500">
                     <svg
                       class="w-5 h-5"
@@ -344,16 +342,16 @@ const PaymentDetails = () => {
                     </svg>
                   </div>
                   <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                    <p class="mb-2 text-sm font-bold text-gray-800 ">
                       Student Email
                     </p>
-                    <p class="text-[16px] font-semibold text-gray-700 dark:text-gray-200">
+                    <p class="text-[14px] font-extrabold text-gray-700">
                       {singleCourses?.SEmail}
                     </p>
                   </div>
                 </div>
                 {/* <!-- Card --> */}
-                <div class="flex items-center p-4  rounded-lg shadow-xs bg-gray-800">
+                <div class="flex items-center p-4  rounded-lg shadow-xs bg-white shadow-xl">
                   <div class="p-3 mr-4 text-blue-500  rounded-full dark:text-blue-100 bg-blue-500">
                     <svg
                       class="w-5 h-5"
@@ -364,16 +362,16 @@ const PaymentDetails = () => {
                     </svg>
                   </div>
                   <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                    <p class="mb-2 text-sm font-bold text-gray-800 ">
                       Course Free
                     </p>
-                    <p class="text-[16px] font-semibold text-gray-700 dark:text-gray-200">
+                    <p class="text-[14px] font-extrabold text-gray-700">
                       {singleCourses?.SFree}
                     </p>
                   </div>
                 </div>
                 {/* <!-- Card --> */}
-                <div class="flex items-center p-4  rounded-lg shadow-xs bg-gray-800">
+                <div class="flex items-center p-4  rounded-lg shadow-xs bg-white shadow-xl">
                   <div class="p-3 mr-4 text-blue-500  rounded-full dark:text-blue-100 bg-blue-500">
                     <svg
                       class="w-5 h-5"
@@ -393,7 +391,7 @@ const PaymentDetails = () => {
                   </div>
                 </div>
                 {/* <!-- Card --> */}
-                <div class="flex items-center p-4  rounded-lg shadow-xs bg-gray-800">
+                <div class="flex items-center p-4  rounded-lg shadow-xs bg-white shadow-xl">
                   <div class="p-3 mr-4 text-blue-500  rounded-full dark:text-blue-100 bg-blue-500">
                     <svg
                       class="w-5 h-5"
@@ -413,7 +411,7 @@ const PaymentDetails = () => {
                   </div>
                 </div>
                 {/* <!-- Card --> */}
-                <div class="flex items-center p-4  rounded-lg shadow-xs bg-gray-800">
+                <div class="flex items-center p-4  rounded-lg shadow-xs bg-white shadow-xl">
                   <div class="p-3 mr-4 text-blue-500  rounded-full dark:text-blue-100 bg-blue-500">
                     <svg
                       class="w-5 h-5"
@@ -424,16 +422,16 @@ const PaymentDetails = () => {
                     </svg>
                   </div>
                   <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                    <p class="mb-2 text-sm font-bold text-gray-800 ">
                       Deposit Date
                     </p>
-                    <p class="text-[16px] font-semibold text-gray-700 dark:text-gray-200">
+                    <p class="text-[14px] font-extrabold text-gray-700">
                       {singleCourses?.CDate}
                     </p>
                   </div>
                 </div>
                 {/* <!-- Card --> */}
-                <div class="flex items-center p-4  rounded-lg shadow-xs bg-gray-800">
+                <div class="flex items-center p-4  rounded-lg shadow-xs bg-white shadow-xl">
                   <div class="p-3 mr-4 text-blue-500  rounded-full dark:text-blue-100 bg-blue-500">
                     <svg
                       class="w-5 h-5"
@@ -444,16 +442,16 @@ const PaymentDetails = () => {
                     </svg>
                   </div>
                   <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                    <p class="mb-2 text-sm font-bold text-gray-800 ">
                       Last Payment
                     </p>
-                    <p class="text-[16px] font-semibold text-gray-700 dark:text-gray-200">
+                    <p class="text-[14px] font-extrabold text-gray-700">
                       {singleCourses?.updatePayment}
                     </p>
                   </div>
                 </div>
                 {/* <!-- Card --> */}
-                <div class="flex items-center p-4  rounded-lg shadow-xs bg-gray-800">
+                <div class="flex items-center p-4  rounded-lg shadow-xs bg-white shadow-xl">
                   <div class="p-3 mr-4 text-blue-500  rounded-full dark:text-blue-100 bg-blue-500">
                     <svg
                       class="w-5 h-5"
@@ -464,10 +462,10 @@ const PaymentDetails = () => {
                     </svg>
                   </div>
                   <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                    <p class="mb-2 text-sm font-bold text-gray-800 ">
                       Deposit Admin
                     </p>
-                    <p class="text-[10px] font-semibold text-gray-700 dark:text-gray-200">
+                    <p class="text-[14px] font-extrabold text-gray-700">
                       {singleCourses?.PAdmin}
                     </p>
                   </div>

@@ -32,7 +32,7 @@ const TokenPage = () => {
 
     try {
       const response = await axios.post(
-        "https://unitech-server.vercel.app/api/v1/users/resetpassword",
+        "https://api.unitechbangladesh.com/api/v1/users/resetpassword",
         {
           id: userId,
           password: password,

@@ -60,7 +60,7 @@ const ClassToper = () => {
 
     try {
       const response = await axios.post(
-        "https://unitech-server.vercel.app/api/v1/toper/create",
+        "https://api.unitechbangladesh.com/api/v1/toper/create",
         studentInformation,
         {
           maxContentLength: 1000000000000,
@@ -119,7 +119,7 @@ const ClassToper = () => {
     async function fetchData() {
       try {
         const result = await axios.get(
-          `https://unitech-server.vercel.app/api/v1/toper`
+          `https://api.unitechbangladesh.com/api/v1/toper`
         );
         setAllToper(result?.data?.data);
         setLoading(false);
@@ -134,10 +134,9 @@ const ClassToper = () => {
   // ----------- delete Toper book -------------
 
   async function deleteToper(id, name) {
-    console.log(id, "idddd");
     try {
       const response = await axios.delete(
-        `https://unitech-server.vercel.app/api/v1/toper/${id}`
+        `https://api.unitechbangladesh.com/api/v1/toper/${id}`
       );
 
       if (response?.data?.success) {
@@ -239,7 +238,7 @@ const ClassToper = () => {
                 id="username"
                 name="CSession"
                 type="text"
-                placeholder="২০২৪"
+                placeholder="১ম / ২য় / ৩য়"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>

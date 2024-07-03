@@ -62,10 +62,10 @@ export const AchieveCourses = () => {
       <div>
         <div className="mt-20">
           <h1 className="text-center text-[1.7rem] md:text-[2rem] font-[600] pt-5 SILIGURI">
-            কি কি পাচ্ছেন লাইভ কোর্সে
+            ইন্ডাস্ট্রিয়াল এটাচমেন্ট
           </h1>
           <h1 className="text-center achieveParagraph SILIGURI">
-            দেখে নিন কি কি পাচ্ছেন ইউনিটেক লাইভ কোর্সে জয়েন করলে
+            দেখে নিন কি কি পাচ্ছেন ইউনিটেক ইন্ডাস্ট্রিয়াল এটাচমেন্ট।
           </h1>
 
           <div className="flex flex-col  gap-5 mt-10 grid-achiveve">
@@ -114,7 +114,7 @@ export const AchieveCourses = () => {
             </p>
 
             <div className="flex justify-center my-8">
-              <Link href={"/ourCourses"}>
+              <Link href={"/academicCourses"}>
                 <button className="coding-btn uppercase">VIEW COURSE</button>
               </Link>
             </div>
@@ -141,7 +141,7 @@ export const AchieveCourses = () => {
             </p>
 
             <div className="flex justify-center my-8">
-              <Link href={"/ourCourses"}>
+              <Link href={"/skillCourses"}>
                 <button className="coding-btn uppercase">VIEW COURSE</button>
               </Link>
             </div>

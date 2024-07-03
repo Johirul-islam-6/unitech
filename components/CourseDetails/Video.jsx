@@ -49,13 +49,13 @@ export const Video = ({ singleCourses }) => {
         </button>
         {/* End: Video thumbnail */}
 
-        <Transition
+        {/* <Transition
           show={modalOpen}
           as={Fragment}
           afterEnter={() => videoRef.current?.play()}
         >
           <Dialog initialFocus={videoRef} onClose={() => setModalOpen(false)}>
-            {/* Modal backdrop */}
+         
             <Transition.Child
               className="fixed inset-0 z-[99999] bg-black bg-opacity-50 transition-opacity"
               enter="transition ease-out duration-200"
@@ -66,9 +66,7 @@ export const Video = ({ singleCourses }) => {
               leaveTo="opacity-0"
               aria-hidden="true"
             />
-            {/* End: Modal backdrop */}
-
-            {/* Modal dialog */}
+          
             <Transition.Child
               className="fixed inset-0 z-[99999] flex px-4 md:px-6 py-6"
               enter="transition ease-out duration-300"
@@ -93,9 +91,9 @@ export const Video = ({ singleCourses }) => {
                 </Dialog.Panel>
               </div>
             </Transition.Child>
-            {/* End: Modal dialog */}
+         
           </Dialog>
-        </Transition>
+        </Transition> */}
       </div>
     </>
   );

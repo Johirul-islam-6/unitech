@@ -1,21 +1,27 @@
 "use client";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaRegDotCircle } from "react-icons/fa";
 import "./Singel_user.css";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import { ProfileCourses } from "@/components/Profile/ProfileCourses";
+import Link from "next/link";
+import Image from "next/image";
 
 const SingelUsers = () => {
+  const route = useRouter();
   const { id } = useParams();
   const [singelUser, setSingelUser] = useState();
   const [userInfo, setInfo] = useState();
-  const [createdbookUser, setCreatedbookUser] = useState("");
   const [Loading, setLoading] = useState(true);
   const [Loading2, setLoading2] = useState(true);
   const [reload, setReloade] = useState(false);
+
+  const [Loading4, setLoading4] = useState(true);
+  const [EnrollCourses, setEnrollCourses] = useState();
 
   useEffect(() => {
     const getCookiesData = Cookies.get("CookieYouserData");
@@ -26,7 +32,7 @@ const SingelUsers = () => {
     async function fetchData() {
       try {
         const result = await axios.get(
-          `https://unitech-server.vercel.app/api/v1/users/${id}`
+          `https://api.unitechbangladesh.com/api/v1/users/${id}`
         );
 
         setSingelUser(result?.data?.data);
@@ -38,29 +44,13 @@ const SingelUsers = () => {
     }
 
     fetchData();
-
-    // ------------ get 3 book lisht -----------
-    async function fetchData2() {
-      try {
-        const result = await axios.get(
-          `https://unitech-server.vercel.app/api/v1/books/?searchTerm=${singelUser?.email}&page=1&limit=5&sort=createdAt&sortOrder=desc`
-        );
-
-        setCreatedbookUser(result?.data?.data);
-        setLoading2(false);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    fetchData2();
   }, [id, singelUser?.email, reload]);
 
   // --------------- delete a Book -----------------
-  async function deleteBook(bookId, name) {
+  async function deleteUser(userId, name) {
     try {
       const response = await axios.delete(
-        `https://unitech-server.vercel.app/api/v1/books/${bookId}`
+        `https://api.unitechbangladesh.com/api/v1/users/${userId}`
       );
 
       if (response?.data?.success) {
@@ -75,6 +65,7 @@ const SingelUsers = () => {
       console.error("Error deleting book:", error);
       // Optionally, handle the error in a meaningful way
     }
+    route.push("/dashboard/management");
   }
 
   // ============== Ruler update ===============
@@ -84,7 +75,7 @@ const SingelUsers = () => {
     };
     try {
       const response = await axios.patch(
-        `https://unitech-server.vercel.app/api/v1/users/${id}`,
+        `https://api.unitechbangladesh.com/api/v1/users/${id}`,
         rulerUpdateData
       );
 
@@ -112,7 +103,7 @@ const SingelUsers = () => {
 
     try {
       const response = await axios.patch(
-        `https://unitech-server.vercel.app/api/v1/users/roll/${singelUser?._id}`,
+        `https://api.unitechbangladesh.com/api/v1/users/roll/${singelUser?._id}`,
         data
       );
       console.log("roll==>", response.data?.message);
@@ -142,6 +133,23 @@ const SingelUsers = () => {
 
     console.log(rollField);
   };
+
+  useEffect(() => {
+    //  all enroll courses
+    async function fetchData2() {
+      try {
+        const result = await axios.get(
+          `https://api.unitechbangladesh.com/api/v1/enroll/?searchTerm=${singelUser?.email}&page=1&limit=1000&sort=createdAt&sortOrder=desc`
+        );
+
+        setEnrollCourses(result?.data?.data);
+        setLoading4(false);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData2();
+  }, [singelUser?.email]);
 
   return (
     <div className="overflow-auto h-[100vh]">
@@ -393,74 +401,163 @@ const SingelUsers = () => {
             </>
           )}
         </div>
-      </div>
-      <div className="mt-20">
-        <div className="   py-8 mt-10 singel-user md:ms-5">
-          {Loading2 && (
+        <div className="flex flex-wrap justify-center md:justify-start ">
+          {userInfo?.ruler === "superAdmin" && (
             <>
-              <h1 className="text-[18px] font-[600] md:text-center text-black text-center">
-                Loading
-              </h1>
+              <button
+                onClick={() => deleteUser(singelUser?._id, singelUser?.name)}
+                className="bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4"
+              >
+                Delete
+              </button>
             </>
           )}
-          <h1 className="text-2xl font-bold lg:pt-0 md:text-center text-center">
-            {" "}
-            Total Enroll Courses
-          </h1>
-          <div className="pb-5 flex justify-center">
-            <div className="lg:mx-0 w-[80%] mx-auto pt-3 border-b-2 border-green-500 opacity-25"></div>
-          </div>
-          <div className="d">
-            <div className="md:px-3 items-center gap-3 grid md:grid-cols-4">
-              {/* {Array.isArray(createdbookUser) &&
-                createdbookUser.map((book) => (
-                  <>
-                    <div
-                      key={book?.id}
-                      className=" overflow-hidden bg-[#fff] rounded-md border-2"
-                    >
-                      <div className=" relative">
-                        <div className="bg-[#0000007b] w-[100%] h-[100%]  absolute rounded-t-md"></div>
-                        <Image
-                          width={1424}
-                          height={450}
-                          className="rounded-t-md  w-[100%] h-[350px]"
-                          src={book?.bookImage}
-                          alt=""
-                        />
-                        <div className="flex bg-[#0000001e] justify-between w-[100%] px-2 absolute top-0 text-[#fff]   py-2  md:text-center text-center">
-                          <button
-                            onClick={() =>
-                              deleteBook(book?._id, book?.bookName)
-                            }
-                            className="text-[12px] md:text-[12px] bg-red-800 hover:bg-red-500 text-white px-[10px] py-[3px] rounded-sm"
-                          >
-                            Delete
-                          </button>
-                          <Link href={`/detailsBook/${book?._id}`}>
-                            <button className="text-[12px] md:text-[14px] bg-green-700 hover:bg-green-600 text-white px-[10px] py-[3px] rounded-sm">
-                              view
-                            </button>
-                          </Link>
-                        </div>
-                        <h1 className="flex bg-[#000000a2]  w-[100%] justify-center absolute bottom-0 text-[#fff] text-[18px] md:text-[25px] font-[700] py-2  md:text-center text-center">
-                          {book?.bookName}
-                        </h1>
-                      </div>
-                    </div>
-                  </>
-                ))} */}
-              <div className="div bg-slate-300 w-[100%] h-[320px]"></div>
-              <div className="div bg-slate-300 w-[100%] h-[320px]"></div>
-              <div className="div bg-slate-300 w-[100%] h-[320px]"></div>
-              <div className="div bg-slate-300 w-[100%] h-[320px]"></div>
-              <div className="div bg-slate-300 w-[100%] h-[320px]"></div>
-              <div className="div bg-slate-300 w-[100%] h-[320px]"></div>
-              <div className="div bg-slate-300 w-[100%] h-[320px]"></div>
-              <div className="div bg-slate-300 w-[100%] h-[320px]"></div>
-            </div>
-          </div>
         </div>
+      </div>
+
+      {/*----------- enroll courses------------- */}
+      <div className="mt-8">
+        <div className=" flex justify-center">
+          <div className="lg:mx-0 w-[80%] mx-auto pt-3 border-b-2 border-green-500 opacity-25"></div>
+        </div>
+        <h1 className="text-center text-[25px] font-[600]">
+          All Enroll Courses
+        </h1>
+        <div className=" flex justify-center">
+          <div className="lg:mx-0 w-[80%] mx-auto pt-3 border-b-2 border-green-500 opacity-25"></div>
+        </div>
+
+        {Loading4 ? (
+          <>
+            <div class="max-w-screen-xl mx-auto grid md:grid-cols-3 gap-8  items-center justify-center mt-5">
+              <div class="max-w-sm rounded overflow-hidden shadow-lg animate-pulse">
+                <div class="h-48 bg-gray-300"></div>
+                <div class="px-6 py-4">
+                  <div class="h-6 bg-gray-300 mb-2"></div>
+                  <div class="h-4 bg-gray-300 w-2/3"></div>
+                </div>
+                <div class="px-6 pt-4 pb-2">
+                  <div class="h-4 bg-gray-300 w-1/4 mb-2"></div>
+                  <div class="h-4 bg-gray-300 w-1/2"></div>
+                </div>
+              </div>
+              <div class="max-w-sm rounded overflow-hidden shadow-lg animate-pulse">
+                <div class="h-48 bg-gray-300"></div>
+                <div class="px-6 py-4">
+                  <div class="h-6 bg-gray-300 mb-2"></div>
+                  <div class="h-4 bg-gray-300 w-2/3"></div>
+                </div>
+                <div class="px-6 pt-4 pb-2">
+                  <div class="h-4 bg-gray-300 w-1/4 mb-2"></div>
+                  <div class="h-4 bg-gray-300 w-1/2"></div>
+                </div>
+              </div>
+
+              <div class="max-w-sm rounded overflow-hidden shadow-lg animate-pulse">
+                <div class="h-48 bg-gray-300"></div>
+                <div class="px-6 py-4">
+                  <div class="h-6 bg-gray-300 mb-2"></div>
+                  <div class="h-4 bg-gray-300 w-2/3"></div>
+                </div>
+                <div class="px-6 pt-4 pb-2">
+                  <div class="h-4 bg-gray-300 w-1/4 mb-2"></div>
+                  <div class="h-4 bg-gray-300 w-1/2"></div>
+                </div>
+              </div>
+            </div>
+          </>
+        ) : (
+          <div
+            className={`grid gap-3 ${
+              EnrollCourses?.length === 0 ? "md:grid-cols-1" : "md:grid-cols-3"
+            } mt-3 px-1`}
+          >
+            {EnrollCourses?.length === 0 ? (
+              <>
+                <div className="h-[40vh] flex justify-center items-center">
+                  <h1 className="text-center text-[20px] font-bold text-[#0000009f]">
+                    No Enroll Course
+                  </h1>
+                </div>
+              </>
+            ) : (
+              <>
+                {EnrollCourses?.map((item, index) => (
+                  <>
+                    {item?.status === "success" ? (
+                      <>
+                        <div
+                          key={index}
+                          className="max-w-sm border-2 bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-500"
+                        >
+                          <h3 className="mb-3 text-xl font-bold text-indigo-600">
+                            {item?.CCetagory === "Skill"
+                              ? "Skill Development"
+                              : "Academic Course"}
+                          </h3>
+
+                          <div className="relative">
+                            <Image
+                              className="w-full rounded-xl"
+                              src={item?.courseImage}
+                              width={400}
+                              height={400}
+                              alt="Colors"
+                            />
+                            <p className="absolute top-0 bg-yellow-300 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
+                              {item?.CDuration}
+                            </p>
+                          </div>
+                          <h1 className="mt-4 text-gray-800 text-[25px] font-bold cursor-pointer">
+                            {item?.CName}{" "}
+                            <span className="ps-1 text-amber-700 text-[14px] font-[600]">
+                              {item?.CBatch}
+                            </span>
+                          </h1>
+
+                          <div className="my-4 mt-1">
+                            <div className="flex space-x-1 items-center">
+                              <p className="text-green-600 text-[18px] font-[600]">
+                                {item?.status}
+                              </p>
+                            </div>
+                            <div className="flex space-x-1 items-center">
+                              <p>Price : {item?.CPrice}</p>
+                            </div>
+                            <div className="flex space-x-1 items-center">
+                              <p>Roll : {item?.SRoll}</p>
+                            </div>
+                            <div className="flex space-x-1 items-center">
+                              <p>Phone : {item?.SPhone}</p>
+                            </div>
+                            <div className="flex space-x-1 items-center">
+                              <p>Email : {item?.SEmail}</p>
+                            </div>
+                            <div className="flex space-x-1 items-center">
+                              <p>Enroll Request date : {item?.CreateDate}</p>
+                            </div>
+
+                            <Link
+                              href={`${
+                                item?.CCetagory === "Skill"
+                                  ? `/dashboard/enrollStudent/${item?._id}`
+                                  : `/dashboard/enrollStudent/${item?._id}`
+                              }`}
+                            >
+                              <button className="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">
+                                See Course
+                              </button>
+                            </Link>
+                          </div>
+                        </div>
+                      </>
+                    ) : null}
+                  </>
+                ))}
+              </>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

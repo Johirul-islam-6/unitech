@@ -5,11 +5,13 @@ import axios from "axios";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-import icon1 from "@/app/Assets/skill_courses_details/courseIcon/word.png";
-import icon2 from "@/app/Assets/skill_courses_details/courseIcon/power.png";
-import icon3 from "@/app/Assets/skill_courses_details/courseIcon/exal.png";
-import Image from "next/image";
 import { LoadingPage } from "@/components/Loading/LoadingPage";
+import { GraphicDesign } from "@/components/CourseDetails/SoftwareCetagory/GraphicDesign";
+import { WebDvelopment } from "@/components/CourseDetails/SoftwareCetagory/WebDvelopment";
+import { BasicComputer } from "@/components/CourseDetails/SoftwareCetagory/BasicComputer";
+
+import { UxUi } from "@/components/CourseDetails/SoftwareCetagory/UxUi";
+import { Autocad } from "@/components/CourseDetails/SoftwareCetagory/Autocad";
 
 const DetailsCourse = () => {
   const { id } = useParams();
@@ -21,7 +23,7 @@ const DetailsCourse = () => {
     async function fetchData() {
       try {
         const result = await axios.get(
-          `https://unitech-server.vercel.app/api/v1/courses/${id}`
+          `https://api.unitechbangladesh.com/api/v1/courses/${id}`
         );
 
         setSingleCourses(result?.data?.data);
@@ -35,6 +37,8 @@ const DetailsCourse = () => {
     fetchData();
   }, [id]);
 
+  console.log(singleCourses);
+
   return (
     <div className="">
       {Loading ? (
@@ -44,53 +48,41 @@ const DetailsCourse = () => {
       ) : (
         <>
           <CourseDetails singleCourses={singleCourses} />
-          <div className="max-w-screen-xl mx-auto ">
+          <div className="max-w-screen-xl mx-auto mt-10 ">
             <div className="flex flex-col justify-center md:grid grid-cols-2 gap-5 mt-5 pb-10">
               <div>
-                {/* <h1 className="text-center text-[1.7rem] md:text-[2rem] font-[600] py-5 SILIGURI my-5">
-              যেসব সফটওয়্যার শেখানো হয়
-            </h1> */}
                 <h1 className="text-[30px] font-[600] text-[#1F1F1F]  text-center">
                   যে সব সফটওয়্যার শেখানো হয়
                 </h1>
-                <div className="w-[100%] justify-start p-6 grid grid-cols-1 gap-5 md:gap-y-8 md:grid-cols-2 bg-[#FAF9FD] mt-8 rounded-md">
-                  <div className="software-icon flex gap-2 justify-start items-center">
-                    <Image className="w-[50px] h-[50px]" src={icon1} alt="" />
-                    <p className="text-[19px] text-[#353535] font-[800]">
-                      MS Word
-                    </p>
-                  </div>
-                  <div className="software-icon flex gap-2 justify-start items-center">
-                    <Image className="w-[50px] h-[50px]" src={icon2} alt="" />
-                    <p className="text-[19px] text-[#353535] font-[800]">
-                      MS Powerpoint
-                    </p>
-                  </div>
-                  <div className="software-icon flex gap-2 justify-start items-center">
-                    <Image className="w-[50px] h-[50px]" src={icon3} alt="" />
-                    <p className="text-[19px] text-[#353535] font-[800]">
-                      MS Excel
-                    </p>
-                  </div>
-                  <div className="software-icon flex gap-2 justify-start items-center">
-                    <Image className="w-[50px] h-[50px]" src={icon1} alt="" />
-                    <p className="text-[19px] text-[#353535] font-[800]">
-                      MS Word
-                    </p>
-                  </div>
-                  <div className="software-icon flex gap-2 justify-start items-center">
-                    <Image className="w-[50px] h-[50px]" src={icon2} alt="" />
-                    <p className="text-[19px] text-[#353535] font-[800]">
-                      MS Powerpoint
-                    </p>
-                  </div>
-                  <div className="software-icon flex gap-2 justify-start items-center">
-                    <Image className="w-[50px] h-[50px]" src={icon3} alt="" />
-                    <p className="text-[19px] text-[#353535] font-[800]">
-                      MS Excel
-                    </p>
-                  </div>
-                </div>
+                {/* "web-development", "graphic-desing", "digital-marketing",
+                "video-editing", "basic-computer", "Autocad-basic-premium",
+                "autocad", "ux-ui-design", "video", */}
+
+                {singleCourses?.CCategory === "graphic-desing" && (
+                  <>
+                    <GraphicDesign />
+                  </>
+                )}
+                {singleCourses?.CCategory === "web-development" && (
+                  <>
+                    <WebDvelopment />
+                  </>
+                )}
+                {singleCourses?.CCategory === "basic-computer" && (
+                  <>
+                    <BasicComputer />
+                  </>
+                )}
+                {singleCourses?.CCategory === "autocad" && (
+                  <>
+                    <Autocad />
+                  </>
+                )}
+                {singleCourses?.CCategory === "ux-ui-design" && (
+                  <>
+                    <UxUi />
+                  </>
+                )}
               </div>
 
               <CommentCourse />

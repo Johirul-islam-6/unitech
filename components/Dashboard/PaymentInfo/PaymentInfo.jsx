@@ -76,7 +76,7 @@ export const PaymentInfo = ({ userInfo }) => {
 
     try {
       const response = await axios.post(
-        "https://unitech-server.vercel.app/api/v1/payment/create",
+        "https://api.unitechbangladesh.com/api/v1/payment/create",
         PayInformation,
         {
           maxContentLength: 1000000000000,
@@ -116,7 +116,7 @@ export const PaymentInfo = ({ userInfo }) => {
     async function fetchData() {
       try {
         const result = await axios.get(
-          `https://unitech-server.vercel.app/api/v1/payment/?searchTerm=${searchingValue}&page=1&limit=100000&sort=createdAt&sortOrder=desc`
+          `https://api.unitechbangladesh.com/api/v1/payment/?searchTerm=${searchingValue}&page=1&limit=100000&sort=createdAt&sortOrder=desc`
         );
 
         setAllPaymentInfo(result?.data?.data);

@@ -4,6 +4,7 @@ import { PageLoding } from "@/components/Loading/PageLoding";
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 const EnrollDetails = ({ course }) => {
@@ -16,7 +17,7 @@ const EnrollDetails = ({ course }) => {
     async function fetchData() {
       try {
         const result = await axios.get(
-          `https://unitech-server.vercel.app/api/v1/enroll/${id}`
+          `https://api.unitechbangladesh.com/api/v1/enroll/${id}`
         );
 
         setSingleCourses(result?.data?.data);
@@ -35,7 +36,7 @@ const EnrollDetails = ({ course }) => {
   async function DeleteEnroll(id, name) {
     try {
       const response = await axios.delete(
-        `https://unitech-server.vercel.app/api/v1/enroll/${id}`
+        `https://api.unitechbangladesh.com/api/v1/enroll/${id}`
       );
 
       if (response?.data?.success) {
@@ -51,6 +52,47 @@ const EnrollDetails = ({ course }) => {
     }
   }
 
+  // ============ roll update =============
+  const [rollField, setrollfield] = useState("success");
+
+  const rollUpdate = async () => {
+    const data = {
+      status: rollField,
+    };
+
+    try {
+      const response = await axios.patch(
+        `https://api.unitechbangladesh.com/api/v1/enroll/status/${id}`,
+        data
+      );
+
+      toast.success(`${response.data?.message}`, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    } catch (error) {
+      console.error("Error updating user roll:");
+      toast.warn(`${error?.response?.data?.message}`, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
+
+    console.log(rollField);
+  };
+
   return (
     <>
       {Loading ? (
@@ -59,14 +101,14 @@ const EnrollDetails = ({ course }) => {
         <>
           <div class="flex text-black md:flex-row flex-col items-start justify-center md:justify-between px-2 my-2">
             {/* -------- imgae information ---- */}
-            <div class="md:w-[40%] md:block">
+            <div class="md:w-[40%] md:block ">
               <img
                 class="w-full h-[400px]"
                 alt="image of a girl posing"
                 src={singleCourses?.courseImage}
               />
-              <div class="py-4 border-b border-t border-gray-200 flex items-center justify-between mt-2">
-                <p class="text-base leading-4 text-[#000000a7] text-[10px] md:text-[20px] font-[600]">
+              <div class="py-4 px-3 border-b border-t border-gray-200 flex items-center justify-between mt-2">
+                <p class="text-base leading-4 text-[#000000a7] text-[10px] md:text-[18px] font-[600]">
                   Course Name :
                 </p>
                 <div class="flex items-center justify-center">
@@ -76,7 +118,7 @@ const EnrollDetails = ({ course }) => {
                 </div>
               </div>
               <div class="py-4 border-b  border-gray-200 flex items-center justify-between mt-2">
-                <p class="text-base leading-4 text-[#000000a7] text-[10px] md:text-[20px] font-[600]">
+                <p class="text-base leading-4 text-[#000000a7] text-[10px] md:text-[18px] font-[600]">
                   Course CBatch :
                 </p>
                 <div class="flex items-center justify-center">
@@ -87,7 +129,7 @@ const EnrollDetails = ({ course }) => {
                 </div>
               </div>
               <div class="py-4 border-b  border-gray-200 flex items-center justify-between mt-2">
-                <p class="text-base leading-4 text-[#000000a7] text-[10px] md:text-[20px] font-[600]">
+                <p class="text-base leading-4 text-[#000000a7] text-[10px] md:text-[18px] font-[600]">
                   Course Duration :
                 </p>
                 <div class="flex items-center justify-center">
@@ -97,7 +139,7 @@ const EnrollDetails = ({ course }) => {
                 </div>
               </div>
               <div class="py-4 border-b  border-gray-200 flex items-center justify-between mt-2">
-                <p class="text-base leading-4 text-[#000000a7] text-[10px] md:text-[20px] font-[600]">
+                <p class="text-base leading-4 text-[#000000a7] text-[10px] md:text-[18px] font-[600]">
                   Course Price:
                 </p>
                 <div class="flex items-center justify-center">
@@ -108,7 +150,7 @@ const EnrollDetails = ({ course }) => {
               </div>
             </div>
 
-            <div class="md:w-[55%] md:mt-0 mt-6">
+            <div class="md:w-[55%] md:mt-0 mt-6 shadow-xl px-5 py-8">
               <div class="py-4 border-b border-t border-gray-200 flex items-center justify-center">
                 <p class="text-base leading-4 text-[#422525] text-center font-[600]">
                   {singleCourses?.CCetagory === "Academic"
@@ -190,14 +232,26 @@ const EnrollDetails = ({ course }) => {
                 </p>
               </div>
               <div>
-                <button class="bg-amber-600 text-white text-[16px] font-[600]  focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-base flex items-center justify-center leading-non w-full py-3  focus:outline-none mt-7 border-t border-b">
-                  Student Enroll Panding
+                <button
+                  onClick={rollUpdate}
+                  class={`bg-amber-600 text-white text-[16px] font-[600]  focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-base flex items-center justify-center leading-non w-full py-3  focus:outline-none mt-7 border-t border-b`}
+                >
+                  Student Enroll{" "}
+                  <span
+                    className={`ps-1 ${
+                      singleCourses?.status === "success"
+                        ? "text-green-500"
+                        : "text-red-700"
+                    }`}
+                  >
+                    {singleCourses?.status}
+                  </span>
                 </button>
                 <button
                   onClick={() =>
                     DeleteEnroll(singleCourses?.id, singleCourses?.CName)
                   }
-                  class="bg-red-700 hover:bg-red-500 text-white text-[16px] font-[600]  focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-base flex items-center justify-center leading-non w-full py-3  focus:outline-none mt-2 border-t border-b"
+                  class={`bg-red-700 hover:bg-red-500 text-white text-[16px] font-[600]  focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-base flex items-center justify-center leading-non w-full py-3  focus:outline-none mt-2 border-t border-b`}
                 >
                   Cancel
                 </button>

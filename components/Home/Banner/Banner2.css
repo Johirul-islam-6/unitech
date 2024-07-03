@@ -1,10 +1,10 @@
-.banner {
+.homeBanner {
   background: linear-gradient(to right, #e3361320, #54b8ed51);
   border-radius: 25px;
 }
 
 @media (max-width: 750px) {
-  .banner {
+  .homeBanner {
     border-radius: 2px !important;
   }
 }

@@ -12,6 +12,7 @@ import icon4 from "@/app/Assets/skill_courses_details/courseIcon/4.png";
 import icon5 from "@/app/Assets/skill_courses_details/courseIcon/5.png";
 import icon6 from "@/app/Assets/skill_courses_details/courseIcon/6.png";
 import icon7 from "@/app/Assets/skill_courses_details/courseIcon/7.png";
+import icon8 from "@/app/Assets/skill_courses_details/courseIcon/8.png";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { EnrollFrom } from "../Untility/EnrollFrom";
@@ -169,7 +170,7 @@ export const CourseDetails = ({ singleCourses }) => {
               <h1 className="text-[30px] font-[600] text-[#1F1F1F] ">
                 কোর্স ওভারভিউ
               </h1>
-              <p className="py-3 text-justify text-[16px] font-[400] SILIGURI">
+              <p className="py-3 text-justify text-[16px] font-[400] line-hight-course-details SILIGURI">
                 {singleCourses?.COverview}
               </p>
             </div>
@@ -179,10 +180,10 @@ export const CourseDetails = ({ singleCourses }) => {
           <div className="video-card   ">
             <div className="md:w-[500px] mx-auto p-4 border-2">
               <Video singleCourses={singleCourses} />
-              <h1 className="text-[26px] font-[900] text-[#1F1F1F] text-center md:text-start">
+              <h1 className="text-[26px] font-[900] SILIGURI text-[#1F1F1F] text-center md:text-start">
                 ৳{singleCourses?.CPrice}
               </h1>
-              <h1 className="pt-1 text-[18px] font-[600] text-[#1f1f1fb0] text-center md:text-start">
+              <h1 className="pt-1 SILIGURI text-[18px] font-[600] text-[#1f1f1fb0] text-center md:text-start">
                 {singleCourses?.CName}
               </h1>
 
@@ -194,7 +195,7 @@ export const CourseDetails = ({ singleCourses }) => {
                   কোর্সটি কিনুন
                 </button>
               </Link>
-              <div className="mt-5 ms-2">
+              <div className="mt-5 ms-2 SILIGURI">
                 <h1 className="text-[22px] font-[900] text-[#353535] text-start">
                   এই কোর্সে যা থাকছে
                 </h1>
@@ -210,9 +211,9 @@ export const CourseDetails = ({ singleCourses }) => {
                     {singleCourses?.CTotalHours}
                   </p>
                 </div>
-                <div className="flex gap-2 items-center mt-1">
+                <div className="flex gap-2 items-center mt-2">
                   <Image
-                    className="w-[25px] h-[25px] mt-1"
+                    className="w-[20px] h-[20px] mt-1"
                     src={icon3}
                     alt=""
                   />
@@ -221,39 +222,35 @@ export const CourseDetails = ({ singleCourses }) => {
                   </p>
                 </div>
                 <div className="flex gap-2 items-center mt-2">
-                  <Image className="w-[25px] h-[25px] " src={icon4} alt="" />
+                  <Image className="w-[20px] h-[20px] " src={icon4} alt="" />
                   <p className="font-[500] text-[#353535] text-[14px]">
                     {singleCourses?.CTotalAssignment}
                   </p>
                 </div>
                 <div className="flex gap-2 items-center mt-2">
-                  <Image className="w-[25px] h-[25px]" src={icon5} alt="" />
+                  <Image className="w-[20px] h-[20px]" src={icon5} alt="" />
                   <p className="font-[500] text-[#353535] text-[14px]">
                     {singleCourses?.CResourcesFolder}
                   </p>
                 </div>
-                <div className="flex gap-2 items-center mt-1">
-                  <Image className="w-[30px] h-[30px]" src={icon6} alt="" />
+                <div className="flex gap-2 items-center mt-2">
+                  <Image className="w-[20px] h-[20px]" src={icon6} alt="" />
                   <p className="font-[500] text-[#353535] text-[14px]">
                     {" "}
                     ফেসবুক সাপোর্ট গ্রুপ
                   </p>
                 </div>
-                <div className="flex gap-2 items-center mt-1">
-                  <Image
-                    className="w-[22px] h-[32px] ms-1"
-                    src={icon7}
-                    alt=""
-                  />
+                <div className="flex gap-2 items-center mt-2">
+                  <Image className="w-[20px] h-[20px] " src={icon7} alt="" />
                   <p className="font-[500] text-[#353535] text-[14px]">
                     {singleCourses?.CProfessionalProject}
                   </p>
                 </div>
-                <div className="flex gap-2  mt-1 pb-2">
-                  <span className=""></span>
-                  <Link href={""} className="font-[500] text-[#FE941E]">
-                    More..
-                  </Link>
+                <div className="flex gap-2 items-center mt-2">
+                  <Image className="w-[20px] h-[20px] " src={icon8} alt="" />
+                  <p className="font-[500] text-[#FE941E] text-[14px]">
+                    More...
+                  </p>
                 </div>
               </div>
             </div>
@@ -265,18 +262,7 @@ export const CourseDetails = ({ singleCourses }) => {
           <h1 className="text-[30px] font-[600] text-[#1F1F1F]  text-center">
             কোর্স ওভারভিউ
           </h1>
-          <div className="mt-5 course-box grid-cols-1 md:grid-cols-2 grid gap-5 border-2 p-5 rounded-lg">
-            {/* {courseInformation?.map((item, index) => (
-              <>
-                <div className="flex bg-[#FAF9FD] rounded-md gap-5 items-center module border-[1px] p-2 text-[#353535] text-[18px] font-[600]">
-                  <div className=" w-[65px] h-[62px]  text-[14px] py-1 text-white bg-[#FE941E] rounded-[12px] font-[900] flex flex-col items-center justify-cente border-2">
-                    <span className="text-[20px] ">{item?.module}</span>{" "}
-                    {item?.moduleNumber}
-                  </div>
-                  <p>{item?.moduleTitle} </p>
-                </div>
-              </>
-            ))} */}
+          <div className="mt-5 course-box grid-cols-1 md:grid-cols-2 SILIGURI grid gap-5 border-2 p-5 rounded-lg">
             {singleCourses?.allClass?.map((moduleObj, index) => (
               <button
                 key={index}
@@ -305,7 +291,7 @@ export const CourseDetails = ({ singleCourses }) => {
                   </svg>
                 </div>
                 {/* this is group open field */}
-                <div className="max-h-0  overflow-hidden duration-300 group-focus:max-h-[100vh]">
+                {/* <div className="max-h-0  overflow-hidden duration-300 group-focus:max-h-[100vh]">
                   {Object.keys(moduleObj).map((key) => {
                     if (key.startsWith("moduleP")) {
                       const classKey = key.replace("moduleP", "");
@@ -321,7 +307,7 @@ export const CourseDetails = ({ singleCourses }) => {
                     }
                     return null;
                   })}
-                </div>
+                </div> */}
               </button>
             ))}
           </div>

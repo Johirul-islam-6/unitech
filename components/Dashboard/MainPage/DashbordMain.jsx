@@ -20,7 +20,7 @@ export const DashbordMain = () => {
   const [Loading, setLoading] = useState(true);
   const [Loading2, setLoading2] = useState(true);
   const [AcademicCourse, setAcademicCourse] = useState();
-  const [SkillCourses, setSkillCourses] = useState();
+  const [SkillCourses, setSkillCourses] = useState([]);
   const [totalSiteView, settotalSiteView] = useState();
   const [perfromanceLoading, setPerfromanceLoading] = useState(true);
   const [perfromanceLoading2, setPerfromanceLoading2] = useState(true);
@@ -32,7 +32,7 @@ export const DashbordMain = () => {
     async function fetchData() {
       try {
         const result = await axios.get(
-          `https://unitech-server.vercel.app/api/v1/Academic-courses/?searchTerm=&page=1&limit=12&sort=createdAt&sortOrder=desc`
+          `https://api.unitechbangladesh.com/api/v1/Academic-courses/?searchTerm=&page=1&limit=12&sort=createdAt&sortOrder=desc`
         );
 
         setAcademicCourse(result?.data?.data);
@@ -48,7 +48,7 @@ export const DashbordMain = () => {
     async function fetchData2() {
       try {
         const result = await axios.get(
-          `https://unitech-server.vercel.app/api/v1/courses/?searchTerm=&page=1&limit=12&sort=createdAt&sortOrder=desc`
+          `https://api.unitechbangladesh.com/api/v1/courses/?searchTerm=&page=1&limit=200&sort=createdAt&sortOrder=desc`
         );
 
         setSkillCourses(result?.data?.data);
@@ -69,7 +69,7 @@ export const DashbordMain = () => {
     async function viewCount() {
       try {
         const response = await axios.get(
-          `https://unitech-server.vercel.app/api/v1/siteView`
+          `https://api.unitechbangladesh.com/api/v1/siteView`
         );
         const result = response?.data?.data[0];
         settotalSiteView(result);
@@ -84,7 +84,7 @@ export const DashbordMain = () => {
     async function fetchData() {
       try {
         const result = await axios.get(
-          `https://unitech-server.vercel.app/api/v1/users/?searchTerm=&page=1&limit=10000000&sort=createdAt&sortOrder=desc`
+          `https://api.unitechbangladesh.com/api/v1/users/?searchTerm=&page=1&limit=10000000&sort=createdAt&sortOrder=desc`
         );
 
         setUser(result?.data?.data);
@@ -103,7 +103,7 @@ export const DashbordMain = () => {
   async function DeleteDeplomaCourses(id, name) {
     try {
       const response = await axios.delete(
-        `https://unitech-server.vercel.app/api/v1/Academic-courses/${id}`
+        `https://api.unitechbangladesh.com/api/v1/Academic-courses/${id}`
       );
 
       if (response?.data?.success) {
@@ -122,7 +122,8 @@ export const DashbordMain = () => {
   async function DeleteSkillCourses(id, name) {
     try {
       const response = await axios.delete(
-        `https://unitech-server.vercel.app/api/v1/courses/${id}`
+        `https://api.unitechbangladesh.com/api/v1/courses/${id}`,
+        name
       );
 
       if (response?.data?.success) {
@@ -257,8 +258,8 @@ export const DashbordMain = () => {
                     <path
                       fill-rule="evenodd"
                       clip-rule="evenodd"
-                      d="M21.5194 5.45896C21.8182 5.74582 21.8279 6.22059 21.541 6.5194L16.501 11.7694C16.3596 11.9167 16.1642 12 15.96 12C15.7558 12 15.5604 11.9167 15.419 11.7694L12.36 8.58298L8.73503 12.359L11.3177 14.8383L3 17.25L5.07029 8.84084L7.65295 11.3202L11.819 6.9806C11.9604 6.83328 12.1558 6.75 12.36 6.75C12.5642 6.75 12.7596 6.83328 12.901 6.9806L15.96 10.167L20.459 5.4806C20.7458 5.18179 21.2206 5.1721 21.5194 5.45896Z"
-                      fill="#1C1C1C"
+                      d="M12.6823 8.41165L21 6L18.9297 14.4092L16.3471 11.9298L12.181 16.2694C12.0396 16.4167 11.8442 16.5 11.64 16.5C11.4358 16.5 11.2404 16.4167 11.099 16.2694L8.04 13.083L3.54104 17.7694C3.25419 18.0682 2.77941 18.0779 2.4806 17.791C2.18179 17.5042 2.1721 17.0294 2.45896 16.7306L7.49896 11.4806C7.64039 11.3333 7.83578 11.25 8.04 11.25C8.24422 11.25 8.43961 11.3333 8.58104 11.4806L11.64 14.667L15.265 10.891L12.6823 8.41165Z"
+                      fill="#111212"
                     />
                   </svg>
                 </span>
@@ -637,7 +638,7 @@ export const DashbordMain = () => {
               </>
             ) : (
               <>
-                <div className=" flex flex-wrap md:grid gap-y-8 md:gap-10   md:grid-cols-2 lg:grid-cols-3  justify-center items-center mt-5">
+                <div className=" flex flex-wrap md:grid gap-y-8 md:gap-10 md:grid-cols-2 lg:grid-cols-3  justify-center items-center mt-5">
                   {SkillCourses &&
                     Array.isArray(SkillCourses) &&
                     SkillCourses.map((single, index) => (
@@ -653,10 +654,7 @@ export const DashbordMain = () => {
                               </p>
                               <div
                                 onClick={() =>
-                                  DeleteSkillCourses(
-                                    single?._id,
-                                    single?.courseName
-                                  )
+                                  DeleteSkillCourses(single?._id, single)
                                 }
                                 className="group flex relative"
                               >
@@ -682,10 +680,10 @@ export const DashbordMain = () => {
                         </div>
                         <div className="px-2 pb-6 ">
                           <div className="all-button-courses flex flex-wrap justify-start items-center mt-5 gap-2 ">
-                            <button className="bg-[#0000] flex gap-[2px] items-center px-2 py-[4px] border-2 border-[#955914] rounded-md text-[14px] font-[700] text-[#955914]">
+                            <button className="bg-[#0000] flex gap-[2px] items-center px-2 py-[4px] border-2 border-[#955914] rounded-md text-[10px] font-[700] text-[#955914]">
                               {single?.updatedAt?.slice(0, 10)}
                             </button>
-                            <button className="bg-[#0000] flex gap-[2px] items-center px-2 py-[4px] border-2 border-[#955914] rounded-md text-[14px] font-[700] text-[#955914]">
+                            <button className="bg-[#0000] flex gap-[2px] items-center px-2 py-[4px] border-2 border-[#955914] rounded-md text-[10px] font-[700] text-[#955914]">
                               {single?.email}
                             </button>
                           </div>

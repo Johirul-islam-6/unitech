@@ -56,7 +56,7 @@ const Announcement = () => {
 
     try {
       const response = await axios.post(
-        "https://unitech-server.vercel.app/api/v1/notice/create-notice",
+        "https://api.unitechbangladesh.com/api/v1/notice/create-notice",
         NoticInformation,
         {
           maxContentLength: 1000000000000,

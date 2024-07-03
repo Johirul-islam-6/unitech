@@ -50,7 +50,7 @@ export const EnrollFrom = ({
     setHidden(true);
     try {
       const response = await axios.post(
-        "https://unitech-server.vercel.app/api/v1/enroll/create",
+        "https://api.unitechbangladesh.com/api/v1/enroll/create",
         enrollData,
         {
           maxContentLength: 1000000000000,
@@ -76,8 +76,8 @@ export const EnrollFrom = ({
       console.error("Error fetching data:", error);
 
       Swal.fire({
-        title: `${error?.response?.data?.errorMessages[0]?.message}`,
-        text: `  GO To Your Pofile`,
+        title: `আপনি এলরেডি আজকে একটি এনরোল করে ফেলেছেন।`,
+        text: `কালকে নতুন করে আবার বুকিং করতে পারবেন`,
         icon: "error",
       });
       setHidden(false);
@@ -167,7 +167,7 @@ export const EnrollFrom = ({
                     id="username"
                     name="CName"
                     type="text"
-                    defaultValue={CCetagorys}
+                    defaultValue={singleCourses.CCategory}
                     disabled
                     className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-3 px-3 w-full focus:outline-none mt-1"
                   />

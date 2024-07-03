@@ -18,12 +18,6 @@ const Profile = () => {
 
   const [UserInformation, setUserInformation] = useState([]);
 
-  const createdBook = (e) => {
-    if (e) {
-      setrefresh(e);
-    }
-  };
-
   useEffect(() => {
     setLoading(true);
     if (!accessToken) {
@@ -40,7 +34,7 @@ const Profile = () => {
       async function fetchData2() {
         try {
           const result = await axios.get(
-            `https://unitech-server.vercel.app/api/v1/users/?searchTerm=${cookiesInfo?.email}&page=1&limit=100000&sort=createdAt&sortOrder=desc`
+            `https://api.unitechbangladesh.com/api/v1/users/?searchTerm=${cookiesInfo?.email}&page=1&limit=100000&sort=createdAt&sortOrder=desc`
           );
 
           setUserInformation(result?.data?.data);
@@ -89,8 +83,12 @@ const Profile = () => {
 
   // ========== user admin access =====
   if (UserInformation[0]?.ruler) {
-    if (UserInformation[0]?.ruler === cookiesInfo?.ruler) {
-    } else {
+    if (UserInformation[0]?.ruler !== cookiesInfo?.ruler) {
+      Cookies.remove("CookieYouserData");
+      Cookies.remove("accessToken");
+      window.location.reload();
+    }
+    if (UserInformation[0]?.studentRoll !== cookiesInfo?.studentRoll) {
       Cookies.remove("CookieYouserData");
       Cookies.remove("accessToken");
       window.location.reload();
@@ -180,8 +178,11 @@ const Profile = () => {
                   <div className="w-full lg:w-4/12 px-4 lg:order-1"></div>
                 </div>
                 <div className="text-center mt-12">
-                  <h3 className="text-4xl font-semibold leading-normal md:pt-2 text-blueGray-700 ">
-                    {cookiesInfo?.name}
+                  <h3 className="relative text-4xl font-semibold leading-normal md:pt-2 text-blueGray-700 ">
+                    {cookiesInfo?.name}{" "}
+                    <span className="text-amber-700 font-extrabold text-[14px] absolute top-5 ms-2">
+                      {UserInformation[0]?.blodGroup}
+                    </span>
                   </h3>
                   <div className="text-[18px] leading-normal mt-2 text-amber-700 font-bold  ">
                     <h1 className="flex justify-center gap-2 items-center">
@@ -196,7 +197,7 @@ const Profile = () => {
                           d="M186.1 343.3c-9.7 9.7-9.7 25.3 0 34.9 9.7 9.7 25.3 9.7 34.9 0L378.2 221.1c19.3-19.3 50.6-19.3 69.9 0s19.3 50.6 0 69.9L294 445.1c19.3 19.3 50.5 19.3 69.8 0l0 0 119.3-119.2c38.6-38.6 38.6-101.1 0-139.7-38.6-38.6-101.2-38.6-139.7 0l-157.2 157.2zm244.5-104.8c-9.7-9.7-25.3-9.7-34.9 0l-157.2 157.2c-19.3 19.3-50.5 19.3-69.8 .1l-.1-.1c-9.6-9.6-25.3-9.7-34.9 0l0 0c-9.7 9.6-9.7 25.3 0 34.9l0 0c38.6 38.6 101.1 38.6 139.7 0l157.2-157.2c9.7-9.7 9.7-25.3 0-34.9zm-262 87.3l157.2-157.2c9.6-9.7 9.6-25.3 0-34.9-9.6-9.6-25.3-9.6-34.9 0L133.7 290.9c-19.3 19.3-50.6 19.3-69.9 0l0 0c-19.3-19.3-19.3-50.5 0-69.8l0 0L218 66.9c-19.3-19.3-50.6-19.3-69.9 0l0 0L28.9 186.1c-38.6 38.6-38.6 101.1 0 139.7 38.6 38.6 101.1 38.6 139.7 0zm-87.3-52.4c9.6 9.6 25.3 9.6 34.9 0l157.2-157.2c19.3-19.3 50.6-19.3 69.8 0l0 0c9.7 9.7 25.3 9.7 34.9 0 9.7-9.7 9.7-25.3 0-34.9-38.6-38.6-101.1-38.6-139.7 0L81.3 238.5c-9.7 9.6-9.7 25.3 0 34.9h0z"
                         />
                       </svg>
-                      {cookiesInfo?.ruler}
+                      {UserInformation[0]?.ruler}
                     </h1>
                   </div>
                 </div>

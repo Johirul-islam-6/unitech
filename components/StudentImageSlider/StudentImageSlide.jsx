@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
 
-import s1 from "@/app/Assets/studentInfo/একাডেমিক ক্লাস চলাকালীন.jpg";
-import s2 from "@/app/Assets/studentInfo/অটোক্যাড ক্লাস চলাকালীন.jpg";
-import s3 from "@/app/Assets/studentInfo/প্রস্তুতিমূলক পরীক্ষা চলাকালীন সময়.jpg";
-import s4 from "@/app/Assets/studentInfo/বার্ষিক শিক্ষা সফর ২০-২১.jpg";
-import s5 from "@/app/Assets/studentInfo/ম্যাথমেটিক্স ক্লাস চলাকালীন.jpg";
-import s6 from "@/app/Assets/studentInfo/শিক্ষার্থীদের নিয়ে ক্যারিয়ার মিটআপ.jpg";
-import s7 from "@/app/Assets/studentInfo/সার্টিফিকেট প্রদানের সময়.jpg";
-import s8 from "@/app/Assets/studentInfo/একাডেমিক পরিক্ষা  চলাকালীন.jpg";
+import s1 from "@/app/Assets/studentInfo/1.jpg";
+import s2 from "@/app/Assets/studentInfo/autocad_class.jpg";
+import s3 from "@/app/Assets/studentInfo/3.jpg";
+import s4 from "@/app/Assets/studentInfo/4.jpg";
+import s5 from "@/app/Assets/studentInfo/5.jpg";
+import s6 from "@/app/Assets/studentInfo/6.jpg";
+import s7 from "@/app/Assets/studentInfo/7.jpg";
+import s8 from "@/app/Assets/studentInfo/2.jpg";
 
 export default class StudentImageSlide extends Component {
   //   constructor(props) {

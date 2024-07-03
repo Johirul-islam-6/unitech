@@ -17,7 +17,7 @@ export const Notics = () => {
     async function fetchData() {
       try {
         const result = await axios.get(
-          `https://unitech-server.vercel.app/api/v1/notice`
+          `https://api.unitechbangladesh.com/api/v1/notice`
         );
         setallNotic(result?.data?.data);
         setLoading(false);
@@ -34,7 +34,7 @@ export const Notics = () => {
   async function deleteToper(id, name) {
     try {
       const response = await axios.delete(
-        `https://unitech-server.vercel.app/api/v1/notice/${id}`
+        `https://api.unitechbangladesh.com/api/v1/notice/${id}`
       );
 
       if (response?.data?.success) {

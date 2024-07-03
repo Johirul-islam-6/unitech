@@ -17,7 +17,7 @@ const OurCourses = () => {
     async function fetchData() {
       try {
         const result = await axios.get(
-          `https://unitech-server.vercel.app/api/v1/Academic-courses/?searchTerm=&page=1&limit=12&sort=createdAt&sortOrder=desc`
+          `https://api.unitechbangladesh.com/api/v1/Academic-courses/?searchTerm=&page=1&limit=120&sort=createdAt&sortOrder=desc`
         );
 
         setAcademicCourse(result?.data?.data);
@@ -30,7 +30,7 @@ const OurCourses = () => {
     async function fetchData2() {
       try {
         const result = await axios.get(
-          `https://unitech-server.vercel.app/api/v1/courses/?searchTerm=&page=1&limit=10&sort=createdAt&sortOrder=desc`
+          `https://api.unitechbangladesh.com/api/v1/courses/?searchTerm=&page=1&limit=100&sort=createdAt&sortOrder=desc`
         );
 
         setSkillCourses(result?.data?.data);
@@ -119,7 +119,7 @@ const OurCourses = () => {
                 </div>
               </>
             )}
-            <div className="grid grid-cols-1 px-5 md:px-0 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-2 gap-y-5 md:gap-3 justify-center items-center mt-10">
+            <div className="grid grid-cols-1 px-5 md:px-0 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-x-2 gap-y-5 md:gap-3 justify-center items-center mt-10">
               <AllCoursesss SkillCourses={SkillCourses} />
             </div>
           </div>
