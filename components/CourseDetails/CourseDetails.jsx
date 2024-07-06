@@ -72,7 +72,7 @@ export const CourseDetails = ({ singleCourses }) => {
                   <p className="text-[14px] text-center text-slate-500">
                     কোর্সের মেয়াদ
                   </p>
-                  <h1 className="text-[14px] text-center font-bold text-slate-800">
+                  <h1 className="text-[14px] text-center font-bold pt-[3px] text-slate-800">
                     {" "}
                     {singleCourses?.CDuration}
                   </h1>
@@ -81,32 +81,36 @@ export const CourseDetails = ({ singleCourses }) => {
                   <p className="text-[14px] text-center text-slate-500">
                     মোট ক্লাস
                   </p>
-                  <h1 className="text-[14px] text-center font-bold text-slate-800">
+                  <h1 className="text-[14px] text-center font-bold pt-[3px] text-slate-800 ">
                     {" "}
-                    {singleCourses?.CTotalClass}
+                    {singleCourses?.CTotalClass?.slice(0, 5)}
                   </h1>
                 </div>
                 <div className="border-2 px-5 py-3 rounded-lg">
                   <p className="text-[14px] text-center text-slate-500">
                     অ্যাসাইনমেন্ট
                   </p>
-                  <h1 className="text-[14px] text-center font-bold text-slate-800">
+                  <h1 className="text-[14px] text-center font-bold pt-[3px] text-slate-800">
                     {" "}
-                    {singleCourses?.CTotalAssignment?.slice(0, 5)}
+                    {singleCourses?.CTotalAssignment?.slice(0, 6)}
                   </h1>
                 </div>
                 <div className="border-2 px-5 py-3 rounded-lg">
                   <p className="text-[14px] text-center text-slate-500">
-                    প্রজেক্ট
+                    মোট প্রজেক্ট
                   </p>
-                  <h1 className="text-[14px] text-center font-bold text-slate-800">
+                  <h1 className="text-[14px] text-center font-bold pt-[3px] text-slate-800">
                     {" "}
-                    {singleCourses?.CProfessionalProject?.slice(0, 4)}
+                    {singleCourses?.CProfessionalProject?.slice(0, 3)}
                   </h1>
                 </div>
               </div>
-              <p className="py-5 text-justify text-[17px] font-[400] SILIGURI">
+              <p className="pt-5  text-justify text-[17px] font-[400] SILIGURI">
                 {singleCourses?.CDescription}
+              </p>
+              <p className="pt-5 pb-5 text-justify text-[17px] font-[400] SILIGURI">
+                নোট: এনরোল করার শেষ তারিখ {singleCourses?.CEnrollEndDate} ,
+                ক্লাস শুরু দুইদিন পর। (ইনশাআল্লাহ)
               </p>
               <div className="flex md:justify-start gap-5 justify-center ">
                 <button
@@ -202,7 +206,7 @@ export const CourseDetails = ({ singleCourses }) => {
                 <div className="flex gap-2 items-center mt-1">
                   <Image className="w-[25px] h-[35px]" src={icon1} alt="" />
                   <p className="font-[500] text-[#353535] text-[14px]">
-                    কোর্সটি করছেন ৩৪২ জন
+                    কোর্সটি করছেন অনেকেই
                   </p>
                 </div>
                 <div className="flex gap-2 items-center mt-1">

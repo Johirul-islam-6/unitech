@@ -27,7 +27,7 @@ const EnrollStudent = () => {
     async function fetchData() {
       try {
         const result = await axios.get(
-          `http://localhost:8080/api/v1/enroll/?searchTerm=${searchingValue}&page=1&limit=1000&sort=createdAt&sortOrder=desc`
+          `https://api.unitechbangladesh.com/api/v1/enroll/?searchTerm=${searchingValue}&page=1&limit=1000&sort=createdAt&sortOrder=desc`
         );
 
         setEnrollCourses(result?.data?.data);

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Banner2.css";
 import Image from "next/image";
-import banner from "@/app/Assets/Banner/aboutG.png";
+import banner from "@/app/Assets/Banner/website banner.jpg";
 import { FaAngleDoubleRight } from "react-icons/fa";
 import Link from "next/link";
 

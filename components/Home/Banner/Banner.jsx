@@ -1,13 +1,14 @@
 "use client";
 import "./Banner.css";
-import image1 from "@/app/Assets/Banner/banner1.png";
+import image1 from "@/app/Assets/Banner/banner1.jpg";
 import BannerLImage from "@/app/Assets/Banner/bannerL1.png";
-import image2 from "@/app/Assets/Banner/banner2.jpg";
+import image2 from "@/app/Assets/Banner/banner2.png";
 import image3 from "@/app/Assets/Banner/banner3.jpg";
 import image4 from "@/app/Assets/Banner/banner4.jpg";
 import axios from "axios";
 import Image from "next/image";
 import { useEffect } from "react";
+import Link from "next/link";
 
 export const Banner = () => {
   useEffect(() => {
@@ -119,9 +120,9 @@ export const Banner = () => {
                 বিভিন্ন বিষয়ে গভীর জ্ঞান এবং প্রোফেশনাল দক্ষতা অর্জন করার সুযোগ
                 প্রদান করে।
               </div>
-              <div className="button">
+              <Link href={"/ourCourses"} className="button">
                 <button>SEE MORE</button>
-              </div>
+              </Link>
             </div>
           </div>
 
@@ -143,9 +144,10 @@ export const Banner = () => {
                 বিভিন্ন বিষয়ে গভীর জ্ঞান এবং প্রোফেশনাল দক্ষতা অর্জন করার সুযোগ
                 প্রদান করে।
               </div>
-              <div className="button">
-                <button>SEE MORE</button>
-              </div>
+              <Link href={"/ourCourses"} className="button">
+                {" "}
+                <button>SEE MORE</button>{" "}
+              </Link>
             </div>
           </div>
 
@@ -166,9 +168,10 @@ export const Banner = () => {
                 বিভিন্ন বিষয়ে গভীর জ্ঞান এবং প্রোফেশনাল দক্ষতা অর্জন করার সুযোগ
                 প্রদান করে।
               </div>
-              <div className="button">
-                <button>SEE MORE</button>
-              </div>
+              <Link href={"/ourCourses"} className="button">
+                {" "}
+                <button>SEE MORE</button>{" "}
+              </Link>
             </div>
           </div>
 
@@ -190,9 +193,10 @@ export const Banner = () => {
                 বিভিন্ন বিষয়ে গভীর জ্ঞান এবং প্রোফেশনাল দক্ষতা অর্জন করার সুযোগ
                 প্রদান করে।
               </div>
-              <div className="button">
-                <button>SEE MORE</button>
-              </div>
+              <Link href={"/ourCourses"} className="button">
+                {" "}
+                <button>SEE MORE</button>{" "}
+              </Link>
             </div>
           </div>
         </div>

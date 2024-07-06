@@ -49,7 +49,7 @@ const AttachmentStudent = () => {
     async function fetchData() {
       try {
         const result = await axios.get(
-          `http://localhost:8080/api/v1/attachments/?searchTerm=&page=${searchingValue}1&limit=1000&sort=createdAt&sortOrder=desc`
+          `https://api.unitechbangladesh.com/api/v1/attachments/?searchTerm=&page=${searchingValue}1&limit=1000&sort=createdAt&sortOrder=desc`
         );
 
         setEnrollCourses(result?.data?.data);
@@ -76,7 +76,7 @@ const AttachmentStudent = () => {
   async function DeleteAttachmnet(id, name) {
     try {
       const response = await axios.delete(
-        `http://localhost:8080/api/v1/attachments/${id}`
+        `https://api.unitechbangladesh.com/api/v1/attachments/${id}`
       );
 
       if (response?.data?.success) {

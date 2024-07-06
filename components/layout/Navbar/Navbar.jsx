@@ -40,7 +40,7 @@ export const Navbar = () => {
   return (
     <>
       <div>
-        <div className={`${isFixed ? "fixed " : ""} navbar  border-2`}>
+        <div className={`${isFixed ? "fixed " : ""} navbar border-2`}>
           <navbar className="flex items-center justify-between  max-w-screen-xl mx-auto  ">
             {/* <!-- logo --> */}
             <div className="md:w-3/12">

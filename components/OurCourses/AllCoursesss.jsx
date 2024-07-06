@@ -19,7 +19,7 @@ export const AllCoursesss = ({ SkillCourses }) => {
                 <Image
                   width={1}
                   height={1}
-                  className="rounded-t-md d-image border-2 h-[280px] w-[100%]"
+                  className="rounded-t-md d-image border-2 h-[260px] w-[100%]"
                   src={single?.courseImage}
                   alt=""
                 />

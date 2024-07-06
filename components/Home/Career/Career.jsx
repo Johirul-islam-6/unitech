@@ -52,7 +52,7 @@ export const Career = () => {
     {
       id: "6",
       cetagory: "autocad",
-      name: "Autocad 3d",
+      name: "Autocad",
       icon: autocad3D,
       price: "",
       duration: "",

@@ -302,7 +302,7 @@ const Profile = () => {
                       logout
                     </button>
                     <button className="px-5 py-[8px]  text-[14px] rounded-md  font-[500] hover:bg-[#272727] bg-[#000] text-white">
-                      Edite profile
+                      Edit profile
                     </button>
                   </h1>
                 </div>

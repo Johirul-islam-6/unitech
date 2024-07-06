@@ -25,7 +25,7 @@ export const NoticsCard = ({ allNotic, deleteToper }) => {
           key={index}
           className="relative border-4 border-amber-700 md:px-0 article cursor-pointer rounded-lg"
         >
-          <div className="absolute w-[100%] h-[100%] bg-[#0000008e]">
+          <div className="absolute w-[100%] h-[100%] bg-[#0000008e] hover:bg-[#00000045]">
             {userInfo?.ruler === "superAdmin" && (
               <h1
                 onClick={() => deleteToper(item?.id, item?._id)}
@@ -56,7 +56,7 @@ export const NoticsCard = ({ allNotic, deleteToper }) => {
                   >
                     <div className="flex flex-col absolute bottom-0 px-2 py-3 justify-end items-start">
                       <div className="d">
-                        <h3 className="flex-1 py-2 text-lg font-semibold leading-snug text-white">
+                        <h3 className="flex-1 SILIGURI underline py-2 text-lg font-semibold leading-snug text-white">
                           {item.NoticTitle}
                         </h3>
                         <span className="text-amber-300 font-[800]">

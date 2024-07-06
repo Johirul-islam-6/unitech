@@ -92,19 +92,19 @@ export const EnrollFrom = ({
         <>
           <form
             onSubmit={handelEnrollDataSubmit}
-            className="w-[100%] h-[auto] bg-[#00000087] absolute z-20 pb-10"
+            className="w-[100%] h-[auto] bg-[#00000087] absolute z-20 pb-10 SILIGURI"
           >
             <div className="bg-[#fff] md:w-[800px] mx-auto h-[auto] p-5 py-10 mt-5">
               <div className="flex justify-between relative ">
                 <h1>
-                  আপনি কোর্সটি করতে কি আগ্রহী{" "}
-                  <span className="text-green-500 text-[12px] font-[800]">
+                  আপনি কি আমাদের প্রতিষ্ঠানে এই কোর্সটি করতে কি আগ্রহী{" "}
+                  <span className="text-green-500 text-[12px] font-[800] border-2 rounded-full px-[2px] SILIGURI">
                     OnSite
                   </span>
                 </h1>
                 <button
                   onClick={() => closeModalFunction(false)}
-                  className="text-[30px] font-[600] absolute right-0 top-[-10px]"
+                  className="text-[30px] font-[600] absolute hover:text-red-800 right-0 top-[-10px]"
                 >
                   x
                 </button>
@@ -245,7 +245,7 @@ export const EnrollFrom = ({
                     name="message"
                     id="message"
                     type="text"
-                    placeholder="ভিজ্যুয়াল কনটেন্টের চাহিদা বেড়ে যাওয়ায় এখন মার্কেটাররা গ্রাফিক্যাল কনটেন্টের দিকে ঝুঁকেছেন তাই বিশ্বজুড়ে গ্রাফিক ডিজাইনারদের "
+                    placeholder="আপনার কোন প্রশ্ন থাকলে জানাতে পারেব এখানে...."
                     className="input h-[140px] block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
                   />
                 </div>

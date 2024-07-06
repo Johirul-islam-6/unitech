@@ -20,7 +20,7 @@ export const Video = ({ singleCourses }) => {
           aria-label="Watch the video"
         >
           <Image
-            className="rounded-md shadow-2xl transition-shadow duration-300 ease-in-out"
+            className="rounded-md shadow-2xl md:h-[400px] transition-shadow duration-300 md:object-cover ease-in-out"
             src={singleCourses?.courseImage}
             width={500}
             height={500}

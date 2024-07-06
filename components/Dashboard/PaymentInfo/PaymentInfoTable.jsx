@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import userimage from "@/app/Assets/Dashboard/icon/Avatar.png";
 import Link from "next/link";
+import "./PaymentInfo.css";
 export const PaymentInfoTable = ({ AllPaymentInfo }) => {
   return (
     <>
@@ -11,16 +12,16 @@ export const PaymentInfoTable = ({ AllPaymentInfo }) => {
           <>
             <tbody className="" key={index}>
               <tr
-                className={`border-b-2 bg-green-200 ${
+                className={`border-b-2  bg-green-200 ${
                   single?.SFree === single?.SPaid ? "bg-[#89e9ab]" : "bg-white"
-                }`}
+                } payment-Cards hover:border-4  border-[#1c1c1c29]`}
               >
-                <th className="flex gap-2 items-center px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] ">
+                <th className="flex gap-2 items-center px-6 align-middle border-l-0 border-r-0 text-[14px] whitespace-nowrap py-[2px] text-left text-[#393A3A] mt-5">
                   {index + 1}
                   <Image
                     width={30}
                     height={30}
-                    className=" object-cover p-[2px]"
+                    className=" object-cover p-[5px] border-2 rounded-full"
                     src={userimage}
                     alt=""
                   />

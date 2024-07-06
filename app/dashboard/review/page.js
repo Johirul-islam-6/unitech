@@ -11,6 +11,7 @@ const Review = () => {
   const [Loading2, setLoading2] = useState(true);
   const accessToken = Cookies.get("accessToken");
   const [userInfo, setUserInfo] = useState("");
+  const [cetagorybook, setCetagory] = useState();
 
   const [reloades, setReload] = useState(false);
   const [buttonHidden, setHidden] = useState(false);
@@ -149,6 +150,18 @@ const Review = () => {
     }
   }
 
+  const departmental = [
+    "student",
+    "web-development",
+    "graphic-desing",
+    "autocad",
+    "ux-ui-design",
+    "digital-marketing",
+    "video-editing",
+    "basic-computer",
+    "video",
+  ];
+
   return (
     <div className="overflow-y-auto h-[90vh]">
       <div className="Notic-board">
@@ -174,14 +187,26 @@ const Review = () => {
                 />
               </div>
 
+              {/* ------ field number 04 ------- */}
               <div className="relative mt-2 rounded-md shadow-sm">
-                <input
-                  type="tex"
+                <select
                   name="SBatch"
-                  id="price"
-                  className=" flex w-full rounded-md border-0 py-4 placeholder:text-[18px]  text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-5"
-                  placeholder="Student identity"
-                />
+                  onChange={(e) => setCetagory(e.target.value)}
+                  className=" flex w-full rounded-md border-0 py-4 text-[18px] placeholder:text-[18px]  text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-5"
+                >
+                  <option value="selectss" className="bg-[#E8F0FE]">
+                    select Category
+                  </option>
+                  {departmental?.map((item, index) => (
+                    <option
+                      className="bg-[#e9e9e9de] text-black text-[16px]"
+                      key={index}
+                      value={item}
+                    >
+                      {item}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
           </div>

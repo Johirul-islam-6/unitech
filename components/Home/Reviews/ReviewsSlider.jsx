@@ -73,7 +73,14 @@ const ReviewsSlider = () => {
                 <Image
                   width={0}
                   height={0}
-                  className="border-2 border-amber-700 w-[90px] h-[90px] flex justify-center mx-auto rounded-full"
+                  className=""
+                  src={student?.SImage}
+                  alt=""
+                />
+                <Image
+                  width={50}
+                  height={50}
+                  className="border-2 border-amber-700 w-[80px] h-[80px] flex object-cover p-[3px] justify-center mx-auto rounded-full"
                   src={student?.SImage}
                   objectFit="contain"
                   alt=""

@@ -20,12 +20,12 @@ export const Video = ({ singleCourses, ModalOpenButton }) => {
           aria-label="Watch the video"
         >
           <Image
-            className="rounded-md shadow-2xl transition-shadow duration-300 ease-in-out "
+            className="rounded-md shadow-2xl md:h-[380px] transition-shadow duration-300 ease-in-out "
             src={singleCourses?.courseImage}
             width={500}
             height={400}
             priority
-            alt={"thumbAlt"}
+            alt={"সেমিস্টার ডিপ্লোমা"}
           />
           {/* Play icon */}
           <svg

@@ -1,7 +1,6 @@
 "use client";
 import axios from "axios";
 import Cookies from "js-cookie";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
@@ -169,7 +168,7 @@ const AcademicCourses = () => {
                 id="username"
                 name="CName"
                 type="text"
-                placeholder="Web Design-1"
+                placeholder="প্রথম সেমিস্টার"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -186,7 +185,7 @@ const AcademicCourses = () => {
                 id="username"
                 name="course-code"
                 type="text"
-                placeholder="WD-1-2024"
+                placeholder="1S2024B1"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -231,7 +230,7 @@ const AcademicCourses = () => {
                 id="username"
                 name="CDuration"
                 type="text"
-                placeholder="4 Months"
+                placeholder="৪ মাস"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -249,7 +248,7 @@ const AcademicCourses = () => {
                 id="username"
                 name="total-class"
                 type="text"
-                placeholder="45 টি"
+                placeholder="৪৮ টি"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -266,7 +265,7 @@ const AcademicCourses = () => {
                 id="username"
                 name="total-assignment"
                 type="text"
-                placeholder="35 টি অ্যাসাইনমেন্ট"
+                placeholder="৬ টি অ্যাসাইনমেন্ট"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -283,7 +282,7 @@ const AcademicCourses = () => {
                 id="username"
                 name="CQuize"
                 type="text"
-                placeholder="বিশেষ কুইজ"
+                placeholder="৫টি বিশেষ কুইজ টেস্ট"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -301,7 +300,7 @@ const AcademicCourses = () => {
                 id="username"
                 name="CExam"
                 type="text"
-                placeholder="১৩+ ফাইনাল পরিক্ষা"
+                placeholder="১+ ফাইনাল পরিক্ষা"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -318,7 +317,7 @@ const AcademicCourses = () => {
                 id="username"
                 name="CPrice"
                 type="text"
-                placeholder="৫০০০ টাকা"
+                placeholder="৬,০০০ টাকা"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -329,15 +328,14 @@ const AcademicCourses = () => {
                 className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
-                কোর্সের এনরোল করার শেষ তারিখ
+                কোর্সের এনরোল শুরু
               </label>
               <input
                 required
-                defaultValue={formattedDate}
                 id="username"
                 type="text"
                 name="Cenroll-end"
-                placeholder="24/02/2024"
+                placeholder="পলিটেকনিকের প্রত্যেক ফাইনাল সেমিস্টার পর থেকে ১০ দিন এর ভেতরে.."
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -357,7 +355,7 @@ const AcademicCourses = () => {
                 name="CDiscription"
                 id="username"
                 type="text"
-                placeholder="ভিজ্যুয়াল কনটেন্টের চাহিদা বেড়ে যাওয়ায় এখন মার্কেটাররা গ্রাফিক্যাল কনটেন্টের দিকে ঝুঁকেছেন তাই বিশ্বজুড়ে গ্রাফিক ডিজাইনারদের চাহিদা এখন আকাশচুম্বী এক জরিপে দেখা যায়, ভালো একটা লোগোর জন্য একটি ছোট প্রতিষ্ঠানও ৫০০ ডলার পর্যন্ত "
+                placeholder="কনটেন্টের চাহিদা বেড়ে যাওয়ায় এখন মার্কেটাররা গ্রাফিক্যাল কনটেন্টের দিকে ঝুঁকেছেন তাই বিশ্বজুড়ে গ্রাফিক ডিজাইনারদের চাহিদা এখন আকাশচুম্বী এক জরিপে দেখা যায়, ভালো একটা লোগোর জন্য একটি ছোট প্রতিষ্ঠানও ৫০০ ডলার পর্যন্ত "
                 className="input h-[140px] block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>

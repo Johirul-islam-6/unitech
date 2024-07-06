@@ -68,13 +68,13 @@ export const StudentInfo = () => {
               <>
                 <div
                   key={course?.id}
-                  className="border-2 student-info-card flex flex-col justify-center items-center p-2 "
+                  className="border-2 student-info-card flex flex-col justify-center items-center p-1 md:p-2 "
                 >
-                  <div className="image h-[200px] overflow-hidden">
+                  <div className="image h-[160px] md:h-[200px] overflow-hidden">
                     <Image
                       width={0}
                       height={0}
-                      className="border-2 h-[100%] student-info-image"
+                      className="border-2 h-[100%] object-cover student-info-image"
                       src={course?.image}
                       alt=""
                     />

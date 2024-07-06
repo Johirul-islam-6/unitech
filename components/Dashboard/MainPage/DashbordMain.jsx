@@ -524,11 +524,11 @@ export const DashbordMain = () => {
                         </div>
                         <div className="px-2 pb-6 ">
                           <div className="all-button-courses flex flex-wrap justify-start items-center mt-5 gap-2 ">
-                            <button className="bg-[#0000] flex gap-[2px] items-center px-2 py-[4px] border-2 border-[#955914] rounded-md text-[14px] font-[700] text-[#955914]">
+                            <button className="bg-[#0000] flex gap-[2px] items-center px-2 py-[4px] border-2 border-[#955914] rounded-md text-[12px] font-[700] text-[#955914]">
                               {single?.updatedAt?.slice(0, 10)}
                             </button>
 
-                            <button className="bg-[#0000] flex gap-[2px] items-center px-2 py-[4px] border-2 border-[#955914] rounded-md text-[14px] font-[700] text-[#955914]">
+                            <button className="bg-[#0000] flex gap-[2px] items-center px-2 py-[4px] border-2 border-[#955914] rounded-md text-[12px] font-[700] text-[#955914]">
                               {single?.email}
                             </button>
                           </div>

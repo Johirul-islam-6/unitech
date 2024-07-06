@@ -69,7 +69,7 @@ const OurCourses = () => {
             </p>
             {Loading && (
               <>
-                <div class="max-w-screen-xl mx-auto grid md:grid-cols-4 gap-8  items-center justify-center mt-5">
+                <div class="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8  items-center justify-center mt-5">
                   <div class="max-w-sm rounded overflow-hidden shadow-lg animate-pulse">
                     <div class="h-48 bg-gray-300"></div>
                     <div class="px-6 py-4">

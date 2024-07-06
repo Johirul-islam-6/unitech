@@ -34,12 +34,11 @@ const SkillBaseCourse = () => {
   const departmental = [
     "web-development",
     "graphic-desing",
+    "autocad",
+    "ux-ui-design",
     "digital-marketing",
     "video-editing",
     "basic-computer",
-    "Autocad-basic-premium",
-    "autocad",
-    "ux-ui-design",
     "video",
   ];
 
@@ -132,6 +131,9 @@ const SkillBaseCourse = () => {
     const module15 = formData.get("module_15");
     const moduleP15 = formData.get("module_P_15");
     // -----next
+    const module16 = formData.get("module_16");
+    const moduleP16 = formData.get("module_P_16");
+    // -----next
 
     if (CCategory === "select") {
       return alert("Please select cetagoryCourse Cetagory !");
@@ -213,6 +215,22 @@ const SkillBaseCourse = () => {
           module12,
           moduleP12,
         },
+        {
+          module13,
+          moduleP13,
+        },
+        {
+          module14,
+          moduleP14,
+        },
+        {
+          module15,
+          moduleP15,
+        },
+        {
+          module16,
+          moduleP16,
+        },
       ],
     };
     setHidden(true);
@@ -291,7 +309,7 @@ const SkillBaseCourse = () => {
                 id="username"
                 name="CName"
                 type="text"
-                placeholder="Web Design-1"
+                placeholder="অটোক্যাড 2D"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -308,7 +326,7 @@ const SkillBaseCourse = () => {
                 id="username"
                 name="course-code"
                 type="text"
-                placeholder="WD-1-2024"
+                placeholder="CAD2024B1"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -353,7 +371,7 @@ const SkillBaseCourse = () => {
                 id="username"
                 name="CDuration"
                 type="text"
-                placeholder="4 Months"
+                placeholder="৪ মাস"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -370,7 +388,7 @@ const SkillBaseCourse = () => {
                 id="username"
                 name="CBatch"
                 type="text"
-                placeholder="Batch-৩"
+                placeholder="ব্যাচ-১"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -388,7 +406,7 @@ const SkillBaseCourse = () => {
                 id="username"
                 name="total-class"
                 type="text"
-                placeholder="45"
+                placeholder="৪৮ টি"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -405,7 +423,7 @@ const SkillBaseCourse = () => {
                 id="username"
                 name="total-assignment"
                 type="text"
-                placeholder="35 টি অ্যাসাইনমেন্ট"
+                placeholder="০৪ টি অ্যাসাইনমেন্ট"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -422,7 +440,7 @@ const SkillBaseCourse = () => {
                 id="username"
                 name="CTotalHoure"
                 type="text"
-                placeholder="সময় লাগবে 480 ঘন্টা"
+                placeholder="১২০ ঘন্টা সময় লাগবে"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -439,7 +457,7 @@ const SkillBaseCourse = () => {
                 id="username"
                 name="CTotalVideo"
                 type="text"
-                placeholder="48 টি ভিডিও"
+                placeholder="১৪৮ টি সর্বমোট ভিডিও"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -466,14 +484,14 @@ const SkillBaseCourse = () => {
                 className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
                 for="username"
               >
-                সর্বমোট প্রফেশনাল প্রজেক্
+                সর্বমোট প্রফেশনাল প্রজেক্ট
               </label>
               <input
                 required
                 id="username"
                 name="CTotalProject"
                 type="text"
-                placeholder="১৩+ প্রফেশনাল প্রজেক্"
+                placeholder="৪+ টি প্রফেশনাল প্রজেক্ট"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -490,7 +508,7 @@ const SkillBaseCourse = () => {
                 id="username"
                 name="CPrice"
                 type="text"
-                placeholder="৫০০০ টাকা"
+                placeholder="১৫,০০০"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -505,11 +523,10 @@ const SkillBaseCourse = () => {
               </label>
               <input
                 required
-                defaultValue={formattedDate}
                 id="username"
                 type="text"
                 name="Cenroll-end"
-                placeholder="24/02/2024"
+                placeholder="১০ ডিসেম্বর ২০২৫"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -528,7 +545,7 @@ const SkillBaseCourse = () => {
                 name="CDiscription"
                 id="username"
                 type="text"
-                placeholder="ভিজ্যুয়াল কনটেন্টের চাহিদা বেড়ে যাওয়ায় এখন মার্কেটাররা গ্রাফিক্যাল কনটেন্টের দিকে ঝুঁকেছেন তাই বিশ্বজুড়ে গ্রাফিক ডিজাইনারদের চাহিদা এখন আকাশচুম্বী এক জরিপে দেখা যায়, ভালো একটা লোগোর জন্য একটি ছোট প্রতিষ্ঠানও ৫০০ ডলার পর্যন্ত "
+                placeholder="একজন সফল গ্রাফিক ডিজাইনার হতে হলে মানসম্পন্ন কারিকুলামে প্রশিক্ষণের পাশাপাশি প্রজেক্ট ভিত্তিক কাজের অভিজ্ঞতা আর মার্কেটপ্লেস সম্পর্কে ভালো ধারণা থাকা প্রয়োজন তাই এসব কিছুই একসাথে অন্তর্ভুক্ত করা হয়েছে আমাদের কোর্স ।"
                 className="input h-[140px] block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -544,7 +561,7 @@ const SkillBaseCourse = () => {
                 name="COverView"
                 id="username"
                 type="text"
-                placeholder="একজন সফল গ্রাফিক ডিজাইনার হতে হলে মানসম্পন্ন কারিকুলামে প্রশিক্ষণের পাশাপাশি প্রজেক্ট ভিত্তিক কাজের অভিজ্ঞতা আর মার্কেটপ্লেস সম্পর্কে ভালো ধারণা থাকা প্রয়োজন তাই এসব কিছুই একসাথে অন্তর্ভুক্ত করা হয়েছে আমাদের কোর্স মডিউলে গ্রাফিক ডিজাইন কোর্স থেকে আপনি অ্যাডোবি ফটোশপ "
+                placeholder="একজন সফল গ্রাফিক ডিজাইনার হতে হলে মানসম্পন্ন কারিকুলামে প্রশিক্ষণের পাশাপাশি প্রজেক্ট ভিত্তিক কাজের অভিজ্ঞতা আর মার্কেটপ্লেস সম্পর্কে ভালো ধারণা থাকা প্রয়োজন তাই এসব কিছুই একসাথে অন্তর্ভুক্ত করা হয়েছে আমাদের কোর্স মডিউলে গ্রাফিক ডিজাইন কোর্স থেকে আপনি অ্যাডোবি ফটোশপ ।"
                 className="input h-[140px] block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -731,7 +748,7 @@ const SkillBaseCourse = () => {
                 name="module_P_1"
                 id="username"
                 type="text"
-                placeholder="ক্লাসে কি কি থাকবে তা বননা.."
+                placeholder="খালি থাকবে এইটা ।"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -755,7 +772,7 @@ const SkillBaseCourse = () => {
                 name="module_P_2"
                 id="username"
                 type="text"
-                placeholder="ক্লাসে কি কি থাকবে তা বননা.."
+                placeholder="খালি থাকবে এইটা ।"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -779,7 +796,7 @@ const SkillBaseCourse = () => {
                 name="module_P_3"
                 id="username"
                 type="text"
-                placeholder="ক্লাসে কি কি থাকবে তা বননা.."
+                placeholder="খালি থাকবে এইটা ।"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -803,7 +820,7 @@ const SkillBaseCourse = () => {
                 name="module_P_4"
                 id="username"
                 type="text"
-                placeholder="ক্লাসে কি কি থাকবে তা বননা.."
+                placeholder="খালি থাকবে এইটা ।"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -827,7 +844,7 @@ const SkillBaseCourse = () => {
                 name="module_P_5"
                 id="username"
                 type="text"
-                placeholder="ক্লাসে কি কি থাকবে তা বননা.."
+                placeholder="খালি থাকবে এইটা ।"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -851,7 +868,7 @@ const SkillBaseCourse = () => {
                 name="module_P_6"
                 id="username"
                 type="text"
-                placeholder="ক্লাসে কি কি থাকবে তা বননা.."
+                placeholder="খালি থাকবে এইটা ।"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -875,7 +892,7 @@ const SkillBaseCourse = () => {
                 name="module_P_7"
                 id="username"
                 type="text"
-                placeholder="ক্লাসে কি কি থাকবে তা বননা.."
+                placeholder="খালি থাকবে এইটা ।"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -899,7 +916,7 @@ const SkillBaseCourse = () => {
                 name="module_P_8"
                 id="username"
                 type="text"
-                placeholder="ক্লাসে কি কি থাকবে তা বননা.."
+                placeholder="খালি থাকবে এইটা ।"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -923,7 +940,7 @@ const SkillBaseCourse = () => {
                 name="module_P_9"
                 id="username"
                 type="text"
-                placeholder="ক্লাসে কি কি থাকবে তা বননা.."
+                placeholder="খালি থাকবে এইটা ।"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -947,7 +964,7 @@ const SkillBaseCourse = () => {
                 name="module_P_10"
                 id="username"
                 type="text"
-                placeholder="ক্লাসে কি কি থাকবে তা বননা.."
+                placeholder="খালি থাকবে এইটা ।"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -971,7 +988,7 @@ const SkillBaseCourse = () => {
                 name="module_P_11"
                 id="username"
                 type="text"
-                placeholder="ক্লাসে কি কি থাকবে তা বননা.."
+                placeholder="খালি থাকবে এইটা ।"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -995,7 +1012,7 @@ const SkillBaseCourse = () => {
                 name="module_P_12"
                 id="username"
                 type="text"
-                placeholder="ক্লাসে কি কি থাকবে তা বননা.."
+                placeholder="খালি থাকবে এইটা ।"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -1019,7 +1036,7 @@ const SkillBaseCourse = () => {
                 name="module_P_13"
                 id="username"
                 type="text"
-                placeholder="ক্লাসে কি কি থাকবে তা বননা.."
+                placeholder="খালি থাকবে এইটা ।"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -1043,7 +1060,7 @@ const SkillBaseCourse = () => {
                 name="module_P_14"
                 id="username"
                 type="text"
-                placeholder="ক্লাসে কি কি থাকবে তা বননা.."
+                placeholder="খালি থাকবে এইটা ।"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>
@@ -1067,7 +1084,30 @@ const SkillBaseCourse = () => {
                 name="module_P_15"
                 id="username"
                 type="text"
-                placeholder="ক্লাসে কি কি থাকবে তা বননা.."
+                placeholder="খালি থাকবে এইটা ।"
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+            </div>
+            <div>
+              <label
+                className="text-[#000b] md:text-[14px] text-[14px] ps-[2px] font-bold  md:ps-1 IN"
+                for="username"
+              >
+                ১৬ নাম্বার Module
+              </label>
+
+              <input
+                name="module_16"
+                id="username"
+                type="text"
+                placeholder="Module মেইন টপিক সমূহ.."
+                className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
+              />
+              <textarea
+                name="module_P_16"
+                id="username"
+                type="text"
+                placeholder="খালি থাকবে এইটা ।"
                 className="input block border border-gray-300 focus:border-pitch-black placeholder:font-normal text-[16px] py-2 px-3 w-full focus:outline-none mt-1"
               />
             </div>

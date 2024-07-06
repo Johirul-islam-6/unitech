@@ -147,7 +147,7 @@ const SliderItem = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/v1/attachments/create",
+        "https://api.unitechbangladesh.com/api/v1/attachments/create",
         enrollData,
         {
           maxContentLength: 1000000000000,

@@ -7,6 +7,10 @@
 .box-shdow-5 {
   box-shadow: rgba(0, 0, 0, 0.249) 0px 5px 15px;
 }
+
+.payment-Cards {
+  padding: 10px !important;
+}
 /* ------- dropdown ----- */
 
 .sec-center {

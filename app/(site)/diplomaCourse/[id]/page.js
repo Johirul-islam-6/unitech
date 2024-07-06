@@ -139,6 +139,10 @@ const DetailsCourse = () => {
                     <p className="py-5 text-justify text-[17px] font-[400] SILIGURI">
                       {singleCourses?.CDescription?.slice(0, 480)}...
                     </p>
+                    <p className="pt-5 pb-5 text-justify text-[17px] font-[400] SILIGURI">
+                      নোট: ভর্তি শুরু পলিটেকনিকের প্রত্যেক সেমিস্টার ফাইনাল
+                      পরীক্ষার পর থেকে।
+                    </p>
                     <div className="flex md:justify-start gap-5 justify-center ">
                       <button
                         onClick={() => ModalOpenButton()}
@@ -214,7 +218,7 @@ const DetailsCourse = () => {
                           alt=""
                         />
                         <p className="font-[500] text-[#353535] text-[14px]">
-                          কোর্সটি করছেন ৩৪২ জন
+                          কোর্সটি করছেন অনেকেই
                         </p>
                       </div>
 
